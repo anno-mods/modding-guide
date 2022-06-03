@@ -160,7 +160,7 @@ We now created our own assets.xml that will be merged with the assets.xml from t
 
 The first code we need to write are the tags that make it clear everything in this file is a mod. We follow guidelines that are the same for every mod. So the modloader can actually do his/her job and merge the code we wrote with the existing assets.xml. 
 
-```
+```XML
 <ModOps>
 
 
@@ -169,7 +169,7 @@ The first code we need to write are the tags that make it clear everything in th
 
 We have the opening tag &lt;ModOps> and immediately also create the closing tag &lt;/ModOps>. It is a good practice to immediately create the closing tag. That way you will not forget. A lot of the time errors are triggered because of tags that are not closed. Everything we now put inside those tags is included in the mod.
 
-```
+```XML
 <ModOps>
   <ModOp>
 
@@ -179,7 +179,7 @@ We have the opening tag &lt;ModOps> and immediately also create the closing tag 
 
 We first create a &lt;ModOp> within the &lt;ModOps>. This is the wrapper for our first mod. Now we need to make it clear what we want to do in this mod.
 
-```
+```XML
 <ModOps>
   <ModOp Type="replace">
 
@@ -191,7 +191,7 @@ This mod is from the Type=”replace”. We will be replacing an existing value 
 
 #### GUID
 
-```
+```XML
 <ModOps>
   <ModOp Type="replace" GUID='192450'>
 
@@ -206,7 +206,7 @@ Say hello to schwubbe.de! Go to [https://schwubbe.de/modding_blog.php](https://s
 In this field you can type whatever asset you want to know the GUID for. So, in our case we searched for “Feras Alsarami, the Persuader” and got the GUID “192450”. \
 Big thank you to this amazing tool! It makes our work a lot easier.
 
-```
+```XML
 <ModOps>
   <ModOp Type="replace" GUID='192450' Path="/Values/FactoryUpgrade/ProductivityUpgrade/Value">
     <Value>420</Value>
@@ -236,7 +236,7 @@ So, Now that we have the correct location of what we want to change we can deter
 
 Within the &lt;Asset> we go down to /Values/FactoryUpgrade/ProductivityUpgrade/Value. Then the path we want to replace we repeat again and add the new value we want to use, in our case 420.
 
-```
+```XML
 <ModOps>
   <ModOp Type="replace" GUID='192450' Path="/Values/FactoryUpgrade/ProductivityUpgrade/Value">
     <Value>420</Value>
@@ -246,7 +246,7 @@ Within the &lt;Asset> we go down to /Values/FactoryUpgrade/ProductivityUpgrade/V
 
 ### Comments
 
-```
+```XML
 <ModOps>
   <!-- START CHANGE  Feras Alsarami, the better Persuader -->
   <ModOp Type="replace" GUID='192450' Path="/Values/FactoryUpgrade/ProductivityUpgrade/Value">
