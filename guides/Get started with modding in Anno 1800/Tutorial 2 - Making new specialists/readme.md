@@ -49,7 +49,7 @@ The location of the icons we are going to use is data2.rda/data/ui/2kimages/main
 
 ## Changing the icon
 
-We could change the icon in a image editor. For example we made her clothes black because she is working in a mine.
+We could change the icon in a image editor. For example we make her clothes black because she is working in a mine. The name of our specialist will be **"Maria Lopez"**.
 
 ![icon_maria_lopez_v2.png](https://raw.githubusercontent.com/Hier0nimus/modding-guide/patch-1/guides/Get%20started%20with%20modding%20in%20Anno%201800/Tutorial%202%20-%20Making%20new%20specialists/_sources/icon_maria_lopez_v2.png)
 
@@ -67,7 +67,8 @@ The translationfiles are created for different languages. The fallback language 
 
 ### Supported languages
 
-There are a lot of languages supported within Anno 1800:
+There are a lot of languages supported within Anno 1800. Every language file is a xml file with the ModOps structure. We have files for every language. Those files always have the same name and location.
+
 * texts_chinese.xml
 * texts_english.xml
 * texts_french.xml
@@ -82,6 +83,9 @@ There are a lot of languages supported within Anno 1800:
 
 ### Structure of the file
 
+Let's start with the texts_english.xml and create this file in the right folder.  
+[Gameplay] Tutorial Specialists/data/config/gui
+
 The structure of a translationfile starts like most modding files:
 
 ```XML
@@ -91,7 +95,7 @@ The structure of a translationfile starts like most modding files:
 </ModOps>
 ```
 
-After that we have again a specific ModOp with a type and path. In this case we will be adding new text exports to the text files.
+After that we have again a specific ModOp with a type and path. In this case we will be adding new text exports to the text files. So we have the Type="add" and we will be adding this to the Path="/TextExport/Texts".
 
 ```XML
 <ModOps>
@@ -101,7 +105,32 @@ After that we have again a specific ModOp with a type and path. In this case we 
 </ModOps>
 ```
 
+We will be adding text for 2 things in this mod. The **name of the specialist**, and a **description of the specialist**. Those 2 texts need a unique identfier, a GUID. Like we saw in the previous tutorial the GUID is a number that represents something in the game. In this case it will represent the specialist and the description of the specialist.
 
+For this first part of this mod we will be using GUID's from 1742008800-1742008801.
+
+**Info:** See the previous tutorial (Tutorial 1 - My first mod) if you want to know more about GUID's.
+
+Now that we know which GUID's we are going to use and we already know the name of our specialist (Maria Lopez), the only thing we need is the description. You do not need to go fancy but it is a nice touch to put some extra effort in some nice backgroundstory for the specialist you are creating. Let's give Maria some nice story and put that in the game as a description.
+
+The structure to put those languages in there goes as following:
+
+```XML
+<ModOps>
+  <ModOp Type="add" Path="/TextExport/Texts">
+    <!-- START SPECIALIST - Maria Lopez -->
+    <Text>
+      <GUID>1742008800</GUID>
+      <Text>Maria Lopez</Text>
+    </Text>
+    <Text>
+      <GUID>1742008801</GUID>
+      <Text></Text>
+    </Text>
+    <!-- END SPECIALIST - Maria Lopez -->
+  </ModOp>
+</ModOps>
+```
 
 ## Creating the specialist, Create our assets.xml
 
