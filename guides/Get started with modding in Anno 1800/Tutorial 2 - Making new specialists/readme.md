@@ -164,6 +164,7 @@ The last item in the list of Trade Union items is the item with the GUID 191431.
 
 We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our mod as the next sibling of the GUID 191431 (Louis Comfort Tiffany - The Experimental Window Maker).
 
+
 ```XML
 <ModOps>
    <ModOp GUID="191431" Type="addNextSibling">
@@ -172,7 +173,7 @@ We declare the GUID where we want to perform the action to in the ModOp and then
 </ModOps>
 ```
 
-First let's add the <Asset> tag to wrap our new specialist in.
+First let's add the &lt;Asset> tag to wrap our new specialist in.
 
 ```XML
 <ModOps>
@@ -190,7 +191,20 @@ With creating a new specialist item we can create this for every building and sh
 
 Specialists can be used inside Trade Union, Town Hall, Harbourmaster's Office, Arctic Lodge and also in ships. We have to decide for which building we want to make the specialist. In this case for our first specialist we will be creating one for the Trade Union. The specialists for Trade Unions are the ones that boost factories and mines, so in this case the logical choice for our gold mine specialist.
 
-## <Template>   
-
-
-Now that we know it is for the Trade Union we know which <Template> we will be creating. We are creating a new <Asset> that has a specific 
+## &lt;Template>
+   
+We are creating a new <Asset> that has a specific structure. A lot of the assets that are used in Anno 1800 can be categorized. This is done to make it easier to create multiple assets with the same proporties. For example all items that can be used inside the Trade Union work the same way and have the same function. So, it is good to put that logic inside a "template" we can then use again and again to save a lot of work in the end. 
+   
+Now that we know it is for the Trade Union we know which &lt;Template> we will be creating. There is a specific template for Trade Union items. This is the template **"GuildhouseItem"**.
+   
+```XML
+<ModOps>
+   <ModOp GUID="191431" Type="addNextSibling">
+      <Asset>
+         <Template>GuildhouseItem</Template>
+         
+      </Asset>
+   </ModOp>
+</ModOps>
+```
+   
