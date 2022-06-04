@@ -1115,10 +1115,7 @@ The most important thing that we need to change here is the position and maybe o
 
 &lt;x>16.128237&lt;/x> to &lt;x>15.628237&lt;/x>  
 &lt;y>-0.123510&lt;/y> to &lt;y>-0.123510&lt;/y>  
-&lt;z>10.544896&lt;/z> to &lt;z>7.544896&lt;/z>  
-
-The RotationY we change to:
-&lt;RotationY>3.989012&lt;/RotationY to &lt;RotationY>1.009012&lt;/RotationY
+&lt;z>10.544896&lt;/z> to &lt;z>7.544896&lt;/z>
 
 ```XML
 <i>
@@ -1145,7 +1142,7 @@ The RotationY we change to:
                 <y>0.100000</y>
                 <z>0.100000</z>
             </Extents>
-            <RotationY>1.009012</RotationY>
+            <RotationY>3.989012</RotationY>
             <Id>1742009</Id>
             <HeightAdaptationMode>1</HeightAdaptationMode>
         </i>
