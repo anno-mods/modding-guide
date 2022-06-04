@@ -74,7 +74,6 @@ We start with adding our opening modding tags so we can actually start.
 ```XML
 <ModOps>
 
-
 </ModOps>
 ```
 
@@ -93,15 +92,14 @@ We create a mod tag where we add the new session after the corresponding already
 
 ```XML
 <ModOps>
-<!-- ***************************************************** -->
-    	<!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
+	<!-- ***************************************************** -->
+	<!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
     	<!-- ***************************************************** →
 	<!-- Add New Session -->
-<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
-
-
-</ModOp>
-<!-- ***************************************************** -->
+	<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
+	
+	</ModOp>
+	<!-- ***************************************************** -->
     	<!-- **** END NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
     	<!-- ***************************************************** -->
 </ModOps>
@@ -113,16 +111,16 @@ We create our main &lt;Asset> in our mod structure and add the correct template 
 
 ```XML
 <ModOps>
-<!-- ***************************************************** -->
+	<!-- ***************************************************** -->
     	<!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
     	<!-- ***************************************************** -->
 	<!-- Add New Session -->
-<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
-	<Asset>
-            <Template>SessionSouthAmerica</Template>
-	</Asset>
-</ModOp>
-<!-- ***************************************************** -->
+	<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
+		<Asset>
+		    <Template>SessionSouthAmerica</Template>
+		</Asset>
+	</ModOp>
+	<!-- ***************************************************** -->
     	<!-- **** END NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
     	<!-- ***************************************************** -->
 </ModOps>
@@ -133,19 +131,19 @@ This is important because the template we choose already has a lot of properties
 Let’s dive some deeper into this. We have our template “SessionSouthAmerica”. In the same folder where we find the main “assets.xml” there is also a ”templates.xml”. This contains a lot of the templates used in the game. The template “SessionSouthAmerica” is one of those templates. If you go to this file and search for “SessionSouthAmerica” you will find one exact reference.
 
 ```XML
-    <Template>
-      <Name>SessionSouthAmerica</Name>
-      <Properties>
-        <Standard />
-        <Session>
-          <Region>5000001</Region>
-          <FixDayTime>12</FixDayTime>
-        </Session>
-        <Text />
-        <Locked />
-        <WorldMapSound />
-      </Properties>
-    </Template>
+<Template>
+	<Name>SessionSouthAmerica</Name>
+	<Properties>
+		<Standard />
+		<Session>
+			<Region>5000001</Region>
+			<FixDayTime>12</FixDayTime>
+		</Session>
+		<Text />
+		<Locked />
+		<WorldMapSound />
+	</Properties>
+</Template>
 ```
 
 We can see this template contains not that much info but refers to another GUID, “5000001” which is a region.
@@ -156,33 +154,33 @@ If we go back to the main “assets.xml” and search for “5000001” we get a
 
 ```XML
 <Asset>
-<Template>Region</Template>
-<Values>
-		<Standard>
-			<GUID>5000001</GUID>
-			<Name>Region South America</Name>         
+	<Template>Region</Template>
+	<Values>
+	    <Standard>
+		<GUID>5000001</GUID>
+		<Name>Region South America</Name>
 		<IconFilename>...</IconFilename>
 		<ID>RegionSouthAmerica</ID>
-	</Standard>
-	<Region>
-                  <Ambiente>Region_map_global</Ambiente>
-                  <RegionID>Colony01</RegionID>
-                  <FeedbackDescription>141486</FeedbackDescription>
-                  <AnimalDescription>141553</AnimalDescription>
-                  <Street>1000178</Street>
-                  <DistributionCenter>101290</DistributionCenter>
-                  <AllowedWeather>Rain</AllowedWeather>
-                  <SlotBuildings>
-                    <Clay>
-                      <Building>101267</Building>
-                    </Clay>
-                    <GoldOre>
-                      <Building>101311</Building>
-                    </GoldOre>
+	    </Standard>
+	    <Region>
+		<Ambiente>Region_map_global</Ambiente>
+		<RegionID>Colony01</RegionID>
+		<FeedbackDescription>141486</FeedbackDescription>
+		<AnimalDescription>141553</AnimalDescription>
+		<Street>1000178</Street>
+		<DistributionCenter>101290</DistributionCenter>
+		<AllowedWeather>Rain</AllowedWeather>
+		<SlotBuildings>
+		    <Clay>
+			<Building>101267</Building>
+		    </Clay>
+		    <GoldOre>
+			<Building>101311</Building>
+		    </GoldOre>
 		</SlotBuildings>
-			…
-		</Region>
-</Values>
+		…
+	    </Region>
+	</Values>
 <Asset>
 ```
 
@@ -201,23 +199,26 @@ Go back to the main assets.xml and search for “&lt;Template>SessionSouthAmeric
 
 ```XML
 <Asset>
-<Template>SessionSouthAmerica</Template>
-<Values>
-	<Standard>
-		<GUID>180025</GUID>
-		<Name>SouthAmerica_Session</Name>
-		<IconFilename>...</IconFilename>
-	</Standard>
-	<Session>
-		<CameraLoopSequence1>11</CameraLoopSequence1>
-		<CameraLoopSequence2>10</CameraLoopSequence2>
-		<AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
-		<TransferData>
-			<Item>
-				<Session>180023</Session>
-				<Duration>270000</Duration>
-			</Item>
-…
+    <Template>SessionSouthAmerica</Template>
+    <Values>
+        <Standard>
+            <GUID>180025</GUID>
+            <Name>SouthAmerica_Session</Name>
+            <IconFilename>...</IconFilename>
+        </Standard>
+        <Session>
+            <CameraLoopSequence1>11</CameraLoopSequence1>
+            <CameraLoopSequence2>10</CameraLoopSequence2>
+            <AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
+            <TransferData>
+                <Item>
+                    <Session>180023</Session>
+                    <Duration>270000</Duration>
+                </Item>
+                …
+            </TransferData>
+        </Session>
+    </Values>
 </Asset>
 ```
 
@@ -227,122 +228,122 @@ Copy the whole asset to your assets.xml inside the ModOp structure and replace t
 
 ```XML
 <ModOps>
-<!-- ***************************************************** -->
-<!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
-<!-- ***************************************************** -->
-<!-- Add New Session -->
-<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
-	<Asset>
-      		<Template>SessionSouthAmerica</Template>
-                  <Values>
-                    <Standard>
-                      <GUID>180025</GUID>
-                      <Name>SouthAmerica_Session</Name>
-                      <IconFilename>PATH icon_session_southamerica.png</IconFilename>
-                    </Standard>
-                    <Session>
-                      <CameraLoopSequence1>11</CameraLoopSequence1>
-                      <CameraLoopSequence2>10</CameraLoopSequence2>
-                      <AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
-                      <TransferData>
+    <!-- ***************************************************** -->
+    <!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
+    <!-- ***************************************************** -->
+    <!-- Add New Session -->
+    <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
+        <Asset>
+            <Template>SessionSouthAmerica</Template>
+            <Values>
+                <Standard>
+                    <GUID>180025</GUID>
+                    <Name>SouthAmerica_Session</Name>
+                    <IconFilename>PATH icon_session_southamerica.png</IconFilename>
+                </Standard>
+                <Session>
+                    <CameraLoopSequence1>11</CameraLoopSequence1>
+                    <CameraLoopSequence2>10</CameraLoopSequence2>
+                    <AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
+                    <TransferData>
                         <Item>
-                          <Session>180023</Session>
-                          <Duration>270000</Duration>
+                            <Session>180023</Session>
+                            <Duration>270000</Duration>
                         </Item>
                         <Item>
-                          <Session>803421</Session>
-                          <Duration>270000</Duration>
-                          <Direction>SouthEast</Direction>
+                            <Session>803421</Session>
+                            <Duration>270000</Duration>
+                            <Direction>SouthEast</Direction>
                         </Item>
                         <Item>
-                          <Session>110934</Session>
-                          <Duration>270000</Duration>
-                          <Direction>SouthEast</Direction>
+                            <Session>110934</Session>
+                            <Duration>270000</Duration>
+                            <Direction>SouthEast</Direction>
                         </Item>
                         <Item>
-                          <Session>800703</Session>
-                          <Duration>360000</Duration>
+                            <Session>800703</Session>
+                            <Duration>360000</Duration>
                         </Item>
                         <Item>
-                          <Session>180045</Session>
-                          <Duration>360000</Duration>
+                            <Session>180045</Session>
+                            <Duration>360000</Duration>
                         </Item>
                         <Item>
-                          <Session>803423</Session>
-                          <Duration>300000</Duration>
-                          <Direction>SouthEast</Direction>
+                            <Session>803423</Session>
+                            <Duration>300000</Duration>
+                            <Direction>SouthEast</Direction>
                         </Item>
                         <Item>
-                          <Session>112132</Session>
-                          <Duration>300000</Duration>
-                          <Direction>SouthEast</Direction>
+                            <Session>112132</Session>
+                            <Duration>300000</Duration>
+                            <Direction>SouthEast</Direction>
                         </Item>
                         <Item>
-                          <Session>800384</Session>
-                          <Duration>360000</Duration>
-                          <Direction>NorthWest</Direction>
+                            <Session>800384</Session>
+                            <Duration>360000</Duration>
+                            <Direction>NorthWest</Direction>
                         </Item>
                         <Item>
-                          <Session>800385</Session>
-                          <Duration>450000</Duration>
+                            <Session>800385</Session>
+                            <Duration>450000</Duration>
                         </Item>
                         <Item>
-                          <Session>800386</Session>
-                          <Duration>90000</Duration>
+                            <Session>800386</Session>
+                            <Duration>90000</Duration>
                         </Item>
                         <Item>
-                          <Session>800387</Session>
-                          <Duration>90000</Duration>
-                          <Direction>SouthEast</Direction>
+                            <Session>800387</Session>
+                            <Duration>90000</Duration>
+                            <Direction>SouthEast</Direction>
                         </Item>
                         <Item>
-                          <Session>800432</Session>
-                          <Duration>360000</Duration>
+                            <Session>800432</Session>
+                            <Duration>360000</Duration>
                         </Item>
                         <Item>
-                          <Session>800433</Session>
-                          <Duration>390000</Duration>
+                            <Session>800433</Session>
+                            <Duration>390000</Duration>
                         </Item>
                         <Item>
-                          <Session>801999</Session>
-                          <Duration>90000</Duration>
-                          <Direction>SouthEast</Direction>
+                            <Session>801999</Session>
+                            <Duration>90000</Duration>
+                            <Direction>SouthEast</Direction>
                         </Item>
                         <Item>
-                          <Session>803422</Session>
-                          <Duration>360000</Duration>
-                          <Direction>NorthWest</Direction>
+                            <Session>803422</Session>
+                            <Duration>360000</Duration>
+                            <Direction>NorthWest</Direction>
                         </Item>
-                      </TransferData>
-				<SpawnStartShipAndKontor>0</SpawnStartShipAndKontor>
-				<SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
-                      <WorldMapCardBackground>500876</WorldMapCardBackground>
-                      <WorldMapAsset>PATH clickable_south_america_01.cfg</WorldMapAsset>
-                      <TreasureMapHint>NewWorld</TreasureMapHint>
-                     <SecondPartyReferenceUnlock>1010285</SecondPartyReferenceUnlock>
-                    </Session>
-                    <Text>
-                      <LocaText>
+                    </TransferData>
+                    <SpawnStartShipAndKontor>0</SpawnStartShipAndKontor>
+                    <SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
+                    <WorldMapCardBackground>500876</WorldMapCardBackground>
+                    <WorldMapAsset>PATH clickable_south_america_01.cfg</WorldMapAsset>
+                    <TreasureMapHint>NewWorld</TreasureMapHint>
+                    <SecondPartyReferenceUnlock>1010285</SecondPartyReferenceUnlock>
+                </Session>
+                <Text>
+                    <LocaText>
                         <English>
-                          <Text>The New World</Text>
-                          <Status>Exported</Status>
-                          <ExportCount>2</ExportCount>
+                            <Text>The New World</Text>
+                            <Status>Exported</Status>
+                            <ExportCount>2</ExportCount>
                         </English>
-                      </LocaText>
-                      <LineID>14154</LineID>
-                    </Text>
- 			<Locked>
-                    		<DefaultLockedState>0</DefaultLockedState>
-                	</Locked>
-                    <WorldMapSound>
-                      <UIClickEvent>9818389</UIClickEvent>
-                    </WorldMapSound>
-                  </Values>
-     </Asset>
-</ModOp>
-<!-- ***************************************************** -->
-    	<!-- **** END NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
-    	<!-- ***************************************************** -->
+                    </LocaText>
+                    <LineID>14154</LineID>
+                </Text>
+                <Locked>
+                    <DefaultLockedState>0</DefaultLockedState>
+                </Locked>
+                <WorldMapSound>
+                    <UIClickEvent>9818389</UIClickEvent>
+                </WorldMapSound>
+            </Values>
+        </Asset>
+    </ModOp>
+    <!-- ***************************************************** -->
+    <!-- **** END NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
+    <!-- ***************************************************** -->
 </ModOps>
 ```
 
@@ -350,9 +351,9 @@ It is important that we understand what we just copied. Let’s go over every pa
 
 ```XML
 <Standard>
-<GUID>180025</GUID>
-<Name>SouthAmerica_Session</Name>
-<IconFilename>PATH icon_session_southamerica.png</IconFilename>
+	<GUID>180025</GUID>
+	<Name>SouthAmerica_Session</Name>
+	<IconFilename>PATH icon_session_southamerica.png</IconFilename>
 </Standard>
 ```
 
@@ -378,9 +379,9 @@ The first is the main icon which is used in the UI. For this a yellowish/orange 
 
 ```XML
 <Standard>
-<GUID>1742009000</GUID>
-<Name>Americana</Name>
-<IconFilename>data/ui/2kimages/main/icons/icon_session_americana_0.png</IconFilename>
+	<GUID>1742009000</GUID>
+	<Name>Americana</Name>
+	<IconFilename>data/ui/2kimages/main/icons/icon_session_americana_0.png</IconFilename>
 </Standard>
 ```
 
@@ -390,9 +391,9 @@ Next in the code we have some global camera settings. You could change those but
 
 ```XML
 <Session>
-<CameraLoopSequence1>11</CameraLoopSequence1>
-<CameraLoopSequence2>10</CameraLoopSequence2>
-<AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
+	<CameraLoopSequence1>11</CameraLoopSequence1>
+	<CameraLoopSequence2>10</CameraLoopSequence2>
+	<AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
 </Session>
 ```
 
@@ -402,11 +403,11 @@ We do need to add some extra lines here. We need to add the reference to the reg
 
 ```XML
 <Session>
-<Region>5000001</Region>
-<MapTemplate>1742009002</MapTemplate>
-<CameraLoopSequence1>11</CameraLoopSequence1>
-<CameraLoopSequence2>10</CameraLoopSequence2>
-<AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
+	<Region>5000001</Region>
+	<MapTemplate>1742009002</MapTemplate>
+	<CameraLoopSequence1>11</CameraLoopSequence1>
+	<CameraLoopSequence2>10</CameraLoopSequence2>
+	<AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
 </Session>
 ```
 
@@ -432,93 +433,110 @@ Now we have the transferdata.We see 3 things. “Session”, “Duration” and 
 <Item>
 		<!-- EuropeSouth_Expedition01 -->
        <Session>800432</Session>
-       <Duration>360000</Duration>
-	<Direction>SouthEast</Direction>
-</Item>
-<Item>
-		<!-- EuropeCentral_Expedition01 -->
-       <Session>800433</Session>
-       <Duration>390000</Duration>
-		<Direction>SouthEast</Direction>
-</Item>
-<!-- ############################################################### -->
-<Item>
-       <!-- SunkenTreasures_Unlock -->
-		<Session>803421</Session>
-       <Duration>270000</Duration>
-       <Direction>SouthEast</Direction>
-</Item>
-<Item>
-       <!-- Cape Trelawney -->
-	<Session>110934</Session>
-       <Duration>270000</Duration>
-       <Direction>SouthEast</Direction>
-</Item>
-<!-- ############################################################### -->
-<Item>
-		<!-- SouthAmerica_Expedition01 -->
-       <Session>800386</Session>
-       <Duration>90000</Duration>
-		<Direction>NorthWest</Direction>
-</Item>
-<Item>
-		<!-- SouthAmerica_Expedition02 -->
-       <Session>800387</Session>
-       <Duration>90000</Duration>
-       <Direction>SouthEast</Direction>
-</Item>
-<Item>
-		<!-- Campaign Chapter 3/SouthAmerica -->
-       <Session>801999</Session>
-       <Duration>90000</Duration>
-       <Direction>SouthEast</Direction>
-</Item>
-<!-- ############################################################### -->
-<Item>
-		<!-- Arctic Unlock -->
-       <Session>803422</Session>
-       <Duration>360000</Duration>
-       <Direction>NorthEast</Direction>
-</Item>
-<Item>
-       <!-- The Arctic -->
-		<Session>180045</Session>
-       <Duration>360000</Duration>
-		<Direction>NorthEast</Direction>
-</Item>
-<Item>
-	<!-- Arctic_Expedtion01 -->
-       <Session>800384</Session>
-       <Duration>360000</Duration>
-       <Direction>NorthEast</Direction>
-</Item>
-<Item>
-	<!-- Arctic_Expedtion02 -->
-       <Session>800703</Session>
-       <Duration>360000</Duration>
-       <Direction>NorthEast</Direction>
-</Item>
-<!-- ############################################################### -->
-<Item>
-       <!-- Enbesa Unlock -->
-		<Session>803423</Session>
-       <Duration>300000</Duration>
-       <Direction>SouthEast</Direction>
-</Item>
-<Item>
-       <!-- Enbesa -->
-		<Session>112132</Session>
-       <Duration>300000</Duration>
-       <Direction>SouthEast</Direction>
-</Item>
-<!-- ############################################################### -->
-<Item>
-	<!-- Not sure which session -->
-	<Session>800703</Session>
-       <Duration>360000</Duration>
-		<Direction>NorthEast</Direction>
-</Item>
-<!-- ############################################################### -->
+       <Duration>360<TransferData>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Europe -->
+        <Session>180023</Session>
+        <Duration>270000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- EuropeNorth_Expedition01 -->
+        <Session>800385</Session>
+        <Duration>450000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- EuropeSouth_Expedition01 -->
+        <Session>800432</Session>
+        <Duration>360000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- EuropeCentral_Expedition01 -->
+        <Session>800433</Session>
+        <Duration>390000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- SunkenTreasures_Unlock -->
+        <Session>803421</Session>
+        <Duration>270000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Cape Trelawney -->
+        <Session>110934</Session>
+        <Duration>270000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- SouthAmerica_Expedition01 -->
+        <Session>800386</Session>
+        <Duration>90000</Duration>
+        <Direction>NorthWest</Direction>
+    </Item>
+    <Item>
+        <!-- SouthAmerica_Expedition02 -->
+        <Session>800387</Session>
+        <Duration>90000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Campaign Chapter 3/SouthAmerica -->
+        <Session>801999</Session>
+        <Duration>90000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Arctic Unlock -->
+        <Session>803422</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- The Arctic -->
+        <Session>180045</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Arctic_Expedtion01 -->
+        <Session>800384</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Arctic_Expedtion02 -->
+        <Session>800703</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Enbesa Unlock -->
+        <Session>803423</Session>
+        <Duration>300000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Enbesa -->
+        <Session>112132</Session>
+        <Duration>300000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Not sure which session -->
+        <Session>800703</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
 </TransferData>
 ```
 
@@ -540,16 +558,16 @@ Last we have the directions. If we look at the map, to go to that session you wo
 
 ```XML
 <Item>
-<!-- SouthAmerica_Unlock -->
-<Session>800390</Session>
-<Duration>90000</Duration>
-<Direction>SouthWest</Direction>
+    <!-- SouthAmerica_Unlock -->
+    <Session>800390</Session>
+    <Duration>90000</Duration>
+    <Direction>SouthWest</Direction>
 </Item>
 <Item>
-<!-- SouthAmerica -->
-<Session>180025</Session>
-<Duration>90000</Duration>
-<Direction>SouthWest</Direction>
+    <!-- SouthAmerica -->
+    <Session>180025</Session>
+    <Duration>90000</Duration>
+    <Direction>SouthWest</Direction>
 </Item>
 ```
 
@@ -568,28 +586,25 @@ We are going to add all the sessions I currently know about:
 
 ```XML
 <Item>
-<!-- Four Crowns -->
-<Session>2111001</Session>
-<Duration>350000</Duration>
-<Direction>SouthEast</Direction>
-</Item>
-<Item>
-<!-- Kingsgrove -->
-<Session>2121001</Session>
-<Duration>300000</Duration>
-<Direction>NorthEast</Direction>
-</Item>
-<Item>
-<!-- Arctic Map - White and Cold -->
-<Session>1742001000</Session>
-<Duration>360000</Duration>
-<Direction>NorthEast</Direction>
-</Item>
-<Item>
-<!-- New Horizons -->
-<Session>133700000</Session>
-<Duration>400000</Duration>
-<Direction>SouthEast</Direction>
+    <!-- Four Crowns -->
+    <Session>2111001</Session>
+    <Duration>350000</Duration>
+    <Direction>SouthEast</Direction>
+</Item><Item>
+    <!-- Kingsgrove -->
+    <Session>2121001</Session>
+    <Duration>300000</Duration>
+    <Direction>NorthEast</Direction>
+</Item><Item>
+    <!-- Arctic Map - White and Cold -->
+    <Session>1742001000</Session>
+    <Duration>360000</Duration>
+    <Direction>NorthEast</Direction>
+</Item><Item>
+    <!-- New Horizons -->
+    <Session>133700000</Session>
+    <Duration>400000</Duration>
+    <Direction>SouthEast</Direction>
 </Item>
 ```
 
@@ -636,19 +651,17 @@ The &lt;WorldMapSound> is not really that important to change so we just leave i
 
 ```XML
 <Text>
-<LocaText>
-		<English>
-			<Text>Americana</Text>
-			<Status>Exported</Status>
-			<ExportCount>2</ExportCount>
-       </English>
-</LocaText>
-</Text>
-<Locked>
-<DefaultLockedState>0</DefaultLockedState>
-</Locked>
-<WorldMapSound>
-<UIClickEvent>9818389</UIClickEvent>
+    <LocaText>
+        <English>
+            <Text>Americana</Text>
+            <Status>Exported</Status>
+            <ExportCount>2</ExportCount>
+        </English>
+    </LocaText>
+</Text><Locked>
+    <DefaultLockedState>0</DefaultLockedState>
+</Locked><WorldMapSound>
+    <UIClickEvent>9818389</UIClickEvent>
 </WorldMapSound>
 ```
 
@@ -656,188 +669,188 @@ We now have done everything within the first &lt;ModOp> section.
 
 ```XML
 <!-- ***************************************************** -->
-    <!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
-    <!-- ***************************************************** -->
+<!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
+<!-- ***************************************************** -->
 
-    <!-- Add New Session -->
-    <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
-        <Asset>
-            <Template>SessionSouthAmerica</Template>
-            <Values>
-                <Standard>
-                    <GUID>1742009000</GUID>
-                    <Name>Americana</Name>
-                    <IconFilename>data/ui/2kimages/main/icons/icon_session_americana_0.png</IconFilename>
-                </Standard>
-                <Session>
-		<Region>5000001</Region>
-		<MapTemplate>1742009002</MapTemplate>
-		<CameraLoopSequence1>11</CameraLoopSequence1>
-		<CameraLoopSequence2>10</CameraLoopSequence2>
-		<AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
-		<TransferData>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- Europe -->
-                            <Session>180023</Session>
-                            <Duration>270000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- EuropeNorth_Expedition01 -->
-                            <Session>800385</Session>
-                            <Duration>450000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- EuropeCentral_Expedition01 -->
-                            <Session>800433</Session>
-                            <Duration>360000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- EuropeSouth_Expedition01 -->
-                            <Session>800432</Session>
-                            <Duration>390000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- SouthAmerica_Unlock -->
-                            <Session>800390</Session>
-                            <Duration>90000</Duration>
-                            <Direction>SouthWest</Direction>
-                        </Item>
-                        <Item>
-                            <!-- SouthAmerica -->
-                            <Session>180025</Session>
-                            <Duration>90000</Duration>
-                            <Direction>SouthWest</Direction>
-                        </Item>
-                        <Item>
-                            <!-- SouthAmerica_Expedition01 -->
-                            <Session>800386</Session>
-                            <Duration>90000</Duration>
-                            <Direction>NorthWest</Direction>
-                        </Item>
-                        <Item>
-                            <!-- SouthAmerica_Expedition02 -->
-                            <Session>800387</Session>
-                            <Duration>90000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Campaign Chapter 3/SouthAmerica -->
-                            <Session>801999</Session>
-                            <Duration>90000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- SunkenTreasures_Unlock -->
-                            <Session>803421</Session>
-                            <Duration>270000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Cape Trelawney -->
-                            <Session>110934</Session>
-                            <Duration>270000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- Arctic Unlock -->
-                            <Session>803422</Session>
-                            <Duration>360000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- The Arctic -->
-                            <Session>180045</Session>
-                            <Duration>360000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Arctic_Expedtion01 -->
-                            <Session>800384</Session>
-                            <Duration>360000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Arctic_Expedtion02 -->
-                            <Session>800703</Session>
-                            <Duration>360000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- Enbesa Unlock -->
-                            <Session>803423</Session>
-                            <Duration>300000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Enbesa -->
-                            <Session>112132</Session>
-                            <Duration>300000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- Not sure what this is -->
-                            <Session>800703</Session>
-                            <Duration>300000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                        <Item>
-                            <!-- Four Crowns -->
-                            <Session>2111001</Session>
-                            <Duration>350000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Kingsgrove -->
-                            <Session>2121001</Session>
-                            <Duration>300000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- Arctic Map - White and Cold -->
-                            <Session>1742001000</Session>
-                            <Duration>360000</Duration>
-                            <Direction>NorthEast</Direction>
-                        </Item>
-                        <Item>
-                            <!-- New Horizons -->
-                            <Session>133700000</Session>
-                            <Duration>400000</Duration>
-                            <Direction>SouthEast</Direction>
-                        </Item>
-                        <!-- ############################################################### -->
-                    </TransferData>
-                    <SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
-                    <WorldMapCardBackground>1742009005</WorldMapCardBackground>
-                    <WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
-                    <SecondPartyReferenceUnlock>1010285</SecondPartyReferenceUnlock>
-                </Session>
-                <Text>
-                    <LocaText>
-                        <English>
-                            <Text>Americana</Text>
-                            <Status>Exported</Status>
-                            <ExportCount>2</ExportCount>
-                        </English>
-                    </LocaText>
-                </Text>
-                <Locked />
-                <WorldMapSound>
-                    <UIClickEvent>9818389</UIClickEvent>
-                </WorldMapSound>
-            </Values>
-        </Asset>
-    </ModOp>
+<!-- Add New Session -->
+<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
+    <Asset>
+        <Template>SessionSouthAmerica</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009000</GUID>
+                <Name>Americana</Name>
+                <IconFilename>data/ui/2kimages/main/icons/icon_session_americana_0.png</IconFilename>
+            </Standard>
+            <Session>
+                <Region>5000001</Region>
+                <MapTemplate>1742009002</MapTemplate>
+                <CameraLoopSequence1>11</CameraLoopSequence1>
+                <CameraLoopSequence2>10</CameraLoopSequence2>
+                <AllowAdvancedCameraSettings>1</AllowAdvancedCameraSettings>
+                <TransferData>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- Europe -->
+                        <Session>180023</Session>
+                        <Duration>270000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- EuropeNorth_Expedition01 -->
+                        <Session>800385</Session>
+                        <Duration>450000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- EuropeCentral_Expedition01 -->
+                        <Session>800433</Session>
+                        <Duration>360000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- EuropeSouth_Expedition01 -->
+                        <Session>800432</Session>
+                        <Duration>390000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- SouthAmerica_Unlock -->
+                        <Session>800390</Session>
+                        <Duration>90000</Duration>
+                        <Direction>SouthWest</Direction>
+                    </Item>
+                    <Item>
+                        <!-- SouthAmerica -->
+                        <Session>180025</Session>
+                        <Duration>90000</Duration>
+                        <Direction>SouthWest</Direction>
+                    </Item>
+                    <Item>
+                        <!-- SouthAmerica_Expedition01 -->
+                        <Session>800386</Session>
+                        <Duration>90000</Duration>
+                        <Direction>NorthWest</Direction>
+                    </Item>
+                    <Item>
+                        <!-- SouthAmerica_Expedition02 -->
+                        <Session>800387</Session>
+                        <Duration>90000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Campaign Chapter 3/SouthAmerica -->
+                        <Session>801999</Session>
+                        <Duration>90000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- SunkenTreasures_Unlock -->
+                        <Session>803421</Session>
+                        <Duration>270000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Cape Trelawney -->
+                        <Session>110934</Session>
+                        <Duration>270000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- Arctic Unlock -->
+                        <Session>803422</Session>
+                        <Duration>360000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- The Arctic -->
+                        <Session>180045</Session>
+                        <Duration>360000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Arctic_Expedtion01 -->
+                        <Session>800384</Session>
+                        <Duration>360000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Arctic_Expedtion02 -->
+                        <Session>800703</Session>
+                        <Duration>360000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- Enbesa Unlock -->
+                        <Session>803423</Session>
+                        <Duration>300000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Enbesa -->
+                        <Session>112132</Session>
+                        <Duration>300000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- Not sure what this is -->
+                        <Session>800703</Session>
+                        <Duration>300000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                    <Item>
+                        <!-- Four Crowns -->
+                        <Session>2111001</Session>
+                        <Duration>350000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Kingsgrove -->
+                        <Session>2121001</Session>
+                        <Duration>300000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- Arctic Map - White and Cold -->
+                        <Session>1742001000</Session>
+                        <Duration>360000</Duration>
+                        <Direction>NorthEast</Direction>
+                    </Item>
+                    <Item>
+                        <!-- New Horizons -->
+                        <Session>133700000</Session>
+                        <Duration>400000</Duration>
+                        <Direction>SouthEast</Direction>
+                    </Item>
+                    <!-- ############################################################### -->
+                </TransferData>
+                <SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
+                <WorldMapCardBackground>1742009005</WorldMapCardBackground>
+                <WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
+                <SecondPartyReferenceUnlock>1010285</SecondPartyReferenceUnlock>
+            </Session>
+            <Text>
+                <LocaText>
+                    <English>
+                        <Text>Americana</Text>
+                        <Status>Exported</Status>
+                        <ExportCount>2</ExportCount>
+                    </English>
+                </LocaText>
+            </Text>
+            <Locked />
+            <WorldMapSound>
+                <UIClickEvent>9818389</UIClickEvent>
+            </WorldMapSound>
+        </Values>
+    </Asset>
+</ModOp>
 ```
 
 We have now finished creating our new session template.
@@ -858,13 +871,13 @@ Images we still need to create:
 This is actually a duplicate of the one we already defined at the beginning of this file. But to be sure we define it here again.
 
 ```XML
-    <!-- Icon for session -->
-    <ModOp Type="add" GUID='500927' Path="/Values/SideNotificationsArchive/CoopSessionIcons">
-        <Item>
-            <Session>1742009000</Session>
-            <Icon>data/ui/2kimages/main/icons/icon_session_americana_0.png</Icon>
-        </Item>
-    </ModOp>
+<!-- Icon for session -->
+<ModOp Type="add" GUID='500927' Path="/Values/SideNotificationsArchive/CoopSessionIcons">
+    <Item>
+        <Session>1742009000</Session>
+        <Icon>data/ui/2kimages/main/icons/icon_session_americana_0.png</Icon>
+    </Item>
+</ModOp>
 ```
 
 #### Background for the session (Trading) - GUID 1742009003
@@ -872,18 +885,19 @@ This is actually a duplicate of the one we already defined at the beginning of t
 This is a small half transparent banner used in the UI. It is 298px x 66px. We could reuse the same as the default New World session, or we could use some other assets. For example, we could go to the data21.rda/data/ui/2kimages/main/assets and there use some graphics from the first scenario which was also in the New World. For this we use “btn_quest_card_ggj_0.png” and flip it and make it fit in the right dimensions for this banner. We also put it in the right location in our mod folder. [Map] Americana/data/ui/2kimages/main/assets/session_btn.
 
 ```XML
-    <!-- Add new background for session (Trading) -->
-    <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='501683']">
-        <Asset>
-            <Template>Icon</Template>
-            <Values>
-                <Standard>
-                    <GUID>1742009003</GUID>
-                    <Name>Americana Background</Name>               <IconFilename>data/ui/2kimages/main/assets/session_btn/session_btn_americana_0.png</IconFilename>
-                </Standard>
-            </Values>
-        </Asset>
-    </ModOp>
+<!-- Add new background for session (Trading) -->
+<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='501683']">
+    <Asset>
+        <Template>Icon</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009003</GUID>
+                <Name>Americana Background</Name>
+                <IconFilename>data/ui/2kimages/main/assets/session_btn/session_btn_americana_0.png</IconFilename>
+            </Standard>
+        </Values>
+    </Asset>
+</ModOp>
 ```
 
 #### Icon for the session (Trading) - GUID 1742009004
@@ -891,19 +905,19 @@ This is a small half transparent banner used in the UI. It is 298px x 66px. We c
 This can be the same icon as the one we already created for this session.
 
 ```XML
-    <!-- Add new icon for session (Trading) -->
-    <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='501342']">
-        <Asset>
-            <Template>Icon</Template>
-            <Values>
-                <Standard>
-                    <GUID>1742009004</GUID>
-                    <Name>Americana Icon</Name>
-<IconFilename>data/ui/2kimages/main/icons/icon_session_americana_0.png</IconFilename>
-                </Standard>
-            </Values>
-        </Asset>
-    </ModOp>
+<!-- Add new icon for session (Trading) -->
+<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='501342']">
+    <Asset>
+        <Template>Icon</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009004</GUID>
+                <Name>Americana Icon</Name>
+                <IconFilename>data/ui/2kimages/main/icons/icon_session_americana_0.png</IconFilename>
+            </Standard>
+        </Values>
+    </Asset>
+</ModOp>
 ```
 
 #### Background for the session card (World map) - GUID 1742009005
@@ -913,18 +927,19 @@ The last image we will be creating is the background for the card we see in the 
 For this we could again reuse some images, but this has again a different dimension, 300px x 120px. We put this new image at the right location in our mod folder structure. [Map] Americana/data/ui/2kimages/main/assets/worldcard_bg.
 
 ```XML
-    <!-- Add new background for session (World Map) -->
-    <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='500875']">
-        <Asset>
-            <Template>Icon</Template>
-            <Values>
-                <Standard>
-                    <GUID>1742009005</GUID>
-                    <Name>Americana Background</Name>  <IconFilename>data/ui/2kimages/main/assets/worldcard_bg/bg_worldcard_americana_0.png</IconFilename>
-                </Standard>
-            </Values>
-        </Asset>
-    </ModOp>
+<!-- Add new background for session (World Map) -->
+<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='500875']">
+    <Asset>
+        <Template>Icon</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009005</GUID>
+                <Name>Americana Background</Name>
+                <IconFilename>data/ui/2kimages/main/assets/worldcard_bg/bg_worldcard_americana_0.png</IconFilename>
+            </Standard>
+        </Values>
+    </Asset>
+</ModOp>
 ```
 
 ### Add all graphics to the session
@@ -932,15 +947,15 @@ For this we could again reuse some images, but this has again a different dimens
 Change the GUID corresponding with the right references.
 
 ```XML
-    <!-- Add MapIcon/Background to session -->
-    <ModOp Type="add" GUID='501680' Path="/Values/SessionScene/SessionList">
-        <Item>
-            <Session>1742009000</Session>
-            <Icon>1742009004</Icon>
-            <Text>1742009000</Text>
-            <Background>1742009003</Background>
-        </Item>
-    </ModOp>
+<!-- Add MapIcon/Background to session -->
+<ModOp Type="add" GUID='501680' Path="/Values/SessionScene/SessionList">
+    <Item>
+        <Session>1742009000</Session>
+        <Icon>1742009004</Icon>
+        <Text>1742009000</Text>
+        <Background>1742009003</Background>
+    </Item>
+</ModOp>
 ```
 
 ### Add session to the World Map
@@ -948,12 +963,12 @@ Change the GUID corresponding with the right references.
 We still need to actually add the session to the World Map.
 
 ```XML
-    <!-- Add session to world map -->
-    <ModOp Type="add" GUID='180036' Path="/Values/WorldMap/ReleaseSessions">
-        <Item>
-            <Session>1742009000</Session>
-        </Item>
-    </ModOp>
+<!-- Add session to world map -->
+<ModOp Type="add" GUID='180036' Path="/Values/WorldMap/ReleaseSessions">
+    <Item>
+        <Session>1742009000</Session>
+    </Item>
+</ModOp>
 ```
 
 #### Add custom map
@@ -979,20 +994,21 @@ We repeat the IslandSize and the TemplateSize and finally add the correct Templa
 ```XML
 <!-- Add custom map -->
 <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='110933']">
-<Asset>
-            <Template>MapTemplate</Template>
-            <Values>
-                <Standard>
-                    <GUID>1742009002</GUID>
-                    <Name>Americana</Name>
-                </Standard>
-                <MapTemplate>
-                    <IslandSize>Large</IslandSize>                 <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_02/colony01_l_02.a7t</TemplateFilename>
-                    <TemplateSize>Large</TemplateSize>
-                    <TemplateRegion>Colony01</TemplateRegion>
-                </MapTemplate>
-            </Values>
-</Asset>
+    <Asset>
+        <Template>MapTemplate</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009002</GUID>
+                <Name>Americana</Name>
+            </Standard>
+            <MapTemplate>
+                <IslandSize>Large</IslandSize>
+                <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_02/colony01_l_02.a7t</TemplateFilename>
+                <TemplateSize>Large</TemplateSize>
+                <TemplateRegion>Colony01</TemplateRegion>
+            </MapTemplate>
+        </Values>
+    </Asset>
 </ModOp>
 ```
 
@@ -1005,16 +1021,16 @@ We do have to take some things into account. We have our 5 already existing key 
 For this tutorial we will take the number 9, but be aware that using other map mods can interfere with this number! Also put this as a remark when releasing your new sessions! The key binding can always be changed ingame, so this is not a game breaker but something to be aware of.
 
 ```XML
-    <!-- Add Keybinding -->
-    <ModOp Type="add" GUID="2001271" Path="/Values/GUIConfig/KeyBindings">
-        <Item>
-            <DefaultKey>Keypad 9</DefaultKey>
-            <Command>TextSources.TextSourceRoots.Interface.JumpToSession(1742009000)</Command>
-            <Text>1742009001</Text>
-            <Active>Session;WorldMap</Active>
-            <Identifier>1742009000</Identifier>
-        </Item>
-    </ModOp>
+<!-- Add Keybinding -->
+<ModOp Type="add" GUID="2001271" Path="/Values/GUIConfig/KeyBindings">
+    <Item>
+        <DefaultKey>Keypad 9</DefaultKey>
+        <Command>TextSources.TextSourceRoots.Interface.JumpToSession(1742009000)</Command>
+        <Text>1742009001</Text>
+        <Active>Session;WorldMap</Active>
+        <Identifier>1742009000</Identifier>
+    </Item>
+</ModOp>
 ```
 
 ### Text references
@@ -1024,26 +1040,26 @@ We are now at the last part of our assets.xml. We are not there yet but we have 
 The last part is some textual references.
 
 ```XML
-    <ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='23427']">
-        <Asset>
-            <Template>Text</Template>
-            <Values>
-                <Standard>
-                    <GUID>1742009001</GUID>
-                    <Name>Session Switch - Americana</Name>
-                </Standard>
-                <Text>
-                    <LocaText>
-                        <English>
-                            <Text>Enter "Americana"</Text>
-                            <Status>Exported</Status>
-                            <ExportCount>2</ExportCount>
-                        </English>
-                    </LocaText>
-                </Text>
-            </Values>
-        </Asset>
-    </ModOp>
+<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='23427']">
+    <Asset>
+        <Template>Text</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009001</GUID>
+                <Name>Session Switch - Americana</Name>
+            </Standard>
+            <Text>
+                <LocaText>
+                    <English>
+                        <Text>Enter "Americana"</Text>
+                        <Status>Exported</Status>
+                        <ExportCount>2</ExportCount>
+                    </English>
+                </LocaText>
+            </Text>
+        </Values>
+    </Asset>
+</ModOp>
 ```
 
 Will I now be able to load my session ingame? Well, yes… and no. We are not there yet but you will see some things already ingame.
@@ -1056,16 +1072,16 @@ We will be creating 2 translatable lines.
 
 ```XML
 <ModOps>
-  <ModOp Type="add" Path="/TextExport/Texts">
-    <Text>
-      <GUID>1742009000</GUID>
-      <Text>Americana</Text>
-    </Text>
-    <Text>
-      <GUID>1742009001</GUID>
-      <Text>Enter "Americana"</Text>
-    </Text>
-  </ModOp>
+    <ModOp Type="add" Path="/TextExport/Texts">
+        <Text>
+            <GUID>1742009000</GUID>
+            <Text>Americana</Text>
+        </Text>
+        <Text>
+            <GUID>1742009001</GUID>
+            <Text>Enter "Americana"</Text>
+        </Text>
+    </ModOp>
 </ModOps>
 ```
 
@@ -1095,37 +1111,37 @@ The RotationY we change to:
 &lt;RotationY>3.989012&lt;/RotationY to &lt;RotationY>1.009012&lt;/RotationY
 
 ```XML
-    <i>
-      <hasValue>1</hasValue>
-      <Name>1742009000</Name>
-      <Groups />
-      <Dummies>
+<i>
+    <hasValue>1</hasValue>
+    <Name>1742009000</Name>
+    <Groups />
+    <Dummies>
         <i>
-          <hasValue>1</hasValue>
-          <Name>1742009000_0</Name>
-          <Position>
-            <x>15.628237</x>
-            <y>-0.123510</y>
-            <z>7.544896</z>
-          </Position>
-          <Orientation>
-            <w>0.616966</w>
-            <x>0.007077</x>
-            <y>-0.785082</y>
-            <z>-0.057289</z>
-          </Orientation>
-          <Extents>
-            <x>0.100000</x>
-            <y>0.100000</y>
-            <z>0.100000</z>
-          </Extents>
-          <RotationY>1.009012</RotationY>
-          <Id>1742009</Id>
-          <HeightAdaptationMode>1</HeightAdaptationMode>
+            <hasValue>1</hasValue>
+            <Name>1742009000_0</Name>
+            <Position>
+                <x>15.628237</x>
+                <y>-0.123510</y>
+                <z>7.544896</z>
+            </Position>
+            <Orientation>
+                <w>0.616966</w>
+                <x>0.007077</x>
+                <y>-0.785082</y>
+                <z>-0.057289</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>1.009012</RotationY>
+            <Id>1742009</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
         </i>
-      </Dummies>
-      <Id>1742010</Id>
-    </i>
+    </Dummies>
+    <Id>1742010</Id>
+</i>
 ```
 
 ### Paths of ship routes
