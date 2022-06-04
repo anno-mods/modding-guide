@@ -160,7 +160,7 @@ We start again by creating our opening and closing ModOps tags.
 ```
 
 Next we create our ModOp with our Type. In this case we will again be adding a new asset, but in this case we will do it after a specific already existing item.
-The last item in the list of Trade Union items is the item with the GUID 191431. We will add our item right after this item in the code structure.
+The last item in the list of Trade Union items is the item with the GUID 191431. I know this because I went to the main assets.xml of the last data.rda file and searched for it. We will add our item right after this item in the code structure.
 
 We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our mod as the next sibling of the GUID 191431 (Louis Comfort Tiffany - The Experimental Window Maker).
 
@@ -172,3 +172,25 @@ We declare the GUID where we want to perform the action to in the ModOp and then
 </ModOps>
 ```
 
+First let's add the <Asset> tag to wrap our new specialist in.
+
+```XML
+<ModOps>
+   <ModOp GUID="191431" Type="addNextSibling">
+      <Asset>
+         
+      </Asset>
+   </ModOp>
+</ModOps>
+```
+
+## For which building?
+   
+With creating a new specialist item we can create this for every building and ships in the game. Every building and ship can be boosted or changed based on what the specialist does. A house can be boosted so it consumes for example less goods, a production building can be boosted so it produces at a higher rate, a coastal defense building can be boosted so it does more damage, a ship can also be boosted so it has a higher movement speed. All those boosts mentioned are just a fraction of what is possible. The game already has a lot of specialists with a lot of specialities. We can use those as an inspiration to create our own boosts.
+
+Specialists can be used inside Trade Union, Town Hall, Harbourmaster's Office, Arctic Lodge and also in ships. We have to decide for which building we want to make the specialist. In this case for our first specialist we will be creating one for the Trade Union. The specialists for Trade Unions are the ones that boost factories and mines, so in this case the logical choice for our gold mine specialist.
+
+## <Template>   
+
+
+Now that we know it is for the Trade Union we know which <Template> we will be creating. We are creating a new <Asset> that has a specific 
