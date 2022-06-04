@@ -325,7 +325,7 @@ Within the &lt;Asset> we go down to /Values/FactoryUpgrade/ProductivityUpgrade/V
 
 ### Comments
 
-```xml
+```XML
 <ModOps>
   <!-- START CHANGE  Feras Alsarami, the better Persuader -->
   <ModOp Type="replace" GUID='192450' Path="/Values/FactoryUpgrade/ProductivityUpgrade/Value">
