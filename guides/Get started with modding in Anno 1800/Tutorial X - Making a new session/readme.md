@@ -1167,3 +1167,9 @@ The last part is a really hard part and you could leave it out if you do not wan
 Remember that this world_map_01.fc can be overwritten in every mod. The mod that is loaded last and that overwrites this file is the version of the file that will be used. So if you use multiple map mods, you will need to manually change this file to be sure all the sessions are accessible on the World Map. 
 
 We will add the sessions for all mods like we did in the other parts of this tutorial.
+
+## Phase 1, READY!
+
+We have done phase one of creating a new session. You could stop here and use this mod already in your game. Have fun!
+
+For those who want to get more, we will do some extra things later in this mod. I'll update this mod asap.
