@@ -167,9 +167,11 @@ We declare the GUID where we want to perform the action to in the ModOp and then
 
 ```XML
 <ModOps>
+   <!-- START SPECIALIST - Maria Lopez -->
    <ModOp GUID="191431" Type="addNextSibling">
       
    </ModOp>
+   <!-- END SPECIALIST - Maria Lopez -->
 </ModOps>
 ```
 
@@ -177,11 +179,13 @@ First let's add the &lt;Asset> tag to wrap our new specialist in.
 
 ```XML
 <ModOps>
+   <!-- START SPECIALIST - Maria Lopez -->
    <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          
       </Asset>
    </ModOp>
+   <!-- END SPECIALIST - Maria Lopez -->
 </ModOps>
 ```
 
@@ -199,12 +203,36 @@ Now that we know it is for the Trade Union we know which &lt;Template> we will b
    
 ```XML
 <ModOps>
+   <!-- START SPECIALIST - Maria Lopez -->
    <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          
       </Asset>
    </ModOp>
+   <!-- END SPECIALIST - Maria Lopez -->
 </ModOps>
 ```
-   
+
+Go to the main assets.xml you extracted from the latest data.rda and search for **"&lt;Template>GuildhouseItem&lt;/Template>"**. You will get over 500 references in this file, which means there are already over 500 items that can be put inside the Trade Union. Take a moment to let that sink in... We did not even talk about the items for the Town Hall or other buildings. So, let's appreciate the hard effort the development team and graphic team already put into creating so many content.
+
+Take a random &lt;Template>GuildhouseItem&lt;/Template> and have a look at what you can see in the &lt;Asset> structure.
+
+We first have another container inside the &lt;Asset>, titled &lt;Values>.
+
+```XML
+<ModOps>
+   <!-- START SPECIALIST - Maria Lopez -->
+   <ModOp GUID="191431" Type="addNextSibling">
+      <Asset>
+         <Template>GuildhouseItem</Template>
+         <Values>
+            
+         </Values>
+      </Asset>
+   </ModOp>
+   <!-- END SPECIALIST - Maria Lopez -->
+</ModOps>
+```
+
+
