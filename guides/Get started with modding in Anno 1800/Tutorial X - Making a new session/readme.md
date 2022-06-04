@@ -417,23 +417,6 @@ Now we have the transferdata.We see 3 things. “Session”, “Duration” and 
 
 ```XML
 <TransferData>
-	<!-- ############################################################### -->
-<Item>
-	<!-- Europe -->
-	<Session>180023</Session>
-       <Duration>270000</Duration>
-	<Direction>NorthEast</Direction>
-</Item>
-<Item>
-		<!-- EuropeNorth_Expedition01 -->
-       <Session>800385</Session>
-       <Duration>450000</Duration>
-	<Direction>NorthEast</Direction>
-</Item>
-<Item>
-		<!-- EuropeSouth_Expedition01 -->
-       <Session>800432</Session>
-       <Duration>360<TransferData>
     <!-- ############################################################### -->
     <Item>
         <!-- Europe -->
@@ -450,94 +433,116 @@ Now we have the transferdata.We see 3 things. “Session”, “Duration” and 
     <Item>
         <!-- EuropeSouth_Expedition01 -->
         <Session>800432</Session>
-        <Duration>360000</Duration>
-        <Direction>SouthEast</Direction>
+        <Duration>
+            360
+            <TransferData>
+                <!-- ############################################################### -->
+                <Item>
+                    <!-- Europe -->
+                    <Session>180023</Session>
+                    <Duration>270000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- EuropeNorth_Expedition01 -->
+                    <Session>800385</Session>
+                    <Duration>450000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- EuropeSouth_Expedition01 -->
+                    <Session>800432</Session>
+                    <Duration>360000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- EuropeCentral_Expedition01 -->
+                    <Session>800433</Session>
+                    <Duration>390000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <!-- ############################################################### -->
+                <Item>
+                    <!-- SunkenTreasures_Unlock -->
+                    <Session>803421</Session>
+                    <Duration>270000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- Cape Trelawney -->
+                    <Session>110934</Session>
+                    <Duration>270000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <!-- ############################################################### -->
+                <Item>
+                    <!-- SouthAmerica_Expedition01 -->
+                    <Session>800386</Session>
+                    <Duration>90000</Duration>
+                    <Direction>NorthWest</Direction>
+                </Item>
+                <Item>
+                    <!-- SouthAmerica_Expedition02 -->
+                    <Session>800387</Session>
+                    <Duration>90000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- Campaign Chapter 3/SouthAmerica -->
+                    <Session>801999</Session>
+                    <Duration>90000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <!-- ############################################################### -->
+                <Item>
+                    <!-- Arctic Unlock -->
+                    <Session>803422</Session>
+                    <Duration>360000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- The Arctic -->
+                    <Session>180045</Session>
+                    <Duration>360000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- Arctic_Expedtion01 -->
+                    <Session>800384</Session>
+                    <Duration>360000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- Arctic_Expedtion02 -->
+                    <Session>800703</Session>
+                    <Duration>360000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <!-- ############################################################### -->
+                <Item>
+                    <!-- Enbesa Unlock -->
+                    <Session>803423</Session>
+                    <Duration>300000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <Item>
+                    <!-- Enbesa -->
+                    <Session>112132</Session>
+                    <Duration>300000</Duration>
+                    <Direction>SouthEast</Direction>
+                </Item>
+                <!-- ############################################################### -->
+                <Item>
+                    <!-- Not sure which session -->
+                    <Session>800703</Session>
+                    <Duration>360000</Duration>
+                    <Direction>NorthEast</Direction>
+                </Item>
+                <!-- ############################################################### -->
+        </Duration>
     </Item>
-    <Item>
-        <!-- EuropeCentral_Expedition01 -->
-        <Session>800433</Session>
-        <Duration>390000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <!-- ############################################################### -->
-    <Item>
-        <!-- SunkenTreasures_Unlock -->
-        <Session>803421</Session>
-        <Duration>270000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <Item>
-        <!-- Cape Trelawney -->
-        <Session>110934</Session>
-        <Duration>270000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <!-- ############################################################### -->
-    <Item>
-        <!-- SouthAmerica_Expedition01 -->
-        <Session>800386</Session>
-        <Duration>90000</Duration>
-        <Direction>NorthWest</Direction>
-    </Item>
-    <Item>
-        <!-- SouthAmerica_Expedition02 -->
-        <Session>800387</Session>
-        <Duration>90000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <Item>
-        <!-- Campaign Chapter 3/SouthAmerica -->
-        <Session>801999</Session>
-        <Duration>90000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <!-- ############################################################### -->
-    <Item>
-        <!-- Arctic Unlock -->
-        <Session>803422</Session>
-        <Duration>360000</Duration>
-        <Direction>NorthEast</Direction>
-    </Item>
-    <Item>
-        <!-- The Arctic -->
-        <Session>180045</Session>
-        <Duration>360000</Duration>
-        <Direction>NorthEast</Direction>
-    </Item>
-    <Item>
-        <!-- Arctic_Expedtion01 -->
-        <Session>800384</Session>
-        <Duration>360000</Duration>
-        <Direction>NorthEast</Direction>
-    </Item>
-    <Item>
-        <!-- Arctic_Expedtion02 -->
-        <Session>800703</Session>
-        <Duration>360000</Duration>
-        <Direction>NorthEast</Direction>
-    </Item>
-    <!-- ############################################################### -->
-    <Item>
-        <!-- Enbesa Unlock -->
-        <Session>803423</Session>
-        <Duration>300000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <Item>
-        <!-- Enbesa -->
-        <Session>112132</Session>
-        <Duration>300000</Duration>
-        <Direction>SouthEast</Direction>
-    </Item>
-    <!-- ############################################################### -->
-    <Item>
-        <!-- Not sure which session -->
-        <Session>800703</Session>
-        <Duration>360000</Duration>
-        <Direction>NorthEast</Direction>
-    </Item>
-    <!-- ############################################################### -->
 </TransferData>
+
 ```
 
 Next we have the duration. This tells us how long it will take to transfer ships to that region from our newly created region. We copied this SessionTemplate from the main New World template and can see that the time to travel from there to the Old World is 270 000ms, which is 4.5min. To one of the expeditions in the New World it is only 90 000ms or 1.5min.
@@ -637,7 +642,7 @@ This defines a GUID when this session is unlocked for other AI. In this case the
 ```XML
 <SpawnStartShipAndKontor>0</SpawnStartShipAndKontor>
 <SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
-<WorldMapCardBackground>1742009005</WorldMapCardBackground>              <WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
+<WorldMapCardBackground>1742009005</WorldMapCardBackground>             <WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
 <SecondPartyReferenceUnlock>1010285</SecondPartyReferenceUnlock>
 ```
 
@@ -650,6 +655,7 @@ The &lt;Locked > tag and the DefaultLockedState refer to a possible locking poss
 The &lt;WorldMapSound> is not really that important to change so we just leave it as is.
 
 ```XML
+
 <Text>
     <LocaText>
         <English>
@@ -658,11 +664,14 @@ The &lt;WorldMapSound> is not really that important to change so we just leave i
             <ExportCount>2</ExportCount>
         </English>
     </LocaText>
-</Text><Locked>
+</Text>
+<Locked>
     <DefaultLockedState>0</DefaultLockedState>
-</Locked><WorldMapSound>
-    <UIClickEvent>9818389</UIClickEvent>
+</Locked>
+<WorldMapSound>
+ <UIClickEvent>9818389</UIClickEvent>
 </WorldMapSound>
+
 ```
 
 We now have done everything within the first &lt;ModOp> section.
@@ -830,6 +839,7 @@ We now have done everything within the first &lt;ModOp> section.
                     </Item>
                     <!-- ############################################################### -->
                 </TransferData>
+		<SpawnStartShipAndKontor>0</SpawnStartShipAndKontor>
                 <SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
                 <WorldMapCardBackground>1742009005</WorldMapCardBackground>
                 <WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
@@ -987,7 +997,7 @@ After that we decide the size of our islands and template. This is important to 
 
 To find the .a7t file we need to search for &lt;Template>MapTemplate&lt;/Template> in the main assets.xml. We will find 65 matches at the writing of this tutorial. The first ones are the ones for the Old World region, after that we get the New World MapTemplates.
 
-Look at the &lt;IslandSize> and &lt;TemplateSize> tags and determine which you want to use. For this tutorial we want both as a “Large” value and chose &lt;Name>SouthAmerica l_01&lt;/Name> with the TemplateFileName &lt;TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_01/colony01_l_02.a7t&lt;/TemplateFilename>.
+Look at the &lt;IslandSize> and &lt;TemplateSize> tags and determine which you want to use. For this tutorial we want both as a “Large” value and chose &lt;Name>SouthAmerica l_02&lt;/Name> with the TemplateFileName &lt;TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_02/colony01_l_02.a7t&lt;/TemplateFilename>.
 
 We repeat the IslandSize and the TemplateSize and finally add the correct TemplateRegion, which is Colony01.
 
