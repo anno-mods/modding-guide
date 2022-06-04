@@ -193,7 +193,7 @@ Specialists can be used inside Trade Union, Town Hall, Harbourmaster's Office, A
 
 ## &lt;Template>
    
-We are creating a new <Asset> that has a specific structure. A lot of the assets that are used in Anno 1800 can be categorized. This is done to make it easier to create multiple assets with the same proporties. For example all items that can be used inside the Trade Union work the same way and have the same function. So, it is good to put that logic inside a "template" we can then use again and again to save a lot of work in the end. 
+We are creating a new &lt;Asset> that has a specific structure. A lot of the assets that are used in Anno 1800 can be categorized. This is done to make it easier to create multiple assets with the same proporties. For example all items that can be used inside the Trade Union work the same way and have the same function. So, it is good to put that logic inside a **"template"** we can then use again and again to save a lot of work in the end. 
    
 Now that we know it is for the Trade Union we know which &lt;Template> we will be creating. There is a specific template for Trade Union items. This is the template **"GuildhouseItem"**.
    
