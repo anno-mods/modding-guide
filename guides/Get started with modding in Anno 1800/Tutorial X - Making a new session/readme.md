@@ -1113,16 +1113,16 @@ Our new session will look like the code underneath. Add this at the top above th
 
 The most important thing that we need to change here is the position and maybe orientation. For both the position and the orientation we take the original values from the &lt;Name>180025&lt;/Name> (New World Session) and change the values so the session is a bit above the default New World session and a bit rotated.
 
-**Position:**
+**Position:**  
 &lt;x>16.128237&lt;/x> to &lt;x>15.628237&lt;/x>  
 &lt;y>-0.123510&lt;/y> to &lt;y>-0.123510&lt;/y>  
 &lt;z>10.544896&lt;/z> to &lt;z>7.544896&lt;/z>
 
-Orientation:
-&lt;w>0.411145&lt;/w> to &lt;w>0.711145&lt;/w>
-&lt;x>-0.000000&lt;/x> to &lt;x>-0.000000&lt;/x>
-&lt;y>0.911570&lt;/y> to &lt;y>0.911570&lt;/y>
-&lt;z>0.000000&lt;/z> ro &lt;z>0.000000&lt;/z>
+**Orientation:**  
+&lt;w>0.411145&lt;/w> to &lt;w>0.711145&lt;/w>  
+&lt;x>-0.000000&lt;/x> to &lt;x>-0.000000&lt;/x>  
+&lt;y>0.911570&lt;/y> to &lt;y>0.911570&lt;/y>  
+&lt;z>0.000000&lt;/z> ro &lt;z>0.000000&lt;/z>  
 
 ```XML
 <i>
