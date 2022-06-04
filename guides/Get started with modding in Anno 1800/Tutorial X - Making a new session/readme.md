@@ -67,7 +67,7 @@ The folder which contains the session files. Files which tells you what is inclu
 
 ## Creating the assets.xml with the right info
 
-Now that we have our file structure it is time to create our main “assets.xml” file. Create a new file in ”[Map] Americana/data/config/export/main/asset”.
+Now that we have our folder structure it is time to create our main “assets.xml” file. Create a new file in ”[Map] Americana/data/config/export/main/asset”.
 
 We start with adding our opening modding tags so we can actually start.
 
