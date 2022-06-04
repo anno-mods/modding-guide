@@ -16,9 +16,9 @@ We are going to create an specialist for the gold mines in the New World. This m
 
 ## Our mod structure
 
-Compared to the previous mod we will now have some more folders and files we need to create. The structure now will look like this:
+Compared to the previous mod we will now have some more folders and files we need to create. We will call our mod "Tutorial Specialists" The structure now will look like this:
 
-* Name of the mod
+* [Gameplay] Tutorial Specialists
     * data
         * config
             * export
@@ -43,9 +43,32 @@ The icons can be found in all data.rda files. Depending on which DLC the icons w
 
 The location of the icons we are going to use is data2.rda/data/ui/2kimages/main/3dicons/specialists/systemic. We will be using "icon_worker_602_0.dds". We convert this icon to a png file. We could just use the path of this icon but for best practice we use our own icon to make sure if the default icon is changed by Ubisoft, our mod will still work.
 
+![icon_maria_lopez.png](https://raw.githubusercontent.com/Hier0nimus/modding-guide/patch-1/guides/Get%20started%20with%20modding%20in%20Anno%201800/Tutorial%202%20-%20Making%20new%20specialists/_sources/icon_maria_lopez.png)
+
 **Info:** See the previous tutorial (Tutorial 1 - My first mod) if you do not know how to open rda files and convert dds files to png.
 
 ## Changing the icon
+
+We could change the icon in a image editor. For example we made her clothes black because she is working in a mine.
+
+![icon_maria_lopez_v2.png](https://raw.githubusercontent.com/Hier0nimus/modding-guide/patch-1/guides/Get%20started%20with%20modding%20in%20Anno%201800/Tutorial%202%20-%20Making%20new%20specialists/_sources/icon_maria_lopez_v2.png)
+
+## Location of the icon
+
+Put the icon on in the map we already created in our mod structure. [Gameplay] Tutorial Specialists/data/graphics/icons
+
+## Time to code! Create our assets.xml
+
+Now the real work can start. First we create again our assets.xml in the right location: [Gameplay] Tutorial Specialists/data/config/export/main/asset/
+
+We start again by creating our opening and closing ModOps tags.
+
+```XML
+<ModOps>
+
+
+</ModOps>
+```
 
 
 
