@@ -220,10 +220,89 @@ Open the original assets.xml from the game and search for “192450”. At the m
 
 The first time we encounter this GUID in the file, it is nested inside an &lt;Item> tag, which is nested inside &lt;AssetList> which is nested inside &lt;AssetPool> which is nested inside a main &lt;Asset>. 
 
+```XML
+
+<Asset>
+   <Template>AssetPool</Template>
+   <Values>
+      <Standard>
+         <GUID>130172</GUID>
+         <Name>Items Artisans 3.2 EPIC UNLOCK</Name>
+         <IconFilename>data/ui/2kimages/main/profiles/resident_tier03.png</IconFilename>
+      </Standard>
+      <AssetPool>
+         <AssetList>
+            <Item>
+               <Asset>190820</Asset>
+            </Item>
+            <Item>
+               <Asset>190826</Asset>
+            </Item>
+            <Item>
+               <Asset>190832</Asset>
+            </Item>
+            ...
+            <Item>
+               <Asset>192450</Asset>
+            </Item>
+         </AssetList>
+      </AssetPool>
+   </Values>
+</Asset>
+
+```
+
 In this main &lt;Asset> we see another GUID and underneath the &lt;Name> “Items Artisans 3.2 EPIC UNLOCK”. 
 
 If we process this, we understand that this is not where we get all the info about Feras. This is another object called “Items Artisans 3.2 EPIC UNLOCK” with the GUID “130172” and this contains a list of all the items for Artisans 3.2 EPIC. So we need to go to the next reference of our GUID of Feras and this time we should be at the right place.
 
+```XML
+
+<Asset>
+    <Template>GuildhouseItem</Template>
+    <Values>
+        <Standard>
+            <GUID>192450</GUID>
+            <Name>Feras Alsarami</Name>
+            <IconFilename>data/ui/2kimages/main/3dicons/specialists/influencer/icon_influencer_realferas_2.png</IconFilename>
+            <InfoDescription>21354</InfoDescription>
+        </Standard>
+        <Text>
+            <LocaText>
+                <English>
+                    <Text>Feras Alsarami the Persuader</Text>
+                    <Status>Exported</Status>
+                    <ExportCount>1</ExportCount>
+                </English>
+            </LocaText>
+            <LineID>29139</LineID>
+        </Text>
+        <Item>
+            <MaxStackSize>1</MaxStackSize>
+            <Rarity>Epic</Rarity>
+            <ItemType>Specialist</ItemType>
+            <TradePrice>289400</TradePrice>
+            <TradePriceOnlineCurrency>50</TradePriceOnlineCurrency>
+        </Item>
+        <FactoryUpgrade>
+            <ProductivityUpgrade>
+                <Value>50</Value>
+                <Percental>1</Percental>
+            </ProductivityUpgrade>
+        </FactoryUpgrade>
+        <ItemEffect>
+            <EffectTargets>
+                <Item>
+                    <GUID>193856</GUID>
+                </Item>
+            </EffectTargets>
+        </ItemEffect>
+       ...
+    </Values>
+</Asset>
+
+```                         
+                         
 We see the corresponding GUID at almost the top of the &lt;Asset> opening tag in the &lt;Standard> tag.
 
 We see &lt;Template>GuildhouseItem&lt;/Template> which means that this object is a Trade Union item. Also the name. So all those things show us that we are at the right place.
