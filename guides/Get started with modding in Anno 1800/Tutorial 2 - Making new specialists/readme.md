@@ -55,11 +55,58 @@ We could change the icon in a image editor. For example we made her clothes blac
 
 ## Location of the icon
 
-Put the icon on in the map we already created in our mod structure. [Gameplay] Tutorial Specialists/data/graphics/icons
+Put the icon on in the map we already created in our mod structure.  
+[Gameplay] Tutorial Specialists/data/graphics/icons
 
-## Time to code! Create our assets.xml
+## Time to code! Translations
 
-Now the real work can start. First we create again our assets.xml in the right location: [Gameplay] Tutorial Specialists/data/config/export/main/asset/
+First we will be creating our translations for this mod. We do this in the translationfiles that can be found on a specific location.  
+[Gameplay] Tutorial Specialists/data/config/gui
+
+The translationfiles are created for different languages. The fallback language is English. If you only created the English translation all other languages will see the text also in English.
+
+### Supported languages
+
+There are a lot of languages supported within Anno 1800:
+* texts_chinese.xml
+* texts_english.xml
+* texts_french.xml
+* texts_german.xml
+* texts_italian.xml
+* texts_japanese.xml
+* texts_korean.xml
+* texts_polish.xml
+* texts_russian.xml
+* texts_spanish.xml
+* texts_taiwanese.xml
+
+### Structure of the file
+
+The structure of a translationfile starts like most modding files:
+
+```XML
+<ModOps>
+
+
+</ModOps>
+```
+
+After that we have again a specific ModOp with a type and path. In this case we will be adding new text exports to the text files.
+
+```XML
+<ModOps>
+   <ModOp Type="add" Path="/TextExport/Texts">
+      
+   </ModOp>
+</ModOps>
+```
+
+
+
+## Creating the specialist, Create our assets.xml
+
+Now the real work can start. We create again our assets.xml in the right location:  
+[Gameplay] Tutorial Specialists/data/config/export/main/asset/
 
 We start again by creating our opening and closing ModOps tags.
 
@@ -69,7 +116,5 @@ We start again by creating our opening and closing ModOps tags.
 
 </ModOps>
 ```
-
-
 
 
