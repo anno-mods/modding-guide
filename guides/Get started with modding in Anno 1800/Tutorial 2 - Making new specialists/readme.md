@@ -105,13 +105,13 @@ After that we have again a specific ModOp with a type and path. In this case we 
 </ModOps>
 ```
 
-We will be adding text for 2 things in this mod. The **name of the specialist**, and a **description of the specialist**. Those 2 texts need a unique identfier, a GUID. Like we saw in the previous tutorial the GUID is a number that represents something in the game. In this case it will represent the specialist and the description of the specialist.
+We will be adding text for 2 things in this mod. The **name of the specialist with a tagline**, and a **description of the specialist**. Those 2 texts need a unique identfier, a GUID. Like we saw in the previous tutorial the GUID is a number that represents something in the game. In this case it will represent the specialist and the description of the specialist.
 
-For this first part of this mod we will be using GUID's from 1742008800-1742008801.
+For this first part of this mod we will be using GUID's 1742008800 (name) and 1742008801 (description).
 
 **Info:** See the previous tutorial (Tutorial 1 - My first mod) if you want to know more about GUID's.
 
-Now that we know which GUID's we are going to use and we already know the name of our specialist (Maria Lopez), the only thing we need is the description. You do not need to go fancy but it is a nice touch to put some extra effort in some nice backgroundstory for the specialist you are creating. Let's give Maria some nice story and put that in the game as a description.
+Now that we know which GUID's we are going to use and we already know the name of our specialist (Maria Lopez), the only thing we need is the tagline and the description. You do not need to go fancy but it is a nice touch to put some extra effort in some nice tagline and backgroundstory for the specialist you are creating. Let's give Maria some nice story and put that in the game as a description.
 
 The structure to put those languages in there goes as following:
 
@@ -121,16 +121,29 @@ The structure to put those languages in there goes as following:
     <!-- START SPECIALIST - Maria Lopez -->
     <Text>
       <GUID>1742008800</GUID>
-      <Text>Maria Lopez</Text>
+      <Text>Maria Lopez, Mining yellow stones</Text>
     </Text>
     <Text>
       <GUID>1742008801</GUID>
-      <Text></Text>
+      <Text>Maria is one of the few woman in the mining business. She loves working in the mines and she is really good at it. In the beginning men made fun of her. But it did not take long before they had to admit she was doing amazing work. She perfected the mining in the New World so the gold can even be extracted in easier ways. She is now honored for her hard work and inventions.</Text>
     </Text>
     <!-- END SPECIALIST - Maria Lopez -->
   </ModOp>
 </ModOps>
 ```
+
+We now have our main English text. We can copy paste those texts to the other translationfiles we can create in the same folder or only use the English translation file.
+
+* texts_chinese.xml
+* texts_french.xml
+* texts_german.xml
+* texts_italian.xml
+* texts_japanese.xml
+* texts_korean.xml
+* texts_polish.xml
+* texts_russian.xml
+* texts_spanish.xml
+* texts_taiwanese.xml
 
 ## Creating the specialist, Create our assets.xml
 
@@ -146,4 +159,16 @@ We start again by creating our opening and closing ModOps tags.
 </ModOps>
 ```
 
+Next we create our ModOp with our Type. In this case we will again be adding a new asset, but in this case we will do it after a specific already existing item.
+The last item in the list of Trade Union items is the item with the GUID 191431. We will add our item right after this item in the code structure.
+
+We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our mod as the next sibling of the GUID 191431 (Louis Comfort Tiffany - The Experimental Window Maker).
+
+```XML
+<ModOps>
+   <ModOp GUID="191431" Type="addNextSibling">
+      
+   </ModOp>
+</ModOps>
+```
 
