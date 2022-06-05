@@ -1,0 +1,12 @@
+﻿<ModOps>
+  <ModOp Type="add" Path="/TextExport/Texts">
+    <Text>
+      <GUID>1742009000</GUID>
+      <Text>Americana</Text>
+    </Text>
+    <Text>
+      <GUID>1742009001</GUID>
+      <Text>Entrare "Americana"</Text>
+    </Text>
+  </ModOp>
+</ModOps>

@@ -1,12 +1,13 @@
 # Modding Guides for Anno 1800
 
-General introduction and guides:
+## General introduction and guides
+
 - https://schwubbe.de/modding_blog.php
 
-Assets.xml Topics:
+## Topics
 
-- [Object Variations](./guides/variations.md)
+- [Object Variations](./guides/variations.md) (including automatic neighbors)
 
+## Tutorials
 
-Get started with modding in Anno 1800:
-- https://github.com/anno-mods/modding-guide/tree/main/guides/Get%20started%20with%20modding%20in%20Anno%201800
+1. [Hier0nimus' Tutorials](./hier0nimus-tutorials/)
