@@ -69,8 +69,8 @@ We have data0.rda > data22.rda. Every data file is a reference to the basegame o
 * data17: Docklands DLC
 * data18: Tourist Season DLC
 * data19: The High Life DLC
-* data21: Eden Burning Scenario
 * data20: Pedestrian Zone Pack
+* data21: Eden Burning Scenario
 * data22: Seeds of Change DLC
 
 ### Why do we need to know this?
