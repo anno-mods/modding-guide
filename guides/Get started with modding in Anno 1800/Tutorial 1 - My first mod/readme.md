@@ -350,4 +350,4 @@ The last step is to place the mod folder inside the “mods” folder in the mai
 
 Start the game and load one of your savegames. Look at Feras and see the 420% production boost instead of 50%.
 
-![feras-420.jpg](https://raw.githubusercontent.com/Hier0nimus/modding-guide/patch-1/guides/Get%20started%20with%20modding%20in%20Anno%201800/Tutorial%201%20-%20My%20first%20mod/_sources/192450-feras-420.jpg)
+![feras-420.jpg](https://raw.githubusercontent.com/anno-mods/modding-guide/main/guides/Get%20started%20with%20modding%20in%20Anno%201800/Tutorial%201%20-%20My%20first%20mod/_sources/192450-feras-420.jpg)
