@@ -1,6 +1,6 @@
 # Get started with modding in Anno 1800
 
-Great! You decided to get into modding for Anno 1800 or thinking about it. Welcome and most importantly, have fun doing it! 
+Great! You decided to get into modding for Anno 1800 or thinking about it. Welcome and most importantly, have fun doing it!
 
 In this guide we will try to learn the basic principles of modding by doing. First we will dive a bit into the structure of a mod, what we need to actually make a mod and after that we dive right into it and start creating our own mods step by step. Do not expect to make a complex production chain from the start and be overwhelmed. We will start with a basic mod and work our way up to more complex mods.
 
@@ -39,8 +39,9 @@ We all know our beloved Feras Alsarami, the Persuader. The item we put into trad
 ### How is the game structured
 
 If we have a look at the Anno 1800 folder that is installed on your computer we can see a list of folders. We need 2 folders of this list.
-* maindata
-* mods
+
+- maindata
+- mods
 
 #### mods
 
@@ -48,30 +49,33 @@ This folder should already exist and contains all the mods you want to be loaded
 
 #### maindata
 
-The maindata folder contains a list of .rda files. Those files are packages of all the gamefiles. Those contain graphics, buildings, files that describe logic in the game, goods, ect. 
+The maindata folder contains a list of .rda files. Those files are packages of all the gamefiles. Those contain graphics, buildings, files that describe logic in the game, goods, ect.
 
 We have data0.rda > data22.rda. Every data file is a reference to the basegame or a specific DLC or big game update. In the future more files will be added when more updates will be released. The data22.rda is the last one at the moment which contains all the files for “Seeds of Change” DLC and the last game update.
-* data2: Icons and images used in the basegame
-* data3: Video used in the basegame
-* data4: Blacklisted words in every language and fonts for the game
-* data5: Maps used in the basegame
-* data6: Islands used in the basegame
-* data7: Benchmarks
-* data8: Buildings used in the basegame
-* data9: Sounds used in the basegame
-* data10: The Anarchist DLC
-* data11: Sunken Treasures DLC
-* data12: Botanica DLC
-* data13: The Passage DLC
-* data14: Seat Of Power DLC
-* data15: Bright Harvest DLC
-* data16: Land Of Lions DLC
-* data17: Docklands DLC
-* data18: Tourist Season DLC
-* data19: The High Life DLC
-* data21: Eden Burning Scenario
-* data20: Pedestrian Zone Pack
-* data22: Seeds of Change DLC
+
+- data0: General game files
+- data1: Shaders used in the basegame
+- data2: Icons and images used in the basegame
+- data3: Video used in the basegame
+- data4: Blacklisted words in every language and fonts for the game
+- data5: Maps used in the basegame
+- data6: Islands used in the basegame
+- data7: Benchmarks
+- data8: Buildings used in the basegame
+- data9: Sounds used in the basegame
+- data10: The Anarchist DLC
+- data11: Sunken Treasures DLC
+- data12: Botanica DLC
+- data13: The Passage DLC
+- data14: Seat Of Power DLC
+- data15: Bright Harvest DLC
+- data16: Land Of Lions DLC
+- data17: Docklands DLC
+- data18: Tourist Season DLC
+- data19: The High Life DLC
+- data20: Pedestrian Zone Pack
+- data21: Eden Burning Scenario
+- data22: Seeds of Change DLC
 
 ### Why do we need to know this?
 
@@ -81,13 +85,14 @@ Another big use case is a file we use constantly to search for references of ass
 
 ### How to open the rda packages?
 
-To open the .rda files, we need a tool. This can be done in different ways. Choose one of the underneath tools and follow the steps described on the github page. 
+To open the .rda files, we need a tool. This can be done in different ways. Choose one of the underneath tools and follow the steps described on the github page.
 
 **ATTENTION:** Make sure not to extract to your main game folder and make sure not to overwrite any of the game files! Your game could potentially break in that case. Also close the game before extracting or manipulating the .rda files.
 
 The two tools do the same thing in a different way, unpack the .rda files and make it possible to look what is inside. Big thank you to the work of the creators of those tools!
-* RDAExplorer from lysannschlegel - [https://github.com/lysannschlegel/RDAExplorer](https://github.com/lysannschlegel/RDAExplorer)
-* RDAExplorer from lukts30 - [https://github.com/lukts30/RDAExplorer](https://github.com/lukts30/RDAExplorer) - [Video how to use](https://www.youtube.com/watch?v=bKWnfvLeyxs&ab_channel=Lukas) 
+
+- RDAExplorer from lysannschlegel - [https://github.com/lysannschlegel/RDAExplorer](https://github.com/lysannschlegel/RDAExplorer)
+- RDAExplorer from lukts30 - [https://github.com/lukts30/RDAExplorer](https://github.com/lukts30/RDAExplorer) - [Video how to use](https://www.youtube.com/watch?v=bKWnfvLeyxs&ab_channel=Lukas)
 
 ### Extract the assets.xml file
 
@@ -101,11 +106,11 @@ Open the assets.xml file with a code editor of your choice. Important to know is
 
 If we have a look at the assets.xml, people with coding experience will recognise the structure. It is an xml file and so, has opening and closing tags. If you scroll through it, you will recognise some references from the game and by reading you will understand how some things are coded just by looking at the tags.
 
-For people without coding experience this will be harder to understand. You can imagine this structure as a house. The house is the game itself. The house has different rooms which have their own furniture. That furniture can store other goods/boxes which again can store other goods that again store… And so on. 
+For people without coding experience this will be harder to understand. You can imagine this structure as a house. The house is the game itself. The house has different rooms which have their own furniture. That furniture can store other goods/boxes which again can store other goods that again store… And so on.
 
-Everything on one of the levels we just mentioned also has its own properties. For example, the closet in the living room is not the same closet as the one from the bedroom. The one in the living room is made out of steel, the one in the bedroom is made out of wood. Those are different properties and must be described in text. Also, the one in the bedroom contains clothes, the one in the living room contains books. In coding we call this structure “nesting”. 
+Everything on one of the levels we just mentioned also has its own properties. For example, the closet in the living room is not the same closet as the one from the bedroom. The one in the living room is made out of steel, the one in the bedroom is made out of wood. Those are different properties and must be described in text. Also, the one in the bedroom contains clothes, the one in the living room contains books. In coding we call this structure “nesting”.
 
-When creating a new object/thing, whatever it is, we start with an “opening tag”. For example &lt;Asset>. Tags are wrapped inside “&lt;>” Everything from this point is nested inside this “&lt;Asset>”, until we say we want to end this object/thing. We end this by closing this with the “closing tag”, in this case ”&lt;/Asset>”. The same name but before the name we put a “/”. 
+When creating a new object/thing, whatever it is, we start with an “opening tag”. For example &lt;Asset>. Tags are wrapped inside “&lt;>” Everything from this point is nested inside this “&lt;Asset>”, until we say we want to end this object/thing. We end this by closing this with the “closing tag”, in this case ”&lt;/Asset>”. The same name but before the name we put a “/”.
 
 As you can see in the file the whole structure is created like this. The most important thing to know is that every aspect in the game is in some way structured like this and described in text. A lot can be found in this assets.xml. Feel free to scroll through it and try to understand what some things maybe could do.
 
@@ -117,55 +122,55 @@ We now have the most important things to actually start creating our mod. We wil
 
 If we have a look at the folderstructure of any Anno 1800 mod, we will see this is the same for all mods.
 
-* Name of the mod
-    * data
-        * config
-            * export
-                * main
-                    * asset
-                        * xml file (assets.xml) which contains all the logic for your mod. This is the file we will be using the most.
-            * gui
-                * xml files containing the translations for text in every language
-                    * texts_english.xml
-                    * texts_french.xml
-                    * texts_german.xml
-                    * …
-        * graphics
-            * buildings
-                * specific folder or multiple folders of buildings we use in the mod containing the building specific files
-            * props
-                * specific folder or multiple folders of props we use in the mod containing the prop specific files
-            * icons
-                * Custom graphics we use in our mod
+- Name of the mod
+  - data
+    - config
+      - export
+        - main
+          - asset
+            - xml file (assets.xml) which contains all the logic for your mod. This is the file we will be using the most.
+      - gui
+        - xml files containing the translations for text in every language
+          - texts_english.xml
+          - texts_french.xml
+          - texts_german.xml
+          - …
+    - graphics
+      - buildings
+        - specific folder or multiple folders of buildings we use in the mod containing the building specific files
+      - props
+        - specific folder or multiple folders of props we use in the mod containing the prop specific files
+      - icons
+        - Custom graphics we use in our mod
 
-The **config folder** and all folders and files that are inside this folder need to be exactly the same. 
+The **config folder** and all folders and files that are inside this folder need to be exactly the same.
 
 For the graphics folder you can have your own structure but keeping the same structure as the game is a good practice. Most of the modders keep the same structure to keep it clean.
 
 ### Create our folder structure
 
-Create a mod folder on the location of your choosing with the same structure as we mentioned above. We will start using our Feras Alsarami, the Persuader case from this point. For the name of this mod I add [Gameplay] to the front as a category. This is not needed but can help to categorize your mods. 
+Create a mod folder on the location of your choosing with the same structure as we mentioned above. We will start using our Feras Alsarami, the Persuader case from this point. For the name of this mod I add [Gameplay] to the front as a category. This is not needed but can help to categorize your mods.
 
 Because this is a basic mod where we will just be adapting 1 value, we do not need all the folders as we mentioned above. We will not be adding new graphics or translations, so we do not need those folders/files.
 
 Our folder structure should look like this:
 
-* [Gameplay] Feras Alsarami - The Better Persuader
-    * data
-        * config
-            * export
-                * main
-                    * asset
+- [Gameplay] Feras Alsarami - The Better Persuader
+  - data
+    - config
+      - export
+        - main
+          - asset
 
 ### Create our own assets.xml
 
 in the asset folder create an assets.xml file with your code editor. This file can be empty for now. We will start adding code in the next step.
 
-We now created our own assets.xml that will be merged with the assets.xml from the game. This will be done when the game is launched and is managed by the modloader. 
+We now created our own assets.xml that will be merged with the assets.xml from the game. This will be done when the game is launched and is managed by the modloader.
 
 ### Writing your first code, hello Feras
 
-The first code we need to write are the tags that make it clear everything in this file is a mod. We follow guidelines that are the same for every mod. So the modloader can actually do his/her job and merge the code we wrote with the existing assets.xml. 
+The first code we need to write are the tags that make it clear everything in this file is a mod. We follow guidelines that are the same for every mod. So the modloader can actually do his/her job and merge the code we wrote with the existing assets.xml.
 
 ```XML
 <ModOps>
@@ -225,7 +230,7 @@ We now have the type of action we want to do (Replace) we have the right GUID of
 
 Open the original assets.xml from the game and search for “192450”. At the moment of writing this tutorial, the GUID of Feras can be found 7 times in the original assets.xml. Now, how do we know we are looking at the right place?
 
-The first time we encounter this GUID in the file, it is nested inside an &lt;Item> tag, which is nested inside &lt;AssetList> which is nested inside &lt;AssetPool> which is nested inside a main &lt;Asset>. 
+The first time we encounter this GUID in the file, it is nested inside an &lt;Item> tag, which is nested inside &lt;AssetList> which is nested inside &lt;AssetPool> which is nested inside a main &lt;Asset>.
 
 ```XML
 
@@ -259,7 +264,7 @@ The first time we encounter this GUID in the file, it is nested inside an &lt;It
 
 ```
 
-In this main &lt;Asset> we see another GUID and underneath the &lt;Name> “Items Artisans 3.2 EPIC UNLOCK”. 
+In this main &lt;Asset> we see another GUID and underneath the &lt;Name> “Items Artisans 3.2 EPIC UNLOCK”.
 
 If we process this, we understand that this is not where we get all the info about Feras. This is another object called “Items Artisans 3.2 EPIC UNLOCK” with the GUID “130172” and this contains a list of all the items for Artisans 3.2 EPIC. So we need to go to the next reference of our GUID of Feras and this time we should be at the right place.
 
@@ -308,13 +313,13 @@ If we process this, we understand that this is not where we get all the info abo
     </Values>
 </Asset>
 
-```                         
-                         
+```
+
 We see the corresponding GUID at almost the top of the &lt;Asset> opening tag in the &lt;Standard> tag.
 
 We see &lt;Template>GuildhouseItem&lt;/Template> which means that this object is a Trade Union item. Also the name. So all those things show us that we are at the right place.
 
-Now how do we know where the production boost is coded? This is a matter of knowledge and understanding the code. If we go through the code within this &lt;Asset> we can see a lot of different tags which all have their own function. At some point you will see &lt;FactoryUpgrade>, and nested in this &lt;ProductivityUpgrade> and nested in that the &lt;Value> of 50. 
+Now how do we know where the production boost is coded? This is a matter of knowledge and understanding the code. If we go through the code within this &lt;Asset> we can see a lot of different tags which all have their own function. At some point you will see &lt;FactoryUpgrade>, and nested in this &lt;ProductivityUpgrade> and nested in that the &lt;Value> of 50.
 
 Why do we not just change the value here and save this file you say? Well, because the main assets.xml we extracted is not part of the code that is loaded. The game loads all the .rda files not the things we have extracted from it. We can not update code in those .rda files, so we need to manipulate those files in a different way, by creating our own assets.xml file and merge those at the start of the game. This is what the modloader does.
 
