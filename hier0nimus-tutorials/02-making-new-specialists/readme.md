@@ -456,7 +456,7 @@ Good to know, this value can also be negative, for example -50%. In some cases w
 
 #### AdditionalOutput
 
-With the **AdditionalOutput** we can define a product that is produced extra every couple of productioncycles. We define which product with the corresponding GUID for that product. If you want to search for a product use the fantastic search function on the website https://schwubbe.de/modding_blog.php.In this example we have the GUID 1010246 which is pocket watches.
+With the **AdditionalOutput** we can define a product that is produced extra every couple of productioncycles. We define which product with the corresponding GUID for that product. If you want to search for a product use the fantastic search function on the website https://schwubbe.de/modding_blog.php#beitrag15. In this example we have the GUID 1010246 which is pocket watches.
 
 We define also the number of cycles it needs to produce this good. In this case every 3 cycles a pocket wwatch will be produced as an extra product.
 
@@ -1300,7 +1300,7 @@ We have our **Standard** part which do not need to much explanation. We use our 
 
 As the name states, here we define what the condition will be for our trigger to go off, and make our item available in the game.
 
-The **ConditionPlayerCounter** is a base template we always add. The values that it contains can change. In this case we will use **PopulationByLevel** which states that the trigger will go off when we hit a certain population. In the &lt;Context> we put a GUID of a population tier which threshold we want to hit. Underneath we put the &lt;CounterAmount> of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this with the tool on https://schwubbe.de/modding_blog.php.
+The **ConditionPlayerCounter** is a base template we always add. The values that it contains can change. In this case we will use **PopulationByLevel** which states that the trigger will go off when we hit a certain population. In the &lt;Context> we put a GUID of a population tier which threshold we want to hit. Underneath we put the &lt;CounterAmount> of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this with the tool on https://schwubbe.de/modding_blog.php#beitrag15.
 
 ```XML
 
