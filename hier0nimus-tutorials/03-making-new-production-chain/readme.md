@@ -630,4 +630,459 @@ If we combine all this we get:
 
 ```
 
+## Adding the good to ProductStorageLists & ProductList
+
+We have created the good, but the next step in the process is telling the game to which **ProductStorageList** and **ProductList** we want to add the good. If we go to the warehouse or harbour, the goods are divided in different categories. We have to add our good to all the lists we want.
+
+There are a lot of **ProductStorageList** and **ProductList** available, and it is hard in the beginning to find the right lists you need. The only advice I can give in the beginning is to find the first list in the assets.xml and then go through all of them. Then add every list you encounter and think your product can fit in.
+
+### ProductStorageList
+
+To start we will add our product to the ProductStorageLists. We can now go through the whole assets.xml and search for all &lt;Template>ProductStorageList&lt;/Template> and take the ones we need and add our product to those lists also. There are 8 lists in total and 2 of them are the right fit for this good. 120055 (StandardProductStorageList) and 120057 (StandardMarketplaceModerateStorageList).
+
+- 120055 - StandardProductStorageList
+- 120056 - StandardOilHarborStorageList
+- 120061 - StandardCoalStoneStorageList
+- 120057 - StandardMarketplaceModerateStorageList
+- 120058 - StandardMarketplaceColonyStorageList
+- 120059 - StandardMarketplaceArcticStorageList
+- 122362 - StandardMarketplaceAfricaStorageList
+- 120060 - EmptyStorageList
+
+We go and look in the assets.xml for this list to be able to know what the path is we need to do the right **Type="add"**.
+
+```XML
+
+<Asset>
+  <Template>ProductStorageList</Template>
+  <Values>
+      <Standard>
+          <GUID>120055</GUID>
+          <Name>StandardProductStorageList</Name>
+      </Standard>
+      <ProductStorageList>
+          <ProductList>
+              <Item>
+                  <Product>120008</Product>
+              </Item>
+              <Item>
+                  <Product>1010196</Product>
+              </Item>
+              <Item>
+                  <Product>1010200</Product>
+              </Item>
+              <Item>
+                  <Product>1010195</Product>
+              </Item>
+              ...
+          </ProductList>
+      </ProductStorageList>
+  </Values>
+</Asset>
+
+```
+
+So, if we look at the path we should:
+
+```XML
+
+  <!-- START ADD GOOD TO StandartProductStorageList -->
+  <ModOp Type="add" GUID='120055,120057' Path="/Values/ProductStorageList/ProductList">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO StandartProductStorageList -->
+
+```
+
+### ProductList
+
+We can now go through the whole assets.xml and search for all &lt;Template>ProductList&lt;/Template> and take the ones we need and add our product to those lists. This amount of ProductList is a lot longer. There are at the moment of writing this tutorial 102 ProductLists.
+
+For easy access I added them underneath and put them together based on their function:
+
+Main tab with all products in the kontor.
+
+- 502017 - FarmerUnlockGoods
+- 502018 - WorkerUnlockGoods
+- 502019 - ArtisanUnlockGoods
+- 502020 - EngineerUnlockGoods
+- 502066 - EngineerUnlockGoods_WithoutOil
+- 502308 - TouristUnlockGoods
+- 502021 - InvestorUnlockGoods
+- 502134 - ScholarUnlockGoods
+- 502022 - JornaleroUnlockGoods
+- 502023 - ObreroUnlockGoods
+- 502024 - ExplorerUnlockGoods
+- 502025 - TechnicianUnlockGoods
+- 502219 - TechnicianUnlockGoods_WithoutScrap
+- 502071 - ShepherdUnlockGoods
+- 502072 - ElderUnlockGoods
+- 502175 - ScrapForInKontorFilter
+
+For the idividual tabs (resources, materials,...):
+
+- 501995 - FarmerConsumerGoods
+- 501996 - WorkerConsumerGoods
+- 501997 - ArtisansConsumerGoods
+- 501998 - EngineerConsumerGoods
+- 501999 - InvestorConsumerGoods
+- 502000 - JornaleroConsumerGoods
+- 502001 - ObreroConsumerGoods
+- 502002 - ExplorerConsumerGoods
+- 502003 - TechnicianConsumerGoods
+- 502073 - ShepherdConsumerGoods
+- 502074 - ElderConsumerGoods
+- 502133 - ScholarConsumerGoods
+- 502309 - TouristConsumerGoods
+- 501957 - ConstructionMaterials
+- 502168 - ConstructionMaterials_AfricaSort
+- 502221 - ConstructionMaterials_WithoutScrap
+- 502049 - RawMaterials_Europe
+- 502050 - RawMaterials_SouthAmerica
+- 502051 - RawMaterials_Arctic
+- 502075 - RawMaterials_Africa
+- 502037 - AgriculturalGoods_Europe
+- 502038 - AgriculturalGoods_SouthAmerica
+- 502039 - AgriculturalGoods_Arctic
+- 502076 - AgriculturalGoods_Africa
+- 502043 - IntermediateGoods_Europe
+- 502044 - IntermediateGoods_SouthAmerica
+- 502045 - IntermediateGoods_Arctic
+- 502077 - IntermediateGoods_Africa
+- 502031 - AllConsumerGoods_EuropeSort
+- 502034 - AllConsumerGoods_SouthAmericaSort
+- 502035 - AllConsumerGoods_ArcticSort
+- 502081 - AllConsumerGoods_AfricaSort
+- 502052 - AllRawMaterials_EuropeSort
+- 502053 - AllRawMaterials_SouthAmericaSort
+- 502054 - AllRawMaterials_ArcticSort
+- 502082 - AllRawMaterials_AfricaSort
+- 502040 - AllAgricultureGoods_EuropeSort
+- 502041 - AllAgricultureGoods_SouthAmericaSort
+- 502042 - AllAgricultureGoods_ArcticSort
+- 502083 - AllAgricultureGoods_AfricaSort
+- 502046 - AllIntermediateGoods_EuropeSort
+- 502047 - AllIntermediateGoods_SouthAmericaSort
+- 502048 - AllIntermediateGoods_ArcticSort
+- 502084 - AllIntermediateGoods_AfricaSort
+- 501955 - AllGoodsWithoutStrategicGoods
+- 501961 - StrategicGoods
+- 501992 - LuxuryGoods
+- 501993 - BasicNeedGoods
+- 501994 - HeatGoods
+
+For the workforce boost menu. Position matters!
+
+- 502004 - FarmerWorkforceGoods
+- 502005 - WorkerWorkforceGoods
+- 502006 - ArtisanWorkforceGoods
+- 502007 - EngineerWorkforceGoods
+- 502008 - JornaleroWorkforceGoods
+- 502009 - ObreroWorkforceGoods
+- 502010 - ExplorerWorkforceGoods
+- 502011 - TechnicianWorkforceGoods
+- 502069 - ShepherdWorkforceGoods
+- 502070 - ElderWorkforceGoods
+
+Session goods:
+
+- 502012 - ModerateSessionGoods
+- 502013 - SouthAmericaSessionGoods
+- 502014 - ArcticSessionGoods
+- 502085 - AfricaSessionGoods
+
+Docklands importers. Position matters!
+
+- 502233 - Tattershire_ImportGoods
+- 502234 - Feedl_ImportGoods
+- 502235 - Chanteuse_ImportGoods
+- 502236 - Qinsa_ImportGoods
+- 502237 - OldLevants_ImportGoods
+- 502238 - Kitea_ImportGoods
+- 502239 - PromistTrust_ImportGoods
+- 502240 - Ganymedia_ImportGoods
+- 502242 - Docklands_ImporterGoods
+
+Not sure what those do:
+
+- 502016 - AllGoodsUnlock_EuropeSort
+- 502065 - AllGoodsUnlock_EuropeSort_WithoutOil
+- 502027 - AllGoodsUnlock_SouthAmericaSort
+- 502067 - AllGoodsUnlock_SouthAmericaSort_WithoutOil
+- 502028 - AllGoodsUnlock_ArcticSort
+- 502068 - AllGoodsUnlock_ArcticSort_WithoutOil
+- 502078 - AllGoodsUnlock_AfricaSort
+- 502080 - AllGoodsUnlock_AfricaSort_WithoutOil
+- 502220 - AllGoodsUnlock_EuropeSort_WithoutOil_WithoutScrap
+
+Not used anymore:
+
+- 501954 - AllGoods_OLD
+- 501956 - ConsumerGoods_OLD
+- 501958 - RawMaterials_OLD
+- 501959 - AgriculturalGoods_OLD
+- 501960 - IntermediateGoods_OLD
+
+Which ones are we going to use? Well, let's go through the whole list.
+Important to know is that the order we put the good into the list is important. If we would just use Typ="add" it will be added at the end of the list. If we want to add it immediatly after a certain good we use **Type="addNextSibling"** or the one before an item **Type="addPrevSibling"**.
+
+Our good Citrus Tea is a luxury consumer good available for Engineers and Investors. It is produced by Workers in the Old World. It is an Old World session good. We will make it availble for selling in Docklands by one of the sellers (Old Levant & Co.).
+
+So we are using:
+
+- 502020 - EngineerUnlockGoods
+- 502066 - EngineerUnlockGoods_WithoutOil
+- 501998 - EngineerConsumerGoods
+- 502031 - AllConsumerGoods_EuropeSort
+- 501992 - LuxuryGoods
+- 502005 - WorkerWorkforceGoods
+- 502012 - ModerateSessionGoods
+- 502237 - OldLevants_ImportGoods
+- 502242 - Docklands_ImporterGoods
+
+We combine some of them to make sure we can add them right after the same products in the lists.
+
+```XML
+
+  <!-- START ADD GOOD TO ProductLists - after Pocket Watches (1010246) -->
+  <ModOp Type="addNextSibling" GUID="502020,502066,501998,502031,501992,502012" Path="/Values/ProductList/List/Item[Product='1010246']">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO ProductList -->
+
+  <!-- START ADD GOOD TO WorkerWorkforceGoods - after bread (1010213) -->
+  <ModOp Type="addNextSibling" GUID="502005" Path="/Values/ProductList/List/Item[Product='1010213']">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO WorkerWorkforceGoods -->
+
+  <!-- START ADD GOOD TO OldLevants_ImportGoods + Docklands_ImporterGoods - after Hibiscus Tea (114390) -->
+  <ModOp Type="addNextSibling" GUID="502005" Path="/Values/ProductList/List/Item[Product='114390']">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO OldLevants_ImportGoods + Docklands_ImporterGoods -->
+
+```
+
+## Building Citrus Tea
+
+Now that we have our product and we made sure the product is visible in our kontor, it is time to make the building that will actually produce our new product.
+
+### The code of the building
+
+We are going to make a production building. This building has a certain template: **&lt;Template>FactoryBuilding7&lt;/Template>**
+
+We can go to our assets.xml file and search for multiple examples to see how this template is structured and what kind of possibilities it has. Let's go over the most common parts.
+
+#### Standard
+
+This part should not have any secrets anymore for us. We can easily fill this in with all our info.
+
+```XML
+
+<Standard>
+    <GUID>1742008809</GUID>
+    <Name>Citrus Tea Dryer</Name>
+    <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+    <InfoDescription>1742008810</InfoDescription>
+</Standard>
+
+```
+
+#### Building
+
+This part contains a couple of different parts.
+
+##### BuildModeRandomRotation
+
+```XML
+
+<BuildModeRandomRotation>90</BuildModeRandomRotation>
+
+```
+
+Define how many degrees you can rotate the building when placing the building.
+
+- 90
+- 180
+
+###### BuildingType
+
+```XML
+
+<BuildingType>Residence</BuildingType>
+
+```
+
+The type of building can be:
+
+- Residence
+- Logistic (Warehouse)
+- Warehouse (Trading Post)
+- BuildingModule (Silo, Tractor)
+- Factory (Hacienda alternative production factories)
+- Other (Campaign and scenario specific buildings)
+
+##### AssociatedRegions
+
+```XML
+
+<AssociatedRegions>Moderate</AssociatedRegions>
+
+```
+
+Defines in which region we can build this building.
+
+Regions:
+
+- Moderate
+- Colony01
+- Arctic
+- Africa
+
+###### BuildingCategoryName
+
+```XML
+
+<BuildingCategoryName>100000</BuildingCategoryName>
+
+```
+
+The category of the building can be:
+
+- 100000 (Production)
+- 11175 (Livestock Area)
+- 100003 (Public Service)
+- 2498 (Exhibition Space)
+- 11169 (Electricity)
+- 11149 (Ornament)
+- 11150 (Harbour)
+- 11151 (Infrastructure)
+- 11152 (Administration) - Example: Guild House/Town Hall
+- 11154 (Railway)
+- 269841 (Tractor)
+- 19227 (Wooden Ruins)
+- 19233 (Stone Ruins)
+- 19158 (Sells tickets for long voyages)
+- 116953 (Abandoned Tents)
+- 269960 (Agricultural Improvement)
+- 134142 (Food & Drink Venue)
+- 132773 (Multifactory)
+- 134987 (Tourist Lodgings)
+- 0 (ScenarioRuinEco)
+
+##### TerrainType
+
+```XML
+
+<TerrainType>Water_Including_Coast</TerrainType>
+
+
+```
+
+Defines **special terraintypes** where the building can be placed. This can be:
+
+- Water_Including_Coast
+- Water_Excluding_Coast
+- Coast
+- Terrain (used in special cases)
+
+##### SecondPartyRelevant
+
+```XML
+
+<SecondPartyRelevant>0</SecondPartyRelevant>
+
+```
+
+Disable a building for AI. This building will not be available for them.
+
+##### Movable
+
+```XML
+
+<Movable>0</Movable>
+
+```
+
+Make it impossible to move the building/asset. Set to 0.
+
+##### AllowChangeDirection
+
+```XML
+
+<AllowChangeDirection>0</AllowChangeDirection>
+
+```
+
+Disable changing direction. Set to 0.
+
+##### AlternativeGrassColorAvailable
+
+```XML
+
+<AlternativeGrassColorAvailable>1</AlternativeGrassColorAvailable>
+
+```
+
+Make alternative grass available for the building. Set to 1.
+
+#### Blocking
+
+This is used for example for coastal buildings. To block tiles that are reachable by quay/street.
+
+```XML
+
+<Blocking>
+    <GroundDecalAsset>100446</GroundDecalAsset> <!-- Quay street -->
+    <GroundDecalInvisible>101008</GroundDecalInvisible> <!-- Quay street -->
+    <GroundDecalAssetExtra>100691</GroundDecalAssetExtra> <!-- Quay street -->
+    <HasBuildingBaseTiles>1</HasBuildingBaseTiles>
+</Blocking>
+
+```
+
+#### Cost
+
+Every building has a building cost.
+
+```XML
+
+<Cost>
+    <Costs>
+        <Item>
+            <Ingredient>1010017</Ingredient> <!-- Coins -->
+            <Amount>4000</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010196</Ingredient> <!-- Timber -->
+            <Amount>10</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010205</Ingredient> <!-- Bricks -->
+            <Amount>5</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010218</Ingredient> <!-- Steal Beams -->
+            <Amount>5</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010207</Ingredient> <!-- Windows -->
+        </Item>
+        <Item>
+            <Ingredient>1010202</Ingredient> <!-- Reinforced concrete -->
+        </Item>
+    </Costs>
+</Cost>
+
+```
+
 WILL UPDATE THIS FURTHER, STAY TUNED!
