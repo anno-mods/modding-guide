@@ -1523,8 +1523,24 @@ We should now have the fantastic assets.xml like this:
 
 ```
 
-Save all the files, make sure everything looks ok and you can copy your mod to the modfolder and start the game. You should be able to see this item in the statistics screen in the item menu when you search for it.
+Save all the files, make sure everything looks ok and you can copy your mod to the modfolder and start the game. You should be able to see this item in the statistics screen in the item menu when you search for it. Check the possibilities how you can get the item.
 
-Check the possibilities how you can get the item. If you are far enough in the game and have the research institute you should be able to research the item and then develop the item!
+![maria_lopez-overview.jpg](./_sources/maria_lopez-overview.jpg)
+
+If you are far enough in the game and have the research institute you should be able to research the item and then develop the item!
+
+![maria_lopez-research-2.jpg](./_sources/maria_lopez-research-2.jpg)
+
+![maria_lopez-research-4.jpg](./_sources/maria_lopez-research-4.jpg)
+
+Then put a Trade Union next to a gold mine and put the specialist in the Trade Union.
+
+![maria_lopez-ingame-1.jpg](./_sources/maria_lopez-ingame-1.jpg)
+
+![maria_lopez-ingame-2.jpg](./_sources/maria_lopez-ingame-2.jpg)
+
+Congratulations! You have your first specialist!
+
+![maria_lopez-card.jpg](./_sources/maria_lopez-card.jpg)
 
 Have fun! And now you can make as many items, specialists if you want!
