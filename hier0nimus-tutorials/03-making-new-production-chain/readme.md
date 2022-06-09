@@ -108,7 +108,6 @@ Steps we need to take:
 Create the translation for our name of our specialist and the description.
 
 ```XML
-
 <ModOps>
   <ModOp Type="add" Path="/TextExport/Texts">
     <!-- START SPECIALIST - Tony Lipus, Citrus tea smasher -->
@@ -122,7 +121,6 @@ Create the translation for our name of our specialist and the description.
     </Text>
     <!-- END SPECIALIST - Tony Lipus, Citrus tea smasher -->
 </ModOps>
-
 ```
 
 ### Create our specialist
@@ -144,7 +142,6 @@ For **Expeditions** (ExpeditionAttribute), he is **male** (PerkMale) and is good
 Let's also give him a **reduction for the workforce of 30%** (BuildingUpgrade).
 
 ```XML
-
   <!-- START SPECIALIST - Tony Lipus, Citrus tea smasher -->
   <ModOp GUID="191388" Type="addNextSibling">
     <Asset>
@@ -226,7 +223,6 @@ Let's also give him a **reduction for the workforce of 30%** (BuildingUpgrade).
     </Asset>
   </ModOp>
   <!-- END SPECIALIST - Tony Lipus, Citrus tea smasher -->
-
 ```
 
 ### Add to rewardpool
@@ -238,7 +234,6 @@ Adding the specialist to some rewardpools should not be that hard anymore. Pick 
 - 193079 - Specialists - Investor Specialists - Legendary
 
 ```XML
-
   <!-- START  ADD TO REWARDPOOL - Tony Lipus, Citrus tea smasher -->
   <ModOp GUID="192840,193963,193079" Type="add" Path="/Values/RewardPool/ItemsPool">
     <Item>
@@ -246,7 +241,6 @@ Adding the specialist to some rewardpools should not be that hard anymore. Pick 
     </Item>
   </ModOp>
   <!-- END ADD TO REWARDPOOL - Tony Lipus, Citrus tea smasher -->
-
 ```
 
 ### Add to trigger
@@ -256,7 +250,6 @@ We will already create our main triggers that we will use for the other assets o
 We know how the triggers work. We just need to define when to trigger the trigger. In our case, we need citrus to be available to make citrus tea. Citrus is one of the Tourist goods that unlocks at a certain amount of tourists. So we can only unlock Citrus Tea when we can actually also make citrus. We unhide everything for Citrus Tea at 750 tourists and unlock everything at 1250 tourists. In this case we do have 2 separate triggers. One for unhide and one for unlock
 
 ```XML
-
   <!-- START TRIGGER -->
   <ModOp Type="addnextSibling" GUID="130248">
     <!--UNHIDE - 750 Tourists -->
@@ -347,7 +340,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
     </Asset>
   </ModOp>
   <!-- END TRIGGER -->
-
 ```
 
 Perfect! We now have our specialist ready to use!
@@ -363,7 +355,6 @@ We will be adding this new good to the list of goods right after for example fis
 The **template** we use for a new good is &lt;Template>Product&lt;/Template>.
 
 ```XML
-
   <!-- START ADD GOOD - Citrus Tea -->
   <ModOp Type="addNextSibling" GUID='1010200'>
     <Asset>
@@ -371,13 +362,11 @@ The **template** we use for a new good is &lt;Template>Product&lt;/Template>.
     </Asset>
   </ModOp>
   <!-- END ADD GOOD - Citrus Tea -->
-
 ```
 
 We add the GUID, name, icon and GUID of the description.
 
 ```XML
-
   <!-- START ADD GOOD - Citrus Tea -->
   <ModOp Type="addNextSibling" GUID='1010200'>
     <Asset>
@@ -393,13 +382,11 @@ We add the GUID, name, icon and GUID of the description.
     </Asset>
   </ModOp>
   <!-- END ADD GOOD - Citrus Tea -->
-
 ```
 
 Then we add the fallback text.
 
 ```XML
-
   <!-- START ADD GOOD - Citrus Tea -->
   <ModOp Type="addNextSibling" GUID='1010200'>
     <Asset>
@@ -424,7 +411,6 @@ Then we add the fallback text.
     </Asset>
   </ModOp>
   <!-- END ADD GOOD - Citrus Tea -->
-
 ```
 
 ### Product
@@ -560,7 +546,6 @@ We already saw the list but here it is again:
 In our case we add 0 base morale but an extra attribute of 20 medicine.
 
 ```XML
-
 <ExpeditionAttribute>
     <BaseMorale>0</BaseMorale>
     <ExpeditionAttributes>
@@ -570,13 +555,11 @@ In our case we add 0 base morale but an extra attribute of 20 medicine.
         </Item>
     </ExpeditionAttributes>
 </ExpeditionAttribute>
-
 ```
 
 If we combine all this we get:
 
 ```XML
-
   <!-- START ADD GOOD - Citrus Tea -->
   <ModOp Type="addNextSibling" GUID='1010200'>
     <Asset>
@@ -627,7 +610,6 @@ If we combine all this we get:
     </Asset>
   </ModOp>
   <!-- END ADD GOOD - Citrus Tea -->
-
 ```
 
 ## Adding the good to ProductStorageLists & ProductList
@@ -652,7 +634,6 @@ To start we will add our product to the ProductStorageLists. We can now go throu
 We go and look in the assets.xml for this list to be able to know what the path is we need to do the right **Type="add"**.
 
 ```XML
-
 <Asset>
   <Template>ProductStorageList</Template>
   <Values>
@@ -679,13 +660,11 @@ We go and look in the assets.xml for this list to be able to know what the path 
       </ProductStorageList>
   </Values>
 </Asset>
-
 ```
 
 So, if we look at the path we should:
 
 ```XML
-
   <!-- START ADD GOOD TO StandartProductStorageList -->
   <ModOp Type="add" GUID='120055,120057' Path="/Values/ProductStorageList/ProductList">
     <Item>
@@ -693,7 +672,6 @@ So, if we look at the path we should:
     </Item>
   </ModOp>
   <!-- END ADD GOOD TO StandartProductStorageList -->
-
 ```
 
 ### ProductList
@@ -845,7 +823,6 @@ So we are using:
 We combine some of them to make sure we can add them right after the same products in the lists.
 
 ```XML
-
   <!-- START ADD GOOD TO ProductLists - after Pocket Watches (1010246) -->
   <ModOp Type="addNextSibling" GUID="502020,502066,501998,502031,501992,502012" Path="/Values/ProductList/List/Item[Product='1010246']">
     <Item>
@@ -869,7 +846,6 @@ We combine some of them to make sure we can add them right after the same produc
     </Item>
   </ModOp>
   <!-- END ADD GOOD TO OldLevants_ImportGoods + Docklands_ImporterGoods -->
-
 ```
 
 ## Building Citrus Tea
@@ -887,14 +863,12 @@ We can go to our assets.xml file and search for multiple examples to see how thi
 This part should not have any secrets anymore for us. We can easily fill this in with all our info.
 
 ```XML
-
 <Standard>
     <GUID>1742008809</GUID>
     <Name>Citrus Tea Dryer</Name>
     <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
     <InfoDescription>1742008810</InfoDescription>
 </Standard>
-
 ```
 
 #### Building
@@ -904,9 +878,7 @@ This part contains a couple of different parts.
 ##### BuildModeRandomRotation
 
 ```XML
-
 <BuildModeRandomRotation>90</BuildModeRandomRotation>
-
 ```
 
 Define how many degrees you can rotate the building when placing the building.
@@ -917,9 +889,7 @@ Define how many degrees you can rotate the building when placing the building.
 ###### BuildingType
 
 ```XML
-
 <BuildingType>Residence</BuildingType>
-
 ```
 
 The type of building can be:
@@ -934,9 +904,7 @@ The type of building can be:
 ##### AssociatedRegions
 
 ```XML
-
 <AssociatedRegions>Moderate</AssociatedRegions>
-
 ```
 
 Defines in which region we can build this building.
@@ -951,9 +919,7 @@ Regions:
 ###### BuildingCategoryName
 
 ```XML
-
 <BuildingCategoryName>100000</BuildingCategoryName>
-
 ```
 
 The category of the building can be:
@@ -982,10 +948,7 @@ The category of the building can be:
 ##### TerrainType
 
 ```XML
-
 <TerrainType>Water_Including_Coast</TerrainType>
-
-
 ```
 
 Defines **special terraintypes** where the building can be placed. This can be:
@@ -998,9 +961,7 @@ Defines **special terraintypes** where the building can be placed. This can be:
 ##### SecondPartyRelevant
 
 ```XML
-
 <SecondPartyRelevant>0</SecondPartyRelevant>
-
 ```
 
 Disable a building for AI. This building will not be available for them.
@@ -1008,9 +969,7 @@ Disable a building for AI. This building will not be available for them.
 ##### Movable
 
 ```XML
-
 <Movable>0</Movable>
-
 ```
 
 Make it impossible to move the building/asset. Set to 0.
@@ -1018,9 +977,7 @@ Make it impossible to move the building/asset. Set to 0.
 ##### AllowChangeDirection
 
 ```XML
-
 <AllowChangeDirection>0</AllowChangeDirection>
-
 ```
 
 Disable changing direction. Set to 0.
@@ -1028,9 +985,7 @@ Disable changing direction. Set to 0.
 ##### AlternativeGrassColorAvailable
 
 ```XML
-
 <AlternativeGrassColorAvailable>1</AlternativeGrassColorAvailable>
-
 ```
 
 Make alternative grass available for the building. Set to 1.
@@ -1040,14 +995,12 @@ Make alternative grass available for the building. Set to 1.
 This is used for example for coastal buildings. To block tiles that are reachable by quay/street.
 
 ```XML
-
 <Blocking>
     <GroundDecalAsset>100446</GroundDecalAsset> <!-- Quay street -->
     <GroundDecalInvisible>101008</GroundDecalInvisible> <!-- Quay street -->
     <GroundDecalAssetExtra>100691</GroundDecalAssetExtra> <!-- Quay street -->
     <HasBuildingBaseTiles>1</HasBuildingBaseTiles>
 </Blocking>
-
 ```
 
 #### Cost
@@ -1055,7 +1008,6 @@ This is used for example for coastal buildings. To block tiles that are reachabl
 Every building has a building cost.
 
 ```XML
-
 <Cost>
     <Costs>
         <Item>
@@ -1082,7 +1034,6 @@ Every building has a building cost.
         </Item>
     </Costs>
 </Cost>
-
 ```
 
 WILL UPDATE THIS FURTHER, STAY TUNED!

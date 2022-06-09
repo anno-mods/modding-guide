@@ -233,7 +233,6 @@ Open the original assets.xml from the game and search for “192450”. At the m
 The first time we encounter this GUID in the file, it is nested inside an &lt;Item> tag, which is nested inside &lt;AssetList> which is nested inside &lt;AssetPool> which is nested inside a main &lt;Asset>.
 
 ```XML
-
 <Asset>
    <Template>AssetPool</Template>
    <Values>
@@ -261,7 +260,6 @@ The first time we encounter this GUID in the file, it is nested inside an &lt;It
       </AssetPool>
    </Values>
 </Asset>
-
 ```
 
 In this main &lt;Asset> we see another GUID and underneath the &lt;Name> “Items Artisans 3.2 EPIC UNLOCK”.
@@ -269,7 +267,6 @@ In this main &lt;Asset> we see another GUID and underneath the &lt;Name> “Item
 If we process this, we understand that this is not where we get all the info about Feras. This is another object called “Items Artisans 3.2 EPIC UNLOCK” with the GUID “130172” and this contains a list of all the items for Artisans 3.2 EPIC. So we need to go to the next reference of our GUID of Feras and this time we should be at the right place.
 
 ```XML
-
 <Asset>
     <Template>GuildhouseItem</Template>
     <Values>
@@ -312,7 +309,6 @@ If we process this, we understand that this is not where we get all the info abo
        ...
     </Values>
 </Asset>
-
 ```
 
 We see the corresponding GUID at almost the top of the &lt;Asset> opening tag in the &lt;Standard> tag.
