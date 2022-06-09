@@ -1,0 +1,586 @@
+# Documentation
+
+When modding having an overview or snippets of common used tags and code can save a lot of time. On this page we will combine those for easy acces and documentation.
+
+## Overview data.rda files
+
+- data0: General game files
+- data1: Shaders used in the basegame
+- data2: Icons and images used in the basegame
+- data3: Video used in the basegame
+- data4: Blacklisted words in every language and fonts for the game
+- data5: Maps used in the basegame
+- data6: Islands used in the basegame
+- data7: Benchmarks
+- data8: Buildings used in the basegame
+- data9: Sounds used in the basegame
+- data10: The Anarchist DLC
+- data11: Sunken Treasures DLC
+- data12: Botanica DLC
+- data13: The Passage DLC
+- data14: Seat Of Power DLC
+- data15: Bright Harvest DLC
+- data16: Land Of Lions DLC
+- data17: Docklands DLC
+- data18: Tourist Season DLC
+- data19: The High Life DLC
+- data20: Pedestrian Zone Pack
+- data21: Eden Burning Scenario
+- data22: Seeds of Change DLC
+
+## Supported languages
+
+- texts_chinese.xml
+- texts_english.xml
+- texts_french.xml
+- texts_german.xml
+- texts_italian.xml
+- texts_japanese.xml
+- texts_korean.xml
+- texts_polish.xml
+- texts_russian.xml
+- texts_spanish.xml
+- texts_taiwanese.xml
+
+## Type="" actions
+
+```XML
+<ModOp Type="add">
+```
+
+```XML
+<ModOp Type="replace">
+```
+
+```XML
+<ModOp Type="merge">
+```
+
+```XML
+<ModOp Type="addNextSibling">
+```
+
+```XML
+<ModOp Type="addPrevSibling">
+```
+
+## Building templates
+
+...
+
+## Item templates
+
+- GuildhouseItem
+- TownhallItem
+- HarborOfficeItem ????
+- VehicleItem
+- CultureItem
+
+## Item main proporties
+
+### MaxStackSize
+
+Defines how many items you could stack together in 1 slot on a ship. Standard is 1. If you want you could change that.
+
+```XML
+<MaxStackSize>1</MaxStackSize>
+```
+
+### Rarity
+
+- Common
+- Uncommon
+- Rare
+- Epic
+- Legendary
+
+```XML
+<Rarity>Legendary</Rarity>
+```
+
+### ItemType
+
+- Specialist
+- Normal
+
+```XML
+<ItemType>Specialist</ItemType>
+```
+
+### Allocation
+
+- Museum
+- Zoo
+- BotanicGarden
+- Warship
+- SailShip
+- SteamShip
+- Ship
+- DivingVessel
+- GuildHouse
+- TownHall
+- HarborOffice
+- Lodge
+
+```XML
+<Allocation>TownHall</Allocation>
+```
+
+### TradePrice & TradePriceOnlineCurrency
+
+```XML
+<TradePrice>356000</TradePrice>
+<TradePriceOnlineCurrency>50</TradePriceOnlineCurrency>
+```
+
+### ExclusiveGroup
+
+- Canons
+- Telescopes
+- AutoAttackProjectile
+- Flag
+- TradingTaxBill
+- FactoryAct
+- CleanAirAct
+- AdministrationAct
+- EntertainmentAct
+- ResearchAct
+- EducationAct
+- Ordinance
+- EconomyAct
+- PublicHealthAct
+- FirePreventionAct
+- PublicGatheringAct
+- ChildRightsAct
+- HumanRightsAct
+- AlcoholAct
+- AlcoholTaxesAct
+- SecularizationAct
+- TaxesManagementAct
+- WorkingConditionsAct
+- AmnestyEdict
+- TourismAdCampaign
+- NatalityRegulationEdict
+- WomenRightsAct
+- Propaganda
+- Newspaper
+- EconomicDoctrine
+- AnarchyEssay
+- DivingBell
+- Sonar
+- Cables
+- GGJSoilSampler
+- GGJUrbanPlants
+- GGJWasteManagement
+- GGJIndustrialAirFilters
+- GGJDistillery
+- GGJLocalGarden
+- GGJFertilizer
+- GGJEnactments
+- GGJCoralPlants
+- GGJPondPlants
+
+```XML
+<ExclusiveGroup>Canons</ExclusiveGroup>
+```
+
+### ItemFilterCategory
+
+Used in Eden Burning scenario.
+
+- 24592 - Soil
+- 24593 - Water
+- 24594 - Air
+- 24602 - Miscellaneous
+
+```XML
+<ItemFilterCategory>24594</ItemFilterCategory>
+```
+
+### ScenarioFilter
+
+Used in Eden Burning scenario.
+
+650 is only value.
+
+```XML
+<ScenarioFilter>650</ScenarioFilter>
+```
+
+## Item proporties
+
+### IndustrializableUpgrade
+
+```XML
+<IndustrializableUpgrade>
+  <ProvideIndustrialization>1</ProvideIndustrialization>
+</IndustrializableUpgrade>
+```
+
+### FactoryUpgrade
+
+```XML
+<FactoryUpgrade>
+    <ProductivityUpgrade>
+        <Value>50</Value>
+        <Percental>1</Percental>
+    </ProductivityUpgrade>
+    <AdditionalOutput>
+        <Item>
+            <Product>1010246</Product> <!-- Poket Watches -->
+            <AdditionalOutputCycle>3</AdditionalOutputCycle>
+            <Amount>1</Amount>
+        </Item>
+    </AdditionalOutput>
+    <ReplaceInputs>
+        <Item>
+            <OldInput>1010204</OldInput> <!-- Brass -->
+            <NewInput>120008</NewInput> <!-- Wood -->
+        </Item>
+    </ReplaceInputs>
+</FactoryUpgrade>
+```
+
+### ItemEffect
+
+```XML
+<ItemEffect>
+    <EffectTargets>
+        <Item>
+            <GUID>1010315</GUID> <!-- Framework Knitters -->
+        </Item>
+        <Item>
+            <GUID>1010325</GUID> <!-- Fur Dealer -->
+        </Item>
+        <Item>
+            <GUID>118734</GUID> <!-- Tailor's Shop -->
+        </Item>
+    </EffectTargets>
+</ItemEffect>
+```
+
+### BuildingUpgrade
+
+```XML
+<BuildingUpgrade>
+    <MaintenanceUpgrade>
+        <Value>-20</Value>
+        <Percental>1</Percental>
+    </MaintenanceUpgrade>
+    <WorkforceAmountUpgrade>
+       <Value>20</Value>
+       <Percental>1</Percental>
+    </WorkforceAmountUpgrade>
+</BuildingUpgrade>
+```
+
+### ResidenceUpgrade
+
+```XML
+<ResidenceUpgrade>
+    <AdditionalHappiness>30</AdditionalHappiness>
+    <GoodConsumptionUpgrade>
+        <Item>
+            <ProvidedNeed>114404</ProvidedNeed> <!-- Tapestries -->
+            <AmountInPercent>-100</AmountInPercent>
+        </Item>
+        <Item>
+            <ProvidedNeed>117698</ProvidedNeed> <!-- Illuminated Script -->
+            <AmountInPercent>-80</AmountInPercent>
+        </Item>
+        <Item>
+            <ProvidedNeed>117699</ProvidedNeed> <!-- Lanterns -->
+            <AmountInPercent>-50</AmountInPercent>
+        </Item>
+    </GoodConsumptionUpgrade>
+    <TaxModifierInPercent>-25</TaxModifierInPercent>
+    <WorkforceModifierInPercent>30</WorkforceModifierInPercent>
+</ResidenceUpgrade>
+```
+
+```XML
+<ResidenceUpgrade>
+    <NeedProvideNeedUpgrade>
+        <Item>
+            <ProvidedNeed>1010213</ProvidedNeed> <!-- Bread -->
+            <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
+        </Item>
+        <Item>
+            <ProvidedNeed>1010238</ProvidedNeed> <!-- Sausages -->
+            <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
+        </Item>
+        <Item>
+            <ProvidedNeed>1010200</ProvidedNeed> <!-- Fish -->
+            <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
+        </Item>
+    </NeedProvideNeedUpgrade>
+</ResidenceUpgrade>
+```
+
+### CultureUpgrade
+
+```XML
+<CultureUpgrade>
+    <AttractivenessUpgrade>
+        <Value>40</Value>
+    </AttractivenessUpgrade>
+</CultureUpgrade>
+```
+
+```XML
+<CultureUpgrade>
+    <AttractivenessUpgrade>
+        <Value>-20</Value>
+        <Percental>1</Percental>
+    </AttractivenessUpgrade>
+</CultureUpgrade>
+```
+
+### ExpeditionAttribute
+
+#### Trait/Perk
+
+- PerkMale (Male)
+- PerkFemale (Female)
+- PerkHypnotist (Hypnotist)
+- PerkAnthropologist (Anthropologist)
+- PerkMilitaryShip (Military ship)
+- PerkSailingShip (Sailing ship)
+- PerkSteamShip (Steam ship)
+- PerkTradeShip (Trade ship)
+- PerkFormerPirate (Pirate)
+- PerkDiver (Diver)
+- PerkJackOfAllTraits (Jack Of All Traits)
+- PerkEntertainer (Entertainer)
+- PerkPolyglot (Polyglot)
+- PerkZoologist (Zoologist)
+- PerkArcheologist (Archeologist)
+
+#### Skills
+
+- Crafting
+- Diplomacy
+- Melee (Force)
+- Might (Naval Power)
+- Navigation
+- Medicine
+- Faith
+- Hunting
+
+#### ItemDifficulties
+
+- Easy
+- Average
+- Hard
+
+```XML
+<ExpeditionAttribute>
+    <BaseMorale>20</BaseMorale>
+    <ExpeditionAttributes>
+        <Item>
+            <Attribute>PerkMale</Attribute>
+            <Amount>1</Amount>
+        </Item>
+        <Item>
+            <Attribute>Crafting</Attribute>
+            <Amount>50</Amount>
+        </Item>
+        <Item>
+            <Attribute>Melee</Attribute>
+            <Amount>15</Amount>
+        </Item>
+        <Item>
+            <Attribute>PerkMilitaryShip</Attribute>
+            <Amount>1</Amount>
+        </Item>
+        <Item />
+    </ExpeditionAttributes>
+    <ItemDifficulties>Average;Hard</ItemDifficulties>
+</ExpeditionAttribute>
+```
+
+### Locked
+
+- 410003 (Imperial Pack)
+- 410021 (Season Pass Player Assets)
+- 410069 (Season 2 Pass Reward)
+- 305 (Season 3 Pass Reward)
+- 25945 (Season 4 Bonus Content)
+- 410079 (Amusements Pack)
+- 116630 (Holiday Ornament Pack)
+- 4100010 (The Anarchist)
+- 410040 (Sunken Treasures)
+- 410041 (Botanica)
+- 410042 (The Passage)
+- 410059 (Seat Of Power)
+- 410070 (Bright Harvest)
+- 410071 (Land of Lions)
+- 410083 (Docklands)
+- 410084 (Tourist Season)
+- 410085 (The High Life)
+- 24961 (Seeds Of Change)
+
+```XML
+<Locked>
+    <DefaultLockedState>1</DefaultLockedState>
+    <DLCDependency>410041</DLCDependency>
+</Locked>
+```
+
+### ModuleOwnerUpgrade
+
+```XML
+<ModuleOwnerUpgrade>
+    <ModuleLimitPercent>-10</ModuleLimitPercent>
+</ModuleOwnerUpgrade>
+```
+
+### IncidentInfectableUpgrade
+
+```XML
+<IncidentInfectableUpgrade>
+    <IncidentFireIncreaseUpgrade>
+        <Value>-1</Value>
+    </IncidentFireIncreaseUpgrade>
+    <IncidentIllnessIncreaseUpgrade>
+        <Value>-1</Value>
+    </IncidentIllnessIncreaseUpgrade>
+    <IncidentRiotIncreaseUpgrade>
+        <Value>-1</Value>
+    </IncidentRiotIncreaseUpgrade>
+    <IncidentExplosionIncreaseUpgrade>
+        <Value>-1</Value>
+    </IncidentExplosionIncreaseUpgrade>
+</IncidentInfectableUpgrade>
+```
+
+### PopulationUpgrade
+
+```XML
+<PopulationUpgrade>
+    <StressUpgrade>
+        <Value>-35</Value>
+        <Percental>1</Percental>
+    </StressUpgrade>
+    <ResidentsUpgrade>
+        <Value>20</Value>
+        <Percental>1</Percental>
+    </ResidentsUpgrade>
+    <InputBenefitModifier>
+        <Item>
+            <Product>114361</Product> <!-- Musicians' Court -->
+            <AdditionalSupply>5</AdditionalSupply>
+            <AdditionalMoney>10</AdditionalMoney>
+        </Item>
+        <Item>
+            <Product>114414</Product> <!-- Clay Pipes -->
+            <AdditionalSupply>5</AdditionalSupply>
+            <AdditionalMoney>10</AdditionalMoney>
+        </Item>
+        <Item>
+            <Product>1010353</Product> <!--University -->
+            <AdditionalResearch>1</AdditionalResearch>
+            <AdditionalHappiness>10</AdditionalHappiness>
+        </Item>
+    </InputBenefitModifier>
+</PopulationUpgrade>
+```
+
+### KontorUpgrade
+
+```XML
+<KontorUpgrade>
+    <HappinessIgnoresMorale>1</HappinessIgnoresMorale>
+    <BlockHostileTakeover>1</BlockHostileTakeover>
+    <BlockBuyShare>1</BlockBuyShare>
+</KontorUpgrade>
+```
+
+### PassiveTradeGoodGenUpgrade
+
+```XML
+<PassiveTradeGoodGenUpgrade>
+    <GenProbability>25</GenProbability>
+    <GenPool>191637</GenPool> <!-- Protectionism Defender Pool 2 -->
+</PassiveTradeGoodGenUpgrade>
+```
+
+### HeaterUpgrade
+
+```XML
+<HeaterUpgrade>
+    <HeatRangeUpgrade>
+        <Value>20</Value>
+        <Percental>1</Percental>
+    </HeatRangeUpgrade>
+</HeaterUpgrade>
+```
+
+### PowerplantUpgrade
+
+```XML
+<PowerplantUpgrade>
+    <IndustrializationRangeUpgrade>
+        <Value>10</Value>
+    </IndustrializationRangeUpgrade>
+</PowerplantUpgrade>
+```
+
+### IrrigationUpgrade
+
+```XML
+<IrrigationUpgrade>
+    <PipeCapacityUpgrade>
+        <Value>20</Value>
+    </PipeCapacityUpgrade>
+</IrrigationUpgrade>
+```
+
+## Overview RewardPool
+
+- ...
+
+## Overview AssetPool
+
+- 102418 - CQIPool_Pyrphorian_WarItems01
+- 100653 - asset pool imperial kontors
+- 130066 - asset pool zoo modules
+- 130067 - asset pool museum modules
+- 130068 - asset pool harbor defenses
+- 130111 - asset pool splendour elements (1st set)
+- 130113 - asset pool park elements (all)
+- 130115 - asset pool splendour elements (all)
+- 130133 - asset pool monuments
+- 130057 - asset pool market
+- 130040 - asset pool warehouse
+- 140029 - asset pool timber
+- 130056 - asset pool fish
+- 140028 - asset pool schnapps
+- 130060 - asset pool basic clothes
+- 130042 - asset pool pub
+- 140031 - asset pool brick
+- 130053 - asset pool warehouse &amp; kontor II
+- 140027 - asset pool sausage
+- 140033 - asset pool bread
+- 130043 - asset pool church
+- 130050 - asset pool sail shipyard
+- 140050 - asset pool sailcloth
+- 140034 - asset pool beam
+- 140051 - asset pool weapon
+- 140030 - asset pool soap
+- 140035 - asset pool beer
+- 130044 - asset pool school
+- 140037 - asset pool glass pane
+- 130054 - asset pool warehouse &amp; kontor III
+- 130052 - asset pool tourism pier
+- 140036 - asset pool canned food
+- 140032 - asset pool sewing machines
+- 130045 - asset pool cabaret
+- 140046 - asset pool fur coat
+- 130046 - asset pool university
+- 140043 - asset pool concrete
+- 130047 - asset pool electricity oil
+- 130041 - asset pool glasses
+- 140044 - asset pool light bulb
+- 140052 - asset pool steam motor
+- ...

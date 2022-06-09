@@ -353,7 +353,7 @@ This specialist will fit into the **"GuildHouse"**.
 
 ### TradePrice & TradePriceOnlineCurrency
 
-Defines what is will cost to buy and sell the item. Legendary items should cost more then common items.
+Defines what it will cost to buy and sell the item. Legendary items should cost more then common items.
 
 ```XML
 <ModOps>
@@ -403,11 +403,9 @@ A lot of the tags do not have an opening and closing tag, but just have 1 tag wi
 For this &lt;IndustrializableUpgrade> we need the following structure:
 
 ```XML
-
 <IndustrializableUpgrade>
   <ProvideIndustrialization>1</ProvideIndustrialization>
 </IndustrializableUpgrade>
-
 ```
 
 It contains the opening and closing tag, and within another tag that is set to "1". With putting the value "1" there with the other tag we define that this value is set to "true". If we change this to "0" we would define it as false.
@@ -423,7 +421,6 @@ This is a really important one that can contain multiple things.
 Example:
 
 ```XML
-
 <FactoryUpgrade>
     <ProductivityUpgrade>
         <Value>50</Value>
@@ -443,7 +440,6 @@ Example:
         </Item>
     </ReplaceInputs>
 </FactoryUpgrade>
-
 ```
 
 In this example of Gerhard Fuchs, of the Patent Eyeglass we have 3 different parts who can be used apart from eachoter and do not have to be there together like in this example. If you only want to use one of the 3 it is perfectly possible.
@@ -469,7 +465,6 @@ The last part is **ReplaceInputs** where we replace one of the input products wi
 Example:
 
 ```XML
-
 <ItemEffect>
     <EffectTargets>
         <Item>
@@ -483,7 +478,6 @@ Example:
         </Item>
     </EffectTargets>
 </ItemEffect>
-
 ```
 
 The **ItemEffect** defines to which building the specialist will have an effect. In this case multiple buildings. Good to know, this does not have to be a building. It can also be a GUID of a group of buildings. For example **GUID 25599** is **All Production Buildings**.
@@ -493,7 +487,6 @@ The **ItemEffect** defines to which building the specialist will have an effect.
 Example:
 
 ```XML
-
 <BuildingUpgrade>
     <MaintenanceUpgrade>
         <Value>-20</Value>
@@ -504,7 +497,6 @@ Example:
        <Percental>1</Percental>
     </WorkforceAmountUpgrade>
 </BuildingUpgrade>
-
 ```
 
 With the **BuildingUpgrade** we can change **maintenance costs** of the building and the **amount of workforce** that is needed.
@@ -522,7 +514,6 @@ We also have workforce that is needed to let a building produce goods. With **Wo
 Examples:
 
 ```XML
-
 <ResidenceUpgrade>
     <AdditionalHappiness>30</AdditionalHappiness>
     <GoodConsumptionUpgrade>
@@ -542,24 +533,25 @@ Examples:
     <TaxModifierInPercent>-25</TaxModifierInPercent>
     <WorkforceModifierInPercent>30</WorkforceModifierInPercent>
 </ResidenceUpgrade>
-
 ```
 
 ```XML
-<NeedProvideNeedUpgrade>
-    <Item>
-        <ProvidedNeed>1010213</ProvidedNeed> <!-- Bread -->
-        <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
-    </Item>
-    <Item>
-        <ProvidedNeed>1010238</ProvidedNeed> <!-- Sausages -->
-        <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
-    </Item>
-    <Item>
-        <ProvidedNeed>1010200</ProvidedNeed> <!-- Fish -->
-        <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
-    </Item>
-</NeedProvideNeedUpgrade>
+<ResidenceUpgrade>
+    <NeedProvideNeedUpgrade>
+        <Item>
+            <ProvidedNeed>1010213</ProvidedNeed> <!-- Bread -->
+            <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
+        </Item>
+        <Item>
+            <ProvidedNeed>1010238</ProvidedNeed> <!-- Sausages -->
+            <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
+        </Item>
+        <Item>
+            <ProvidedNeed>1010200</ProvidedNeed> <!-- Fish -->
+            <SubstituteNeed>1010349</SubstituteNeed> <!-- Pub -->
+        </Item>
+    </NeedProvideNeedUpgrade>
+</ResidenceUpgrade>
 ```
 
 With **ResidenceUpgrade** we can provide goods or services to houses. This is not really used for items for Trade Unions, but mostly for items for Town Halls.
@@ -589,24 +581,20 @@ A good or service can be used as a substitute for another good. In the above exa
 Examples:
 
 ```XML
-
 <CultureUpgrade>
     <AttractivenessUpgrade>
         <Value>40</Value>
     </AttractivenessUpgrade>
 </CultureUpgrade>
-
 ```
 
 ```XML
-
 <CultureUpgrade>
     <AttractivenessUpgrade>
         <Value>-20</Value>
         <Percental>1</Percental>
     </AttractivenessUpgrade>
 </CultureUpgrade>
-
 ```
 
 We can also change the **Attractiveness** with a flat amount or a percentage. See above examples as references.
@@ -616,7 +604,6 @@ We can also change the **Attractiveness** with a flat amount or a percentage. Se
 Example:
 
 ```XML
-
 <ExpeditionAttribute>
     <BaseMorale>20</BaseMorale>
     <ExpeditionAttributes>
@@ -640,7 +627,6 @@ Example:
     </ExpeditionAttributes>
     <ItemDifficulties>Average;Hard</ItemDifficulties>
 </ExpeditionAttribute>
-
 ```
 
 Items can also be used for expeditions. We can define what the attributes should be for the item. There is a list for all types of attributes.
@@ -693,12 +679,10 @@ This can be:
 ### Locked
 
 ```XML
-
 <Locked>
     <DefaultLockedState>1</DefaultLockedState>
     <DLCDependency>410041</DLCDependency>
 </Locked>
-
 ```
 
 You can lock a specialist for a obvious reason. For example if it can only be used if a specific DLC is available. You use the GUID of the DLC to define it. The example above is for the Land of Lions DLC.
@@ -727,11 +711,9 @@ List of Dependencies:
 ### ModuleOwnerUpgrade
 
 ```XML
-
 <ModuleOwnerUpgrade>
     <ModuleLimitPercent>-10</ModuleLimitPercent>
 </ModuleOwnerUpgrade>
-
 ```
 
 Some buildings have modules. For example farms. You can reduce or increase the mount of modules needed for the buildings in range of the trade union where this item is used. You use a positive or negative % amount.
@@ -739,7 +721,6 @@ Some buildings have modules. For example farms. You can reduce or increase the m
 ### IncidentInfectableUpgrade
 
 ```XML
-
 <IncidentInfectableUpgrade>
     <IncidentFireIncreaseUpgrade>
         <Value>-1</Value>
@@ -754,7 +735,6 @@ Some buildings have modules. For example farms. You can reduce or increase the m
         <Value>-1</Value>
     </IncidentExplosionIncreaseUpgrade>
 </IncidentInfectableUpgrade>
-
 ```
 
 IncidentInfectableUpgrade reduces or increases the chance for one of the 4 possible incidents.
@@ -769,7 +749,6 @@ Put a value inbetween 0 and 10 or 0 and -10. 1 is 10%, -5 is -50% and so on.
 ### PopulationUpgrade
 
 ```XML
-
 <PopulationUpgrade>
     <StressUpgrade>
         <Value>-35</Value>
@@ -797,7 +776,6 @@ Put a value inbetween 0 and 10 or 0 and -10. 1 is 10%, -5 is -50% and so on.
         </Item>
     </InputBenefitModifier>
 </PopulationUpgrade>
-
 ```
 
 #### StressUpgrade
@@ -819,13 +797,11 @@ In the example above, residences with the need of Musicians' Court and Clay Pipe
 ### KontorUpgrade
 
 ```XML
-
 <KontorUpgrade>
     <HappinessIgnoresMorale>1</HappinessIgnoresMorale>
     <BlockHostileTakeover>1</BlockHostileTakeover>
     <BlockBuyShare>1</BlockBuyShare>
 </KontorUpgrade>
-
 ```
 
 #### HappinessIgnoresMorale
@@ -843,12 +819,10 @@ Locks the shares of your island, preventing another party from purchasing them w
 ### PassiveTradeGoodGenUpgrade
 
 ```XML
-
 <PassiveTradeGoodGenUpgrade>
     <GenProbability>25</GenProbability>
     <GenPool>191637</GenPool> <!-- Protectionism Defender Pool 2 -->
 </PassiveTradeGoodGenUpgrade>
-
 ```
 
 Every time passive trade happens at the trading post, there is a chance of gaining the amount of goods you defined.
@@ -856,14 +830,12 @@ Every time passive trade happens at the trading post, there is a chance of gaini
 ### HeaterUpgrade
 
 ```XML
-
 <HeaterUpgrade>
     <HeatRangeUpgrade>
         <Value>20</Value>
         <Percental>1</Percental>
     </HeatRangeUpgrade>
 </HeaterUpgrade>
-
 ```
 
 Increase the range of heating provided by the heating building by % amount.
@@ -871,13 +843,11 @@ Increase the range of heating provided by the heating building by % amount.
 ### PowerplantUpgrade
 
 ```XML
-
 <PowerplantUpgrade>
     <IndustrializationRangeUpgrade>
         <Value>10</Value>
     </IndustrializationRangeUpgrade>
 </PowerplantUpgrade>
-
 ```
 
 Increase the range of electricity provided by the power plant by % amount.
@@ -885,13 +855,11 @@ Increase the range of electricity provided by the power plant by % amount.
 ### IrrigationUpgrade
 
 ```XML
-
 <IrrigationUpgrade>
     <PipeCapacityUpgrade>
         <Value>20</Value>
     </PipeCapacityUpgrade>
 </IrrigationUpgrade>
-
 ```
 
 Increase the amount of canal tiles you can use for a water pump.
@@ -909,7 +877,6 @@ For **ExpeditionAttribute** we use the **PerkFemale**, with **Crafting of 40** a
 For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
 
 ```XML
-
 <ModOps>
     <ModOp GUID="191431" Type="addNextSibling">
         <Asset>
@@ -986,7 +953,6 @@ For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
         </Asset>
     </ModOp>
 </ModOps>
-
 ```
 
 ### Things we did not completly cover (yet)
@@ -1019,7 +985,6 @@ We have created our specialist, but we are not done yet with the mod. To use the
 Example 192975 - Rewardpool: Specialists - Legendary
 
 ```XML
-
 <Asset>
     <Template>RewardPool</Template>
     <Values>
@@ -1065,7 +1030,6 @@ Example 192975 - Rewardpool: Specialists - Legendary
         <Text />
     </Values>
 </Asset>
-
 ```
 
 We see in this rewardpool an itempool of different items. The rewardpool is the way of making the item available ingame. Some rewardpools make items available by quests, others to be able to get by expeditions, others to be able to be bought at certain neutral traders, ect. The list of rewardpools is HUGE. Maybe I;ll add a complete list of rewardpools later to this tutorial, but for now we will just take a couple for this specific mod and then it is up to you to dive into the main assets.xml and search for **&lt;Template>RewardPool&lt;/Template>** and choose the ones you want. You can check the statitics screen ingame with the item tab to check how to get the item to be sure it is still balanced, but that is up to you.
@@ -1079,11 +1043,9 @@ Remember the previous tutorial where we looked at the path of Feras to understan
 Instead of the **Type="replace"**, we will now use the **Type="add"**.
 
 ```XML
-
 <ModOp Type="add">
 
 </ModOp>
-
 ```
 
 We will add this new item to specific Rewardpools. We need to know the ID's from those rewardpools. The item we are creating is an item for Gold mines and the trade union. So, actually for the New World. So we could take rewardpools that are specificly for the New world.
@@ -1098,11 +1060,9 @@ We will add this new item to specific Rewardpools. We need to know the ID's from
 We also choose some global rewardpools.
 
 ```XML
-
 <ModOp Type="add" GUID="192975,192737,192840,193963,192904,192909">
 
 </ModOp>
-
 ```
 
 The next thing we need to do is define where we want to add our item in the rewardpool. If we do not define a path it will just be added in the root of the rewardpool and that is not the right location.
@@ -1110,7 +1070,6 @@ The next thing we need to do is define where we want to add our item in the rewa
 If we look at the rewardpool we can see the same structure for every rewardpool. We have the GUID and name in the beginning in a Standard tag and underneath that we have the Rewardpool tag and in that the ItemsPool tag where all the items are in.
 
 ```XML
-
 <Asset>
     <Template>RewardPool</Template>
     <Values>
@@ -1136,35 +1095,29 @@ If we look at the rewardpool we can see the same structure for every rewardpool.
         <Text />
     </Values>
 </Asset>
-
 ```
 
 We want to add our item in the **ItemsPool**. So we look at the path we need to take from the start of the Asset. to get to the ItemsPool. This is Values > RewardPool > ItemsPool.
 
 ```XML
-
 <ModOp  Type="add" GUID="192975,192737,192840,193963,192904,192909" Path="/Values/RewardPool/ItemsPool">
 
 </ModOp>
-
 ```
 
 Now we put what we want to add in the structure inside.
 
 ```XML
-
 <ModOp Type="add" GUID="192975,192737,192840,193963,192904,192909" Path="/Values/RewardPool/ItemsPool">
     <Item>
         <ItemLink>1742008800</ItemLink> <!-- Maria Lopez -->
     </Item>
 </ModOp>
-
 ```
 
 Now we put this underneath our first ModOp and in our main ModOps, so before the ModOps closing tag.
 
 ```XML
-
 <ModOps>
     <ModOp GUID="191431" Type="addNextSibling">
         <Asset>
@@ -1247,7 +1200,6 @@ Now we put this underneath our first ModOp and in our main ModOps, so before the
         </Item>
     </ModOp>
 </ModOps>
-
 ```
 
 We are almost there! One last step.
@@ -1267,23 +1219,19 @@ Those triggers also have their own GUID. We need 1 trigger for our specialist mo
 We will be adding our trigger after an already existing trigger as the next sibling. So, we choose Type="addnextSibling" and then the GUID of that trigger. In this case "130248".
 
 ```XML
-
 <ModOp Type="addnextSibling" GUID="130248">
 
 </ModOp>
-
 ```
 
 This template we are going to use now is a **Trigger**. As you can see, templates are powerful things.
 
 ```XML
-
 <ModOp Type="addnextSibling" GUID="130248">
     <Asset>
         <Template>Trigger</Template>
     </Asset>
 </ModOp>
-
 ```
 
 To see an example of a trigger template search for &lt;Template>Trigger&lt;/Template> in the main assets.xml.
@@ -1303,7 +1251,6 @@ As the name states, here we define what the condition will be for our trigger to
 The **ConditionPlayerCounter** is a base template we always add. The values that it contains can change. In this case we will use **PopulationByLevel** which states that the trigger will go off when we hit a certain population. In the &lt;Context> we put a GUID of a population tier which threshold we want to hit. Underneath we put the &lt;CounterAmount> of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this with the tool on https://schwubbe.de/modding_blog.php#beitrag15.
 
 ```XML
-
 <ModOp Type="addnextSibling" GUID="130248">
     <Asset>
         <Template>Trigger</Template>
@@ -1329,13 +1276,11 @@ The **ConditionPlayerCounter** is a base template we always add. The values that
         </Values>
     </Asset>
 </ModOp>
-
 ```
 
 Now the last step of our tutorial, adding the specialist to the trigger. Unhide and Unlock it.
 
 ```XML
-
 <ModOp Type="addnextSibling" GUID="130248">
     <Asset>
         <Template>Trigger</Template>
@@ -1383,13 +1328,11 @@ Now the last step of our tutorial, adding the specialist to the trigger. Unhide 
         </Values>
     </Asset>
 </ModOp>
-
 ```
 
 We should now have the fantastic assets.xml like this:
 
 ```XML
-
 <ModOps>
     <ModOp GUID="191431" Type="addNextSibling">
         <Asset>
@@ -1520,7 +1463,6 @@ We should now have the fantastic assets.xml like this:
         </Asset>
     </ModOp>
 </ModOps>
-
 ```
 
 Save all the files, make sure everything looks ok and you can copy your mod to the modfolder and start the game. You should be able to see this item in the statistics screen in the item menu when you search for it. Check the possibilities how you can get the item.
