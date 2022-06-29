@@ -854,9 +854,21 @@ Now that we have our product and we made sure the product is visible in our kont
 
 ### The code of the building
 
-We are going to make a production building. This building has a certain template: **&lt;Template>FactoryBuilding7&lt;/Template>**
+We are going to make a production building. This building has a certain template: **&lt;Template>FactoryBuilding7&lt;/Template>** and add it as a next sibling after one of the first buildings, in our case 1010343 (Farmer Residence - ResidenceBuilding).
 
-We can go to our assets.xml file and search for multiple examples to see how this template is structured and what kind of possibilities it has. Let's go over the most common parts.
+```XML
+<!-- START PRODUCTION - Citrus Tea -->
+<ModOp Type="addNextSibling" GUID='1010343'>
+    <Asset>
+        <Template>FactoryBuilding7</Template>
+        <Values>
+          ...
+        </Values>
+    </Asset>
+</ModOp><!-- END PRODUCTION - Citrus Tea -->
+```
+
+We can go to our assets.xml file and search for multiple examples to see how this template is structured and what kind of possibilities it has. We will not cover all possibilities for now, but just the ones we are going to use in this building.
 
 #### Standard
 
@@ -873,7 +885,7 @@ This part should not have any secrets anymore for us. We can easily fill this in
 
 #### Building
 
-This part contains a couple of different parts.
+This part contains a couple of different parts. We will only use 2 for this building.
 
 ##### BuildModeRandomRotation
 
@@ -886,20 +898,7 @@ Define how many degrees you can rotate the building when placing the building.
 - 90
 - 180
 
-###### BuildingType
-
-```XML
-<BuildingType>Residence</BuildingType>
-```
-
-The type of building can be:
-
-- Residence
-- Logistic (Warehouse)
-- Warehouse (Trading Post)
-- BuildingModule (Silo, Tractor)
-- Factory (Hacienda alternative production factories)
-- Other (Campaign and scenario specific buildings)
+We choose for rotation **90 ** degrees.
 
 ##### AssociatedRegions
 
@@ -916,111 +915,26 @@ Regions:
 - Arctic
 - Africa
 
-###### BuildingCategoryName
-
-```XML
-<BuildingCategoryName>100000</BuildingCategoryName>
-```
-
-The category of the building can be:
-
-- 100000 (Production)
-- 11175 (Livestock Area)
-- 100003 (Public Service)
-- 2498 (Exhibition Space)
-- 11169 (Electricity)
-- 11149 (Ornament)
-- 11150 (Harbour)
-- 11151 (Infrastructure)
-- 11152 (Administration) - Example: Guild House/Town Hall
-- 11154 (Railway)
-- 269841 (Tractor)
-- 19227 (Wooden Ruins)
-- 19233 (Stone Ruins)
-- 19158 (Sells tickets for long voyages)
-- 116953 (Abandoned Tents)
-- 269960 (Agricultural Improvement)
-- 134142 (Food & Drink Venue)
-- 132773 (Multifactory)
-- 134987 (Tourist Lodgings)
-- 0 (ScenarioRuinEco)
-
-##### TerrainType
-
-```XML
-<TerrainType>Water_Including_Coast</TerrainType>
-```
-
-Defines **special terraintypes** where the building can be placed. This can be:
-
-- Water_Including_Coast
-- Water_Excluding_Coast
-- Coast
-- Terrain (used in special cases)
-
-##### SecondPartyRelevant
-
-```XML
-<SecondPartyRelevant>0</SecondPartyRelevant>
-```
-
-Disable a building for AI. This building will not be available for them.
-
-##### Movable
-
-```XML
-<Movable>0</Movable>
-```
-
-Make it impossible to move the building/asset. Set to 0.
-
-##### AllowChangeDirection
-
-```XML
-<AllowChangeDirection>0</AllowChangeDirection>
-```
-
-Disable changing direction. Set to 0.
-
-##### AlternativeGrassColorAvailable
-
-```XML
-<AlternativeGrassColorAvailable>1</AlternativeGrassColorAvailable>
-```
-
-Make alternative grass available for the building. Set to 1.
-
-#### Blocking
-
-This is used for example for coastal buildings. To block tiles that are reachable by quay/street.
-
-```XML
-<Blocking>
-    <GroundDecalAsset>100446</GroundDecalAsset> <!-- Quay street -->
-    <GroundDecalInvisible>101008</GroundDecalInvisible> <!-- Quay street -->
-    <GroundDecalAssetExtra>100691</GroundDecalAssetExtra> <!-- Quay street -->
-    <HasBuildingBaseTiles>1</HasBuildingBaseTiles>
-</Blocking>
-```
+In our case **moderate**. Because it is only buildable in the Old World.
 
 #### Cost
 
-Every building has a building cost.
+Every building has a building cost. Depending on what you need you can add the different building materials.
 
 ```XML
 <Cost>
     <Costs>
         <Item>
             <Ingredient>1010017</Ingredient> <!-- Coins -->
-            <Amount>4000</Amount>
+            <Amount>6000</Amount>
         </Item>
         <Item>
             <Ingredient>1010196</Ingredient> <!-- Timber -->
-            <Amount>10</Amount>
+            <Amount>25</Amount>
         </Item>
         <Item>
             <Ingredient>1010205</Ingredient> <!-- Bricks -->
-            <Amount>5</Amount>
+            <Amount>15</Amount>
         </Item>
         <Item>
             <Ingredient>1010218</Ingredient> <!-- Steal Beams -->
@@ -1034,6 +948,291 @@ Every building has a building cost.
         </Item>
     </Costs>
 </Cost>
+```
+
+For our **Citrus Tea Dryer** building, we need to have **4000 coins, 25 timer, 15 bricks and 5 steal beams**.
+
+#### Object
+
+Within the object we can define the model of the building we are creating.
+
+We can add multiple variations for the building.
+
+```XML
+<Object>
+  <Variations>
+    <Item>
+      <Filename>data/dlc08/graphics/buildings/production/tree_planter/tree_planter_citrus.cfg</Filename>
+    </Item>
+  </Variations>
+</Object>
+```
+
+#### Selection
+
+There are a couple of possibilities but for this we only going to use **ParticipantMessageArcheType**. This defines which portrait we will show in the menu at the bottom right that pops up when selecting the building.
+
+- [NONE]
+- Resident_tier01 - Farmers
+- Resident_tier02 - Workers
+- Resident_tier03 - Artisan
+- Resident_tier04 - Engineers
+- Resident_tier05 - Investors
+- Resident_tier01_atWork - Farmers
+- Resident_tier02_atWork - Workers
+- Resident_tier03_atWork - Artisan
+- Resident_tier04_atWork - Engineers
+- Resident_tier04_atWork - Investors
+- SA_Resident_tier01 - Jornaleros
+- SA_Resident_tier02 - Obreros
+- SA_Resident_tier01_atWork - Jornaleros
+- SA_Resident_tier02_atWork - Obreros
+- Arctic_Resident_tier01 - Explorers
+- Arctic_Resident_tier02 - Technicians
+- Arctic_Resident_tier01_atWork - Explorers
+- Arctic_Resident_tier02_atWork - Technicians
+- Africa_Resident_tier01 - Shepherds
+- Africa_Resident_tier02 - Elders
+- Africa_Resident_tier03 - Scholars
+- Resident_Tourist
+- Campaign_character_01_demolition_expert
+- Void_Trader
+- Third_party_05_Sarmento
+- GGJ_Yaosca
+
+```XML
+<Selection>
+    <ParticipantMessageArcheType>Resident_tier02_atWork</ParticipantMessageArcheType>
+</Selection>
+```
+
+For this building, we will use the Old World Worker workforce, so **Resident_tier02_atWork**.
+
+#### Text
+
+We have again some basic fallback localization text.
+
+```XML
+<Text>
+    <LocaText>
+        <English>
+            <Text>Citrus Tea Dryer</Text>
+            <Status>Exported</Status>
+            <ExportCount>2</ExportCount>
+        </English>
+    </LocaText>
+</Text>
+```
+
+#### SoundEmitter
+
+This will define which sounds will be played when clicking the building or zoom in to the building.
+
+```XML
+<SoundEmitter>
+    <ActiveSounds>
+        <Item>
+            <Sound>270300</Sound> <!-- Tea Spicer sounds -->
+        </Item>
+        <Item>
+            <Sound>270266</Sound> <!-- Tea Spicer sounds -->
+        </Item>
+    </ActiveSounds>
+</SoundEmitter>
+```
+
+For our building we will reuse the existing Tea Spicer sounds. To find those sounds we can search for the Tea Spicer building in the main assets.xml and look for this part.
+
+#### FactoryBase
+
+This is an important part of the building. This will define what the building will process as input goods (**FactoryInputs**) and produce as output good (**FactoryOutputs**), the time it will take to process the good in seconds (**CycleTime**) and if this building is the main factory that produces this good. If you create a building that produces the same good as a vanilla building you set the **IsMainFactory** to 0 and not 1.
+
+- FactoryInputs
+- FactoryOutputs
+- CycleTime
+- IsMainFactory
+
+```XML
+<FactoryBase>
+    <FactoryInputs>
+        <Item>
+            <Product>133097</Product> <!-- Citrus Fruits -->
+            <Amount>1</Amount>
+            <StorageAmount>10</StorageAmount>
+        </Item>
+    </FactoryInputs>
+    <FactoryOutputs>
+        <Item>
+            <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
+            <Amount>1</Amount>
+            <StorageAmount>10</StorageAmount>
+        </Item>
+    </FactoryOutputs>
+    <CycleTime>60</CycleTime>
+    <IsMainFactory>1</IsMainFactory>
+</FactoryBase>
+```
+
+In our case we have **Citrus Fruits** as an **input** good. We process 1 ton every cycle and we can store 10 tons. Every cycle we **produce/output** 1 ton of **Citrus Tea**. We can also store 10 tons of it. A **cycle** takes **60 seconds**. This building is the main factory that produces Citrus Tea.
+
+#### Maintenance
+
+Every building has an upkeep in most cases coins and workforce.
+
+##### Workforce
+
+- 1010052 - Farmer Workforce
+- 1010115 - Worker Workforce
+- 1010116 - Artisan Workforce
+- 1010117 - Engineer Workforce
+- 1010128 - Investor Workforce
+- 1010366 - Jornalero Workforce
+- 1010367 - Obrero Workforce
+- 112653 - Explorer Workforce
+- 112654 - Technician Workforce
+- 114340 - Shepherd Workforce
+- 114341 - Elder Workforce
+- 124478 - Scholar Workforce
+
+```XML
+<Maintenance>
+    <Maintenances>
+        <Item>
+            <Product>1010017</Product> <!-- Amount of coins upkeep -->
+            <Amount>150</Amount>
+            <InactiveAmount>50</InactiveAmount>
+        </Item>
+        <Item>
+            <Product>1010115</Product> <!-- Amount of Workforce - Workers -->
+            <Amount>40</Amount>
+        </Item>
+    </Maintenances>
+</Maintenance>
+```
+
+We choose **150 coins** as upkeep costs. When the building is set to pause it still costs 50 coins upkeep.
+We match our workforce with the choosen ParticipantMessageArcheType, in our case **30 Worker workforce**.
+
+#### Industrializable
+
+We can electrify a building to get a productionboost of 100%. We set the value to 1.
+
+```XML
+<Industrializable>
+    <BoostedByIndustrialization>1</BoostedByIndustrialization>
+</Industrializable>
+```
+
+We are now done with our building. This part of the code should look like this:
+
+```XML
+<!-- START PRODUCTION - Citrus Tea -->
+<ModOp Type="addNextSibling" GUID='1010343'>
+    <Asset>
+        <Template>FactoryBuilding7</Template>
+        <Values>
+            <Standard>
+                <GUID>1742008809</GUID>
+                <Name>Citrus Tea Dryer</Name>
+                <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+                <InfoDescription>1742008810</InfoDescription>
+            </Standard>
+            <Building>
+                <BuildModeRandomRotation>90</BuildModeRandomRotation>
+                <AssociatedRegions>Moderate</AssociatedRegions>
+            </Building>
+            <Cost>
+                <Costs>
+                    <Item>
+                        <Ingredient>1010017</Ingredient> <!-- Coins -->
+                        <Amount>6000</Amount>
+                    </Item>
+                    <Item>
+                        <Ingredient>1010196</Ingredient> <!-- Timber -->
+                        <Amount>25</Amount>
+                    </Item>
+                    <Item>
+                        <Ingredient>1010205</Ingredient> <!-- Bricks -->
+                        <Amount>15</Amount>
+                    </Item>
+                    <Item>
+                        <Ingredient>1010218</Ingredient> <!-- Steal Beams -->
+                        <Amount>5</Amount>
+                    </Item>
+                    <Item>
+                        <Ingredient>1010207</Ingredient> <!-- Windows -->
+                    </Item>
+                    <Item>
+                        <Ingredient>1010202</Ingredient> <!-- Reinforced concrete -->
+                    </Item>
+                </Costs>
+            </Cost>
+            <Object>
+                <Variations>
+                    <Item>
+                        <Filename>data/dlc08/graphics/buildings/production/tree_planter/tree_planter_citrus.cfg</Filename>
+                    </Item>
+                </Variations>
+            </Object>
+            <Selection>
+                <ParticipantMessageArcheType>Resident_tier02_atWork</ParticipantMessageArcheType>
+            </Selection>
+            <Text>
+                <LocaText>
+                    <English>
+                        <Text>Citrus Tea Dryer</Text>
+                        <Status>Exported</Status>
+                        <ExportCount>2</ExportCount>
+                    </English>
+                </LocaText>
+            </Text>
+            <SoundEmitter>
+                <ActiveSounds>
+                    <Item>
+                        <Sound>270300</Sound> <!-- Tea Spicer sounds -->
+                    </Item>
+                    <Item>
+                        <Sound>270266</Sound> <!-- Tea Spicer sounds -->
+                    </Item>
+                </ActiveSounds>
+            </SoundEmitter>
+            <FactoryBase>
+                <FactoryInputs>
+                    <Item>
+                        <Product>133097</Product> <!-- Citrus Fruits -->
+                        <Amount>1</Amount>
+                        <StorageAmount>10</StorageAmount>
+                    </Item>
+                </FactoryInputs>
+                <FactoryOutputs>
+                    <Item>
+                        <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
+                        <Amount>1</Amount>
+                        <StorageAmount>10</StorageAmount>
+                    </Item>
+                </FactoryOutputs>
+                <CycleTime>60</CycleTime>
+                <IsMainFactory>1</IsMainFactory>
+            </FactoryBase>
+            <Maintenance>
+                <Maintenances>
+                    <Item>
+                        <Product>1010017</Product> <!-- Amount of coins upkeep -->
+                        <Amount>150</Amount>
+                        <InactiveAmount>50</InactiveAmount>
+                    </Item>
+                    <Item>
+                        <Product>1010115</Product> <!-- Amount of Workforce - Workers -->
+                        <Amount>40</Amount>
+                    </Item>
+                </Maintenances>
+            </Maintenance>
+            <Industrializable>
+                <BoostedByIndustrialization>1</BoostedByIndustrialization>
+            </Industrializable>
+        </Values>
+    </Asset>
+</ModOp><!-- END PRODUCTION - Citrus Tea -->
 ```
 
 WILL UPDATE THIS FURTHER, STAY TUNED!
