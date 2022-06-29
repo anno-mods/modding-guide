@@ -57,6 +57,10 @@ When modding having an overview or snippets of common used tags and code can sav
 ```
 
 ```XML
+<ModOp Type="remove">
+```
+
+```XML
 <ModOp Type="addNextSibling">
 ```
 
@@ -71,10 +75,23 @@ When modding having an overview or snippets of common used tags and code can sav
 ## Item templates
 
 - GuildhouseItem
+- GuildhouseBuff
 - TownhallItem
-- HarborOfficeItem ????
+- TownhallBuff
+- HarborOfficeItem
+- HarbourOfficeBuff
 - VehicleItem
+- VehicleBuff
+- ShipSpecialist
 - CultureItem
+- CultureBuff
+- CultureSet
+- FestivalBuff
+- ...
+
+```XML
+<Template>GuildhouseItem</Template>
+```
 
 ## Item main proporties
 
@@ -584,3 +601,300 @@ Used in Eden Burning scenario.
 - 140044 - asset pool light bulb
 - 140052 - asset pool steam motor
 - ...
+
+## Creating new building
+
+### Building
+
+This part contains a couple of different parts.
+
+#### BuildModeRandomRotation
+
+```XML
+<BuildModeRandomRotation>90</BuildModeRandomRotation>
+```
+
+Define how many degrees you can rotate the building when placing the building.
+
+- 90
+- 180
+
+##### BuildingType
+
+```XML
+<BuildingType>Residence</BuildingType>
+```
+
+The type of building can be:
+
+- Residence
+- Logistic (Warehouse)
+- Warehouse (Trading Post)
+- BuildingModule (Silo, Tractor)
+- Factory (Hacienda alternative production factories)
+- Other (Campaign and scenario specific buildings)
+
+#### AssociatedRegions
+
+```XML
+<AssociatedRegions>Moderate</AssociatedRegions>
+```
+
+Defines in which region we can build this building.
+
+Regions:
+
+- Moderate
+- Colony01
+- Arctic
+- Africa
+
+##### BuildingCategoryName
+
+```XML
+<BuildingCategoryName>100000</BuildingCategoryName>
+```
+
+The category of the building can be:
+
+- 100000 (Production)
+- 11175 (Livestock Area)
+- 100003 (Public Service)
+- 2498 (Exhibition Space)
+- 11169 (Electricity)
+- 11149 (Ornament)
+- 11150 (Harbour)
+- 11151 (Infrastructure)
+- 11152 (Administration) - Example: Guild House/Town Hall
+- 11154 (Railway)
+- 269841 (Tractor)
+- 19227 (Wooden Ruins)
+- 19233 (Stone Ruins)
+- 19158 (Sells tickets for long voyages)
+- 116953 (Abandoned Tents)
+- 269960 (Agricultural Improvement)
+- 134142 (Food & Drink Venue)
+- 132773 (Multifactory)
+- 134987 (Tourist Lodgings)
+- 0 (ScenarioRuinEco)
+
+##### TerrainType
+
+```XML
+<TerrainType>Water_Including_Coast</TerrainType>
+```
+
+Defines **special terraintypes** where the building can be placed. This can be:
+
+- Water_Including_Coast
+- Water_Excluding_Coast
+- Coast
+- Terrain (used in special cases)
+
+##### SecondPartyRelevant
+
+```XML
+<SecondPartyRelevant>0</SecondPartyRelevant>
+```
+
+Disable a building for AI. This building will not be available for them.
+
+##### Movable
+
+```XML
+<Movable>0</Movable>
+```
+
+Make it impossible to move the building/asset. Set to 0.
+
+##### AllowChangeDirection
+
+```XML
+<AllowChangeDirection>0</AllowChangeDirection>
+```
+
+Disable changing direction. Set to 0.
+
+##### AlternativeGrassColorAvailable
+
+```XML
+<AlternativeGrassColorAvailable>1</AlternativeGrassColorAvailable>
+```
+
+Make alternative grass available for the building. Set to 1.
+
+### Blocking
+
+This is used for example for coastal buildings. To block tiles that are reachable by quay/street.
+
+```XML
+<Blocking>
+    <GroundDecalAsset>100446</GroundDecalAsset> <!-- Quay street -->
+    <GroundDecalInvisible>101008</GroundDecalInvisible> <!-- Quay street -->
+    <GroundDecalAssetExtra>100691</GroundDecalAssetExtra> <!-- Quay street -->
+    <HasBuildingBaseTiles>1</HasBuildingBaseTiles>
+</Blocking>
+```
+
+### Cost
+
+Every building has a building cost. Depending on what you need you can add the different building materials.
+
+```XML
+<Cost>
+    <Costs>
+        <Item>
+            <Ingredient>1010017</Ingredient> <!-- Coins -->
+            <Amount>4000</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010196</Ingredient> <!-- Timber -->
+            <Amount>40</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010205</Ingredient> <!-- Bricks -->
+            <Amount>35</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010218</Ingredient> <!-- Steal Beams -->
+            <Amount>25</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010207</Ingredient> <!-- Windows -->
+            <Amount>15</Amount>
+        </Item>
+        <Item>
+            <Ingredient>1010202</Ingredient> <!-- Reinforced concrete -->
+            <Amount>5</Amount>
+        </Item>
+    </Costs>
+</Cost>
+```
+
+### Object
+
+Within the object we can define the model of the building we are creating.
+
+We can add multiple variations for the building.
+
+```XML
+<Object>
+    <Variations>
+        <Item>
+            <Filename>data/dlc05/graphics/buildings/ornamental/industrial/industrial_props_system_wall02_1x1_straight_01.cfg</Filename>
+        </Item>
+        <Item>
+            <Filename>data/dlc05/graphics/buildings/ornamental/industrial/industrial_props_system_wall02_1x1_end_01.cfg</Filename>
+        </Item>
+        <Item>
+            <Filename>data/dlc05/graphics/buildings/ornamental/industrial/industrial_props_system_wall02_1x1_corner_01.cfg</Filename>
+        </Item>
+        <Item>
+            <Filename>data/dlc05/graphics/buildings/ornamental/industrial/industrial_props_system_wall02_1x1_cross_01.cfg</Filename>
+        </Item>
+        <Item>
+            <Filename>data/dlc05/graphics/buildings/ornamental/industrial/industrial_props_system_wall02_1x1_tee_01.cfg</Filename>
+        </Item>
+    </Variations>
+</Object>
+```
+
+#### Selection
+
+##### ParticipantMessageArcheType
+
+- [NONE]
+- Resident_tier01 - Farmers
+- Resident_tier02 - Workers
+- Resident_tier03 - Artisan
+- Resident_tier04 - Engineers
+- Resident_tier05 - Investors
+- Resident_tier01_atWork - Farmers
+- Resident_tier02_atWork - Workers
+- Resident_tier03_atWork - Artisan
+- Resident_tier04_atWork - Engineers
+- Resident_tier04_atWork - Investors
+- SA_Resident_tier01 - Jornaleros
+- SA_Resident_tier02 - Obreros
+- SA_Resident_tier01_atWork - Jornaleros
+- SA_Resident_tier02_atWork - Obreros
+- Arctic_Resident_tier01 - Explorers
+- Arctic_Resident_tier02 - Technicians
+- Arctic_Resident_tier01_atWork - Explorers
+- Arctic_Resident_tier02_atWork - Technicians
+- Africa_Resident_tier01 - Shepherds
+- Africa_Resident_tier02 - Elders
+- Africa_Resident_tier03 - Scholars
+- Resident_Tourist
+- Campaign_character_01_demolition_expert
+- Void_Trader
+- Third_party_05_Sarmento
+- GGJ_Yaosca
+
+```XML
+<Selection>
+    <ParticipantMessageArcheType>Resident_tier02_atWork</ParticipantMessageArcheType>
+</Selection>
+```
+
+#### SoundEmitter
+
+This will define which sounds will be played when clicking the building or zoom in to the building.
+
+```XML
+<SoundEmitter>
+    <ActiveSounds>
+        <Item>
+            <Sound>270300</Sound> <!-- Tea Spicer sounds -->
+        </Item>
+        <Item>
+            <Sound>270266</Sound> <!-- Tea Spicer sounds -->
+        </Item>
+    </ActiveSounds>
+</SoundEmitter>
+```
+
+#### Maintenance
+
+Every building has an upkeep in most cases coins and workforce.
+
+##### Workforce
+
+- 1010052 - Farmer Workforce
+- 1010115 - Worker Workforce
+- 1010116 - Artisan Workforce
+- 1010117 - Engineer Workforce
+- 1010128 - Investor Workforce
+- 1010366 - Jornalero Workforce
+- 1010367 - Obrero Workforce
+- 112653 - Explorer Workforce
+- 112654 - Technician Workforce
+- 114340 - Shepherd Workforce
+- 114341 - Elder Workforce
+- 124478 - Scholar Workforce
+
+```XML
+<Maintenance>
+    <Maintenances>
+        <Item>
+            <Product>1010017</Product> <!-- Amount of coins upkeep -->
+            <Amount>150</Amount>
+            <InactiveAmount>50</InactiveAmount>
+        </Item>
+        <Item>
+            <Product>1010115</Product> <!-- Amount of Workforce - Workers -->
+            <Amount>40</Amount>
+        </Item>
+    </Maintenances>
+</Maintenance>
+```
+
+#### Industrializable
+
+We can electrify a building to get a productionboost of 100%. We set the value to 1.
+
+```XML
+<Industrializable>
+    <BoostedByIndustrialization>1</BoostedByIndustrialization>
+</Industrializable>
+```
