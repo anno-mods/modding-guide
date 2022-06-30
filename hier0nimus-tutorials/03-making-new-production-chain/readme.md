@@ -1111,7 +1111,7 @@ Every building has an upkeep in most cases coins and workforce.
 ```
 
 We choose **150 coins** as upkeep costs. When the building is set to pause it still costs 50 coins upkeep.
-We match our workforce with the choosen ParticipantMessageArcheType, in our case **30 Worker workforce**.
+We match our workforce with the choosen ParticipantMessageArcheType, in our case **40 Worker workforce**.
 
 #### Industrializable
 
@@ -1233,6 +1233,111 @@ We are now done with our building. This part of the code should look like this:
         </Values>
     </Asset>
 </ModOp><!-- END PRODUCTION - Citrus Tea -->
+```
+
+## ItemEffectTargetPool
+
+We now have our building ready to use. In the game we have items that can boost buildings. But to be able to boost those buildings we need to add those buildings to a certain pool.
+
+For example in our current situation, we have a building that produces tea, this is a drink. There are more then 130 different pools we can use and add our building to. Go to the main assets.xml and search for **&lt;Template>ItemEffectTargetPool&lt;/Template>**. Go through all those ItemEffectTargetPools and look at the ones we need.
+
+- 6000018 - all production
+- 193856 - all production except powerplant
+- 193875 - all production boosted by electricity
+- 193778 - all drinks production
+- 190897 - all food productions
+
+We choose the add type, and add those to the right GUID's and the correct path within the pool.
+
+```XML
+<!-- START ADD BUILDING TO ALL ITEMEFFECTTARGETPOOLS  -->
+<ModOp Type="add" GUID='6000018,193856,193875,193778,190897' Path="/Values/ItemEffectTargetPool/EffectTargetGUIDs">
+    <Item>
+        <GUID>1742008809</GUID> <!-- BUILDING - Citrus Tea Dryer  -->
+    </Item>
+</ModOp><!-- END ADD BUILDING TO ALL ITEMEFFECTTARGETPOOLS -->
+```
+
+## Productionchain
+
+### Create productionchain
+
+When we want to build our new building that produces our new good, we go to the building menu and we can see the production chain of to produce that good. In our case the good Citrus Tea, and the chain where we want the citrus orchard with an arrow to the new building, the Citrus Tea Dryer.
+
+To do this we need to tell the game to create that productionchain. We will be creating a **&lt;Template>ProductionChain&lt;/Template>**. Search for this template to see an example. We will add our new productionchain as a next sibling right after the first productionchain (500091).
+
+```XML
+<!-- START PRODUCTION CHAIN - Citrus Tea -->
+<ModOp Type="addNextSibling" GUID='500091'>
+    <Asset>
+        <Template>ProductionChain</Template>
+        <Values>
+            <Standard>
+                <GUID>1742008807</GUID> <!-- CHAIN - Citrus Tea  -->
+                <Name>Citrus Tea</Name>
+                <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+                <InfoDescription>1742008808</InfoDescription>
+            </Standard>
+            <ProductionChain>
+                <Building>1742008809</Building> <!-- BUILDING - Citrus Tea Dryer  -->
+                <Tier1>
+                    <Item>
+                        <Building>133031</Building> <!-- BUILDING - Orchard: Citrus Fruit -->
+                    </Item>
+                </Tier1>
+            </ProductionChain>
+            <Locked />
+            <Text>
+                <LocaText>
+                    <English>
+                        <Text>Citrus Tea Dryer</Text>
+                        <Status>Exported</Status>
+                        <ExportCount>2</ExportCount>
+                    </English>
+                </LocaText>
+            </Text>
+        </Values>
+    </Asset>
+</ModOp><!-- END PRODUCTION CHAIN - Citrus Tea -->
+```
+
+The new part in this template is the **&lt;ProductionChain>** part. This contains the different buildings, starting with the final building that produces our final good.
+
+We then go 1 tier deeper to our orchard building. We use the correct GUID's as a reference.
+
+### Add to building menu
+
+Now that we have our productionchain, we need to add this chain to our buildingmenu. Otherwise the game will not show it and you will not be able to build the building.
+
+There are different buildingmenus. Search for **&lt;Template>ConstructionCategory</Template>** to find all the different constructioncategories.
+
+The 2 big categories are the one where the buildings are grouped based on the citizen tier, and the other one is the one where it is grouped based on the function. They are also grouped per session type.
+
+We will be using:
+
+- 25000192 - moderate construction menu 4 (tier) > Engineers
+- 500945 - moderate construction menu needs (category)
+
+We add the chain as a next sibling to both **ConstructionCategories** at the right path.
+
+We do add something new here that we did not see before. We want to add this chain in the buildingmenu at a specific point. For example, after of before another chain instead of at the end. We use for example **[Building='500902']** for this at the end of the path. We declare the GUID of another chain, and our new chain will be added as the next sibling of this chain. To know where you can add it you can go ingame and see the different positions in the buildingmenu and look up the chain with the GUID search from https://schwubbe.de/modding_blog.php#beitrag15, or you can go and look in the assets.xml to find the position in the corresponding ConstructionCategory and search with https://schwubbe.de/modding_blog.php#beitrag15 for some of the GUID you can see there to know which position you want.
+
+We will put it after **500902 (Coffee)** for both construction categories.
+
+```XML
+<!-- START ADD CHAIN TO BUILDING MENU ConstructionCategory - Engineers / moderate construction menu 4 (tier) (25000192) -->
+<ModOp Type="addNextSibling" GUID='25000192' Path="/Values/ConstructionCategory/BuildingList/Item[Building='500902']">
+    <Item>
+        <Building>1742008807</Building> <!-- CHAIN - Citrus Tea  -->
+    </Item>
+</ModOp><!-- END ADD CHAIN TO BUILDING MENU -->
+
+<!-- START ADD CHAIN TO BUILDING MENU ConstructionCategory - Consumables / moderate construction menu needs (category) (500945) -->
+<ModOp Type="addNextSibling" GUID='500945' Path="/Values/ConstructionCategory/BuildingList/Item[Building='500902']">
+    <Item>
+        <Building>1742008807</Building> <!-- CHAIN - Citrus Tea  -->
+    </Item>
+</ModOp><!-- END ADD CHAIN TO BUILDING MENU CATEGORY -->
 ```
 
 WILL UPDATE THIS FURTHER, STAY TUNED!
