@@ -8,12 +8,14 @@ We are going to use an already existing good (**citrus**) to create a new good (
 
 We will be creating:
 
-- Product (Citrus Tea)
-- Production chain (Citrus Tea production chain)
-- Citizen needs (Citrus Tea as a Luxury Need for Engineers and Investors)
-- Building texture. No 3D-modelling yet, just the texture.
 - Icons
 - Specialist
+- Product (Citrus Tea)
+- Production chain (Citrus Tea production chain)
+- Building that produces our good
+- Citizen needs (Citrus Tea as a Luxury Need for Engineers and Investors)
+- Triggers to activate everthing ingame
+- Building texture. No 3D-modelling yet, just the texture.
 
 This can be a big step because it has a lot of small steps we need to take. But do not worry, we are going to do this step by step.
 
@@ -150,7 +152,7 @@ Let's also give him a **reduction for the workforce of 30%** (BuildingUpgrade).
         <Standard>
           <GUID>1742008803</GUID> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
           <Name>Tony Lipus, Citrus tea smasher</Name>
-          <IconFilename>data/modgraphics/icons/icon_tony_lipus_v2.png</IconFilename>
+          <IconFilename>data/graphics/icons/icon_tony_lipus.png</IconFilename>
           <InfoDescription>1742008804</InfoDescription>
         </Standard>
         <Text>
@@ -243,7 +245,7 @@ Adding the specialist to some rewardpools should not be that hard anymore. Pick 
   <!-- END ADD TO REWARDPOOL - Tony Lipus, Citrus tea smasher -->
 ```
 
-### Add to trigger
+### Add specialist to trigger
 
 We will already create our main triggers that we will use for the other assets of this mod.
 
@@ -282,7 +284,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
                     <UnhideAssets>
                       <Item>
                         <Asset>1742000200</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
-                      </Item>
                       </Item>
                     </UnhideAssets>
                   </ActionUnlockAsset>
@@ -326,7 +327,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
                     <UnlockAssets>
                       <Item>
                         <Asset>1742000200</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
-                      </Item>
                       </Item>
                     </UnlockAssets>
                   </ActionUnlockAsset>
@@ -375,7 +375,7 @@ We add the GUID, name, icon and GUID of the description.
         <Standard>
           <GUID>1742008805</GUID>
           <Name>Citrus Tea</Name>
-          <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+          <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
           <InfoDescription>1742008806</InfoDescription>
         </Standard>
       </Values>
@@ -395,7 +395,7 @@ Then we add the fallback text.
         <Standard>
           <GUID>1742008805</GUID>
           <Name>Citrus Tea</Name>
-          <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+          <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
           <InfoDescription>1742008806</InfoDescription>
         </Standard>
         <Text>
@@ -568,7 +568,7 @@ If we combine all this we get:
         <Standard>
           <GUID>1742008805</GUID>
           <Name>Citrus Tea</Name>
-          <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+          <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
           <InfoDescription>1742008806</InfoDescription>
         </Standard>
         <Text>
@@ -806,7 +806,7 @@ Not used anymore:
 Which ones are we going to use? Well, let's go through the whole list.
 Important to know is that the order we put the good into the list is important. If we would just use Typ="add" it will be added at the end of the list. If we want to add it immediatly after a certain good we use **Type="addNextSibling"** or the one before an item **Type="addPrevSibling"**.
 
-Our good Citrus Tea is a luxury consumer good available for Engineers and Investors. It is produced by Workers in the Old World. It is an Old World session good. We will make it availble for selling in Docklands by one of the sellers (Old Levant & Co.).
+Our good Citrus Tea is a luxury good available for Engineers and Investors. It is produced by Workers in the Old World. It is an Old World session good. We will make it availble for selling in Docklands by one of the sellers (Old Levant & Co.).
 
 So we are using:
 
@@ -878,7 +878,7 @@ This part should not have any secrets anymore for us. We can easily fill this in
 <Standard>
     <GUID>1742008809</GUID>
     <Name>Citrus Tea Dryer</Name>
-    <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+    <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
     <InfoDescription>1742008810</InfoDescription>
 </Standard>
 ```
@@ -954,17 +954,17 @@ For our **Citrus Tea Dryer** building, we need to have **4000 coins, 25 timer, 1
 
 #### Object
 
-Within the object we can define the model of the building we are creating.
+Within the object we can define the model of the building we are creating. For now let's just use the link to a model we will be creating later in this tutorial. We link to a **.cfg file**. This is a file that references to model, the textures, ect. But more about that later in this tutorial.
 
 We can add multiple variations for the building.
 
 ```XML
 <Object>
-  <Variations>
-    <Item>
-      <Filename>data/dlc08/graphics/buildings/production/tree_planter/tree_planter_citrus.cfg</Filename>
-    </Item>
-  </Variations>
+    <Variations>
+        <Item>
+            <Filename>data/graphics/buildings/production/production_citrus_tea/production_citrus_tea.cfg</Filename>
+        </Item>
+    </Variations>
 </Object>
 ```
 
@@ -1134,7 +1134,7 @@ We are now done with our building. This part of the code should look like this:
             <Standard>
                 <GUID>1742008809</GUID>
                 <Name>Citrus Tea Dryer</Name>
-                <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+                <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
                 <InfoDescription>1742008810</InfoDescription>
             </Standard>
             <Building>
@@ -1168,11 +1168,11 @@ We are now done with our building. This part of the code should look like this:
                 </Costs>
             </Cost>
             <Object>
-                <Variations>
-                    <Item>
-                        <Filename>data/dlc08/graphics/buildings/production/tree_planter/tree_planter_citrus.cfg</Filename>
-                    </Item>
-                </Variations>
+              <Variations>
+                <Item>
+                  <Filename>data/graphics/buildings/production/production_citrus_tea/production_citrus_tea.cfg</Filename>
+                </Item>
+              </Variations>
             </Object>
             <Selection>
                 <ParticipantMessageArcheType>Resident_tier02_atWork</ParticipantMessageArcheType>
@@ -1275,7 +1275,7 @@ To do this we need to tell the game to create that productionchain. We will be c
             <Standard>
                 <GUID>1742008807</GUID> <!-- CHAIN - Citrus Tea  -->
                 <Name>Citrus Tea</Name>
-                <IconFilename>data/modgraphics/icons/citrus-tea.png</IconFilename>
+                <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
                 <InfoDescription>1742008808</InfoDescription>
             </Standard>
             <ProductionChain>
@@ -1339,5 +1339,212 @@ We will put it after **500902 (Coffee)** for both construction categories.
     </Item>
 </ModOp><!-- END ADD CHAIN TO BUILDING MENU CATEGORY -->
 ```
+
+## Add consumption
+
+We created our new good, created the building that produces the good but still need to link this new good to our actual population we want to consume the good. The Citrus Tea will be a **luxury good for Engineers and Investors**.
+
+Every citizen tier has a list of goods they consume or need. This list can be found in the **&lt;Template>PopulationLevel7&lt;/Template>** for the specific citizen tier.
+
+Go to the main assets.xml and search for **&lt;Template>PopulationLevel7&lt;/Template>**. You will find 13 population tiers at the moment. Let's go to **Moderate Population 4**, this is the Engineers.
+
+If we go down the structure we see **&lt;PopulationLevel7>** followed by **&lt;PopulationInputs>**. We then have a list of **&lt;Item>** nodes. All those &lt;Item> nodes are inputs the ingineers require. For example, the first we see is GUID **1010217**, which is Canned food.
+
+```XML
+<PopulationLevel7>
+  <PopulationInputs>
+    <Item>
+      <Product>1010217</Product>
+      <Amount>0.00034188</Amount>
+      <SupplyWeight>12</SupplyWeight>
+      <MoneyValue>40</MoneyValue>
+    </Item>
+    ...
+  </PopulationInputs>
+</PopulationLevel7>
+```
+
+Apart from the GUID for the required good, we see some other things depending on the good. For some of the goods we see a **Amount**, **SupplyWeight**, **MoneyValue**, **HappinessValue**, **FullWeightPopulationCount** or **NoWeightPopulationCount**.
+
+### Amount
+
+This wil determine the amount that will be consumed by this population tier. Be aware of balancing this value. This value seems really weird and is not that easy to understand.
+
+#### Example for Coffee for Engineers:
+
+The value we see there is **0.000784314**. This is the amount what **1 resident consumes every second**. So, to know how much 1 residence (so 1 building of that citizen) consumes every minute we need to multiply that amount by 60 and then by the amount of max residents a residence can house.
+
+0.000784314 _ 60 _ 40 = 1,8823536 ton/min
+
+#### Example for Penny Farthings:
+
+0.000416667 _ 60 _ 40 = 1 ton/min
+
+### SupplyWeight
+
+This defines how many residents that good or service if being fully supplied attracts to the residence. This is used for basic needs. For example if SupplyWeight is set to 20, when fully supplied the good er service, 20 extra residents will be added to that residence.
+
+### MoneyValue
+
+This defines the amount of money you will get by providing this good or service to this citizen tier. The amount is divided by 10. So if you want 10 extra coins you use 100.
+
+### HappinessValue
+
+Same as for the MoneyValue, but for happiness. Basic needs provide money and add extra citizen. Luxury goods mostly give money and happiness. This HappinessValue is a flat amount.
+
+### FullWeightPopulationCount
+
+**FullWeightPopulationCount** defines the max population for which you could get a penalty for happiness for not fullfulling this luxury need.
+
+### NoWeightPopulationCount
+
+**NoWeightPopulationCount** defines at which citizen level we unlock this good or service and it will start have an impact on this citizen tier.
+
+So, let's see what we want now for our 2 citizen tiers. We will be adding extra goods to the alreay existing **PopulationInputs**. We look at the structure of the citizen tier for the path where we have to add our new good.
+
+Then we decide the values for amount, happiness and money. We do not take the other into account for now.
+
+```XML
+  <!-- START ADD TO CONSUMED GOODS - Engineers -->
+  <ModOp Type="add" GUID='15000003' Path="/Values/PopulationLevel7/PopulationInputs">
+    <Item>
+      <Product>1742000202</Product> <!-- GOOD - Citrus Tea -->
+      <Amount>0.000130719</Amount>
+      <HappinessValue>3</HappinessValue>
+      <MoneyValue>80</MoneyValue>
+    </Item>
+  </ModOp>
+  <!-- END ADD TO CONSUMED GOODS - Engineers -->
+
+  <!-- START ADD TO CONSUMED GOODS - Investors -->
+  <ModOp Type="add" GUID='15000004' Path="/Values/PopulationLevel7/PopulationInputs">
+    <Item>
+      <Product>1742000202</Product> <!-- GOOD - Citrus Tea -->
+      <Amount>0.000261438</Amount>
+      <HappinessValue>5</HappinessValue>
+      <MoneyValue>120</MoneyValue>
+    </Item>
+  </ModOp>
+  <!-- END ADD TO CONSUMED GOODS - Investors -->
+```
+
+### Add other things to triggers
+
+We already added our specialist to the trigger, but we still need to add the other things to the triggers so they are unlocked ingame.
+
+- 1742000202 - Citrus Tea (Good)
+- 1742000204 - Citrus Tea (Chain)
+- 1742000206 - Citrus Tea Dryer (Building)
+
+```XML
+  <!-- START TRIGGER -->
+  <ModOp Type="addnextSibling" GUID="130248">
+    <!--UNHIDE - 750 Tourists -->
+    <Asset>
+      <Template>Trigger</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008811</GUID>
+          <Name>MOD Trigger</Name>
+        </Standard>
+        <Trigger>
+          <TriggerCondition>
+            <Template>ConditionPlayerCounter</Template>
+            <Values>
+              <Condition />
+              <ConditionPlayerCounter>
+                <PlayerCounter>PopulationByLevel</PlayerCounter>
+                <Context>601379</Context> <!-- Tourists -->
+                <CounterAmount>750</CounterAmount>
+              </ConditionPlayerCounter>
+            </Values>
+          </TriggerCondition>
+          <TriggerActions>
+            <Item>
+              <TriggerAction>
+                <Template>ActionUnlockAsset</Template>
+                <Values>
+                  <Action />
+                  <ActionUnlockAsset>
+                    <UnhideAssets>
+                      <Item>
+                        <Asset>1742000200</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+                      </Item>
+                      <Item>
+                        <Asset>1742000202</Asset> <!-- GOOD - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742000204</Asset> <!-- CHAIN - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742000206</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
+                      </Item>
+                    </UnhideAssets>
+                  </ActionUnlockAsset>
+                </Values>
+              </TriggerAction>
+            </Item>
+          </TriggerActions>
+        </Trigger>
+        <TriggerSetup />
+      </Values>
+    </Asset>
+  </ModOp>
+  <ModOp Type="addnextSibling" GUID="130248">
+    <!--UNLOCK - 1250 Tourists -->
+    <Asset>
+      <Template>Trigger</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008812</GUID>
+          <Name>MOD Trigger</Name>
+        </Standard>
+        <Trigger>
+          <TriggerCondition>
+            <Template>ConditionPlayerCounter</Template>
+            <Values>
+              <Condition />
+              <ConditionPlayerCounter>
+                <PlayerCounter>PopulationByLevel</PlayerCounter>
+                <Context>601379</Context> <!-- Tourists -->
+                <CounterAmount>1250</CounterAmount>
+              </ConditionPlayerCounter>
+            </Values>
+          </TriggerCondition>
+          <TriggerActions>
+            <Item>
+              <TriggerAction>
+                <Template>ActionUnlockAsset</Template>
+                <Values>
+                  <Action />
+                  <ActionUnlockAsset>
+                    <UnlockAssets>
+                      <Item>
+                        <Asset>1742000200</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+                      </Item>
+                      <Item>
+                        <Asset>1742000202</Asset> <!-- GOOD - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742000204</Asset> <!-- CHAIN - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742000206</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
+                      </Item>
+                    </UnlockAssets>
+                  </ActionUnlockAsset>
+                </Values>
+              </TriggerAction>
+            </Item>
+          </TriggerActions>
+        </Trigger>
+        <TriggerSetup />
+      </Values>
+    </Asset>
+  </ModOp>
+  <!-- END TRIGGER -->
+```
+
+### The creation of the building
 
 WILL UPDATE THIS FURTHER, STAY TUNED!
