@@ -58,6 +58,11 @@ If we look at what is already available in the game we have the Hibiscus Tea and
 
 For the Citrus icon we go to data18.rda/data/ui/2kimages/main/3dicons/icon_citrus_0.dds and convert the dds to a png.
 
+To convert the dds file we can use different tools:
+
+- https://www.xnview.com/
+- https://www.aconvert.com/image/dds-to-png/
+
 For the Hibiscus Tea icon we go to data16.rda/data/ui/2kimages/main/3dicons/goods_africa/icon_hibiscus_tea_0.dds and convert the dds to a png.
 
 ![icon_citrus_0.png](./_sources/icon_citrus_0.png)
@@ -1374,11 +1379,11 @@ This wil determine the amount that will be consumed by this population tier. Be 
 
 The value we see there is **0.000784314**. This is the amount what **1 resident consumes every second**. So, to know how much 1 residence (so 1 building of that citizen) consumes every minute we need to multiply that amount by 60 and then by the amount of max residents a residence can house.
 
-0.000784314 _ 60 _ 40 = 1,8823536 ton/min
+0.000784314 x 60 x 40 = 1,8823536 ton/min
 
-#### Example for Penny Farthings:
+#### Example for Penny Farthings Investors:
 
-0.000416667 _ 60 _ 40 = 1 ton/min
+0.000833333 x 60 x 50 = 2,499999 ton/min
 
 ### SupplyWeight
 
@@ -1546,5 +1551,61 @@ We already added our specialist to the trigger, but we still need to add the oth
 ```
 
 ### The creation of the building
+
+The last step we need to take is the creation of the building for our Citrus Tea Dryer. For this tutorial we are not going to create a new building, but change some textures of and existing building.
+
+We can have a look at some of the original buildings we will change. I looked ingame and the Artisanal Kitchen, Champagne Cellar or the Advanced Coffee Roaster are all good choices with some nice changes.
+
+![citrus_tea_dryer_building_choices.jpg](./_sources/citrus_tea_dryer_building_choices.jpg)
+
+We will be using the Artisanal Kitchen.
+
+#### Where to find the original building
+
+First of all we need the original files for the Artisanal Kitchen. To find those files we need some thinking.
+
+The Artisanal Kitchen is released in the original game, so we can find this building inside the data8.rda. But even then it could be a lot of opening folders before we finally would find it.
+
+An easier way would be to find the path to this building immediatly. Let's use our beloved website to find a GUID again. Go to https://schwubbe.de/modding_blog.php#beitrag15 and search for **"Artisanal Kitchen"**. We find the GUID **1010293**.
+
+Dive into the main assets.xml and search for **&lt;GUID>1010293&lt;/GUID>**. You will find a &lt;Template>FactoryBuilding7&lt;/Template> for this corresponding GUID. This is the place where we can find the original building and location.
+
+Scroll down untill you encounter the **&lt;Object>** part.
+
+```XML
+<Object>
+    <Variations>
+        <Item>
+          <Filename>data/graphics/buildings/production/food_03/food_03.cfg</Filename>
+        </Item>
+    </Variations>
+</Object>
+```
+
+We can see the path to a .cfg file, this is the one we need.
+
+#### Copy the original building folder and rename
+
+Now go to the extracted data8.rda folder and follow the path to find this specific cfg file. We actually need the complete folder data/graphics/buildings/production/**food_03**. Copy this folder to your location of this mod with the correct folder structure like you created and rename **food_03** to **production_citrus_tea**.
+
+![citrus_tea_dryer_building_location.jpg](./_sources/citrus_tea_dryer_building_location.jpg)
+
+If we have a look what is inside this folder we can see some different folders and files.
+
+##### Maps
+
+In this folder we can find all the textures/maps of the building. The building is a 3D model and this modal has textures/maps wrapped around it to give it his looks. We will be changing those textures but we will be keeping the 3D model.
+
+The maps folder contains a lot of different textures/maps. For example the textures for the building itself, the texture for the ground underneath the building,...
+
+![citrus_tea_dryer_maps_original.jpg](./_sources/citrus_tea_dryer_maps_original.jpg)
+
+All those files are the .dds format, but have different functions.
+
+###### \_0, \_1, \_2
+
+We can see the same files with at the end a different number. The number represents different resolutions of the same file. Those files are used for optimization. The bigger files with more detailed textures are for when we are zoomed in. The smaller resolutions ane less detailed textures is for more zoomed out views. \_0 is the most detailed, \_2 is the smallest and so, less details.
+
+###### \_diff, \_metal, \_norm
 
 WILL UPDATE THIS FURTHER, STAY TUNED!

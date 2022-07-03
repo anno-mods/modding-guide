@@ -45,7 +45,14 @@ The location of the icons we are going to use is data2.rda/data/ui/2kimages/main
 
 ![icon_maria_lopez.png](./_sources/icon_maria_lopez.png)
 
-**Info:** See the previous tutorial (Tutorial 1 - My first mod) if you do not know how to open rda files and convert dds files to png.
+**Info:** See the previous tutorial (Tutorial 1 - My first mod) if you do not know how to open rda files.
+
+### Converting dds to png
+
+To convert the dds file we can use different tools:
+
+- https://www.xnview.com/
+- https://www.aconvert.com/image/dds-to-png/
 
 ## Changing the icon
 
