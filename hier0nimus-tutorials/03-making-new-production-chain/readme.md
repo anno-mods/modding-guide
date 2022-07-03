@@ -1592,9 +1592,32 @@ Now go to the extracted data8.rda folder and follow the path to find this specif
 
 If we have a look what is inside this folder we can see some different folders and files.
 
-##### Maps
+#### rdm
 
-In this folder we can find all the textures/maps of the building. The building is a 3D model and this modal has textures/maps wrapped around it to give it his looks. We will be changing those textures but we will be keeping the 3D model.
+The first folder we will have a look at is the **rdm** folder. This contains the models of our building.
+All those files are in the **.rdm format**. We can not open this format with a standard program. If you want to have a look at the model you can use a rdm converter to convert to a more accessible format like glTF. This format can be opened by a standard Windows program.
+
+- https://github.com/lukts30/rdm4
+
+For now we will just convert the food_03_lod0.**rdm** to food_03_lod0.**glb** so you can have a look at the building we will be using. Open this food_03_lod0.glb with **3D-viewer** which should be available out of the box on a windows computer.
+
+![artisanal_kitchen-basic_model.jpg](./_sources/artisanal_kitchen-basic_model.jpg)
+
+We can turn around the building in this viewer. If we look at this model we can see all the different parts of the building, but we do not see the details like the windows, or the ground, or the walls. That is because the model itself does not contain those details. The modal is the raw structure.
+
+##### 0, 1, 2
+
+We can see different versions of this model, with at the end a number. The number refers to a version of the building with more or less details. Every building is build out of polygons. The more polygons, the more details but the more resources it needs to be rendered by the game. It is finding the balance between a lot of polygons to get the most beautiful building and making sure the building does not keep a big pressure on the processing of the game. A solution for that is to have different versions of every building.
+
+If we are zoomed out, we are not able to see the details of the building because it is tiny. So no need to have all those details and there is no advantage of processing all those details. For that lower detailed buildings are used. If we are zoomed in, we do want to have all those details so we have a high quality/detailed version for when we are zoomed in and this puts a lot of pressure on the performance.
+
+**0** is the zoomed in version with a lot of details. **1** is the inbetween version and the **2** is the low version for zoomed out views. If you open the food_03_lod3 and put it next to the food_03_lod0 you will see a big difference in details.
+
+For this tutorial we are actually not going to change the model itself. So we can actually delete the rdm folder. But now you have some basic knowledge about the models used in the game.
+
+#### Maps
+
+In the maps folder we can find all the textures/maps of the building. The building is a 3D model and this modal has textures/maps wrapped around it to give it his looks and details. We will be changing those textures to give the building another look.
 
 The maps folder contains a lot of different textures/maps. For example the textures for the building itself, the texture for the ground underneath the building,...
 
@@ -1602,10 +1625,150 @@ The maps folder contains a lot of different textures/maps. For example the textu
 
 All those files are the .dds format, but have different functions.
 
-###### \_0, \_1, \_2
+##### 0, 1, 2
 
-We can see the same files with at the end a different number. The number represents different resolutions of the same file. Those files are used for optimization. The bigger files with more detailed textures are for when we are zoomed in. The smaller resolutions ane less detailed textures is for more zoomed out views. \_0 is the most detailed, \_2 is the smallest and so, less details.
+We can see the same files with at the end a different number. The number represents different resolutions of the same file. Those files are used for optimization. The bigger files with more detailed textures are for when we are zoomed in. The smaller resolutions and less detailed textures is for more zoomed out views. **0** is the most detailed, **2** is the smallest and so, less details.
 
-###### \_diff, \_metal, \_norm
+##### diff, metal, norm, mask
+
+The way maps are wrapped around a building to give the building his look and feel is complex. I still do not completely understand everything but based on help of other people and what they told me I'll try to explain this as good as possible. There are different layers of maps with their own function.
+
+The first map we have is the **diff** version. This is the **diffuse map**. The diffuse map is basically the color texture of an object. It gives the model his look and feel. It is sometimes referred to as albedo or lambertian diffuse.
+
+Example of the one for the Artisanal kitchen that we will be changing:
+![food_03_diff_0.png](./_sources/food_03_diff_0.png)
+
+You can see all the different parts of the building stiched together. The rood, the walls, the sign, doors and windows. You can see this as a really big wrap of paper that is being glued on the model itself, piece by piece.
+
+Every piece has coordinates, so if we want to reuse a piece multiple times to wrap on multiple places on our model we can just reuse that piece of the map and wrap it on multiple places on the model.
+
+The next map we have is the **metal** version. This is short for **metallic map**.
+
+Example of the one for the Artisanal kitchen that we will be changing:
+![food_03_metal_0.png](./_sources/food_03_metal_0.png)
+
+If we compare this with our diffuse map we can see that they are actually alike, but with huge differences. The diffuse map uses a lot of color, but the metallic map only uses black or white with the possibility to be transparent.
+
+The way this map works is for highlighting shadows on our building. The diffuse map is a flat image. This does create some feeling of texture and 3d, but it still has a flat feeling. With the metallic map we tell the light that falls onto the map to bounce or be absorbed. Based on that we can create shadows that help giving a more 3d feeling on the building.
+
+Then we have the **norm** version. This is short for **normal map**.
+
+Example of the one for the Artisanal kitchen that we will be changing:
+![food_03_norm_0.png](./_sources/food_03_norm_0.png)
+
+This has a really weird color. The normal map reflects the smoothness or gloss of the map to give it some more realistic look.
+
+A last map is the **mask** version. This map doesn ot look like it has a lot to offer. Not every building has this map.
+
+Example of the farmers residence:
+![residence_colony01_tier01_01_mask_0.png](./_sources/residence_colony01_tier01_01_mask_0.png)
+
+It is basicly a map with black. white and then red, blue or green highlighted parts. This map has an impact on the day-night cycle. It highlights parts at night or during other periods of the day to be dark or highlighted.
+
+#### .bfg, .cfg, .fc, .ifo
+
+Now that we have covered all the type of maps, we can get further into the rest of the files inside our building folder. And after that we will be performing the last steps in our new prduction chain mod and we will be creating our own look and feel for the building.
+
+##### .bfg
+
+Contains a lot of code that we will never have to adapt manually. If we reuse a building, we can just reuse this file. If we will create our own buildings in the future with 3D software like Blender, this will will be generated for us.
+
+##### .cfg
+
+This is the most important file for us at the moment in this tutorial. We will be diving deeper into this file in a moment. This file contains all the references to the model, the maps, extra assets that are placed into the model like lights or wooden boxes. All those references are based on a link to the original files.
+
+##### .fc
+
+This files contains all our animations and visual feedback. For exmaple shovelers or working people doing things around the model. This file can be manually adapted but for now we will nog do anything to it. Later we will see to generate this file based on an interface.
+
+##### .ifo
+
+This file contains regions in our model that are blocked or with specific functions. For this tutorial we will not be adapting this. Later this file will be generated.
+
+#### Renaming and cleanup all files
+
+We have all the files we need but we need to rename some things to make everything more clear.
+
+In our building asset we put the link to our .cfg file of our building.
+
+```XML
+<Object>
+    <Variations>
+        <Item>
+            <Filename>data/graphics/buildings/production/production_citrus_tea/production_citrus_tea.cfg</Filename>
+        </Item>
+    </Variations>
+</Object>
+```
+
+Double check the path, and then rename the .cfg file from **food_03.cfg** to **production_citrus_tea.cfg**.
+Do the same for the .bfg, .ifo amd .fc file.
+
+#### Changing the .cfg file
+
+Now let's open the **production_citrus_tea.cfg** file. This file contains a lot, but the code is actually not that hard to understand.
+
+We see a lot of paths to files together with coordinates or other number references. Scroll through the file and try to understand step by step what you encounter.
+
+You will see different paths to metal, diff, norm files. Those are all to the original folder of the Artisanal Kitchen and the original maps.
+
+Examples:
+
+```XML
+...
+<cModelMetallicTex>data/graphics/buildings/production/food_03/maps/food_03_metal.psd</cModelMetallicTex>
+...
+<cSeparateAOTex>data/graphics/effects/default_model_mask.png</cSeparateAOTex>
+...
+<cModelDiffTex>data/graphics/buildings/production/food_03/maps/food_03_diff.psd</cModelDiffTex>
+...
+<cModelNormalTex>data/graphics/buildings/production/food_03/maps/food_03_norm.psd</cModelNormalTex>
+...
+```
+
+We also have the link to the original model, the .rdm file.
+
+```XML
+...
+<FileName>data\graphics\buildings\production\food_03\rdm\food_03_lod0.rdm</FileName>
+...
+```
+
+Underneath that we have references to .prp files. Those are all **props**. Extra decorations or small pieces added to the model based on other smaller 3d models from the game. There is an already huge library of props we can just put inside our model environments. Underneath for example a wooden box. You can follow the link of the path to find all the props available. Every DLC has his extra set of available props.
+
+```XML
+...
+<Config><ConfigType>PROP</ConfigType>
+<FileName>data\graphics\props\storage\wooden_box.prp</FileName>
+<Position.x>0.865991</Position.x>
+<Position.y>0.155854</Position.y>
+<Position.z>-0.631792</Position.z>
+<Rotation.x>0.000000</Rotation.x>
+<Rotation.y>-0.306778</Rotation.y>
+<Rotation.z>0.000000</Rotation.z>
+<Rotation.w>0.951797</Rotation.w>
+<Scale.x>1.000000</Scale.x>
+<Scale.y>1.000000</Scale.y>
+<Scale.z>1.000000</Scale.z>
+<Flags>0</Flags>
+</Config>
+...
+```
+
+So, what are we actually going to do now? First we will make sure we change all the links to the new files we will be adapting, then we will add some other props to our file and then we will edit our maps and save them. That will be the last step and then we will be able to start our game with our new mod!
+
+##### Changing the maps
+
+THe first step is changing all the paths and the filenames of the maps we will be changing. Now all those maps have paths to the original Artisanal Kitchen maps and still have those naming. But we put those files in another location and we will be changing those files.
+
+Change the paths inside the production_citrus_tea.cfg.
+**data/graphics/buildings/production/food_03/maps/food_03**
+will be changed to:
+**data/graphics/buildings/production/production_citrus_tea/maps/production_citrus_tea**
+
+**Tip:**
+Use find and replace to make sure you changed everything correctly.
+
+We now have changed all the paths, but offcourse not the files itself. Open the maps folder and have a look at all the files. To start delete almost all the files but keep only the biggest files, so the "**0**" - files.
 
 WILL UPDATE THIS FURTHER, STAY TUNED!
