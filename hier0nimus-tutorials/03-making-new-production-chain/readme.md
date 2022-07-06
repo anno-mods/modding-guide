@@ -1391,7 +1391,9 @@ This defines how many residents that good or service if being fully supplied att
 
 ### MoneyValue
 
-This defines the amount of money you will get by providing this good or service to this citizen tier. The amount is divided by 10. So if you want 10 extra coins you use 100.
+This defines the amount of money you will get by providing this good or service to this citizen tier. The amount is multiplied by the amount of citizen that is inside this residence divided by 100. So if you want 10 extra coins with a farmers good, you use 100, because there are 10 farmers.
+
+Example for engineers: There are 40 engineers. Canned food has a MoneyValue of 40. So, ingame you will get 40\*40/100, so 16 coins.
 
 ### HappinessValue
 
@@ -1413,7 +1415,7 @@ Then we decide the values for amount, happiness and money. We do not take the ot
   <!-- START ADD TO CONSUMED GOODS - Engineers -->
   <ModOp Type="add" GUID='15000003' Path="/Values/PopulationLevel7/PopulationInputs">
     <Item>
-      <Product>1742000202</Product> <!-- GOOD - Citrus Tea -->
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
       <Amount>0.000130719</Amount>
       <HappinessValue>3</HappinessValue>
       <MoneyValue>80</MoneyValue>
@@ -1424,7 +1426,7 @@ Then we decide the values for amount, happiness and money. We do not take the ot
   <!-- START ADD TO CONSUMED GOODS - Investors -->
   <ModOp Type="add" GUID='15000004' Path="/Values/PopulationLevel7/PopulationInputs">
     <Item>
-      <Product>1742000202</Product> <!-- GOOD - Citrus Tea -->
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
       <Amount>0.000261438</Amount>
       <HappinessValue>5</HappinessValue>
       <MoneyValue>120</MoneyValue>
