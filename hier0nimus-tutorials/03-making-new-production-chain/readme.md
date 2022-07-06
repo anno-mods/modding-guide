@@ -1391,7 +1391,9 @@ This defines how many residents that good or service if being fully supplied att
 
 ### MoneyValue
 
-This defines the amount of money you will get by providing this good or service to this citizen tier. The amount is divided by 10. So if you want 10 extra coins you use 100.
+This defines the amount of money you will get by providing this good or service to this citizen tier. The amount is multiplied by the amount of citizen that is inside this residence divided by 100. So if you want 10 extra coins with a farmers good, you use 100, because there are 10 farmers.
+
+Example for engineers: There are 40 engineers. Canned food has a MoneyValue of 40. So, ingame you will get 40\*40/100, so 16 coins.
 
 ### HappinessValue
 
