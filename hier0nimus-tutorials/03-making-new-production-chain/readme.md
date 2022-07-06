@@ -828,8 +828,8 @@ So we are using:
 We combine some of them to make sure we can add them right after the same products in the lists.
 
 ```XML
-  <!-- START ADD GOOD TO ProductLists - after Pocket Watches (1010246) -->
-  <ModOp Type="addNextSibling" GUID="502020,502066,501998,502031,501992,502012" Path="/Values/ProductList/List/Item[Product='1010246']">
+  <!-- START ADD GOOD TO ProductLists -->
+  <ModOp Type="add" GUID="502020,502066,501998,502031,501992,502012" Path="/Values/ProductList/List">
     <Item>
       <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
     </Item>
@@ -1473,16 +1473,16 @@ We already added our specialist to the trigger, but we still need to add the oth
                   <ActionUnlockAsset>
                     <UnhideAssets>
                       <Item>
-                        <Asset>1742000200</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+                        <Asset>1742008803</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
                       </Item>
                       <Item>
-                        <Asset>1742000202</Asset> <!-- GOOD - Citrus Tea -->
+                        <Asset>1742008805</Asset> <!-- GOOD - Citrus Tea -->
                       </Item>
                       <Item>
-                        <Asset>1742000204</Asset> <!-- CHAIN - Citrus Tea -->
+                        <Asset>1742008807</Asset> <!-- CHAIN - Citrus Tea -->
                       </Item>
                       <Item>
-                        <Asset>1742000206</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
+                        <Asset>1742008809</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
                       </Item>
                     </UnhideAssets>
                   </ActionUnlockAsset>
@@ -1525,16 +1525,16 @@ We already added our specialist to the trigger, but we still need to add the oth
                   <ActionUnlockAsset>
                     <UnlockAssets>
                       <Item>
-                        <Asset>1742000200</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+                        <Asset>1742008803</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
                       </Item>
                       <Item>
-                        <Asset>1742000202</Asset> <!-- GOOD - Citrus Tea -->
+                        <Asset>1742008805</Asset> <!-- GOOD - Citrus Tea -->
                       </Item>
                       <Item>
-                        <Asset>1742000204</Asset> <!-- CHAIN - Citrus Tea -->
+                        <Asset>1742008807</Asset> <!-- CHAIN - Citrus Tea -->
                       </Item>
                       <Item>
-                        <Asset>1742000206</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
+                        <Asset>1742008809</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
                       </Item>
                     </UnlockAssets>
                   </ActionUnlockAsset>
