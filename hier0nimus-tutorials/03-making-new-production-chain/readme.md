@@ -1413,7 +1413,7 @@ Then we decide the values for amount, happiness and money. We do not take the ot
   <!-- START ADD TO CONSUMED GOODS - Engineers -->
   <ModOp Type="add" GUID='15000003' Path="/Values/PopulationLevel7/PopulationInputs">
     <Item>
-      <Product>1742000202</Product> <!-- GOOD - Citrus Tea -->
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
       <Amount>0.000130719</Amount>
       <HappinessValue>3</HappinessValue>
       <MoneyValue>80</MoneyValue>
@@ -1424,7 +1424,7 @@ Then we decide the values for amount, happiness and money. We do not take the ot
   <!-- START ADD TO CONSUMED GOODS - Investors -->
   <ModOp Type="add" GUID='15000004' Path="/Values/PopulationLevel7/PopulationInputs">
     <Item>
-      <Product>1742000202</Product> <!-- GOOD - Citrus Tea -->
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
       <Amount>0.000261438</Amount>
       <HappinessValue>5</HappinessValue>
       <MoneyValue>120</MoneyValue>
