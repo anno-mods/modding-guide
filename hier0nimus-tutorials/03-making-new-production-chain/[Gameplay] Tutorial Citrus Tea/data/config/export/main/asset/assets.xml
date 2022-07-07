@@ -1,0 +1,469 @@
+<!-- 
+
+  [Gameplay] Tutorial Citrus Tea
+  
+  Created by Hier0nimus
+  Enjoy!
+
+-->
+
+<ModOps>
+  <!-- START SPECIALIST - Tony Lipus, Citrus tea smasher -->
+  <ModOp GUID="191388" Type="addNextSibling">
+    <Asset>
+      <Template>GuildhouseItem</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008803</GUID> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+          <Name>Tony Lipus, Citrus tea smasher</Name>
+          <IconFilename>data/graphics/icons/icon_tony_lipus.png</IconFilename>
+          <InfoDescription>1742008804</InfoDescription>
+        </Standard>
+        <Text>
+          <LocaText>
+            <English>
+              <Text>Item Template</Text>
+              <Status>Exported</Status>
+              <ExportCount>1</ExportCount>
+            </English>
+          </LocaText>
+        </Text>
+        <Item>
+          <MaxStackSize>1</MaxStackSize>
+          <Rarity>Legendary</Rarity>
+          <ItemType>Specialist</ItemType>
+          <Allocation>GuildHouse</Allocation>
+          <TradePrice>1250000</TradePrice>
+          <TradePriceOnlineCurrency>1250000</TradePriceOnlineCurrency>
+        </Item>
+        <FactoryUpgrade>
+          <ProductivityUpgrade>
+            <Value>60</Value>
+            <Percental>1</Percental>
+          </ProductivityUpgrade>
+          <AdditionalOutput>
+            <Item>
+              <Product>133185</Product> <!-- Lemonade -->
+              <AdditionalOutputCycle>4</AdditionalOutputCycle>
+              <Amount>1</Amount>
+            </Item>
+          </AdditionalOutput>
+        </FactoryUpgrade>
+        <ItemEffect>
+          <EffectTargets>
+            <Item>
+              <GUID>1742008809</GUID> <!-- Citrus Tea Dryer -->
+            </Item>
+          </EffectTargets>
+        </ItemEffect>
+        <ExpeditionAttribute>
+          <BaseMorale>0</BaseMorale>
+          <ExpeditionAttributes>
+            <Item>
+              <Attribute>PerkMale</Attribute>
+              <Amount>1</Amount>
+            </Item>
+            <Item>
+              <Attribute>Medicine</Attribute>
+              <Amount>50</Amount>
+            </Item>
+            <Item>
+              <Attribute>Diplomacy</Attribute>
+              <Amount>15</Amount>
+            </Item>
+          </ExpeditionAttributes>
+          <ItemDifficulties>Hard</ItemDifficulties>
+        </ExpeditionAttribute>
+        <BuildingUpgrade>
+          <WorkforceAmountUpgrade>
+            <Value>-30</Value>
+            <Percental>1</Percental>
+          </WorkforceAmountUpgrade>
+        </BuildingUpgrade>
+      </Values>
+    </Asset>
+  </ModOp>
+  <!-- END SPECIALIST - Tony Lipus, Citrus tea smasher -->
+
+  <!-- START  ADD TO REWARDPOOL - Tony Lipus, Citrus tea smasher -->
+  <ModOp GUID="192840,193963,193079" Type="add" Path="/Values/RewardPool/ItemsPool">
+    <Item>
+      <ItemLink>1742008803</ItemLink> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+    </Item>
+  </ModOp>
+  <!-- END ADD TO REWARDPOOL - Tony Lipus, Citrus tea smasher -->
+
+  <!-- START ADD GOOD - Citrus Tea -->
+  <ModOp Type="addNextSibling" GUID='1010200'>
+    <Asset>
+      <Template>Product</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008805</GUID>
+          <Name>Citrus Tea</Name>
+          <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
+          <InfoDescription>1742008806</InfoDescription>
+        </Standard>
+        <Text>
+          <LocaText>
+            <English>
+              <Text>Citrus Tea</Text>
+              <Status>Exported</Status>
+              <ExportCount>1</ExportCount>
+            </English>
+          </LocaText>
+        </Text>
+        <Product>
+          <StorageLevel>Building</StorageLevel>
+          <ProductCategory>11705</ProductCategory> <!-- Luxury Need -->
+          <BasePrice>150</BasePrice>
+          <CivLevel>4</CivLevel>
+          <AssociatedRegion>Moderate</AssociatedRegion>
+          <ProductionRegions>
+            <Item>
+              <RegionType>Moderate</RegionType>
+              <RequiredDLCs>
+                <Item>
+                  <RequiredDLC>410084</RequiredDLC>
+                </Item>
+              </RequiredDLCs>
+            </Item>
+          </ProductionRegions>
+        </Product>
+        <ExpeditionAttribute>
+          <BaseMorale>20</BaseMorale>
+          <ExpeditionAttributes>
+            <Item>
+              <Attribute>Medicine</Attribute>
+              <Amount>20</Amount>
+            </Item>
+          </ExpeditionAttributes>
+        </ExpeditionAttribute>
+      </Values>
+    </Asset>
+  </ModOp>
+  <!-- END ADD GOOD - Citrus Tea -->
+
+  <!-- START ADD GOOD TO StandartProductStorageList -->
+  <ModOp Type="add" GUID='120055,120057' Path="/Values/ProductStorageList/ProductList">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO StandartProductStorageList -->
+
+  <!-- START ADD GOOD TO ProductLists -->
+  <ModOp Type="add" GUID="502020,502066,501998,502031,501992,502012" Path="/Values/ProductList/List">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO ProductList -->
+
+  <!-- START ADD GOOD TO WorkerWorkforceGoods - after bread (1010213) -->
+  <ModOp Type="addNextSibling" GUID="502005" Path="/Values/ProductList/List/Item[Product='1010213']">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO WorkerWorkforceGoods -->
+
+  <!-- START ADD GOOD TO OldLevants_ImportGoods + Docklands_ImporterGoods - after Hibiscus Tea (114390) -->
+  <ModOp Type="addNextSibling" GUID="502005" Path="/Values/ProductList/List/Item[Product='114390']">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD GOOD TO OldLevants_ImportGoods + Docklands_ImporterGoods -->
+
+  <!-- START PRODUCTION - Citrus Tea -->
+  <ModOp Type="addNextSibling" GUID='1010343'>
+    <Asset>
+      <Template>FactoryBuilding7</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008809</GUID>
+          <Name>Citrus Tea Dryer</Name>
+          <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
+          <InfoDescription>1742008810</InfoDescription>
+        </Standard>
+        <Building>
+          <BuildModeRandomRotation>90</BuildModeRandomRotation>
+          <AssociatedRegions>Moderate</AssociatedRegions>
+        </Building>
+        <Cost>
+          <Costs>
+            <Item>
+              <Ingredient>1010017</Ingredient> <!-- Coins -->
+              <Amount>6000</Amount>
+            </Item>
+            <Item>
+              <Ingredient>1010196</Ingredient> <!-- Timber -->
+              <Amount>25</Amount>
+            </Item>
+            <Item>
+              <Ingredient>1010205</Ingredient> <!-- Bricks -->
+              <Amount>15</Amount>
+            </Item>
+            <Item>
+              <Ingredient>1010218</Ingredient> <!-- Steal Beams -->
+              <Amount>5</Amount>
+            </Item>
+            <Item>
+              <Ingredient>1010207</Ingredient> <!-- Windows -->
+            </Item>
+            <Item>
+              <Ingredient>1010202</Ingredient> <!-- Reinforced concrete -->
+            </Item>
+          </Costs>
+        </Cost>
+        <Object>
+          <Variations>
+            <Item>
+              <Filename>data/graphics/buildings/production/production_citrus_tea/production_citrus_tea.cfg</Filename>
+            </Item>
+          </Variations>
+        </Object>
+        <Selection>
+          <ParticipantMessageArcheType>Resident_tier02_atWork</ParticipantMessageArcheType>
+        </Selection>
+        <Text>
+          <LocaText>
+            <English>
+              <Text>Citrus Tea Dryer</Text>
+              <Status>Exported</Status>
+              <ExportCount>2</ExportCount>
+            </English>
+          </LocaText>
+        </Text>
+        <SoundEmitter>
+          <ActiveSounds>
+            <Item>
+              <Sound>270300</Sound> <!-- Tea Spicer sounds -->
+            </Item>
+            <Item>
+              <Sound>270266</Sound> <!-- Tea Spicer sounds -->
+            </Item>
+          </ActiveSounds>
+        </SoundEmitter>
+        <FactoryBase>
+          <FactoryInputs>
+            <Item>
+              <Product>133097</Product> <!-- Citrus Fruits -->
+              <Amount>1</Amount>
+              <StorageAmount>10</StorageAmount>
+            </Item>
+          </FactoryInputs>
+          <FactoryOutputs>
+            <Item>
+              <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
+              <Amount>1</Amount>
+              <StorageAmount>10</StorageAmount>
+            </Item>
+          </FactoryOutputs>
+          <CycleTime>60</CycleTime>
+          <IsMainFactory>1</IsMainFactory>
+        </FactoryBase>
+        <Maintenance>
+          <Maintenances>
+            <Item>
+              <Product>1010017</Product> <!-- Amount of coins upkeep -->
+              <Amount>150</Amount>
+              <InactiveAmount>50</InactiveAmount>
+            </Item>
+            <Item>
+              <Product>1010115</Product> <!-- Amount of Workforce - Workers -->
+              <Amount>40</Amount>
+            </Item>
+          </Maintenances>
+        </Maintenance>
+        <Industrializable>
+          <BoostedByIndustrialization>1</BoostedByIndustrialization>
+        </Industrializable>
+      </Values>
+    </Asset>
+  </ModOp>
+  <!-- END PRODUCTION - Citrus Tea -->
+
+  <!-- START ADD BUILDING TO ALL ITEMEFFECTTARGETPOOLS  -->
+  <ModOp Type="add" GUID='6000018,193856,193875,193778,190897' Path="/Values/ItemEffectTargetPool/EffectTargetGUIDs">
+    <Item>
+      <GUID>1742008809</GUID> <!-- BUILDING - Citrus Tea Dryer  -->
+    </Item>
+  </ModOp> <!-- END ADD BUILDING TO ALL ITEMEFFECTTARGETPOOLS -->
+
+  <!-- START PRODUCTION CHAIN - Citrus Tea -->
+  <ModOp Type="addNextSibling" GUID='500091'>
+    <Asset>
+      <Template>ProductionChain</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008807</GUID> <!-- CHAIN - Citrus Tea  -->
+          <Name>Citrus Tea</Name>
+          <IconFilename>data/graphics/icons/citrus-tea.png</IconFilename>
+          <InfoDescription>1742008808</InfoDescription>
+        </Standard>
+        <ProductionChain>
+          <Building>1742008809</Building> <!-- BUILDING - Citrus Tea Dryer  -->
+          <Tier1>
+            <Item>
+              <Building>133031</Building> <!-- BUILDING - Orchard: Citrus Fruit -->
+            </Item>
+          </Tier1>
+        </ProductionChain>
+        <Locked />
+        <Text>
+          <LocaText>
+            <English>
+              <Text>Citrus Tea Dryer</Text>
+              <Status>Exported</Status>
+              <ExportCount>2</ExportCount>
+            </English>
+          </LocaText>
+        </Text>
+      </Values>
+    </Asset>
+  </ModOp>
+  <!-- END PRODUCTION CHAIN - Citrus Tea -->
+
+  <!-- START ADD CHAIN TO BUILDING MENU ConstructionCategory - Engineers / moderate construction menu 4 (tier) (25000192) -->
+  <ModOp Type="addNextSibling" GUID='25000192' Path="/Values/ConstructionCategory/BuildingList/Item[Building='500902']">
+    <Item>
+      <Building>1742008807</Building> <!-- CHAIN - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD CHAIN TO BUILDING MENU -->
+
+  <!-- START ADD CHAIN TO BUILDING MENU ConstructionCategory - Consumables / moderate construction menu needs (category) (500945) -->
+  <ModOp Type="addNextSibling" GUID='500945' Path="/Values/ConstructionCategory/BuildingList/Item[Building='500902']">
+    <Item>
+      <Building>1742008807</Building> <!-- CHAIN - Citrus Tea  -->
+    </Item>
+  </ModOp>
+  <!-- END ADD CHAIN TO BUILDING MENU CATEGORY -->
+
+  <!-- START ADD TO CONSUMED GOODS - Engineers -->
+  <ModOp Type="add" GUID='15000003' Path="/Values/PopulationLevel7/PopulationInputs">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
+      <Amount>0.000130719</Amount>
+      <HappinessValue>3</HappinessValue>
+      <MoneyValue>80</MoneyValue>
+    </Item>
+  </ModOp>
+  <!-- END ADD TO CONSUMED GOODS - Engineers -->
+
+  <!-- START ADD TO CONSUMED GOODS - Investors -->
+  <ModOp Type="add" GUID='15000004' Path="/Values/PopulationLevel7/PopulationInputs">
+    <Item>
+      <Product>1742008805</Product> <!-- GOOD - Citrus Tea -->
+      <Amount>0.000261438</Amount>
+      <HappinessValue>5</HappinessValue>
+      <MoneyValue>120</MoneyValue>
+    </Item>
+  </ModOp>
+  <!-- END ADD TO CONSUMED GOODS - Investors -->
+
+  <!-- START TRIGGER -->
+  <ModOp Type="addnextSibling" GUID="130248">
+    <!--UNHIDE - 750 Tourists -->
+    <Asset>
+      <Template>Trigger</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008811</GUID>
+          <Name>MOD Trigger</Name>
+        </Standard>
+        <Trigger>
+          <TriggerCondition>
+            <Template>ConditionPlayerCounter</Template>
+            <Values>
+              <ConditionPlayerCounter>
+                <PlayerCounter>PopulationByLevel</PlayerCounter>
+                <Context>601379</Context> <!-- Tourists -->
+                <CounterAmount>750</CounterAmount>
+              </ConditionPlayerCounter>
+            </Values>
+          </TriggerCondition>
+          <TriggerActions>
+            <Item>
+              <TriggerAction>
+                <Template>ActionUnlockAsset</Template>
+                <Values>
+                  <ActionUnlockAsset>
+                    <UnhideAssets>
+                      <Item>
+                        <Asset>1742008803</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+                      </Item>
+                      <Item>
+                        <Asset>1742008805</Asset> <!-- GOOD - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742008807</Asset> <!-- CHAIN - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742008809</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
+                      </Item>
+                    </UnhideAssets>
+                  </ActionUnlockAsset>
+                </Values>
+              </TriggerAction>
+            </Item>
+          </TriggerActions>
+        </Trigger>
+        <TriggerSetup />
+      </Values>
+    </Asset>
+  </ModOp>
+  <ModOp Type="addnextSibling" GUID="130248">
+    <!--UNLOCK - 1250 Tourists -->
+    <Asset>
+      <Template>Trigger</Template>
+      <Values>
+        <Standard>
+          <GUID>1742008812</GUID>
+          <Name>MOD Trigger</Name>
+        </Standard>
+        <Trigger>
+          <TriggerCondition>
+            <Template>ConditionPlayerCounter</Template>
+            <Values>
+              <ConditionPlayerCounter>
+                <PlayerCounter>PopulationByLevel</PlayerCounter>
+                <Context>601379</Context> <!-- Tourists -->
+                <CounterAmount>1250</CounterAmount>
+              </ConditionPlayerCounter>
+            </Values>
+          </TriggerCondition>
+          <TriggerActions>
+            <Item>
+              <TriggerAction>
+                <Template>ActionUnlockAsset</Template>
+                <Values>
+                  <ActionUnlockAsset>
+                    <UnlockAssets>
+                      <Item>
+                        <Asset>1742008803</Asset> <!-- SPECIALIST - Tony Lipus, Citrus tea smasher -->
+                      </Item>
+                      <Item>
+                        <Asset>1742008805</Asset> <!-- GOOD - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742008807</Asset> <!-- CHAIN - Citrus Tea -->
+                      </Item>
+                      <Item>
+                        <Asset>1742008809</Asset> <!-- BUILDING - Citrus Tea Dryer  -->
+                      </Item>
+                    </UnlockAssets>
+                  </ActionUnlockAsset>
+                </Values>
+              </TriggerAction>
+            </Item>
+          </TriggerActions>
+        </Trigger>
+        <TriggerSetup />
+      </Values>
+    </Asset>
+  </ModOp>
+  <!-- END TRIGGER -->
+</ModOps>
