@@ -1591,13 +1591,13 @@ For now we will just convert the food_03_lod0.**rdm** to food_03_lod0.**glb** so
 
 We can turn around the building in this viewer. If we look at this model we can see all the different parts of the building, but we do not see the details like the windows, or the ground, or the walls. That is because the model itself does not contain those details. The modal is the raw structure.
 
-##### 0, 1, 2
+##### 0, 1, 2 (3, 4)
 
 We can see different versions of this model, with at the end a number. The number refers to a version of the building with more or less details. Every building is build out of polygons. The more polygons, the more details but the more resources it needs to be rendered by the game. It is finding the balance between a lot of polygons to get the most beautiful building and making sure the building does not keep a big pressure on the processing of the game. A solution for that is to have different versions of every building.
 
 If we are zoomed out, we are not able to see the details of the building because it is tiny. So no need to have all those details and there is no advantage of processing all those details. For that lower detailed buildings are used. If we are zoomed in, we do want to have all those details so we have a high quality/detailed version for when we are zoomed in and this puts a lot of pressure on the performance.
 
-**0** is the zoomed in version with a lot of details. **1** is the inbetween version and the **2** is the low version for zoomed out views. If you open the food_03_lod3 and put it next to the food_03_lod0 you will see a big difference in details.
+**0** is the zoomed in version with a lot of details. **1** is the inbetween version and the **2** is the low version for zoomed out views. If you open the food_03_lod3 and put it next to the food_03_lod0 you will see a big difference in details. There are even really optimized versions 3 and 4 for some buildings.
 
 For this tutorial we are actually not going to change the model itself. So we can actually delete the rdm folder. But now you have some basic knowledge about the models used in the game.
 
@@ -1611,9 +1611,9 @@ The maps folder contains a lot of different textures/maps. For example the textu
 
 All those files are the .dds format, but have different functions.
 
-##### 0, 1, 2
+##### 0, 1, 2 (3, 4)
 
-We can see the same files with at the end a different number. The number represents different resolutions of the same file. Those files are used for optimization. The bigger files with more detailed textures are for when we are zoomed in. The smaller resolutions and less detailed textures is for more zoomed out views. **0** is the most detailed, **2** is the smallest and so, less details.
+We can see the same files with at the end a different number. The number represents different resolutions of the same file. Those files are used for optimization. The bigger files with more detailed textures are for when we are zoomed in. The smaller resolutions and less detailed textures is for more zoomed out views. **0** is the most detailed, **2** is the smallest and so, less details. Some buildings do even get 3 and 4 versions.
 
 ##### diff, metal, norm, mask
 
@@ -1741,22 +1741,6 @@ Underneath that we have references to .prp files. Those are all **props**. Extra
 ...
 ```
 
-So, what are we actually going to do now? First we will make sure we change all the links to the new files we will be adapting, then we will add some other props to our file and then we will edit our maps and save them. That will be the last step and then we will be able to start our game with our new mod!
-
-##### Changing the maps names
-
-THe first step is changing all the paths and the filenames of the maps we will be changing. Now all those maps have paths to the original Artisanal Kitchen maps and still have those naming. But we put those files in another location and we will be changing those files.
-
-Change the paths inside the production_citrus_tea.cfg.
-**data/graphics/buildings/production/food_03/maps/food_03**
-will be changed to:
-**data/graphics/buildings/production/production_citrus_tea/maps/production_citrus_tea**
-
-**Tip:**
-Use find and replace to make sure you changed everything correctly.
-
-We now have changed all the paths, but offcourse not the files itself. Open the maps folder and have a look at all the files. To start delete almost all the files but keep only the biggest files, so the "**0**" - files.
-
 ##### Check everything ingame
 
 We have all the files and linked everything so we should actually be able to see our building in the building menu, see the good being produced, the good in the warehouse, the need for Engineers and Investors.
@@ -1769,25 +1753,101 @@ Check this ingame!
 
 ![citrus_tea_investor.jpg](./_sources/citrus_tea_investor.jpg)
 
+So, what are we actually going to do now? First we will make sure we change all the links to the new files we will be adapting, then we will add some other props to our file and then we will edit our maps and save them. That will be the last step and then we will be able to start our game with our new mod!
+
+##### Changing the maps names and paths
+
+The first step is changing all the paths and the filenames of the maps we will be changing. Now all those maps have paths to the original Artisanal Kitchen maps and still have those naming. But we put those files in another location and we will be changing those files.
+
+The only thing we will be doing is changing some colors and some basic graphics. For that the only maps we will be adapting are the **diff map versions**. The metal and norm maps can just stay the same. So we can leave those links to the original files. That is again more performant then creating and loading exactly the same files.
+
+Change the paths inside the production_citrus_tea.cfg for all the **diff maps**.
+**data/graphics/buildings/production/food_03/maps/food_03_diff**
+will be changed to:
+**data/graphics/buildings/production/production_citrus_tea/maps/production_citrus_tea_diff**
+
+**data/graphics/buildings/production/food_03/maps/food_03_conveyor_diff**
+will be changed to:
+**data/graphics/buildings/production/production_citrus_tea/maps/production_citrus_tea_conveyor_diff**
+
+**data/graphics/buildings/production/food_03/maps/food_03_ground_diff**
+will be changed to:
+**data/graphics/buildings/production/production_citrus_tea/maps/production_citrus_tea_ground_diff**
+
+**Tip:**
+Use find and replace to make sure you changed everything correctly.
+
+We now have changed all the paths, but offcourse not the files itself. Open the maps folder and have a look at all the files. To start delete almost all the files but **keep only the diff files** and also **the biggest files**, so the "**0**" - files. You can delete all the norm, metal and smaller files.
+
 ##### Changing the maps images
 
-We have 1 more step to take and our mod is as ready as an egg that boiled 10min in hot water. We adapt our maps to have some different look and feel.
+We are almost there. We now adapt our diff maps to have some different look and feel.
 
 Lets have a look at our building, and our maps how it looks at the moment and what we can change.
+
 ![citrus_tea_dryer_building_choices.jpg](./_sources/citrus_tea_dryer_building_choices.jpg)
 ![food_03_diff_0.png](./_sources/food_03_diff_0.png)
+![food_03_conveyor_diff_0.png](./_sources/food_03_conveyor_diff_0.png)
+![food_03_ground_diff_0.png](./_sources/food_03_ground_diff_0.png)
 
 If we look at the building we have a reservoir and a conveyor belt where now paprikas are on, but where we can put citrus fruits. We also have a billboard where we can put a new sign on for our Citrus Tea Dryer. We could also change the colors of the walls, the roof, ect. For this tutorial we are not going into to much detail.
 
 I did some magic in Photoshop and this is the result:
+
 ![production_citrus_tea_diff_0.png](./_sources/production_citrus_tea_diff_0.png)
 
 Our building is now finished, but if we have a look at the other files, we also have a conveyor file and a ground file. If we look at both, we can see parpikas on those images. We should also change those.
 
 Go to https://unsplash.com/s/photos/citrus-fruit and take one of the citrus fruit images to work with so we can fill our conveyor belt and ground pile of citrus fruits.
 
+Again I did some magic in Photoshop and this is the result:
+
+![production_citrus_tea_conveyor_diff_0.png](./_sources/production_citrus_tea_conveyor_diff_0.png)
+![production_citrus_tea_ground_diff_0.png](./_sources/production_citrus_tea_ground_diff_0.png)
+
 For further optimazation, we should also make the smaller versions of our images. We now have the **0** version, but we also need the **1** and **2** version. The **1** version is half the dimensions of the **0** version. The **2** version is half the dimensions of the **1** version.
 
-We now have our images in png format, but we should convert those back to dds files. Do this for all files and now start your game again!
+We now have our images in png format, but we should convert those back to dds files. Do this for all files.
+
+#### Adding or changing props
+
+We are now at the final step in our process. This is the cherry on top but is not really needed. We already have a perfectly working mod.
+
+If we go back to our **production_citrus_tea.cfg** file, after the link to our model, the .rdm file we have a list of props. Those are wall lamps, wooden boxesm barrel piles, trees or bushes.
+
+Let's search for **&lt;FileName>data\graphics\props\storage\wooden_box_pile_small_03.prp&lt;/FileName>**.
+
+```XML
+...
+<Config><ConfigType>PROP</ConfigType>
+<FileName>data\graphics\props\storage\wooden_box_pile_small_03.prp</FileName>
+<Position.x>2.121532</Position.x>
+<Position.y>0.000000</Position.y>
+<Position.z>1.277845</Position.z>
+<Rotation.x>0.000000</Rotation.x>
+<Rotation.y>0.016844</Rotation.y>
+<Rotation.z>0.000000</Rotation.z>
+<Rotation.w>0.999918</Rotation.w>
+<Scale.x>1.000000</Scale.x>
+<Scale.y>1.000000</Scale.y>
+<Scale.z>1.000000</Scale.z>
+<Flags>1</Flags>
+</Config>
+...
+```
+
+We can see the proporties of this prop. We have the path to the file, coordinates and scale. Let us do somthing funky and change this wooden box pile with a tree.
+
+To find all the props we can have a look in the original files from the game. Every DLC has his own props. But we will now look into the props from the basegame. Those props are inside the **data8.rda/data/graphics/props**.
+
+You can see different maps with all different props we can use. We will be using a tree, so we open the map **terrain_props/vegetation/trees/moderate**. We get a long list of all different trees. We will be choosing **tree_moderate_10_var0.prp**. Change **wooden_box_pile_small_03.prp** to **tree_moderate_10_var0.prp** in the cfg file. Also change the path to this prop so it is linked correctly, so from **data/graphics/props/storage/** to **data/graphics/props/terrain_props/vegetation/trees/moderate**.
+
+We do not need to add this prop to our modfolder. The path we declared to the original file is enough for the mod to pick this prop from the files and use it in our building.
+
+We could change the coordinates or the scale, but we actually want this at the exact location and the scale can stay the same.
+
+### Start the game!
+
+![citrus_tea_production_result.jpg](./_sources/citrus_tea_production_result.jpg)
 
 Congratulations! You have created a new production chain with a new good and a custom building!
