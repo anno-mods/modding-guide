@@ -1785,7 +1785,6 @@ We are almost there. We now adapt our diff maps to have some different look and 
 
 Lets have a look at our building, and our maps how it looks at the moment and what we can change.
 
-![citrus_tea_dryer_building_choices.jpg](./_sources/citrus_tea_dryer_building_choices.jpg)
 ![food_03_diff_0.png](./_sources/food_03_diff_0.png)
 ![food_03_conveyor_diff_0.png](./_sources/food_03_conveyor_diff_0.png)
 ![food_03_ground_diff_0.png](./_sources/food_03_ground_diff_0.png)
