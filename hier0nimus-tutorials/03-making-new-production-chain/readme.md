@@ -169,8 +169,6 @@ Let's also give him a **reduction for the workforce of 30%** (BuildingUpgrade).
             </English>
           </LocaText>
         </Text>
-        <Locked />
-        <Buff />
         <Item>
           <MaxStackSize>1</MaxStackSize>
           <Rarity>Legendary</Rarity>
@@ -199,7 +197,6 @@ Let's also give him a **reduction for the workforce of 30%** (BuildingUpgrade).
             </Item>
           </EffectTargets>
         </ItemEffect>
-        <ItemAction />
         <ExpeditionAttribute>
           <BaseMorale>0</BaseMorale>
           <ExpeditionAttributes>
@@ -215,8 +212,6 @@ Let's also give him a **reduction for the workforce of 30%** (BuildingUpgrade).
               <Attribute>Diplomacy</Attribute>
               <Amount>15</Amount>
             </Item>
-            <Item />
-            <Item />
           </ExpeditionAttributes>
           <ItemDifficulties>Hard</ItemDifficulties>
         </ExpeditionAttribute>
@@ -271,7 +266,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
           <TriggerCondition>
             <Template>ConditionPlayerCounter</Template>
             <Values>
-              <Condition />
               <ConditionPlayerCounter>
                 <PlayerCounter>PopulationByLevel</PlayerCounter>
                 <Context>601379</Context> <!-- Tourists -->
@@ -284,7 +278,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
               <TriggerAction>
                 <Template>ActionUnlockAsset</Template>
                 <Values>
-                  <Action />
                   <ActionUnlockAsset>
                     <UnhideAssets>
                       <Item>
@@ -314,7 +307,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
           <TriggerCondition>
             <Template>ConditionPlayerCounter</Template>
             <Values>
-              <Condition />
               <ConditionPlayerCounter>
                 <PlayerCounter>PopulationByLevel</PlayerCounter>
                 <Context>601379</Context> <!-- Tourists -->
@@ -327,7 +319,6 @@ We know how the triggers work. We just need to define when to trigger the trigge
               <TriggerAction>
                 <Template>ActionUnlockAsset</Template>
                 <Values>
-                  <Action />
                   <ActionUnlockAsset>
                     <UnlockAssets>
                       <Item>
@@ -439,18 +430,17 @@ In our case it is a production good so, **building**.
 
 Products are categorised. We have different categories:
 
-- 11702 - Product Category Resource
-- 11703 - Product Category Intermediate Good
-- 11704 - Product Category Supply Good
-- 11705 - Product Category Happiness Good
-- 11706 - Product Category Money Good
-- 11707 - Product Category Construction Material
-- 11708 - Product Category Public Supply
-- 11709 - Product Category Public Happiness
-- 11710 - Product Category Public Money
-- 11710 - Product Category Public Money
-- 134777 - Product Category Bus Need
-- 135875 - Product Category Commercial Supply
+- `11702` - Product Category Resource
+- `11703` - Product Category Intermediate Good
+- `11704` - Product Category Supply Good
+- `11705` - Product Category Happiness Good
+- `11706` - Product Category Money Good
+- `11707` - Product Category Construction Material
+- `11708` - Product Category Public Supply
+- `11709` - Product Category Public Happiness
+- `11710` - Product Category Public Money
+- `134777` - Product Category Bus Need
+- `135875` - Product Category Commercial Supply
 
 In our case, it is the Product Category Happiness Good (GUID 11705).
 
@@ -490,24 +480,24 @@ We can also combine multiple regions. But we only need 1 in this case. It will o
 
 Lock the good if the required DLC is not available. We already saw this list before but here it is again:
 
-- 410003 (Imperial Pack)
-- 410021 (Season Pass Player Assets)
-- 410069 (Season 2 Pass Reward)
-- 305 (Season 3 Pass Reward)
-- 25945 (Season 4 Bonus Content)
-- 410079 (Amusements Pack)
-- 116630 (Holiday Ornament Pack)
-- 4100010 (The Anarchist)
-- 410040 (Sunken Treasures)
-- 410041 (Botanica)
-- 410042 (The Passage)
-- 410059 (Seat Of Power)
-- 410070 (Bright Harvest)
-- 410071 (Land of Lions)
-- 410083 (Docklands)
-- 410084 (Tourist Season)
-- 410085 (The High Life)
-- 24961 (Seeds Of Change)
+- `410003` - Imperial Pack
+- `410021` - Season Pass Player Assets
+- `410069` - Season 2 Pass Reward
+- `305` - Season 3 Pass Reward
+- `25945` - Season 4 Bonus Content
+- `410079` - Amusements Pack
+- `116630` - Holiday Ornament Pack
+- `4100010` - The Anarchist
+- `410040` - Sunken Treasures
+- `410041` - Botanica
+- `410042` - The Passage
+- `410059` - Seat Of Power
+- `410070` - Bright Harvest
+- `410071` - Land of Lions
+- `410083` - Docklands
+- `410084` - Tourist Season
+- `410085` - The High Life
+- `24961` - Seeds Of Change
 
 We need in our case the Tourist DLC (GUID 410084).
 
@@ -535,7 +525,7 @@ We need in our case the Tourist DLC (GUID 410084).
 
 ### ExpeditionAttribute
 
-Define a base flat amount for morale and a flat amount if you want to add a specific attribute to the good.
+Define a flat base amount for morale and a flat amount if you want to add a specific attribute to the good.
 
 We already saw the list but here it is again:
 
@@ -625,7 +615,7 @@ There are a lot of **ProductStorageList** and **ProductList** available, and it 
 
 ### ProductStorageList
 
-To start we will add our product to the ProductStorageLists. We can now go through the whole assets.xml and search for all &lt;Template>ProductStorageList&lt;/Template> and take the ones we need and add our product to those lists also. There are 8 lists in total and 2 of them are the right fit for this good. 120055 (StandardProductStorageList) and 120057 (StandardMarketplaceModerateStorageList).
+To start we will add our product to the ProductStorageLists. We can now go through the whole assets.xml and search for all **&lt;Template>ProductStorageList&lt;/Template>** and take the ones we need and add our product to those lists also. There are 8 lists in total and 2 of them are the right fit for this good. 120055 (StandardProductStorageList) and 120057 (StandardMarketplaceModerateStorageList).
 
 - 120055 - StandardProductStorageList
 - 120056 - StandardOilHarborStorageList
@@ -903,7 +893,7 @@ Define how many degrees you can rotate the building when placing the building.
 - 90
 - 180
 
-We choose for rotation **90 ** degrees.
+We choose for rotation **90** degrees.
 
 ##### AssociatedRegions
 
@@ -924,7 +914,7 @@ In our case **moderate**. Because it is only buildable in the Old World.
 
 #### Cost
 
-Every building has a building cost. Depending on what you need you can add the different building materials.
+Every building has a building cost. Depending on what you need you can add the different building materials. You can add whatever you want. Not only normal building materials can be used. For example weapons or even consumer goods can be used.
 
 ```XML
 <Cost>
@@ -944,12 +934,6 @@ Every building has a building cost. Depending on what you need you can add the d
         <Item>
             <Ingredient>1010218</Ingredient> <!-- Steal Beams -->
             <Amount>5</Amount>
-        </Item>
-        <Item>
-            <Ingredient>1010207</Ingredient> <!-- Windows -->
-        </Item>
-        <Item>
-            <Ingredient>1010202</Ingredient> <!-- Reinforced concrete -->
         </Item>
     </Costs>
 </Cost>
@@ -1759,7 +1743,7 @@ Underneath that we have references to .prp files. Those are all **props**. Extra
 
 So, what are we actually going to do now? First we will make sure we change all the links to the new files we will be adapting, then we will add some other props to our file and then we will edit our maps and save them. That will be the last step and then we will be able to start our game with our new mod!
 
-##### Changing the maps
+##### Changing the maps names
 
 THe first step is changing all the paths and the filenames of the maps we will be changing. Now all those maps have paths to the original Artisanal Kitchen maps and still have those naming. But we put those files in another location and we will be changing those files.
 
@@ -1773,4 +1757,37 @@ Use find and replace to make sure you changed everything correctly.
 
 We now have changed all the paths, but offcourse not the files itself. Open the maps folder and have a look at all the files. To start delete almost all the files but keep only the biggest files, so the "**0**" - files.
 
-WILL UPDATE THIS FURTHER, STAY TUNED!
+##### Check everything ingame
+
+We have all the files and linked everything so we should actually be able to see our building in the building menu, see the good being produced, the good in the warehouse, the need for Engineers and Investors.
+
+Check this ingame!
+
+![citrus_tea_production.jpg](./_sources/citrus_tea_production.jpg)
+
+![citrus_tea_warehouse.jpg](./_sources/citrus_tea_warehouse.jpg)
+
+![citrus_tea_investor.jpg](./_sources/citrus_tea_investor.jpg)
+
+##### Changing the maps images
+
+We have 1 more step to take and our mod is as ready as an egg that boiled 10min in hot water. We adapt our maps to have some different look and feel.
+
+Lets have a look at our building, and our maps how it looks at the moment and what we can change.
+![citrus_tea_dryer_building_choices.jpg](./_sources/citrus_tea_dryer_building_choices.jpg)
+![food_03_diff_0.png](./_sources/food_03_diff_0.png)
+
+If we look at the building we have a reservoir and a conveyor belt where now paprikas are on, but where we can put citrus fruits. We also have a billboard where we can put a new sign on for our Citrus Tea Dryer. We could also change the colors of the walls, the roof, ect. For this tutorial we are not going into to much detail.
+
+I did some magic in Photoshop and this is the result:
+![production_citrus_tea_diff_0.png](./_sources/production_citrus_tea_diff_0.png)
+
+Our building is now finished, but if we have a look at the other files, we also have a conveyor file and a ground file. If we look at both, we can see parpikas on those images. We should also change those.
+
+Go to https://unsplash.com/s/photos/citrus-fruit and take one of the citrus fruit images to work with so we can fill our conveyor belt and ground pile of citrus fruits.
+
+For further optimazation, we should also make the smaller versions of our images. We now have the **0** version, but we also need the **1** and **2** version. The **1** version is half the dimensions of the **0** version. The **2** version is half the dimensions of the **1** version.
+
+We now have our images in png format, but we should convert those back to dds files. Do this for all files and now start your game again!
+
+Congratulations! You have created a new production chain with a new good and a custom building!
