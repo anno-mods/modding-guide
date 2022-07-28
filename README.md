@@ -6,7 +6,8 @@
 
 ## Topics
 
-- [Object Variations](./guides/variations.md) (including automatic neighbors)
+- [Object Variations](./guides/variations.md) for Buildings, including automatic neighbors.
+- [Particle Files (.rdp)](./guides/particles.md)
 
 ## Tutorials
 
