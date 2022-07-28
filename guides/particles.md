@@ -1,4 +1,4 @@
-# Particle Files (.rdp)
+# RDP Particle Files
 
 Particle animations stored in `.rdp` need some post processing after extracting them to be easier to modify.
 
