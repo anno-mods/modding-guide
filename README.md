@@ -2,13 +2,15 @@
 
 ## General Guides
 
-- [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php) (external site)
+- [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php)
 - [Hier0nimus' Tutorials](./hier0nimus-tutorials/)
 
 ## Specific Topics
 
 - [Object Variations](./guides/variations.md) (for Buildings, including automatic neighbors)
 - [RDP Particle Files](./guides/particles.md)
+- [Modinfo.json manual](https://github.com/anno-mods/Modinfo)
+- [Automatically build mods VSCode + annomod.json](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
 
 ## Tools
 
