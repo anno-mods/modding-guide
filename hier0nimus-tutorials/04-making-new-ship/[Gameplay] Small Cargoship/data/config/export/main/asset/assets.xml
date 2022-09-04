@@ -1,0 +1,286 @@
+<!-- 
+
+    [Gameplay] Small Cargo Ship
+
+    Created by Hier0nimus
+    Enjoy!
+
+-->
+
+<ModOps>
+    <!-- START SHIP - SMALL CARGO SHIP -->
+    <ModOp Type="addPrevSibling" GUID='1010062'>
+        <Asset>
+            <Template>TradeShip</Template>
+            <Values>
+                <Standard>
+                    <GUID>1742008813</GUID>
+                    <Name>Small Cargo Ship</Name>
+                    <IconFilename>data/graphics/vehicle/small_cargoship/icon_small_cargoship.png</IconFilename>
+                    <InfoDescription>1742008814</InfoDescription>
+                </Standard>
+                <Object>
+                    <Variations>
+                        <Item>
+                            <Filename>data/graphics/vehicle/small_cargoship/small_cargoship.cfg</Filename>
+                        </Item>
+                    </Variations>
+                </Object>
+                <Mesh>
+                    <MeshPlacement>OnWaterSlope</MeshPlacement>
+                </Mesh>
+                <Selection>
+                    <MultiSelectable>1</MultiSelectable>
+                    <OnSelection>
+                        <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+                        <Values>
+                            <ActionList />
+                        </Values>
+                    </OnSelection>
+                </Selection>
+                <Walking>
+                    <ShortenSailsAfter>0</ShortenSailsAfter>
+                    <ReservationLength>12</ReservationLength> <!-- Original Cargo Ship - 16 -->
+                    <ReservationWidth>5</ReservationWidth> <!-- Original Cargo Ship - 6 -->
+                    <PathPlannerLayer>Water</PathPlannerLayer>
+                    <ExpensiveDirSmoothing>1</ExpensiveDirSmoothing>
+                    <TurnAroundRadius>4</TurnAroundRadius> <!-- Original Cargo Ship - 8 -->
+                    <Acceleration>2.5</Acceleration> <!-- Original Cargo Ship - 1.5 -->
+                    <Deceleration>1.5</Deceleration> <!-- Original Cargo Ship - 2 -->
+                    <TurnRadius>4</TurnRadius> <!-- Original Cargo Ship - 8 -->
+                    <TurnSpeedInPlace>30</TurnSpeedInPlace> <!-- Original Cargo Ship - 20 -->
+                    <TurnDeceleration>0</TurnDeceleration>
+                    <TurnMovement>0</TurnMovement>
+                    <LeaningMaxAngle>-10</LeaningMaxAngle>
+                    <ForwardSpeed>6.4</ForwardSpeed> <!-- Original Cargo Ship - 5.2 -->
+                    <WindMinSlowdownFactor>1</WindMinSlowdownFactor> <!-- Not adapting Steam Ship -->
+                    <WindMaxSpeedupFactor>1</WindMaxSpeedupFactor> <!-- Not adapting Steam Ship -->
+                    <CargoFullFactor>0.6</CargoFullFactor> <!-- Original Cargo Ship - 0.8 -->
+                    <MinSlowdownFactor>0.6</MinSlowdownFactor> <!-- Original Cargo Ship - 0.5 -->
+                    <CurveSegmentDensity>High</CurveSegmentDensity>
+                </Walking>
+                <Text>
+                    <LocaText>
+                        <English>
+                            <Text>Small Cargo Ship</Text>
+                            <Status>Exported</Status>
+                            <ExportCount>2</ExportCount>
+                        </English>
+                    </LocaText>
+                    <LineID>14859</LineID>
+                </Text>
+                <CommandQueue>
+                    <FormationPriority>1</FormationPriority>
+                    <TradeShipPoints>2</TradeShipPoints>
+                    <PriorityShipList>2</PriorityShipList>
+                </CommandQueue>
+                <Drifting>
+                    <OverrideAssetWidthAndLength>0</OverrideAssetWidthAndLength>
+                    <Length>7</Length>
+                    <Width>1.5</Width>
+                    <FactorMovement>0.7</FactorMovement>
+                    <FactorRotation>0.65</FactorRotation>
+                </Drifting>
+                <Collector />
+                <Attackable>
+                    <MaximumHitPoints>1500</MaximumHitPoints>
+                    <HPBarOffset>4</HPBarOffset>
+                    <AlertRange>150</AlertRange>
+                    <SelfHealPerHealTick>1.2</SelfHealPerHealTick>
+                    <SelfHealPausedTimeIfAttacked>30000</SelfHealPausedTimeIfAttacked>
+                </Attackable>
+                <MinimapToken>
+                    <TokenAsset>2001947</TokenAsset>
+                    <StrategicMapAsset>501018</StrategicMapAsset>
+                </MinimapToken>
+                <SoundEmitter>
+                    <ActiveSounds>
+                        <Item>
+                            <Sound>201827</Sound>
+                        </Item>
+                    </ActiveSounds>
+                    <DestroySounds>
+                        <Item>
+                            <Sound>238314</Sound>
+                        </Item>
+                    </DestroySounds>
+                </SoundEmitter>
+                <UpgradeList />
+                <QuestObject />
+                <Infolayer />
+                <ItemContainer>
+                    <SocketCount>1</SocketCount>
+                    <SocketAllocation>Ship;SteamShip;Tradeship</SocketAllocation>
+                    <SlotCount>2</SlotCount>
+                </ItemContainer>
+                <FeedbackController />
+                <Draggable>
+                    <DraggableOnDrag>
+                        <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+                        <Values>
+                            <ActionList />
+                        </Values>
+                    </DraggableOnDrag>
+                    <DraggableOnDrop>
+                        <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+                        <Values>
+                            <ActionList />
+                        </Values>
+                    </DraggableOnDrop>
+                </Draggable>
+                <Cost>
+                    <Costs>
+                        <Item>
+                            <Ingredient>1010196</Ingredient> <!-- Timber -->
+                            <Amount>5</Amount>
+                        </Item>
+                        <Item>
+                            <Ingredient>1010218</Ingredient> <!-- Steel Beams -->
+                            <Amount>5</Amount>
+                        </Item>
+                        <Item>
+                            <Ingredient>1010224</Ingredient> <!-- Steam Motors -->
+                            <Amount>5</Amount>
+                        </Item>
+                    </Costs>
+                    <InfluenceCostType>TradeShip</InfluenceCostType>
+                    <InfluenceCostPoints>1</InfluenceCostPoints>
+                </Cost>
+                <Craftable>
+                    <CraftingTime>180000</CraftingTime>
+                </Craftable>
+                <TradeRouteVehicle />
+                <Locked />
+                <Nameable />
+                <MetaPersistent />
+                <ExpeditionAttribute>
+                    <BaseMorale>35</BaseMorale>
+                    <ExpeditionAttributes>
+                        <Item>
+                            <Attribute>Navigation</Attribute>
+                            <Amount>10</Amount>
+                        </Item>
+                        <Item>
+                            <Attribute>PerkTradeShip</Attribute>
+                            <Amount>1</Amount>
+                        </Item>
+                        <Item>
+                            <Attribute>PerkSteamShip</Attribute>
+                            <Amount>1</Amount>
+                        </Item>
+                    </ExpeditionAttributes>
+                </ExpeditionAttribute>
+                <ShipMaintenance>
+                    <Maintenance>125</Maintenance>
+                </ShipMaintenance>
+                <Sellable>
+                    <Baseprice>
+                        <Item>
+                            <VectorElement>
+                                <InheritedIndex>0</InheritedIndex>
+                                <InheritanceMapV2>
+                                    <Entry>
+                                        <TemplateName>TradeShip</TemplateName>
+                                        <Index>0</Index>
+                                    </Entry>
+                                </InheritanceMapV2>
+                            </VectorElement>
+                            <Amount>125000</Amount>
+                        </Item>
+                    </Baseprice>
+                </Sellable>
+                <Stance />
+                <Rentable />
+                <WorldMapSound />
+                <Pausable />
+                <ShipIncident />
+                <SoundEmitterCommandBarks>
+                    <BarkMapping>
+                        <Selection>
+                            <AudioPool>700094</AudioPool>
+                        </Selection>
+                        <SelectionDamaged>
+                            <AudioPool>700125</AudioPool>
+                        </SelectionDamaged>
+                        <MoveCommand>
+                            <AudioPool>700095</AudioPool>
+                        </MoveCommand>
+                        <EscortCommand>
+                            <AudioPool>700127</AudioPool>
+                        </EscortCommand>
+                        <PatrolCommand>
+                            <AudioPool>700126</AudioPool>
+                        </PatrolCommand>
+                    </BarkMapping>
+                </SoundEmitterCommandBarks>
+            </Values>
+        </Asset>
+    </ModOp>
+    <!-- END SHIP - SMALL CARGOSHIP -->
+
+    <!-- START ADD SHIPS TO STEAM SHIPYARD -->
+    <ModOp Type="addPrevSibling" GUID='1010521' Path="/Values/Shipyard/AssemblyOptions/Item[Vehicle='1010062']">
+        <Item>
+            <Vehicle>1742008813</Vehicle> <!-- Small Cargo Ship -->
+        </Item>
+    </ModOp>
+    <!-- END ADD SHIPS TO STEAM SHIPYARD -->
+
+    <!-- START ADD ItemEffectTargetPool -->
+    <ModOp Type="add" GUID='193982' Path="/Values/ItemEffectTargetPool/EffectTargetGUIDs">
+        <Item>
+            <GUID>1742008813</GUID> <!-- Small Cargo Ship -->
+        </Item>
+    </ModOp>
+    <!-- END ADD ItemEffectTargetPool -->
+
+    <!-- START TRIGGER SMALL STEAM SHIPS -->
+    <ModOp Type="addnextSibling" GUID="130248">
+        <Asset>
+            <Template>Trigger</Template>
+            <Values>
+                <Standard>
+                    <GUID>1742008815</GUID>
+                    <Name>Ships Trigger</Name>
+                </Standard>
+                <Trigger>
+                    <TriggerCondition>
+                        <Template>ConditionPlayerCounter</Template>
+                        <Values>
+                            <Condition />
+                            <ConditionPlayerCounter>
+                                <PlayerCounter>PopulationByLevel</PlayerCounter>
+                                <Context>15000003</Context> <!-- Engineers - Same condition as unlock Steam Shipyard -->
+                                <CounterAmount>500</CounterAmount>
+                            </ConditionPlayerCounter>
+                        </Values>
+                    </TriggerCondition>
+                    <TriggerActions>
+                        <Item>
+                            <TriggerAction>
+                                <Template>ActionUnlockAsset</Template>
+                                <Values>
+                                    <Action />
+                                    <ActionUnlockAsset>
+                                        <UnhideAssets>
+                                            <Item>
+                                                <Asset>1742008813</Asset> <!-- Small Cargo Ship -->
+                                            </Item>
+                                        </UnhideAssets>
+                                        <UnlockAssets>
+                                            <Item>
+                                                <Asset>1742008813</Asset> <!-- Small Cargo Ship -->
+                                            </Item>
+                                        </UnlockAssets>
+                                    </ActionUnlockAsset>
+                                </Values>
+                            </TriggerAction>
+                        </Item>
+                    </TriggerActions>
+                </Trigger>
+                <TriggerSetup />
+            </Values>
+        </Asset>
+    </ModOp>
+    <!-- END TRIGGER SMALL STEAM SHIPS -->
+</ModOps>

@@ -1,0 +1,14 @@
+<ModOps>
+  <ModOp Type="add" Path="/TextExport/Texts">
+    <!-- START SHIP - Small Cargo Ship -->
+    <Text>
+      <GUID>1742008813</GUID>
+      <Text>小型货运船</Text>
+    </Text>
+    <Text>
+      <GUID>1742008814</GUID>
+      <Text>一艘小型非常快速的货船，储存能力有限。建造成本几乎为零</Text>
+    </Text>
+    <!-- END SHIP - Small Cargo Ship -->
+  </ModOp>
+</ModOps>
