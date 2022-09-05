@@ -22,7 +22,8 @@
                 <Object>
                     <Variations>
                         <Item>
-                            <Filename>data/graphics/vehicle/small_cargoship/small_cargoship.cfg</Filename>
+                            <!--<Filename>data/graphics/vehicle/small_cargoship/small_cargoship.cfg</Filename>-->
+                            <Filename>data/graphics/vehicle/small_feedback_ship_01/small_feedback_ship_01_b.cfg</Filename>
                         </Item>
                     </Variations>
                 </Object>
@@ -147,7 +148,7 @@
                     <InfluenceCostPoints>1</InfluenceCostPoints>
                 </Cost>
                 <Craftable>
-                    <CraftingTime>180000</CraftingTime>
+                    <CraftingTime>5000</CraftingTime>
                 </Craftable>
                 <TradeRouteVehicle />
                 <Locked />
