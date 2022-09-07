@@ -1419,6 +1419,22 @@ Then we decide the values for amount, happiness and money. We do not take the ot
   <!-- END ADD TO CONSUMED GOODS - Investors -->
 ```
 
+### Boostable factories
+
+Another extra addition we can do is make sure the new building, the Citrus Tea Dryer has boostable working conditions. We can add the new building to that **BoostableFactories** list.
+
+We have a look in the main assets.xml where we can find this list and make sure to add it with the right ModOp.
+
+```XML
+  <!-- START ADD TO WORKING CONDITIONS - Workers -->
+  <ModOp Type="add" GUID="25000087" Path="/Values/WorkforceMenu/BoostableFactories">
+    <Item>
+      <Factory>1742008809</Factory> <!-- BUILDING -  BUILDING - Citrus Tea Dryer -->
+    </Item>
+  </ModOp>
+  <!-- END ADD TO WORKING CONDITIONS - Workers -->
+```
+
 ### Add other things to triggers
 
 We already added our specialist to the trigger, but we still need to add the other things to the triggers so they are unlocked ingame.

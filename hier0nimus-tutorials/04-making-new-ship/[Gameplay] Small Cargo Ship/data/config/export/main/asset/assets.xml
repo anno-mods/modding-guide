@@ -16,14 +16,13 @@
                 <Standard>
                     <GUID>1742008813</GUID>
                     <Name>Small Cargo Ship</Name>
-                    <IconFilename>data/graphics/vehicle/small_cargoship/icon_small_cargoship.png</IconFilename>
+                    <IconFilename>data/graphics/icons/icon_small_cargo_ship.png</IconFilename>
                     <InfoDescription>1742008814</InfoDescription>
                 </Standard>
                 <Object>
                     <Variations>
                         <Item>
-                            <!--<Filename>data/graphics/vehicle/small_cargoship/small_cargoship.cfg</Filename>-->
-                            <Filename>data/graphics/vehicle/small_feedback_ship_01/small_feedback_ship_01_b.cfg</Filename>
+                            <Filename>data/graphics/vehicle/small_cargo_ship/small_cargo_ship.cfg</Filename>
                         </Item>
                     </Variations>
                 </Object>
