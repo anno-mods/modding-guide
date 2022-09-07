@@ -364,6 +364,14 @@
   </ModOp>
   <!-- END ADD TO CONSUMED GOODS - Investors -->
 
+  <!-- START ADD TO WORKING CONDITIONS - Workers -->
+  <ModOp Type="add" GUID="25000087" Path="/Values/WorkforceMenu/BoostableFactories">
+    <Item>
+      <Factory>1742008809</Factory> <!-- BUILDING -  BUILDING - Citrus Tea Dryer -->
+    </Item>
+  </ModOp>
+  <!-- END ADD TO WORKING CONDITIONS - Workers -->
+
   <!-- START TRIGGER -->
   <ModOp Type="addnextSibling" GUID="130248">
     <!--UNHIDE - 750 Tourists -->
