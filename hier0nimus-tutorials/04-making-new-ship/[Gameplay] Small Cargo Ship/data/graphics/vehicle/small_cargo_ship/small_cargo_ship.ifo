@@ -3,32 +3,51 @@
 	<BoundingBox>
 		<Name>BoundingBox</Name>
 		<Position>
-			<xf>-0.000000</xf>
-			<yf>0.000000</yf>
-			<zf>-0.000000</zf>
+			<xf>-0.511740</xf>
+			<yf>1.827325</yf>
+			<zf>-0.019798</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
 		<Extents>
-			<xf>1.721500</xf>
-			<yf>2.225869</yf>
-			<zf>1.500000</zf>
+			<xf>8.415182</xf>
+			<yf>8.371533</yf>
+			<zf>9.600224</zf>
 		</Extents>
 	</BoundingBox>
 	<Dummy>
-		<Name>DamageImpact19742</Name>
+		<Name>DamageImpact10432</Name>
 		<Position>
-			<xf>0.083164</xf>
-			<yf>0.255261</yf>
-			<zf>0.032831</zf>
+			<xf>-1.184886</xf>
+			<yf>0.708209</yf>
+			<zf>0.521347</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>0.496427</xf>
+			<yf>0.576762</yf>
+			<zf>0.517252</zf>
+		</Extents>
+	</Dummy>
+	<Dummy>
+		<Name>DamageImpact19742</Name>
+		<Position>
+			<xf>0.121186</xf>
+			<yf>0.423128</yf>
+			<zf>-0.698497</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
@@ -39,15 +58,34 @@
 		</Extents>
 	</Dummy>
 	<Dummy>
-		<Name>DamageImpact4889</Name>
+		<Name>DamageImpact25546</Name>
 		<Position>
-			<xf>-0.168497</xf>
-			<yf>0.313408</yf>
-			<zf>0.880563</zf>
+			<xf>2.372107</xf>
+			<yf>0.721513</yf>
+			<zf>-0.016384</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>0.500000</xf>
+			<yf>0.502577</yf>
+			<zf>0.500000</zf>
+		</Extents>
+	</Dummy>
+	<Dummy>
+		<Name>DamageImpact4889</Name>
+		<Position>
+			<xf>-2.509193</xf>
+			<yf>0.705821</yf>
+			<zf>-0.424931</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
@@ -60,13 +98,13 @@
 	<Dummy>
 		<Name>FireDummy_0</Name>
 		<Position>
-			<xf>0.212638</xf>
-			<yf>0.291496</yf>
-			<zf>-1.028029</zf>
+			<xf>1.867800</xf>
+			<yf>1.104283</yf>
+			<zf>-0.122794</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
@@ -79,13 +117,13 @@
 	<Dummy>
 		<Name>FireDummy_1</Name>
 		<Position>
-			<xf>-0.017549</xf>
-			<yf>0.119207</yf>
-			<zf>0.838067</zf>
+			<xf>-1.775529</xf>
+			<yf>0.446334</yf>
+			<zf>-0.274918</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
@@ -96,15 +134,72 @@
 		</Extents>
 	</Dummy>
 	<Dummy>
-		<Name>hit_metal_0</Name>
+		<Name>FireDummy_2</Name>
 		<Position>
-			<xf>0.988902</xf>
-			<yf>0.612739</yf>
-			<zf>0.430282</zf>
+			<xf>0.150325</xf>
+			<yf>0.650567</yf>
+			<zf>0.329325</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>1.000000</xf>
+			<yf>1.000000</yf>
+			<zf>1.000000</zf>
+		</Extents>
+	</Dummy>
+	<Dummy>
+		<Name>hit_metal_0</Name>
+		<Position>
+			<xf>1.093050</xf>
+			<yf>0.612739</yf>
+			<zf>0.730470</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>0.100000</xf>
+			<yf>0.100000</yf>
+			<zf>0.100000</zf>
+		</Extents>
+	</Dummy>
+	<Dummy>
+		<Name>hit_metal_1</Name>
+		<Position>
+			<xf>2.782142</xf>
+			<yf>0.718936</yf>
+			<zf>-0.077988</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>0.100000</xf>
+			<yf>0.100000</yf>
+			<zf>0.100000</zf>
+		</Extents>
+	</Dummy>
+	<Dummy>
+		<Name>hit_metal_2</Name>
+		<Position>
+			<xf>2.425000</xf>
+			<yf>1.166647</yf>
+			<zf>0.273078</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
@@ -117,13 +212,13 @@
 	<Dummy>
 		<Name>hit_metal_3</Name>
 		<Position>
-			<xf>0.112543</xf>
-			<yf>0.293678</yf>
-			<zf>-0.353782</zf>
+			<xf>-0.994585</xf>
+			<yf>0.635845</yf>
+			<zf>-0.596231</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
@@ -133,35 +228,98 @@
 			<zf>0.100000</zf>
 		</Extents>
 	</Dummy>
-	<MeshBoundingBox>
-		<Name>MeshBoundingBox</Name>
+	<Dummy>
+		<Name>hit_metal_4</Name>
 		<Position>
-			<xf>-0.000000</xf>
-			<yf>0.000000</yf>
-			<zf>-0.000000</zf>
+			<xf>-0.242116</xf>
+			<yf>1.382893</yf>
+			<zf>0.123080</zf>
 		</Position>
 		<Rotation>
 			<xf>0.000000</xf>
-			<yf>-0.000000</yf>
+			<yf>0.000000</yf>
 			<zf>0.000000</zf>
 			<wf>1.000000</wf>
 		</Rotation>
 		<Extents>
-			<xf>1.456320</xf>
-			<yf>0.698645</yf>
-			<zf>0.428368</zf>
+			<xf>0.100000</xf>
+			<yf>0.100000</yf>
+			<zf>0.100000</zf>
+		</Extents>
+	</Dummy>
+	<Dummy>
+		<Name>hit_metal_5</Name>
+		<Position>
+			<xf>-2.629695</xf>
+			<yf>0.997305</yf>
+			<zf>0.093129</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>0.100000</xf>
+			<yf>0.100000</yf>
+			<zf>0.096772</zf>
+		</Extents>
+	</Dummy>
+	<IntersectBox>
+		<Name>Hitbox623</Name>
+		<Position>
+			<xf>0.065608</xf>
+			<yf>0.441554</yf>
+			<zf>-0.090797</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>3.254369</xf>
+			<yf>1.058123</yf>
+			<zf>0.809942</zf>
+		</Extents>
+	</IntersectBox>
+	<MeshBoundingBox>
+		<Name>MeshBoundingBox</Name>
+		<Position>
+			<xf>-0.015996</xf>
+			<yf>1.065156</yf>
+			<zf>-0.000000</zf>
+		</Position>
+		<Rotation>
+			<xf>0.000000</xf>
+			<yf>0.000000</yf>
+			<zf>0.000000</zf>
+			<wf>1.000000</wf>
+		</Rotation>
+		<Extents>
+			<xf>3.281043</xf>
+			<yf>1.636128</yf>
+			<zf>1.143721</zf>
 		</Extents>
 	</MeshBoundingBox>
 	<Sequence>
-		<Duration>1399</Duration>
+		<Duration>1666</Duration>
 		<Looped>1</Looped>
 		<Speed>1</Speed>
 		<Id>1000</Id>
 	</Sequence>
 	<Sequence>
-		<Duration>1399</Duration>
+		<Duration>1666</Duration>
 		<Looped>1</Looped>
 		<Speed>1</Speed>
 		<Id>2000</Id>
+	</Sequence>
+	<Sequence>
+		<Duration>16549</Duration>
+		<Looped>0</Looped>
+		<Speed>1</Speed>
+		<Id>1005</Id>
 	</Sequence>
 </Info>

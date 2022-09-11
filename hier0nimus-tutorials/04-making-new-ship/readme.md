@@ -4,7 +4,7 @@ The previous tutorial was a really big one. For the next one we are going to do 
 
 ## What are we going to do?
 
-We are ging to use an existing model from the game to make a new small cargoship and adapt it in Blender to create a new one. Then we will be changing the diff map a bit to give it some unique visuals.
+We are ging to use an existing model from the game to make a new small cargo ship and adapt it in Blender to create a new one. Then we will be changing the diff map a bit to give it some unique visuals.
 
 We will be creating:
 
@@ -12,8 +12,8 @@ We will be creating:
 - Adding the ship to the steam shipyard
 - Adding the ship to the tradeship pool
 - Make trigger
-- New model + textures/maps for Small cargoship
-- Icon for Small cargoship
+- New model + textures/maps for Small cargo Ship
+- Icon for Small cCargo Ship
 
 ## Our mod structure
 
@@ -33,11 +33,11 @@ This is already the 4th tutorial so we begin to know the structure of a mod. Thi
           - texts_german.xml
           - …
     - graphics
-      - small_cargoship.cfg and small_cargoship.ifo file with model logic.
+      - small_cargo_ship.cfg and small_cargo_ship.ifo file with model logic.
       - icons
         - Custom graphics we use in our mod. Icon for our ship.
       - vehicle
-        - small_cargoship (Contains files that describes the new ship)
+        - small_cargo_ship (Contains files that describes the new ship)
           - maps  
              Contains maps which are the materials/textures of our ship. diff file only in this case.
           - rdm
@@ -929,6 +929,44 @@ So, there we go. We have now a working assets.xml, ready to use!
 </ModOps>
 ```
 
+### Quick test
+
+We could **change the path in our assets.xml to the path of a .cfg file that already exists** and this would work perfectly.
+
+Change the path to the path of the normal **collier.cfg** (Cargo Ship) and maybe to make it quick, set the time to build the ship to 5 seconds to see the result almost immediatly.
+
+```XML
+<Object>
+    <Variations>
+        <Item>
+            <!--<Filename>data/graphics/vehicle/small_cargo_ship/small_cargo_ship.cfg</Filename>-->
+            <Filename>data/graphics/vehicle/collier/collier.cfg</Filename>
+        </Item>
+    </Variations>
+</Object>
+```
+
+```XML
+<Craftable>
+    <CraftingTime>5000</CraftingTime>
+</Craftable>
+```
+
+We could also change the icon to the icon of the normal Cargo Ship for now to also have an icon ingame.
+
+```XML
+<!--><IconFilename>data/graphics/icons/icon_small_cargo_ship.png</IconFilename>-->
+<IconFilename>data/ui/2kimages/main/3dicons/ships/icon_ship_collier.png</IconFilename>
+```
+
+Now copy the modfolder to you mods folder of Anno 1800 and start the game. In the steam shipyard you will ee the new Small Cargo Ship before the normal Cargo Ship.
+
+![small_feedback_ship_01_b ingame](./_sources/blender-10.jpg)
+
+When building you see the Small Cargo Ship with the modal of the normal Cargo Ship like we set up. See the 2 cargo slots and 1 item slot, the cost of the ship, ect. Perfect (for now)!
+
+![small_feedback_ship_01_b ingame](./_sources/blender-11.jpg)
+
 ## Model for the ship
 
 The next step will be an interesting one. We will be adapting an existing model of a ship to create a new model for our small Cargo Ship.
@@ -937,7 +975,7 @@ The next step will be an interesting one. We will be adapting an existing model 
 
 For editing the model we use the free and open 3D creation software **Blender** (https://www.blender.org/). Download this and install it on your computer.
 
-We have no intention of making tutorials of how to use Blender. We will do our best to be as clear as possible for what we need. For detailed tutorials you can find a lot of information already on the internet/Youtube. It is probabluy not a bad idea to have a look at some basic Blender tutorials. For example: https://www.youtube.com/watch?v=nIoXOplUvAw&ab_channel=BlenderGuru
+We have no intention of making tutorials of how to use Blender. We will do our best to be as clear as possible for what we need. For detailed tutorials you can find a lot of information already on the internet/Youtube. It is probably not a bad idea to have a look at some basic Blender tutorials. For example: https://www.youtube.com/watch?v=nIoXOplUvAw&ab_channel=BlenderGuru
 
 ### Plugins/Add-ons we need or should install to make our workflow easier
 
@@ -1049,75 +1087,25 @@ The main parent of our imported file is the **MAIN_FILE_name.cfg**. This contain
 
 #### Animations, other FILE, IFOFILE, MODEL, PARTICLES, PROPCONTAINER
 
-The children of our main parent all have different functions. We do not need all of them in all cases and we are not going to use all of them in this case.
-
-We will be deleting the AMIMATIONS_SEQUENCE, all the FILE children, the MODEL children (we will be importing another model and adapt that one), some of the PARTICLE children and some of the props inside the PROPCONTAINER.
-
-To make sure the whole tree underneath that children is deleted, right click and choose **Delete Hierarchy**.
-
-![Scene collection - delete hierarchy](./_sources/blender-10.jpg)
-
-For now we leave the rest of the assets as is and move them aside a bit deeper on our scene, because we will be importing another ship. Go back one level up to the **vehicle** folder and go to the **small_feedback_ship_01** folder. Inside this folder we have different .cfg files. Import **small_feedback_ship_01_b.cfg**.
-
-![small_feedback_ship_01_b.cfg](./_sources/blender-11.jpg)
-
-This is a ship we can not build ingame (yet). It is a small ship that is used for other things in the game, but we will be adapting this to make a smaller cargo ship that suits us and is buildable.
-
-### Quick test
-
-We could go crazy and actually **change the path in our assets.xml to the path of this .cfg file** and this would work perfectly.
-
-Let's do this! Change the path to the path of the **small_feedback_ship_01_b.cfg** and maybe to make it quick, set the time to build the ship to 5 seconds to see the result almost immediatly.
-
-```XML
-<Object>
-    <Variations>
-        <Item>
-            <!--<Filename>data/graphics/vehicle/small_cargo_ship/small_cargo_ship.cfg</Filename>-->
-            <Filename>data/graphics/vehicle/small_feedback_ship_01/small_feedback_ship_01_b.cfg</Filename>
-        </Item>
-    </Variations>
-</Object>
-```
-
-```XML
-<Craftable>
-    <CraftingTime>5000</CraftingTime>
-</Craftable>
-```
-
-![small_feedback_ship_01_b ingame](./_sources/blender-12.jpg)
-![small_feedback_ship_01_b ingame](./_sources/blender-13.jpg)
-
-As you can see, we have not created a custom icon yet, but we are able to build and see our new ship already ingame. A small tiny ship.
+The children of our main parent all have different functions. We do not need all of them in all cases. Ships for example have other functions then buildings.
 
 ### Adapting our model
 
-Now that we actually have seen the ship ingame we can adapt that model so it suits our idea of a smaller cargo ship.
+#### What are we going to adapt?
 
-If we look at the tree structure of the **small_feedback_ship_01_b.cfg** we can see that this is less complex then the normal cargo ship. It does not have certain particles for explosions or debris when destroyed. That is because in normal gameplay this will never be attacked or destroyed. We could just use this ship as is and be done with it, but we are going a step further and will be adding all those things to this ship to make sure the experience ingame is the same as a normal ship.
-
-#### Removing what we do not need
-
-Let's remove everything that we are not going to use from the structure/tree of the small_feedback_ship_01_b.
-
-- The **flags** can go. We will nog be adding those
-- The **cutout model** can go
-- In the IFOFILE we can also remove **Dummy_connector_back_1** and **Dummy_joint_back**
-
-![small_feedback_ship_01_b remove](./_sources/blender-14.jpg)
-
-#### What do we have left? What are we going to adapt?
-
-Before we dive into adapting the model we will have a look at what we are going to change and add from the normal Cargo Ship.
+Before we dive into adapting the model we will have a look at what we are going to change so we can have a bit of knowledge and structure before going crazy.
 
 ##### ANIMATION_SEQUENCES
 
 We will leave the standard animations for this ship. In more advanced tutorials we can adapt those and add more for ourselves.
 
-##### Lamps
+##### Flags
 
-We have a FILE_ship_lamp_01. This is a file that hangs on a part of the model and will be giving light when it is dark ingame. We will keep this and maybe even add more lamps.
+We have some FILE_flag files. We will be removing those. Our smaller ships will not have flags or we will not be reusing the flags.
+
+##### Ship lamp
+
+We have some FILE_ship_lamp files. Those are files that hang on a part of the model and will be giving light when it is dark ingame. We will keep those and maybe add or remove one or two.
 
 ##### IFOFILE
 
@@ -1125,187 +1113,116 @@ This file contains a lot of important children.
 
 - BoundingBox_BoundingBox: This is a big box that wraps everything of this scene. Every model, prop, other asset needs to be inside this box. If not, it will be cut off ingame and we will have a visual problem. For example, if we have smoke that goes up, the box needs to be tall enough for the smoke. We will be making our ship bigger, so we will have to scale this box according to the size of our ship and other modifications we will be making.
 - MeshBoundingBox_MeshBoundingBox: This is a smaller box as you can see, it only wraps around the model and the meshes of the model. Same logic as for the BoundingBox_BoundingBox, but now only for the model. When we make our model bigger we will have to make sure to also make this BoundingBox bigger.
+- Dummy_DamageImpact: This shows impact of damage on the model when attacked.
+- Dummy_FireDummy: This shows impact of fire on the model when on fire.
+- Dummy_hit_metal: This shows the impact of metal (for example special weapons) on the model when attacked
+- IntersectBox_Hitbox: The box where the model can be hit by damage.
+- Sequence: Are linked to the animations
 
-##### MODEL_small_feedback_ship_b_lod0
+We will be adapting some of them to correspond with the smaller ship length and functions.
+
+##### MODEL_collier_destruct
+
+The model itself that contains the 3D model of our ship that is used when destroyed. We will reuse this model.
+
+##### MODEL_collier_lod0
 
 The model itself that contains the 3D model of our ship. We will be adapting this model to give it a unique look.
 
-As we have seen for the normal Cargo Ship, the scene can have multiple MODEL files in the tree.
+**Good to know:**
 
-Important to know is that when we export our .cfg file, this export will look up the reference to this model, so the link to the model. The scene does not contain the model itself, but a reference to a file that is somewhere in the folderstructure of your computer. This is important because when moving folders/files this reference can be broken and opening your Blender file can then result in models not showing. That is also why I would advise to create models in the same folder as your data folder where you exported all your building files and use the same folder structure in your mods so when you do move the folder to your mod folder the links would still work. This model also contains the materials and also those are linked, but more about that later in this tutorial.
+As we can see, the scene can have multiple MODEL files.
+
+Important to know is that when we export our .cfg file, this export will look up the reference to this model, so the link to the model. The scene does not contain the model itself, but a reference to a file that is somewhere in the folderstructure of your computer. This is important because when moving folders/files this reference can be broken and opening your Blender file can then result in models not showing. This model also contains the materials and also those are linked, but more about that later in this tutorial.
+
+##### MODEL_pile
+
+A separate model for the pile of cargo in the hold. We will remove this and add our own props or adapt it.
 
 ##### PARTICLE_ship_smoke01
 
-This file is from the PARTICLE type and is the smoke that comes out of the ships chimney. When adapting our ships model, there is a big chance we will have to mode this to make sure it aligns correctly with the chimney.
+This file is from the PARTICLE type and is the smoke that comes out of the ships chimney. When adapting our ships model, there is a big chance we will have to change this to make sure it aligns correctly with the chimney.
 
-##### PARTICLE_water_wave_ship_move_01_loop
+##### PARTICLE_water_wave_ship_move / PARTICLE_water_splash
 
-When the ship floats through the water, the water that hits the ship on the front is a specific visual. The ship splits the water and that has to be visually correct. This PARTICLE makes sure about that. When making the ship bigger we will have to change this PARTICLE also according to the ships size.
+When the ship floats through the water, the water that hits the ship on the front is a specific visual. The ship splits the water and that has to be visually correct. This PARTICLE makes sure about that. When making the ship bigger we will have to change this PARTICLE also according to the ships size. The water_splash shows other water animations around the ship.
 
 ##### Other PARTICLES for explosions/damage/debris
 
-As mentioned before, the normal Cargo Ship also has other PARTICLE files. Our new ship existed ingame but would never be attacked or destroyed. Therefore adding those extra PARTICLE files were not needed. We will be copying those over from the normal Cargo Ship to give the same interaction with our new ship.
+The visuals when the ship is hit, taken damage, smoke, destroyed, ect. We will be removing some because our ship will be smaller, make some a bit smaller, change locations, ect.
 
 ##### PROPCONTAINER
 
-The PROPCONTAINER contains extra props like barrels, storage things, plants, ect. We already used this in the previous tutorial where we added a tree to our cfg file. If we look at our ship it already has some storage props but when making it bigger we will have more room to place some things and give our asset a nice cargo look.
+The PROPCONTAINER contains extra props like barrels, storage things, plants, ect. We already used this in the previous tutorial where we added a tree to our .cfg file in the code. If we look at our ship it already has some storage props for when the ship is desroyed. We see 2 PROPCONTAINER files. We can delete the first that is empty and will be using the second one. We can adapt the name to **PROPCONTAINER** instead of **PROPCONTAINER\_.001** make it clean.
 
-#### Making the ship bigger/longer
+### Double check workflow
 
-Now, let's dive into changing the model itself. The ship can be a bit bigger and longer. If you have followed the basic Blender tutorials you know we first have to select our model we want to adapt and then switch from **Object Mode** to **Edit mode**.
+We now have a model inside Blender that we are going to adapt, a tree structure we will be using, ect. Let's make a small change to our model and treee structure, export everything and have a look ingame if it works before doing everything and finding out after hours of work there is something wrong in our workflow.
 
-Select the MODEL you want to create on your scene or select it on the right in the tree structure. If you select it on the right in the tree structure, make sure to select **MODEL** and **not the MAIN_FILE**. The MAIN_FILE contains more then only the model. The only thing we will be adapting now is the model.
+#### Changing names and save
 
-For easier changes change the **Viewport Shading** to **Solid mode** in the upper right corner of your screen. In the same line of icons also toggle the **X-Ray** to see the vertices better on all sides of the model.
+First of all let's change all the names in the tree view from **collier** to **small_cargo_ship**.
+Also save your work as a blender file. This can be inside the vehicle/small_cargo_ship folder.
 
-![small_feedback_ship_01_b adapting step 1](./_sources/blender-15.jpg)
+#### Removing Flags, adapting the model
 
-Now let's rotate around the model with our middle mouse button and see where we could adapt the ship. We can adapt the ship at the front and also at the back to make it longer. We can also scale it up as a whole.
+Now let's remove all the flags by selecting all of the in te tree view (Click + CTRL for selecting multiple) and right-click and choose **Delete Hierarchy**.
 
-Let's start with scaling it up as a whole. If we look at the image above where we compare the ship ingame with the normal Cargo Ship we can see that we can double the size easily.
+![small cargo ship delete](./_sources/blender-12.jpg)
 
-Make sure you are in **Edit Mode** and you have selected all the vertices. They should all look orange. Rotate around it with the middle mouse button to make sure they are all selected. If not make sure you toggled the **X-Ray** on in the upper right corner to be able to see and select vertices behind other vertices. Also make sure the **Object Proporties** panel is open where we can see the location and scale of our selected model.
+#### Small adaptations on the model
 
-![small_feedback_ship_01_b adapting step 2](./_sources/blender-16.jpg)
+Click on the eye next to the **MODEL_small_cargo_ship_destruct** to hide it in the scene. It should be greyed out in the tree view.
+Then select our **MODEL_small_cargo_ship_lod0** file. Our main model should be selected now.
 
-We can see that our ships location is x=0 y=0 and z=0.168953. We should change this. We want our model to be in the middle of our scene for every value, so x and y should are 0 but we also change this for the z value. We see that our ship sank a bit lower. For now this is fine.
+![small cargo ship model](./_sources/blender-13.jpg)
 
-First we could copy (SHIFT + D) the same model to compare after when we have scaled our model. Now let's scale our model from 1.100 to 2.000 for all values and see if we did not went overboard with this. At first glance, this is fine. We can always come back to this if we see ingame that it is actually to big. Now delete the smaller model.
+Our main model we selected can now be adapted, but first we have to change our **Interaction mode**. Change the Interaction mode from **Object Mode** to **Edit Mode**.
 
-**NOTE**: By scaling the whole ship we also scale things like the door, windows. Those are now not in proportion anymore if we would add people as animations on the ship. We leave this for this tutorial to not go to deep into the modelling yet.
+![small cargo ship model](./_sources/blender-14.jpg)
 
-![small_feedback_ship_01_b adapting step scale](./_sources/blender-17.jpg)
+We can now see the complexe polygons of our model where we can adapt the vertices.
 
-We immediatly see that all of our other assets (PARTICLE, FILE,...) do not match the correct location anymore. We will come back to those once we finished the whole model.
+Change the 2 poles where the flags were on and make then smaller. Make sure to toggle **X-Ray View** on.
 
-Now that we have made it bigger, let's make it longer at the front and the back. To have a good view click on NUMPAD 1 to have a rearview of the scene. Make sure you have selected the model, that you are in Edit Mode, you have toggled X-Ray view and you are in the Solid Viewport Mode.
+![small cargo ship model x-ray view](./_sources/blender-15.jpg)
 
-![small_feedback_ship_01_b adapting step rear view](./_sources/blender-18.jpg)
+Another thing we can quickly do is removing the lifeboats at the sides of the ship. To easily swith the the rearview use the numpad shortcut **3**. Select the arms and the lifeboats and delete by using the delete button and choose **vertices** to remove everything.
 
-Now select all vertices of the front of the ship that we want to move to the left to make the ship longer fromt the front.
+![small cargo ship model delete lifeboats](./_sources/blender-16.jpg)
 
-![small_feedback_ship_01_b adapting step front adapt](./_sources/blender-19.jpg)
+If we switch back to Object mode we can see our adapted model a bit better without the higher poles and without the lifeboats.
 
-We can now move all those vertices to the left bij useing the **shorcut G** for dragging and use the middle mouse button to stay on the X-axis and move our mouse as far as we want. We can also use the move tool on the left.
-
-![small_feedback_ship_01_b adapting step front adapt 2](./_sources/blender-20.jpg)
-
-If we switch to **Material Preview Mode** we can see that the material is stretched really clearly. We will be adapting our material later, but to minimize this stretching we could adapt our vertices a bit.
-
-![small_feedback_ship_01_b adapting step front adapt impact material](./_sources/blender-21.jpg)
-
-We can see that the front part that we moved exists from 3 big parts. We could spread the length according to those different parts to minimize the streching as much as we can. Select the last range of vertices and move those back a bit.
-
-![small_feedback_ship_01_b adapting step front adapt impact material 2](./_sources/blender-22.jpg)
-
-Do this for the other parts to have a balanced stretch.
-
-![small_feedback_ship_01_b adapting step front adapt impact material 3](./_sources/blender-23.jpg)
-
-Now that we have done this for the front, we could also do this for the back. Again select the vertices we want to move to make it bigger.
-
-![small_feedback_ship_01_b adapting step back adapt 1](./_sources/blender-24.jpg)
-![small_feedback_ship_01_b adapting step back adapt 2](./_sources/blender-25.jpg)
-
-We have now created some more space on the ship to put some extra cargo. The last step we can do is removing the flag pole at the end of the ship. We can select the vertices and delete them.
-
-![small_feedback_ship_01_b adapting step cargo](./_sources/blender-26.jpg)
-
-As we look closer, we can see that some parts of the original materials are really stretched. Some are more noticable then others, but ingame most of it will probably not be seen from far away. We will do some polishing when adapting the materials. But for this tutorial we are not going to go to deep into adapting those textures. We want to give a basic knowledge of adapting existing models in Blender.
-
-**NOTE:** If you did not do this already, it is wise to save your work as a Blender file. So you can always come back to this file and adapt if needed.
-
-### Adapting other assets
-
-Now that we have adapted the model, it is time to adapt/move/add all the other elements on our scene. We talked already about those above, so this should go smooth. Make sure you are back in **Object Mode** and NOT in Edit mode.
-
-When moving the objects, make sure to move the parent and not one of the children. Otherwise ingame your asset will not be at the right location.
-
-Lets move the light FILE to the correct location
-
-![small_feedback_ship_01_b adapting lamp](./_sources/blender-27.jpg)
-
-Let's move the smoke PARTICLE and scale it to make it a bit bigger.
-
-![small_feedback_ship_01_b adapting smoke](./_sources/blender-28.jpg)
-
-Scale and move the PARTICLE for the water waves.
-
-![small_feedback_ship_01_b adapting wave](./_sources/blender-29.jpg)
-
-### Adding other assets for explosions and damage
-
-We still have our MAIN_FILE of our Cargo Ship. Open this and drag + SHIFT over as much PARTICLE files as you want to the MAIN_FILE of our new ship. We will take 1 or 2 of every aspect (debris, explosion, smoke, ship damage, shot miss, splash.) When adding those to the other MAIN_FILE to location should be correctly and you should not have to drag it.
-
-![small_feedback_ship_01_b Particles](./_sources/blender-30.jpg)
-
-Now open the IFOFILE of our normal Cargo Ship and see what we can take from that. We have some Dummy files for damage impact, fire, hits. We can reuse those. And again, drag those to our other MAIN_FILE, but now make sure they are inside the IFOFILE.
-
-![small_feedback_ship_01_b IFOFILE](./_sources/blender-31.jpg)
-
-As you can see our tree is getting more complex with the more assets. The last step we are going to take is adding extra props to our ship. We have some space to add some woodem crates, boxes, ect to give it a nice cargo ship feeling. For adding props, we need a PROPCONTAINER. We can reuse the one from the Cargo Ship. Remove everything inside and drag it over to the MAIN_FILE of our other ship. We can now also completly delete the MAIN_FILE of our normal Cargo Ship.
-
-![small_feedback_ship_01_b PROPS](./_sources/blender-32.jpg)
-
-First of all, select your PROPSCONTAINER and look at the **Object Proporties** panel. Make sure the location of this PROPCONTAINER is x=0 y=0 z=0. This is important because all added props will be ingame positioned on this coordinates of this parent.
-
-To add props (.prp files) to you scene, we will be useing again the import function with the amazing Anno add-on. If we dive into our folder structure that we exported we can find a specific folder where we can find all the storage props. Barrels, wooden creates, other piles of storage materials. **data/graphics/props/storage**.
-
-![small_feedback_ship_01_b PROPS storage path](./_sources/blender-33.jpg)
-
-To add one of the props to our scene:
-
-- Select the PROPCONTAINER in the tree view
-- Go to **File** > **Import** > **Anno Prop (.prp)** > And **open the .prp file** you want to add.
-
-**NOTE:** Only when selecting the PROPCONTAINER the option to import the .prp files will be available. If you did not select the PROPCONTAINER it will be greyed out.
-
-![small_feedback_ship_01_b PROPS storage import](./_sources/blender-34.jpg)
-
-You can immediatly move the prop around at the correct place. Always make sure to move the highest parent of the prop and not the children. In this case the PROP file and not the PROPCONTAINER and not the Mesh inside.
-
-![small_feedback_ship_01_b PROPS storage import 2](./_sources/blender-35.jpg)
-
-Add as many props as you want and go creative!
-
-![small_feedback_ship_01_b PROPS storage result](./_sources/blender-36.jpg)
-
-We are now finished with changing, adding, editing, ect in Blender. We can now export!
-
-### Exporting
-
-We did jump over some things that we now have to have extra attention for. To start, we have adapted and existing model to a new model. When exporting our file to a .cfg to use ingame, the file still thinks that we are using the old version of the model. So if we would export this we would still see the old model ingame instead of our changed model.
+![small cargo ship model end small adaptations](./_sources/blender-17.jpg)
 
 #### Exporting model
 
-To export our adapted model, first change the name of the model from **MODEL_small_feedback_ship_b_lod0** to **MODEL_small_cargo_ship** in the tree view.
+To start ttesting our workflow, we will begin with exporting the model itself.
 
-![small cargo ship name](./_sources/blender-37.jpg)
+Make sure you are in **Object Mode** and select our model **MODEL_small_cargo_ship_lod0** in the tree view. Make sure you select the highest parent of the model, and not the children inside. We can now export our model. So we will be creating a new model of our ship that is different from the normal cargo ship.
 
-Now that we selected this model, we can export it. So we will be creating a new model of our ship.
-
-- Make sure you select **MODEL_small_cargo_ship** in the tree view
+- Make sure you select **MODEL_small_cargo_ship_lod0** in the tree view
 - Go to **File** > **Export** > **Anno Model (.rdm/.glb)**
 
-![small cargo ship export 1](./_sources/blender-38.jpg)
+![small cargo ship model export](./_sources/blender-18.jpg)
 
 - Navigate to the original **vehicle** folder where all the exported buildings and assets can be found.
-- Make a new folder inside the vehicle folder and name it **small_cargo_ship**
+- If this folder does not exist yet, make a new folder inside the vehicle folder and name it **small_cargo_ship**
 - Open this folder
-- Make 2 new folders inside this folder named **maps** and **rdm**
+- If the folders do not exist yet, make 2 new folders inside this folder named **maps** and **rdm**
 - Open the **rdm** folder and save your model (small_cargo_ship.rdm) inside this folder.
 
 Now if you navigate to this folder on your computer you will see 2 files you just created. A .glb file and a .rdm file. You can open the .glb file with the standard 3D viewer from windows and you will see the model you created in 3D preview, without any materials or props or particles.
 
-![small cargo ship glb](./_sources/blender-39.jpg)
+![small cargo ship export glb](./_sources/blender-19.jpg)
 
 Now if we go back to Blender, we have to link our new model to the model in our file. To do so we use the **Anno Object panel**. This is a bit hidden. It can be found underneath the Viewport Shading buttons. It is an arrow that will open a couple of panels, one of those panels is the Anno Object Panel.
 
-![small cargo ship Anno Object 1](./_sources/blender-40.jpg)
+![small cargo ship Anno Object 1](./_sources/blender-20.jpg)
 
 Look at the FileName of the Anno Object. This should be the link to the correct model. Sometimes Blender did not pick up the exported rdm yet and then you have to manually link this here. In my case this is correct.
 
-![small cargo ship Anno Object 2](./_sources/blender-41.jpg)
+![small cargo ship Anno Object 2](./_sources/blender-21.jpg)
 
 #### Exporting .cfg
 
@@ -1317,56 +1234,13 @@ To export our .cfg file we need:
 - Go to **File** > **Export** > **Anno (.cfg)**
 - We save this .cfg file in our **data/graphics/vehicle/small_cargo_ship/** folder
 
-### Changing the material
+![small cargo ship export cfg](./_sources/blender-22.jpg)
 
-If we have a look at the ship we see that this is red. I would like to change that to a more black-grey color.
+#### Test ingame
 
-Let's find the original material file. From the previous tutorial we know that we have different types of material files. diff, mask, metal and norm.
+We have now already created our workflow for the adapted model and cfg. We did not change our maps yet but that is for later.
 
-We will only adapt the diff version. The other versions can stay the same.
-
-We can find the material files of the original ship in the same location where we could find the .cfg file. **data/graphics/vehicle/small_feedback_ship_01/maps**. The file **small_feedback_ship_01_diff_0.dds** is the highest quality file we can adapt. First we convert this file from .dds to .png like we did before.
-To convert the dds file we can use different tools:
-
-- https://www.xnview.com/
-- https://www.aconvert.com/image/dds-to-png/
-
-Let's open this diff map in our preferred editing program and change colors the way we want. I changed the red color to a black-grey color to have some visual difference.
-
-![small cargo ship diff map 2](./_sources/blender-42.jpg)
-![small cargo ship diff map 3](./_sources/blender-43.jpg)
-
-Also make sure to make the different versions.
-
-- small_cargo_ship_diff_0 (1024x512)
-- small_cargo_ship_diff_1 (512x256)
-- small_cargo_ship_diff_2 (256x128)
-- small_cargo_ship_diff_3 (128x64)
-- small_cargo_ship_diff_4 (64x32)
-
-Covert those .png files to .dds files. and move all those files inside our **maps** folder inside our **small_cargo_ship** vehicle folder.
-
-### Link the new materials in Blender
-
-We go back to Blender to link our new created materials to our model.
-
-We change our workspace to **Shading**. And we can see the linked diff material.
-
-![small cargo ship diff map blender](./_sources/blender-44.jpg)
-
-Change the linked material to our newly created diff map.
-
-![small cargo ship diff map blender 2](./_sources/blender-45.jpg)
-
-### Export .cfg again
-
-Now select the **MAIN_FILE_small_cargo_ship** agian in the tree and export the .cfg again and overwrite the files we previously created.
-
-### Moving our ship folder to our mod folder
-
-We are now finished with our ship and can copy the folder to our mod folder. Copy the **data/graphics/vehicle/small_cargo_ship/** folder to our mod and make sure the structure is the same.
-
-Before you forget, change the path to the .cfg again in the main assets.xml.
+First change the link to the .cfg again in the assets.xml.
 
 ```XML
 <Object>
@@ -1378,41 +1252,204 @@ Before you forget, change the path to the .cfg again in the main assets.xml.
 </Object>
 ```
 
-Copy the mod folder again to the Anno 1800 mod folder and start the game. We should see everything we created ingame. execpt the icon. But more about that later.
+Now also copy the folder **data/graphics/vehicle/small_cargo_ship/** in the location where you created the model to your corresponding mod folder. This should be the same structure so links would perfectly work.
 
-![small cargo ship ingame wrong](./_sources/blender-46.jpg)
+Copy your modfolder to the Anno 1800 mods folder and start the game and test!
 
-I encounter a couple of things now ingame. I could completly fix this from the start in this tutorial, but it is actually a good lesson in debugging, so I'll just keep this in.
+As we can see, the left ship, the new Small Cargo Ship does not have the lifeboats on the side, and does not have the flags anymore. So we know our workflow works! Super!
 
-- ship is sideways
-- ship is to big. Factor x2 is way to much
-- no props to be seen that we placed on the model
-- destruction of the ship does not work
+![small cargo ship export test ingame](./_sources/blender-23.jpg)
 
-#### Fix problems
+### Changing the material
 
-First of all, the ship is sideways. Not good offcourse. Looking at the model in Blender is is clear why. Some of the rotation values were not set to 0 or the correct 1.
+Before we dive into making more adjustments to the model, let's make sure also our workflow for our maps work (the textures on the model that shows the different colors, ect)
 
-![small cargo ship sideways 1](./_sources/blender-47.jpg)
+If we have a look at the ship we see that the bottom part is black. I would like to change that to a white color.
 
-We can fix this by changing our Rotation W=1.000 and Z=0.000.
+Let's find the original material file. From the previous tutorial we know that we have different types of material files. diff, mask, metal and norm.
 
-![small cargo ship sideways fix 1](./_sources/blender-48.jpg)
+We will only adapt the diff version. The other versions can stay the same.
 
-All our props and particles are offcourse also not positioned correct anymore.
+We can find the material files of the original ship in the same location where we could find the .cfg file. **data/graphics/vehicle/collier/maps**. The file **collier_diff_0.dds** is the highest quality file we can adapt. First we change the name from **collier_diff_0.dds** to **small_cargo_ship_diff_0.dds**. Then we convert this file from .dds to .png like we did before.
+To convert the dds file we can use different tools:
 
-I also see that we forgot to change the Boundingboxes in the IFOFILE. But first we better change the size so we can adapt everything according to that.
+- https://www.xnview.com/
+- https://www.aconvert.com/image/dds-to-png/
 
-Select the model and instead of scale 2.000 lets just keep it at 1.000.
+Let's open this diff map in our preferred editing program and change colors the way we want. I changed the black color to a white-grey color to have some visual difference.
 
-Now move all the props, particles, scale the boundingboxes,... to make sure everything is correct.
+![small cargo ship diff map 2](./_sources/blender-24.jpg)
+![small cargo ship diff map 3](./_sources/blender-25.jpg)
 
-Now export the MODEL and MAIN_FILE again. Copy the folder again to your Mod folder and then copy the modfolder again to your Anno mod folder to test it ingame if it works now.
+Also make sure to make the different versions.
+
+- small_cargo_ship_diff_0 (1280x1280)
+- small_cargo_ship_diff_1 (640x640)
+- small_cargo_ship_diff_2 (320x320)
+- small_cargo_ship_diff_3 (160x160)
+- small_cargo_ship_diff_4 (80x80)
+
+Covert those .png files to .dds files. and move all those files inside our **maps** folder inside our **small_cargo_ship** vehicle folder.
+
+### Link the new materials in Blender
+
+We go back to Blender to link our new created materials to our model.
+
+We change our workspace to **Shading**. And we can see the linked diff material.
+
+![small cargo ship diff map blender](./_sources/blender-26.jpg)
+
+Change the linked material to our newly created diff map.
+
+Make sure you go down the tree and change both LOD versions. We should now see the white ship.
+
+![small cargo ship diff map blender 2](./_sources/blender-27.jpg)
+
+We should also change the corresponding maps for the **MODEL_small_cargo_ship_destruct** to the wite maps.
+
+### Export .cfg again
+
+Now select the **MAIN_FILE_small_cargo_ship** again in the tree and export the .cfg again and overwrite the files we previously created.
+
+### Moving our ship folder to our mod folder
+
+Copy the **data/graphics/vehicle/small_cargo_ship/** folder again to our mod folder like we did before.
+
+Copy the mod folder again to the Anno 1800 mod folder and start the game. We should see everything we created ingame with the white ship.
+
+![small cargo ship diff ingame](./_sources/blender-28.jpg)
+
+As you can see we now actually created a skin for our normal Cargo Ship. We now know our maps workflow also works! Time to change some more things and differentiate the model more.
+
+#### Making the ship smaller
+
+Let's dive again into blender and change the model itself some more. The ship can be a bit smaller and maybe some extra tweaks on other specifications of the ship. If you have followed the basic Blender tutorials you know the basics of editing models.
+
+Select the MODEL you want to create on your scene or select it on the right in the tree structure. If you select it on the right in the tree structure, make sure to select **MODEL** and **not the MAIN_FILE**. The MAIN_FILE contains more then only the model. The only thing we will be adapting now is the **MODEL_small_cargo_ship_lod0** model like we did before with the flag posts and lifeboats.
+
+For easier changes change the **Viewport Shading** to **Solid mode** in the upper right corner of your screen. In the same line of icons also toggle the **X-Ray** to see the vertices better on all sides of the model.
+
+Now let's rotate around the model with our middle mouse button and see where we could adapt the ship. We can adapt the ship in the middle to make it shorter.
+
+Make sure you are in **Edit Mode** and you have selected all the vertices. They should all look orange. Rotate around it with the middle mouse button to make sure they are all selected. If not make sure you toggled the **X-Ray** on in the upper right corner to be able to see and select vertices behind other vertices. Also make sure the **Object Proporties** panel is open where we can see the location and scale of our selected model.
+
+![small cargo ship blender edit extreme 1](./_sources/blender-29.jpg)
+
+We can see that our ships location is x=0 y=0 and z=0. We want our model to be in the middle of our scene for every value, so x and y and z value should be 0. We see that our ship sank a bit lower. For now this is fine. This is like this inside the model itself.
+
+To have a good view click on NUMPAD 1 to have a rearview of the scene. Make sure you have selected the model, that you are in Edit Mode, you have toggled X-Ray view and you are in the Solid Viewport Mode.
+
+![small cargo ship blender edit extreme 2](./_sources/blender-30.jpg)
+
+From the overhanging crane we will be deleting 2 pieces. Select both pieces like in the underneath screenshot. Select the vertices and delete **faces**.
+
+![small cargo ship blender edit extreme 3](./_sources/blender-31.jpg)
+
+Now select all vertices of the front of the ship that we want to move to the right to make the ship smaller from the front to the back.
+
+![small cargo ship blender edit extreme 4](./_sources/blender-32.jpg)
+
+Move those vertices to the right like in the underneath screenshot.
+
+We can now move all those vertices to the right bij using the **shorcut G** for dragging and use the middle mouse button to stay on the X-axis and move our mouse as far as we want. We can also use the move tool on the left.
+
+![small cargo ship blender edit extreme 5](./_sources/blender-33.jpg)
+
+Do the same for the back side.
+
+![small cargo ship blender edit extreme 6](./_sources/blender-34.jpg)
+
+We have some changes to make to make sure nothing is actually clipping or having strange visuals.
+
+If we switch to **Material Preview Mode** we can see that the material is stretched and that the shadows of the wood at the side is also not ok anymore. We could adapting our material , but to minimize this stretching we could also adapt our model.
+
+![small cargo ship blender edit extreme 6](./_sources/blender-35.jpg)
+
+**NOTE:** If you did not do this already, it is wise to save your work as a Blender file. So you can always come back to this file and adapt if needed.
+
+#### Fixing visual problems on the model
+
+If we have a look at the model now and go around it we can see some optimazations we can make.
+
+##### Wood at the side
+
+The shadows of the wood on the side are not aligned anymore with the wood. We can fix that by changing the vertices of the wood. Do this for both sides.
+
+![small cargo ship blender edit wood side 1](./_sources/blender-36.jpg)
+
+![small cargo ship blender edit wood side 2](./_sources/blender-37.jpg)
+
+##### Pile of cargo
+
+If we look at the top, we see clearly that the cargo pile is clipping inside the ship.
+
+![small cargo ship blender edit cargo pile 1](./_sources/blender-38.jpg)
+
+Delete the **MODEL_pile** in the tree view. We will be adding our own props to the cargo hold.
+
+![small cargo ship blender edit cargo pile 1](./_sources/blender-39.jpg)
+
+### Adapting other assets
+
+Now that we have adapted the model, it is time to adapt/move/add all the other elements on our scene. We talked already about those above, so this should go smooth. Make sure you are back in **Object Mode** and NOT in Edit mode.
+
+When moving the objects, make sure to move the parent and not one of the children. Otherwise ingame your asset will not be at the right location.
+
+Lets move the **FILE_ship_lamp** files to the correct location.
+
+![small cargo ship blender edit lights](./_sources/blender-40.jpg)
+
+Let's move the **PARTICLE_smoke_ship_dark_large_01** and the **PARTICLE_smoke_ship_dark_large_02** so it is aligned again with the chimney.
+
+![small cargo ship blender edit smoke](./_sources/blender-41.jpg)
+
+Move **PARTICLE_water_wave_ship_move_01_loop** for the water waves a bit to the back.
+
+![small cargo ship blender edit waves](./_sources/blender-42.jpg)
+
+### IFOFILE
+
+#### Dummy files
+
+We have some Dummy files for damage impact, fire, hits. We can reuse those and delete, move the ones we need/do not need around so they are fitting the size of the ship again..
+
+#### BoundingBox / IntersectBox / MeshBoundingBox
+
+Those 3 boxes also need to be resized based on the new size of the ship. Use the scale tool for this.
+
+### PROPCONTAINER
+
+The last step we are going to take is adding extra props to our ship. We have deleted the original cargo space and now have some room to add some wooden crates, boxes, ect to give it a nice cargo ship feeling. For adding props, we need the PROPCONTAINER.
+
+First of all, select your PROPCONTAINER and look at the **Object Proporties** panel. Make sure the location of this PROPCONTAINER is x=0 y=0 z=0. This is important because all added props will be ingame positioned on this coordinates of this parent.
+
+![small cargo ship blender PROPCONTAINER](./_sources/blender-43.jpg)
+
+To add props (.prp files) to you scene, we will be using again the import function with the amazing Anno add-on. If we dive into our folder structure that we exported we can find a specific folder where we can find all the storage props. Barrels, wooden creates, other piles of storage materials. **data/graphics/props/storage**.
+
+To add one of the props to our scene:
+
+- Select the PROPCONTAINER in the tree view
+- Go to **File** > **Import** > **Anno Prop (.prp)** > And **open the .prp file** you want to add. For example **large_wooden_box_01.prp** or **wooden_box.prp**.
+
+![small cargo ship blender PROPCONTAINER 2](./_sources/blender-44.jpg)
+
+You can always move, scale, rotate the file. Make sure when moveing, rotating, scaling the prop you have selected the file itself and NOT the PROPCONTAINER.
+
+![small cargo ship blender PROPCONTAINER 3](./_sources/blender-45.jpg)
+
+**NOTE:** Only when selecting the PROPCONTAINER the option to import the .prp files will be available. If you did not select the PROPCONTAINER it will be greyed out.
+
+You can immediatly move the prop around at the correct place. Always make sure to move the highest parent of the prop and not the children. In this case the PROP file and not the PROPCONTAINER and not the Mesh inside.
+
+Add as many props as you want and go creative!
+
+![small cargo ship blender PROPCONTAINER 4](./_sources/blender-46.jpg)
+
+We are now finished with changing, adding, editing, ect in Blender. We can now export again to have our final result!
+
+Export the MODEL and MAIN_FILE again. Copy the folder again to your Mod folder and then copy the modfolder again to your Anno mod folder to test it ingame if it still works and everything looks good.
 
 ### Creating the icon
 
-We will create an icon based on the ingame model. But because we do not have it final yet, we will do this once we have the other things in order.
-
-# !!!! REMARK !!!!
-
-This tutorial is not finished yet! There are still problems I encountered and things I probably did wrong and need to fix. So, if you follow this tutorial and you see where I made mistakes, feel free to contact me. I will rework the tutorial with the correct information once I find the time.
+We will create an icon based on the oroginal Cargo Ship icon.
