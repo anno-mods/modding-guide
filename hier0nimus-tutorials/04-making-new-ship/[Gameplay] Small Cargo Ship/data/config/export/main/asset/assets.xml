@@ -16,8 +16,7 @@
                 <Standard>
                     <GUID>1742008813</GUID>
                     <Name>Small Cargo Ship</Name>
-                    <!--><IconFilename>data/graphics/icons/icon_small_cargo_ship.png</IconFilename>-->
-                    <IconFilename>data/ui/2kimages/main/3dicons/ships/icon_ship_collier.png</IconFilename>
+                    <IconFilename>data/graphics/icons/icon_small_cargo_ship.png</IconFilename>
                     <InfoDescription>1742008814</InfoDescription>
                 </Standard>
                 <Object>
@@ -148,7 +147,7 @@
                     <InfluenceCostPoints>1</InfluenceCostPoints>
                 </Cost>
                 <Craftable>
-                    <CraftingTime>5000</CraftingTime>
+                    <CraftingTime>180000</CraftingTime>
                 </Craftable>
                 <TradeRouteVehicle />
                 <Locked />
