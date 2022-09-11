@@ -1419,7 +1419,7 @@ Those 3 boxes also need to be resized based on the new size of the ship. Use the
 
 ### PROPCONTAINER
 
-The last step we are going to take is adding extra props to our ship. We have deleted the original cargo space and now have some room to add some wooden crates, boxes, ect to give it a nice cargo ship feeling. For adding props, we need the PROPCONTAINER.
+The last step we are going to take is adding extra props to our ship. We have deleted the original cargo and now have some room to add some wooden crates, boxes, ect to give it a nice cargo ship feeling. For adding props, we need the PROPCONTAINER.
 
 First of all, select your PROPCONTAINER and look at the **Object Proporties** panel. Make sure the location of this PROPCONTAINER is x=0 y=0 z=0. This is important because all added props will be ingame positioned on this coordinates of this parent.
 
@@ -1446,10 +1446,82 @@ Add as many props as you want and go creative!
 
 ![small cargo ship blender PROPCONTAINER 4](./_sources/blender-46.jpg)
 
+We can delete the **PROP_water_decal_boards_floating**, we do not need them.
+
+#### Chaning the FLAG value for the props
+
+A think I encountered and got help from the community for was the props not showing in the game. The ship did not got any cargo when loaded ingame. THe thing we still need to fix is the flag that can be set to 1 or 0 for every prop. This has to do with if the height is calculated from the axis itself or from another relative point. The logic for this is still unknown for me, but trying it out fixes the problem.
+
+- Select a prop in the tree
+- Open the Anno Object tab
+- Under the file name you have a Flags field that can be set to **0**. Now all the props have a **1** value there. Change this value to **0** for alle props.
+
+![small cargo ship blender PROPCONTAINER 5](./_sources/blender-47.jpg)
+
 We are now finished with changing, adding, editing, ect in Blender. We can now export again to have our final result!
 
 Export the MODEL and MAIN_FILE again. Copy the folder again to your Mod folder and then copy the modfolder again to your Anno mod folder to test it ingame if it still works and everything looks good.
 
+![small cargo ship blender PROPCONTAINER 5](./_sources/blender-48.jpg)
+
+We are not ready actually with the PROPCONTAINER. If we would look back to the original collier.cfg, we would see that we had 2 PROPCONTAINER files. We deleted one but we actually needed both. One is for the normal behaviour, and the other with the boards_floating was for when the ship was destroyed.
+
+We import the original collier.cfg again and move both PROPCONTAINER into our **MAIN_FILE_small_cargo_ship**.
+
+We now have 3 PROPCONTAINER files. One where our cargo files are in, an empty one and one with the boards_floating.
+
+![small cargo ship blender PROPCONTAINER 6](./_sources/blender-49.jpg)
+
+If we take the empty one, we see a Config: **VISIBILITY_TRANSFORM**. If we take the other one we see another Config and different states.
+
+![small cargo ship blender PROPCONTAINER 7](./_sources/blender-50.jpg)
+![small cargo ship blender PROPCONTAINER 8](./_sources/blender-51.jpg)
+
+Move our cargo files to the empty one. To move the files select all the children, drag then to the other PROPCONTAINER and press SHIFT at the same time.
+
+We can now delete the previous PROPCONTAINER of those files and now those files should be at the right location.
+
+We now have 2 PROPCONTAINER files with the corresponding files for when the ship is destroyed and when it is working.
+
+![small cargo ship blender PROPCONTAINER 8](./_sources/blender-52.jpg)
+
+We actually need to do something else in Blender. We have another MODEL we could adapt. When the ship is destroyed another model is used to show the broken ship.
+
+We see this model above our main ship model. It is called **MODEL_small_cargo_ship_destruct**. If we unhide and open this model with the Anno Object tab we can see the link to another rdm file. We could make another model for the broken ship, but that would take is to far into this tutorial. So we are just going to delete thos MODEL and we are satisfied with the explosions and smoke for now.
+
+Export the MAIN_FILE again. Copy the folder again to your Mod folder and then copy the modfolder again to your Anno mod folder to test it ingame if it still works and everything looks good.
+
 ### Creating the icon
 
 We will create an icon based on the oroginal Cargo Ship icon.
+
+First we need to find the original icon. Go to the main assets.xml and search for the cargo ship asset. **<GUID>1010062</GUID>**
+
+We find the location of the icon on **data/ui/2kimages/main/3dicons/ships/icon_ship_collier.png**.
+
+![cargo ship icon original](./_sources/icon_ship_collier_0.png)
+
+Open your favorite editor program, skew it a bit so it is a bit shorter, remove the flags and the lifeboats at the side and make the bottom white/light grey.
+
+![small cargo ship icon](./_sources/icon_small_cargo_ship.png)
+
+Save the image at the right icon location and change the location in our assets.xml back to our new path.
+
+```XML
+<IconFilename>data/graphics/icons/icon_small_cargo_ship.png</IconFilename>
+```
+
+Change the time it takes to build a ship again to the normal buildtime
+
+```XML
+<Craftable>
+    <CraftingTime>180000</CraftingTime>
+</Craftable>
+```
+
+Copy the folder again to your Mod folder and then copy the modfolder again to your Anno mod folder to test it ingame if it still works and everything looks good.
+
+We are now finished with this tutorial!
+
+![small cargo ship steam shipyard](./_sources/blender-53.jpg)
+![small cargo ship result](./_sources/blender-54.jpg)
