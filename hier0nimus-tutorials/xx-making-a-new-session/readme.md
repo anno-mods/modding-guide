@@ -1,6 +1,6 @@
 # Tutorial X - Making a new session
 
-We already have different sessions in the standard game. Old World and New World are the basic sessions we can go to without any DLC’s. With the DLC’s from the past 4 years other sessions joined the club. We now also have Cape Trelawney (Old World session), The Arctic (Arctic session) and Enbesa (Enbesa session). 
+We already have different sessions in the standard game. Old World and New World are the basic sessions we can go to without any DLC’s. With the DLC’s from the past 4 years other sessions joined the club. We now also have Cape Trelawney (Old World session), The Arctic (Arctic session) and Enbesa (Enbesa session).
 
 Adding sessions to your game makes the game more challenging! But of course also puts a big performance hog on your computer. The more sessions the more difficult it is for your computer to manage all those sessions. During the past years some mods were already created where new sessions were added. Modder Kreitani created “Four Crowns” and ”Kingsgrove”, both new Old World sessions. “Four Crowns” was a direct hit for people loving the big island from Cape Trelawney, but it immediately showed performance problems because of the big constraints it puts on the computer. Flickering appeared for some people because of those performance problems. So, if you add new sessions be aware it puts a big pressure on your maybe already struggling game experience/computer.
 
@@ -8,19 +8,19 @@ I created my first new session based on the work Kreitani already did. So a HUGE
 
 ## What are we going to do?
 
-* Creating a New World session
-* Using existing islands from the New World island pool
+- Creating a New World session
+- Using existing islands from the New World island pool
 
 ## What could you do extra? (But we are not going to cover)
 
-* Creating new AI like pirates or neutral traders for this session
-* Creating new diving opportunities
-* Extra new mechanics for this session (You would be amazed what you could do with some imagination and hard work)
+- Creating new AI like pirates or neutral traders for this session
+- Creating new diving opportunities
+- Extra new mechanics for this session (You would be amazed what you could do with some imagination and hard work)
 
 ## What do we need for a new session?
 
-* Basic knowledge of modding. If this is your first time modding, you better try a more basic mod first and come back to this one when you have more experience. Start with the starter tutorial of this series.
-* A good name for the new session
+- Basic knowledge of modding. If this is your first time modding, you better try a more basic mod first and come back to this one when you have more experience. Start with the starter tutorial of this series.
+- A good name for the new session
 
 ## Folder structure
 
@@ -28,42 +28,41 @@ As always we start with setting up our folder structure for this mod.
 
 We start with our mod mapname. In our case we use ”[Map] Americana”. Inside this map we then put our main “data” folder. In our “data” folder we have 4 maps. “config”, “graphics”, ”sessions” and “ui”. See further structure underneath:
 
-* [Map] Americana
-    * data
-        * config
-            * export
-                * main
-                    * asset
-                        * assets.xml > we will be creating this file later
-            * gui
-                * xml files containing the translations for text in every language > we will be creating those files later \
-texts_english.xml \
-texts_french.xml \
-texts_german.xml \
-…
-        * graphics
-            * ui
-                * 3d_objects
-                    * world_map
-                        * The file that contains the world map with the new session \
-world_map_01.fc
-        * sessions
-            * maps
-                * americana \
-The folder which contains the session files. Files which tells you what is included in the session > we will be creating those files later
-                    * americana.a7t 
-                    * americana.a7te
-                    * americana.a7tinfo
-        * ui
-            * 2kimages
-                * main
-                    * assets
-                        * session_btn
-                            * session_btn_americana.png > we will be creating this file later
-                        * worldcard_bg
-                            * bg_worldcard_americana.png > we will be creating this file later
-                    * icons
-                        * icon_session_americana.png > we will be creating this file later
+- [Map] Americana
+  _ data
+  _ config
+  _ export
+  _ main
+  _ asset
+  _ assets.xml > we will be creating this file later
+  _ gui
+  _ xml files containing the translations for text in every language > we will be creating those files later \
+  texts\*english.xml \
+  texts_french.xml \
+  texts_german.xml \
+  …
+  - graphics
+    _ ui
+    _ 3d\*objects
+  - world\*map
+  - The file that contains the world map with the new session \
+    world\*map_01.fc
+  - sessions
+    _ maps
+    _ americana \
+    The folder which contains the session files. Files which tells you what is included in the session > we will be creating those files later
+    _ americana.a7t
+    _ americana.a7te
+    _ americana.a7tinfo
+    _ ui
+    _ 2kimages
+    _ main
+    _ assets
+    _ session\*btn
+  - session\*btn_americana.png > we will be creating this file later
+  - worldcard\*bg
+  - bg\*worldcard_americana.png > we will be creating this file later
+  - icons \* icon_session_americana.png > we will be creating this file later
 
 ## Creating the assets.xml with the right info
 
@@ -79,12 +78,12 @@ We start with adding our opening modding tags so we can actually start.
 
 ### Adding the new session to the assets.xml
 
-Next we have to create our new session and add it. There are different sessions depending on which region. 
+Next we have to create our new session and add it. There are different sessions depending on which region.
 
-* GUID 180023 - The Old World - Europe_Session - SessionModerate
-* GUID 180025 - The New World - SouthAmerica_Session - SessionSouthAmerica
-* GUID 180045 - The Arctic - Arctic Session - SessionArctic
-* GUID 112132 - Enbesa - African_Session - SessionSouthAmerica
+- `180023` - The Old World - Europe_Session - SessionModerate
+- `180025` - The New World - SouthAmerica_Session - SessionSouthAmerica
+- `180045` - The Arctic - Arctic Session - SessionArctic
+- `112132` - Enbesa - African_Session - SessionSouthAmerica
 
 We also have some other sessions in the main assets.xml like campaign session or test sessions but those do not matter in this case.
 
@@ -94,10 +93,10 @@ We create a mod tag where we add the new session after the corresponding already
 <ModOps>
 	<!-- ***************************************************** -->
 	<!-- **** START NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
-    	<!-- ***************************************************** →
+    	<!-- ***************************************************** -->
 	<!-- Add New Session -->
 	<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='180025']">
-	
+
 	</ModOp>
 	<!-- ***************************************************** -->
     	<!-- **** END NEW SESSION WITH NEW GROUP OF ISLANDS **** -->
@@ -128,7 +127,7 @@ We create our main &lt;Asset> in our mod structure and add the correct template 
 
 This is important because the template we choose already has a lot of properties that we can inherit from. Every New World session has for example fertilities that are default to the game. Fertilities is only one of the many things already set for a New World session.
 
-Let’s dive some deeper into this. We have our template “SessionSouthAmerica”. In the same folder where we find the main “assets.xml” there is also a ”templates.xml”. This contains a lot of the templates used in the game. The template “SessionSouthAmerica” is one of those templates. If you go to this file and search for “SessionSouthAmerica” you will find one exact reference.
+Let’s dive deeper into this. We have our template “SessionSouthAmerica”. In the same folder where we find the main “assets.xml” there is also a ”templates.xml”. This contains a lot of the templates used in the game. The template “SessionSouthAmerica” is one of those templates. If you go to this file and search for “SessionSouthAmerica” you will find one exact reference.
 
 ```XML
 <Template>
@@ -146,56 +145,67 @@ Let’s dive some deeper into this. We have our template “SessionSouthAmerica�
 </Template>
 ```
 
-We can see this template contains not that much info but refers to another GUID, “5000001” which is a region.
+We can see this template contains not that much info but refers to another GUID, `5000001` which is a region.
 
 A session inherits from a region. So, a region is 1 level higher and it is that region that actually contains all the info about fertilities and other stuff.
 
-If we go back to the main “assets.xml” and search for “5000001” we get a lot of results because also “15000001” is for example taken into account. Instead of that, search for “&lt;GUID>5000001&lt;/GUID>”. We now have 1 result which is the actual region template we were looking for.
+If we go back to the main “assets.xml” and search for `5000001` we get a lot of results because also `15000001` is for example taken into account. Instead of that, search for “&lt;GUID>5000001&lt;/GUID>”. We now have 1 result which is the actual region template we were looking for.
 
 ```XML
 <Asset>
-	<Template>Region</Template>
-	<Values>
-	    <Standard>
-		<GUID>5000001</GUID>
-		<Name>Region South America</Name>
-		<IconFilename>...</IconFilename>
-		<ID>RegionSouthAmerica</ID>
-	    </Standard>
-	    <Region>
-		<Ambiente>Region_map_global</Ambiente>
-		<RegionID>Colony01</RegionID>
-		<FeedbackDescription>141486</FeedbackDescription>
-		<AnimalDescription>141553</AnimalDescription>
-		<Street>1000178</Street>
-		<DistributionCenter>101290</DistributionCenter>
-		<AllowedWeather>Rain</AllowedWeather>
-		<SlotBuildings>
-		    <Clay>
-			<Building>101267</Building>
-		    </Clay>
-		    <GoldOre>
-			<Building>101311</Building>
-		    </GoldOre>
-		</SlotBuildings>
-		…
-	    </Region>
-	</Values>
+    <Template>Region</Template>
+    <Values>
+        <Standard>
+            <GUID>5000001</GUID>
+            <Name>Region South America</Name>
+            <IconFilename>data/ui/2kimages/main/icons/icon_session_southamerica.png</IconFilename>
+            <ID>RegionSouthAmerica</ID>
+        </Standard>
+        <Region>
+            <Ambiente>Region_map_global</Ambiente>
+            <RegionID>Colony01</RegionID>
+            <FeedbackDescription>141486</FeedbackDescription>
+            <AnimalDescription>141553</AnimalDescription>
+            <Street>1000178</Street>
+            <DistributionCenter>101290</DistributionCenter>
+            <AllowedWeather>Rain</AllowedWeather>
+            <SlotBuildings>
+                <Clay>
+                    <Building>101267</Building>
+                </Clay>
+                <GoldOre>
+                    <Building>101311</Building>
+                </GoldOre>
+                <Bauxite>
+                    <Building>1308</Building>
+                </Bauxite>
+                <SAGas>
+                    <Building>1353</Building>
+                </SAGas>
+                <DLC12Ore1>
+                    <Building>1388</Building>
+                </DLC12Ore1>
+                <DLC12Ore2>
+                    <Building>1390</Building>
+                </DLC12Ore2>
+            </SlotBuildings>
+            …
+        </Region>
+    </Values>
 <Asset>
 ```
 
-This template contains A LOT! Scroll down and see all the things that are defined in this region template. 
+This template contains A LOT! Scroll down and see all the things that are defined in this region template.
 
 We have for example &lt;SlotBuildings> which defines which mines will be used in this region. For the New World the only 2 are clay pits (GUID 101267) and gold mines (GUID 101311). We could add others but for now we are not going to adapt the region template. Maybe later in this tutorial.
 
 ### Add the default SessionSouthAmerica to the assets.xml
 
-If we go back to our assets.xml, we only have declared &lt;Template>SessionSouthAmerica&lt;/Template> in our mod. But we can actually make it a lot easier for ourselves and save us a lot of time for the next step. 
+If we go back to our assets.xml, we only have declared &lt;Template>SessionSouthAmerica&lt;/Template> in our mod. But we can actually make it a lot easier for ourselves and save us a lot of time for the next step.
 
 We will be creating a new session based on an already existing session. So why not use the default session as a base and start from that.
 
 Go back to the main assets.xml and search for “&lt;Template>SessionSouthAmerica&lt;/Template>”. You will get 4 results but the first result should be the one we want.
-
 
 ```XML
 <Asset>
@@ -377,6 +387,8 @@ There are multiple icons and images used for a new session. We have a main icon 
 
 The first is the main icon which is used in the UI. For this a yellowish/orange icon is used. If you want to find some icons you can go to the data2.rda and go to data/ui/2kimages/main/icons/ and choose one of the icons. You can find other icons in other data.rda files depending on the DLC. For this case we will choose icon_globall_0.dds from the data2.rda. We convert this to png and change the name to “icon_session_americana_0.png”. You can use a plugin to convert this or an application like [https://www.xnview.com/en/xnconvert/](https://www.xnview.com/en/xnconvert/) or use a free online tool like: [https://www.aconvert.com/image/dds-to-png/](https://www.aconvert.com/image/dds-to-png/). Put this file in the right folder we already created: [Map] Americana/data/ui/2kimages/main/icons
 
+![icon_globeball_0](./_sources/icon_globeball_0.png)
+
 ```XML
 <Standard>
 	<GUID>1742009000</GUID>
@@ -433,114 +445,93 @@ Now we have the transferdata.We see 3 things. “Session”, “Duration” and 
     <Item>
         <!-- EuropeSouth_Expedition01 -->
         <Session>800432</Session>
-        <Duration>
-            360
-            <TransferData>
-                <!-- ############################################################### -->
-                <Item>
-                    <!-- Europe -->
-                    <Session>180023</Session>
-                    <Duration>270000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- EuropeNorth_Expedition01 -->
-                    <Session>800385</Session>
-                    <Duration>450000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- EuropeSouth_Expedition01 -->
-                    <Session>800432</Session>
-                    <Duration>360000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- EuropeCentral_Expedition01 -->
-                    <Session>800433</Session>
-                    <Duration>390000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <!-- ############################################################### -->
-                <Item>
-                    <!-- SunkenTreasures_Unlock -->
-                    <Session>803421</Session>
-                    <Duration>270000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- Cape Trelawney -->
-                    <Session>110934</Session>
-                    <Duration>270000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <!-- ############################################################### -->
-                <Item>
-                    <!-- SouthAmerica_Expedition01 -->
-                    <Session>800386</Session>
-                    <Duration>90000</Duration>
-                    <Direction>NorthWest</Direction>
-                </Item>
-                <Item>
-                    <!-- SouthAmerica_Expedition02 -->
-                    <Session>800387</Session>
-                    <Duration>90000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- Campaign Chapter 3/SouthAmerica -->
-                    <Session>801999</Session>
-                    <Duration>90000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <!-- ############################################################### -->
-                <Item>
-                    <!-- Arctic Unlock -->
-                    <Session>803422</Session>
-                    <Duration>360000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- The Arctic -->
-                    <Session>180045</Session>
-                    <Duration>360000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- Arctic_Expedtion01 -->
-                    <Session>800384</Session>
-                    <Duration>360000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- Arctic_Expedtion02 -->
-                    <Session>800703</Session>
-                    <Duration>360000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <!-- ############################################################### -->
-                <Item>
-                    <!-- Enbesa Unlock -->
-                    <Session>803423</Session>
-                    <Duration>300000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <Item>
-                    <!-- Enbesa -->
-                    <Session>112132</Session>
-                    <Duration>300000</Duration>
-                    <Direction>SouthEast</Direction>
-                </Item>
-                <!-- ############################################################### -->
-                <Item>
-                    <!-- Not sure which session -->
-                    <Session>800703</Session>
-                    <Duration>360000</Duration>
-                    <Direction>NorthEast</Direction>
-                </Item>
-                <!-- ############################################################### -->
-        </Duration>
+        <Duration>360000</Duration>
+        <Direction>SouthEast</Direction>
     </Item>
+    <Item>
+        <!-- EuropeCentral_Expedition01 -->
+        <Session>800433</Session>
+        <Duration>390000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- SunkenTreasures_Unlock -->
+        <Session>803421</Session>
+        <Duration>270000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Cape Trelawney -->
+        <Session>110934</Session>
+        <Duration>270000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- SouthAmerica_Expedition01 -->
+        <Session>800386</Session>
+        <Duration>90000</Duration>
+        <Direction>NorthWest</Direction>
+    </Item>
+    <Item>
+        <!-- SouthAmerica_Expedition02 -->
+        <Session>800387</Session>
+        <Duration>90000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Campaign Chapter 3/SouthAmerica -->
+        <Session>801999</Session>
+        <Duration>90000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Arctic Unlock -->
+        <Session>803422</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- The Arctic -->
+        <Session>180045</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Arctic_Expedtion01 -->
+        <Session>800384</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Arctic_Expedtion02 -->
+        <Session>800703</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Enbesa Unlock -->
+        <Session>803423</Session>
+        <Duration>300000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <Item>
+        <!-- Enbesa -->
+        <Session>112132</Session>
+        <Duration>300000</Duration>
+        <Direction>SouthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
+    <Item>
+        <!-- Not sure which session -->
+        <Session>800703</Session>
+        <Duration>360000</Duration>
+        <Direction>NorthEast</Direction>
+    </Item>
+    <!-- ############################################################### -->
 </TransferData>
 
 ```
@@ -557,7 +548,7 @@ If we look at the map and decide where we are going to put our new session, we c
 
 We copied the default SessionSouthAmerica template and took all the transferdata from that one. But of course, this data does not contain its own session. So, for our new session we still need to add the default New World session to the transferdata. We have 2 sessions. The unlock session which will be the one for an expedition, and the normal New World session.
 
-The duration will be not that high of course because we are in the same region. We could take the same as for expeditions, 90 000ms. 
+The duration will be not that high of course because we are in the same region. We could take the same as for expeditions, 90 000ms.
 
 Last we have the directions. If we look at the map, to go to that session you would go SouthWest to the default New World session.
 
@@ -584,10 +575,10 @@ You could add those sessions also here to be future proof and make it better for
 
 We are going to add all the sessions I currently know about:
 
-* Four Crowns (Kreitani)
-* Kingsgrove (Kreitani)
-* Arctic map - White and Cold (Development name) (Hier0nimus)
-* New Horizons (Taubenangriff)
+- Four Crowns (Kreitani)
+- Kingsgrove (Kreitani)
+- Arctic map - White and Cold (Development name) (Hier0nimus)
+- New Horizons (Taubenangriff)
 
 ```XML
 <Item>
@@ -642,7 +633,8 @@ This defines a GUID when this session is unlocked for other AI. In this case the
 ```XML
 <SpawnStartShipAndKontor>0</SpawnStartShipAndKontor>
 <SecondPartiesMaySettleHere>1</SecondPartiesMaySettleHere>
-<WorldMapCardBackground>1742009005</WorldMapCardBackground>             <WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
+<WorldMapCardBackground>1742009005</WorldMapCardBackground>
+<WorldMapAsset>data/graphics/ui/3d_objects/world_map/clickable_south_america_01.cfg</WorldMapAsset>
 <SecondPartyReferenceUnlock>1010285</SecondPartyReferenceUnlock>
 ```
 
@@ -871,14 +863,16 @@ Next we will be adding the graphics we will be using in the UI for this session.
 
 Images we still need to create:
 
-* Icon for the session
-* Background for the session (Trading) - GUID 1742009003
-* Icon for the session (Trading) - GUID 1742009004
-* Background for the session card (World map) - GUID 1742009005
+- Icon for the session
+- Background for the session (Trading) - GUID 1742009003
+- Icon for the session (Trading) - GUID 1742009004
+- Background for the session card (World map) - GUID 1742009005
 
 #### Icon for session
 
 This is actually a duplicate of the one we already defined at the beginning of this file. But to be sure we define it here again.
+
+![icon_session_americana_0.png](./_sources/icon_session_americana_0.png)
 
 ```XML
 <!-- Icon for session -->
@@ -893,6 +887,8 @@ This is actually a duplicate of the one we already defined at the beginning of t
 #### Background for the session (Trading) - GUID 1742009003
 
 This is a small half transparent banner used in the UI. It is 298px x 66px. We could reuse the same as the default New World session, or we could use some other assets. For example, we could go to the data21.rda/data/ui/2kimages/main/assets and there use some graphics from the first scenario which was also in the New World. For this we use “btn_quest_card_ggj_0.png” and flip it and make it fit in the right dimensions for this banner. We also put it in the right location in our mod folder. [Map] Americana/data/ui/2kimages/main/assets/session_btn.
+
+![session_btn_americana_0.png](./_sources/session_btn_americana_0.png)
 
 ```XML
 <!-- Add new background for session (Trading) -->
@@ -935,6 +931,8 @@ This can be the same icon as the one we already created for this session.
 The last image we will be creating is the background for the card we see in the world map when hovering over the session building.
 
 For this we could again reuse some images, but this has again a different dimension, 300px x 120px. We put this new image at the right location in our mod folder structure. [Map] Americana/data/ui/2kimages/main/assets/worldcard_bg.
+
+![bg_worldcard_americana_0.png](./_sources/bg_worldcard_americana_0.png)
 
 ```XML
 <!-- Add new background for session (World Map) -->
@@ -985,19 +983,19 @@ We still need to actually add the session to the World Map.
 
 We have now created all our UI elements and the container of our session. This container is not the content of the actual session. The content (islands and other elements) is not defined yet.
 
-Every session has its own elements based on the region template we have choosen. In our case the New World region. But we can still manipulate a lot of things within a specific region. 
+Every session has its own elements based on the region template we have choosen. In our case the New World region. But we can still manipulate a lot of things within a specific region.
 
 For this tutorial we will be using specific parameters to create a new custom session which contains a custom map with islands. We will be choosing an existing &lt;TemplateFileName> for the basic tutorial and people who are happy with that can stop there. But we also will be using some more in depth island choices where we pick the islands we want + the positions we want. This has some more technical challenges but we will get there. If you are happy with the basic extra region, also perfectly fine!
 
-We will be creating a MapTemplaye. There will be a link to a .a7t file. This is a file which contains all the islands info of our session. Which islands, the position, ect. 
+We will be creating a MapTemplaye. There will be a link to a .a7t file. This is a file which contains all the islands info of our session. Which islands, the position, ect.
 
 First we change the GUID to 1742009002. This is our last GUID we needed. We then also change the name.
 
 After that we decide the size of our islands and template. This is important to define what MapTemplate we want to use from the existing templates.
 
-To find the .a7t file we need to search for &lt;Template>MapTemplate&lt;/Template> in the main assets.xml. We will find 65 matches at the writing of this tutorial. The first ones are the ones for the Old World region, after that we get the New World MapTemplates.
+To find the .a7t file we need to search for &lt;Template>MapTemplate&lt;/Template> in the main assets.xml. We will find 66 matches at the writing of this tutorial. The first ones are the ones for the Old World region, after that we get the New World MapTemplates (**SouthAmerica x_xx**).
 
-Look at the &lt;IslandSize> and &lt;TemplateSize> tags and determine which you want to use. For this tutorial we want both as a “Large” value and chose &lt;Name>SouthAmerica l_02&lt;/Name> with the TemplateFileName &lt;TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_02/colony01_l_02.a7t&lt;/TemplateFilename>.
+Look at the &lt;IslandSize> and &lt;TemplateSize> tags and determine which you want to use. For this tutorial we want both as a “Large” value and chose &lt;Name>SouthAmerica l_03&lt;/Name> with the TemplateFileName &lt;TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_03/colony01_l_03.a7t&lt;/TemplateFilename>.
 
 We repeat the IslandSize and the TemplateSize and finally add the correct TemplateRegion, which is Colony01.
 
@@ -1013,7 +1011,7 @@ We repeat the IslandSize and the TemplateSize and finally add the correct Templa
             </Standard>
             <MapTemplate>
                 <IslandSize>Large</IslandSize>
-                <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_02/colony01_l_02.a7t</TemplateFilename>
+                <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_03/colony01_l_03.a7t</TemplateFilename>
                 <TemplateSize>Large</TemplateSize>
                 <TemplateRegion>Colony01</TemplateRegion>
             </MapTemplate>
@@ -1034,7 +1032,7 @@ For this tutorial we will take the number 9, but be aware that using other map m
 <!-- Add Keybinding -->
 <ModOp Type="add" GUID="2001271" Path="/Values/GUIConfig/KeyBindings">
     <Item>
-        <DefaultKey>Keypad 9</DefaultKey>
+        <KeyTypes>Keypad 9</KeyTypes>
         <Command>TextSources.TextSourceRoots.Interface.JumpToSession(1742009000)</Command>
         <Text>1742009001</Text>
         <Active>Session;WorldMap</Active>
@@ -1101,13 +1099,13 @@ Copy paste those for all other languages and translate what you want in the lang
 
 We are almost finished but need to do 1 last thing. We have to put our session on the World Map in the game. This World map is also the access point how we will be able to activate and enter our new session.
 
-The World map is a file (world_map_01.fc) that is in every data.rda file, so take the one from the last data.rda to have the most up to date version. You can find this file in data22.rda/data/graphics/ui/3d_objects/world_map.
+The World map is a file (world_map_01.fc) that is in every data.rda file, so take the one from the last data.rda to have the most up to date version. You can find this file in data24.rda/data/graphics/ui/3d_objects/world_map.
 
-When opening this file you will see an unindented structure. Change the formatting if needed and indent the file to have a better overview of the structure. The file contains a couple of big parts that are easy to understand. 
+When opening this file you will see an unindented structure. Change the formatting if needed and indent the file to have a better overview of the structure. The file contains a couple of big parts that are easy to understand.
 
 ### Coordinates location
 
-The first part is the part where every session is declared and given coordinates on the map. We first have the &lt;name> which contains the GUID of the new session. Then we have the position of the session on the map with the coordinates. If we scroll down we can see this is done for all sessions and elements on the world map.
+The first part is the part where every session is declared and given coordinates on the map. We first have the &lt;name> which contains the GUID of the new session. Then we have the position of the session/kontor on the map with the coordinates. If we scroll down we can see this is done for all sessions and elements on the world map.
 
 Our new session will look like the code underneath. Add this at the top above the first &lt;i> element.
 
@@ -1122,12 +1120,12 @@ The most important thing that we need to change here is the position and maybe o
 &lt;w>0.411145&lt;/w> to &lt;w>0.711145&lt;/w>  
 &lt;x>-0.000000&lt;/x> to &lt;x>-0.000000&lt;/x>  
 &lt;y>0.911570&lt;/y> to &lt;y>0.911570&lt;/y>  
-&lt;z>0.000000&lt;/z> ro &lt;z>0.000000&lt;/z>  
+&lt;z>0.000000&lt;/z> ro &lt;z>0.000000&lt;/z>
 
 ```XML
 <i>
     <hasValue>1</hasValue>
-    <Name>1742009000</Name>
+    <Name></Name>
     <Groups />
     <Dummies>
         <i>
@@ -1158,18 +1156,231 @@ The most important thing that we need to change here is the position and maybe o
 </i>
 ```
 
-### Paths of ship routes
-
-The last part is a really hard part and you could leave it out if you do not want to do it. This part contains the visual paths the ships take on the World Map. You see the curved striped lines from one session to another which the ships follow.  To be able to do that you’ll need to add a lot of coordinates. For now we will be happy with just adding the session.
-
 ## Warning!
 
-Remember that this world_map_01.fc can be overwritten in every mod. The mod that is loaded last and that overwrites this file is the version of the file that will be used. So if you use multiple map mods, you will need to manually change this file to be sure all the sessions are accessible on the World Map. 
+Remember that this world_map_01.fc can be overwritten in every mod. The mod that is loaded last and that overwrites this file is the version of the file that will be used. So if you use multiple map mods, you will need to manually change this file to be sure all the sessions are accessible on the World Map.
 
-We will add the sessions for all mods like we did in the other parts of this tutorial.
+We will add the sessions for all mods like we did in the other parts of this tutorial. New Horizons is not included here. Once this comes out we can add that also here. I contacted the developer to get the location already and will add it here once I get it.
+
+```XML
+<i>
+    <hasValue>1</hasValue>
+    <Name>1742001000_0</Name>
+    <Groups />
+    <Dummies>
+        <i>
+            <hasValue>1</hasValue>
+            <Name>1742001000_0</Name>
+            <Position>
+                <x>9.512831</x>
+                <y>-0.181641</y>
+                <z>-20.591898</z>
+            </Position>
+            <Orientation>
+                <w>0.616966</w>
+                <x>0.007077</x>
+                <y>-0.785082</y>
+                <z>-0.057289</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>1.812814</RotationY>
+            <Id>1742001</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
+        </i>
+    </Dummies>
+    <Id>1742002</Id>
+</i>
+<i>
+    <hasValue>1</hasValue>
+    <Name>2111001_0</Name>
+    <Groups />
+    <Dummies>
+        <i>
+            <hasValue>1</hasValue>
+            <Name>2111001_0</Name>
+            <Position>
+                <x>-9.91592</x>
+                <y>-0.123510</y>
+                <z>-0.062005</z>
+            </Position>
+            <Orientation>
+                <w>-0.50043</w>
+                <x>0.000000</x>
+                <y>0.865778</y>
+                <z>0.000000</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>3.989012</RotationY>
+            <Id>247</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
+        </i>
+    </Dummies>
+    <Id>196</Id>
+</i>
+<i>
+    <hasValue>1</hasValue>
+    <Name>2121100_0</Name>
+    <Groups />
+    <Dummies>
+        <i>
+            <hasValue>1</hasValue>
+            <Name>2121100_0</Name>
+            <Position>
+                <x>21.1696</x>
+                <y>-0.240000</y>
+                <z>-5.69055</z>
+            </Position>
+            <Orientation>
+                <w>-0.50043</w>
+                <x>0.000000</x>
+                <y>0.865778</y>
+                <z>0.000000</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>3.989012</RotationY>
+            <Id>247</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
+        </i>
+    </Dummies>
+    <Id>196</Id>
+</i>
+<i>
+    <hasValue>1</hasValue>
+    <Name>1742009000_0</Name>
+    <Groups />
+    <Dummies>
+        <i>
+            <hasValue>1</hasValue>
+            <Name>1742009000_0</Name>
+            <Position>
+                <x>15.628237</x>
+                <y>-0.123510</y>
+                <z>7.544896</z>
+            </Position>
+            <Orientation>
+                <w>0.711145</w>
+                <x>-0.000000</x>
+                <y>0.911570</y>
+                <z>0.000000</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>1.009012</RotationY>
+            <Id>1742009</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
+        </i>
+    </Dummies>
+    <Id>1742010</Id>
+</i>
+```
 
 ## Phase 1, READY!
 
 We have done phase one of creating a new session. You could stop here and use this mod already in your game. Have fun!
 
-For those who want to get more, we will do some extra things later in this mod. I'll update this mod asap.
+For those who want to get more, we will do some extra things.
+
+So, to summarize. We created a new `session`. This session is based on a `session template`, in our case `SessionSouthAmerica`. This session template inherits from a `region`, in the case of the New World this is `RegionSouthAmerica`. This region contains all the stuff we see and use in a region (type of trees, roads, mines,...). The things that are different for our specific session we declare in our assets.xml.
+
+## Custom .a7t map template
+
+We saw before that we are using a .a7t file which we found in the main assets.xml. This file is the map template and it contains the info about the map the session is using. This map contains the info about which islands we will be using.
+
+If we look at the game, and we play the game multiple times we will see that the game has a certain pool of islands. Islands are reused in different games. The Old World has the largest island pool. The New World has also a variety of islands but you will see the same islands coming back more regular in the different games.
+
+Anno 1800 is a rich game with a lot of regions. Developing and modelling different islands is time consuming. The game has different sessions and for every session different islands. That was a lot of work and resources. Every island is custom made and not generated on the fly. That is why there is a "pool" of islands the game takes islands from every time you start a new game. Based on the "map seed" a set of islands is taken. If you want to know more about map seeds you can [read more about map seeds it on the Anno 1800 wiki](https://anno1800.fandom.com/wiki/Favourite_map_seeds).
+
+It is important to understand this because we will be choosing islands for our custom map template. The island we choose from are the islands that are available in the game. We can not "make new islands", we can only use the ones that exist.
+
+### Why can we not make NEW islands?
+
+We modders like to customize a lot of things, but we can do as much as the game and code lets us do. Creating new islands is still something we need to figure out in the modding community. We are restricted by software and liscening of the software that the developers use for creating the islands (and some technical hurdles). Some amazing people in the community already took HUGE steps in making custom islands. Old World islands were skinned to New World islands to make the pool of islands in the New World bigger. Even Crown Falls was already skinned to a New World island! It is a matter of time we figure out more and who knows in the future creating really custom islands from scratch. But all that work is done by smarter people then me.
+
+### Where to look for the map template file
+
+We now know about map templates and the islands in Anno 1800. But where do we actually find those in the game files? Well, if we just look at the path of the map template that we used for now, we can see the path.
+
+```XML
+<TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_03/colony01_l_03.a7t</TemplateFilename>
+```
+
+The main data folder contains a sessions folder which contains a map folder which contains a pool folder which contains a colony01 folder which is the New World and that folder contains all the different map template folders for the different types of maps. In this folder we will find tha .a7t file.
+
+Offcourse to get those folders we need to extract the .rda files, but at this point in the tutorial series you should already know how to do this. Use the RDAExplorer.
+
+- RDAExplorer from lysannschlegel - [https://github.com/lysannschlegel/RDAExplorer](https://github.com/lysannschlegel/RDAExplorer)
+- RDAExplorer from lukts30 - [https://github.com/lukts30/RDAExplorer](https://github.com/lukts30/RDAExplorer) - [Video how to use](https://www.youtube.com/watch?v=bKWnfvLeyxs&ab_channel=Lukas)
+
+We are looking for New World map templates. The New World is a part of the game that was there from the start. So, logical place to look for should be one of the first .rda files. But this is an exception. With the latest DLC, and season 4 focusing on the New World some updates were made to the islands in later rda files. If we have a look at the latest data24.rda (Empire of the Skies at this moment of writing) we see in the sessions folder another folder called **islands** but not a folder **maps**.
+
+At this moment we are looking for the maps folder, not the islands folder. So we go to the data5.rda which contains all the map templates of the basegame. We browse to the templates for the New World.
+
+![folders-map-template-old.jpg](./_sources/folders-map-template-old.jpg)
+
+We see versions with "s", "m" and "l" versions. Those letters are standing for "small", "medium" and "large". When choosing the settings when starting the game you choose a small, medium or large world. Based on that choice a certain map template is choosen from this pool.
+
+If we open one of the folders. for example the one we used as a placeholder, `colony01_l_03` we see our `colony01_l_03.a7t` file inside this folder. Next to that we also have a `colony01_l_01.a7te` and a `colony01_l_01.a7tinfo`.
+
+If you try to open those files with a text editor, the only file you will be able to open and that actually could show some understandable info is the `colony01_l_01.a7te`. But even then not much we can do in that file.
+
+### Time for magic, AnnoMapEditor!
+
+We are going to use a community tool made by another amazing modder, the **AnnoMapEditor**. This tool lets us change existing map templates and make complete new combinations of islands.
+
+[https://github.com/anno-mods/AnnoMapEditor](https://github.com/anno-mods/AnnoMapEditor)
+
+If you get an error when opening this tool, Windows blocks .exe files that are not "trusted". Opening this is at your own risk but I think we can all agree the modder creating this tool has no bad intentions so you can just ignore this warning.
+
+You can find a short demo on the Github, but we will go over the tool in short.
+
+When we open the tool we first have to choose a basic map template we want to use to adapt. This can be a already created custom .a7t file or you can choose from the existing map templates from the game.
+
+**REMARK!** As mentioned by the creator of the tool, this tool is still in development and does not work for all regions yet.
+
+Let us choose `New World, Large` > `Colony 01 L 01`. If we go and have a look at the different map templates in the extracted rda folder, we will also find this folder there.
+
+![annomapeditor-1.jpg](./_sources/annomapeditor-1.jpg)
+
+When opened we immediatly see the set of islands and positions of the islands that will be used in game for the New World session.
+
+![annomapeditor-2.jpg](./_sources/annomapeditor-2.jpg)
+
+Let us save this map template.
+
+- Click on the **save** button
+- Choose **as map template**
+- Browse to the data folder of your mod folder of your map
+- If the **sessions** folder is not created yet, create it and open it
+- If the **maps** folder is not created yet, create it and open it
+- If the **americana** folder is not created yet, create it and open it
+- Save your map template file at this location with the name americana.a7tinfo
+
+![folders-map-template-3.jpg](./_sources/folders-map-template-3.jpg)
+
+As we can see, the only file that was created is the .a7tinfo file.
+We still need the other .a7t and .a7te file. We can copy those over from **data\sessions\maps\pool\colony01\colony01_l_01** and rename them to **americana.a7t** and **americana.a7te**.
+
+WORK IN PROGRESS...
+
+## To do:
+
+### Edit map template by unpacking with FileDBReader.
+
+### Paths of ship routes on world map
+
+This part is a really hard one and you could leave it out if you do not want to do it. This part contains the visual paths the ships take on the World Map. You see the curved striped lines from one session to another which the ships follow. To be able to do that you’ll need to add a lot of coordinates. I'll add this once I figured out how to do it.

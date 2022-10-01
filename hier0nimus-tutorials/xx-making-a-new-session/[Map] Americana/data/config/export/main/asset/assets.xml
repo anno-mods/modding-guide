@@ -284,7 +284,7 @@ Enjoy!
                 </Standard>
                 <MapTemplate>
                     <IslandSize>Large</IslandSize>
-                    <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_02/colony01_l_02.a7t</TemplateFilename>
+                    <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_03/colony01_l_03.a7t</TemplateFilename>
                     <TemplateSize>Large</TemplateSize>
                     <TemplateRegion>Colony01</TemplateRegion>
                 </MapTemplate>
@@ -295,7 +295,7 @@ Enjoy!
     <!-- Add Keybinding -->
     <ModOp Type="add" GUID="2001271" Path="/Values/GUIConfig/KeyBindings">
         <Item>
-            <DefaultKey>Keypad 9</DefaultKey>
+            <KeyTypes>Keypad 9</KeyTypes>
             <Command>TextSources.TextSourceRoots.Interface.JumpToSession(1742009000)</Command>
             <Text>1742009001</Text>
             <Active>Session;WorldMap</Active>
