@@ -1,4 +1,4 @@
-# Tutorial X - Making a new session
+# Tutorial 5 - Making a new session
 
 We already have different sessions in the standard game. Old World and New World are the basic sessions we can go to without any DLC’s. With the DLC’s from the past 4 years other sessions joined the club. We now also have Cape Trelawney (Old World session), The Arctic (Arctic session) and Enbesa (Enbesa session).
 
@@ -1410,7 +1410,7 @@ The command we need is:
 
 If we have a look at this command it actually explains itself (apart from some things I also have to look up to know what they do).
 
-The first part is the **FileDBReader.exe** where we actually execute this .exe via the command. The next part is the -f which is a parameter that I know it needs to be there, but not sure what it stands for. Smarter people then me probably can answer that. Then we have the file we actually want to decompress, we navigate to the location of our **americana.a7tinfo file** which is in the **americana folder**. Then we habe another parameter -i I do not know what is does. And to finalize we have the fileformat we will be using in the decompression, **a7tinfo.xml** which is also in a subfolder where we have to navigate to from our main folder.
+The first part is the **FileDBReader.exe** where we actually execute this .exe via the command. The next part is the -f which is a parameter that I know it needs to be there, but not sure what it stands for. Smarter people then me probably can answer that. Then we have the file we actually want to decompress, we navigate to the location of our **americana.a7tinfo file** which is in the **americana folder**. Then we have another parameter -i I do not know what is does. And to finalize we have the fileformat we will be using in the decompression, **a7tinfo.xml** which is also in a subfolder where we have to navigate to from our main folder.
 
 We can copy paste this command inside the commandline.
 
@@ -1644,6 +1644,338 @@ We see that there is also `PlayableArea`. This is smaller and has 4 coordinates.
 ```
 
 The map uses coordinates based on X and Y. it starts at 0,0 and ends at 1856,1856. Knowing this we can understand that the playable area starts at 200,200 and ends at 1656,1656 and 0,1656 and 1656,0.
+
+#### RandomlyPlacedThirdParties
+
+If there are ThirdParties in the map, this wel determine they are randomly placed. If we look further in the file we will see we have a couple of "slots" for third parties. But this is the New World, so only 1 third party is available. So it will be randomly placed on one of the available slots.
+
+#### ElementCount
+
+This is an important number. Furter in the file we see we have `<TemplateElement>`. Every `<TemplateElement>` is an island on the map or another element on the map. The total number of islands is set here. So if we want to add an extra island we need to change this number.
+
+#### TemplateElement
+
+If we then have a look at the `<TemplateElement>` nodes we can see some differences between them. Like said before, all those `<TemplateElement>` nodes are pieces of the map template. In this case there are 15. Count then and see if this is right.
+
+#### ElementType
+
+14 of them are `<ElementType>1</ElementType>` and 1 is `<ElementType>2</ElementType>`.
+The type 1 are islands, the type 2 is the startposition when entering the region for the first time.
+
+```XML
+<Content>
+  <MapTemplate>
+    ...
+    <TemplateElement>
+      <ElementType>2</ElementType>
+      <Element>
+        <Position>1616 1608</Position>
+      </Element>
+    </TemplateElement>
+  </MapTemplate>
+</Content>
+```
+
+#### Position
+
+If we look at the `<ElementType>2</ElementType>` at the bottom of this file, we see `<Position>1616 1608</Position>`. If we have a map and we know we use X,Y coordinates. The map starts at the bottom and goes up on the left (Y coordinate) and on the right (X coordinate). `<Position>1616 1608</Position>` is at the top tip almost where the North symbol is on the map.
+
+![map-coordinates.jpg](./_sources/map-coordinates.jpg)
+
+(Random New World map - not map of this template)
+
+```XML
+<Content>
+  <MapTemplate>
+    ...
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>416 576</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1200 1232</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>808 232</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1224 536</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>272 1024</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1000 648</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>ThirdParty</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>216 760</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>ThirdParty</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>240 1432</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>ThirdParty</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>920 1424</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Pirate</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1272 240</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>288 264</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>696 1096</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1000 944</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1344 944</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>2</ElementType>
+      <Element>
+        <Position>1616 1608</Position>
+      </Element>
+    </TemplateElement>
+  </MapTemplate>
+</Content>
+```
+
+If we look at the `<ElementType>1</ElementType>` nodes, we also see `<Position>` nodes. So this is where every island gets the position on the map.
+
+#### Size
+
+Next we have the `<Size>` node which determines the size of the choosen island. We have `Large`, `Medium` and `Small`.
+
+#### Config > ID
+
+Next we have a `<Config>` part where more detailed info of the island is taken into account. The important part here is the `<id>`. This can contain different values depending on the type of island.
+
+```XML
+<Config>
+    <Type>
+        <id>Starter</id>
+    </Type>
+    <Difficulty />
+</Config>
+```
+
+We can have as an `<id>`:
+
+- `Starter`
+- `ThirdParty`
+- `Pirate`
+
+Together with the `<Size>` the `<id>` determines in which pool the map will look for islands to include. Every island is linked to one of those parameters. As you can see there are no paths to actual island files. That is because the map template looks into the pool of different islands that are available for those parameters and chooses the island based on the **parameters** and **the map seed you choose at the beginning of your game**. So, if you would start 2 games with 2 different map seeds, you will get 2 different island combinations because of that.
+
+For normal islands this is a set of islands based on those parameters. For `ThirdParty` and `Pirate` this is linked to the region we are in. For the New World we only have 1 Third Party, Isabel Sarmento. And the pirate is Jean La Fortune.
+
+We could change positions here, add new islands, remove islands,... But remember to change the total `<ElementCount>` at the top of the file!
+
+### Add custom island
+
+We will be adding 1 new island just as an example. We will be adding the prologue island that is used at the beginning of the campaign. We can find this island in the `data6.rda` > `data\sessions\islands\campaign\colony01\prologue\campaign_colony01_prologue`.
+
+![island-prologue-folder.jpg](./_sources/island-prologue-folder.jpg)
+
+But how do we actually add this? Well, first let us create a new `<TemplateElement>` by copying an existing underneath the last and put it right in the middle of the map by changing the position to `928 928`. For now this position is ok, we will be changing positions later in a more flexible and visual way.
+
+**Important to know!** Coordinates always have to be dividable by 8!
+
+We can add a custom island with `<MapFilePath>` to add a specific island that is not taken from a pool but that will always be in there. We will do this for the prologue island.
+
+We can also add a rotation to have some randomness.
+
+```XML
+<Content>
+  <MapTemplate>
+    ...
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>928 928</Position>
+        <MapFilePath>data/sessions/islands/campaign/colony01/prologue/campaign_colony01_prologue/campaign_colony01_prologue.a7m</MapFilePath>
+        <Rotation90>2</Rotation90>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+</Content>
+```
+
+Do not forget to change the `<ElementCount>` to 16 because we added another island.
+
+```XML
+...
+<ElementCount>16</ElementCount>
+...
+```
+
+We are ready with this file for now. You can go crazier, but we just want to give the basic tools to understand how it works. If you want to add more feel free to do so.
+
+### Compress .xml again to .a7tinfo
+
+Now we finished our `.xml` we need to compress it again to a `.a7tinfo` file. We need to do some commandline magic again.
+
+First let's go back to our americana folder inside the FileDBReader folder where our adapted .xml is. We will be overwriting our original `americana.a7tinfo` with the new `americana.a7tinfo`. If you want you can change the name of `americana.a7tinfo` to `americana-backup.a7tinfo` to backup the original file. But that file is a copy of the original map file so you could also always get it back there.
+
+Now we have to use another command in the commandline. If your commandline is still open from before you can go further from there. If not go back to the FileDBReader folder and press `CTRL + L` again, type `cmd` and press `Enter` to open the commandline again.
+
+This time we are not decompressing, but compressing. Our command also has some more parameters.
+
+`Filedbreader.exe compress -f americana/americana.xml -o .a7tinfo -c 2 -i FileFormats/a7tinfo.xml`
+
+We now have our compressed .a7tinfo again.
+
+![filedbreader-7.jpg](./_sources/filedbreader-7.jpg)
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+I WILL CONTINUE TOMORROW WITH THE NEXT STEPS!
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
