@@ -1338,9 +1338,350 @@ If we open one of the folders. for example the one we used as a placeholder, `co
 
 If you try to open those files with a text editor, the only file you will be able to open and that actually could show some understandable info is the `colony01_l_01.a7te`. But even then not much we can do in that file.
 
+### Link new map template
+
+As we now know we need 3 files for the map template. We can copy them from **data\sessions\maps\pool\colony01\colony01_l_01** and rename them to **americana.a7t**, **americana.a7te** and **americana.a7tinfo**.
+
+Now we actually have created a custom session with a custom map template. To be sure this works, we should test this ingame. But before we can test this, we first have to change the path to our new custom map template. Remember where we linked the map template?
+
+- Go to your assets.xml and go to the part where you added the custom map template.
+- Change `data/sessions/maps/pool/colony01/colony01_l_03/colony01_l_03.a7t` to the location of your new map. `data/sessions/maps/americana/americana.a7t`
+
+```XML
+<!-- Add custom map -->
+<ModOp Type="add" Path="//Assets[Asset/Values/Standard/GUID='110933']">
+    <Asset>
+        <Template>MapTemplate</Template>
+        <Values>
+            <Standard>
+                <GUID>1742009002</GUID>
+                <Name>Americana</Name>
+            </Standard>
+            <MapTemplate>
+                <IslandSize>Large</IslandSize>
+                <TemplateFilename>data/sessions/maps/americana/americana.a7t</TemplateFilename>
+                <TemplateSize>Large</TemplateSize>
+                <TemplateRegion>Colony01</TemplateRegion>
+            </MapTemplate>
+        </Values>
+    </Asset>
+</ModOp>
+```
+
+And at this point if you would test this, this session will be visible on the world map, but will not load and will crash your game. That is because we only have copied and renamed the files but inside those files we did not adapt the references.
+
+### Extracting the map template files
+
+We need to adapt the map template files, but to do that we have to find a solution to be able to actually open those files.
+
+#### FileDBReader
+
+Time to introduce another another crazy community tool, FileDBReader. This tool can be a bit scary if you never worked with a commandline before. But rest assured, we will make it as clear as possible what you need to do.
+
+[https://github.com/anno-mods/FileDBReader](https://github.com/anno-mods/FileDBReader)
+
+On the github page a good description is given how to use it, but we will go over it also to adapt it to what we need in this specific case.
+
+First of all go to the release page and download the latest version (FileDBReader.zip).
+[https://github.com/anno-mods/FileDBReader/releases](https://github.com/anno-mods/FileDBReader/releases)
+
+Open the zip file and place the FileDBReader somewhere on your computer, maybe inside the global modding folder you created in your documents folder and make a "Tools" folder in that folder to put FileDBReader into. We will be using this folder to adapt our map templates.
+
+If we have a look at what is inside that FileDBReader folder we have another folder with FileFormats and some other files. The FileFormats folder contains different files that all have a purpose depending on the files we want to extract. The fileformat we will be using is **a7tinfo.xml** from that folder. Inside the main folder we also have a **FileDBReader.exe**. We do not run this .exe on itself, but will be using the commandline to run a command and that command will use this .exe when executing.
+
+![filedbreader-1.jpg](./_sources/filedbreader-1.jpg)
+
+Copy the **americana** map template folder from our mod directory that contains our map temaplate files (.a7t,...) inside the folder of **FileDBReader**.
+
+![filedbreader-2.jpg](./_sources/filedbreader-2.jpg)
+
+Now a maybe scary part will start. We will be using the commandline and feel like hackerman ;)
+
+When you are inside the FileDBReader folder, press **CTRL + L**. This will allow you to type in the path of the location you are at the moment.
+
+Type **cmd** and press **Enter**, this will open the commandline in the location of the FileDBReader.
+
+![filedbreader-3.jpg](./_sources/filedbreader-3.jpg)
+
+Now the magic can start. We will be using a specific command to **decompress** our map template files using the FileDBReader together with the FileFormats files.
+
+The command we need is:
+`Filedbreader.exe decompress -f americana/americana.a7tinfo -i FileFormats/a7tinfo.xml`
+
+If we have a look at this command it actually explains itself (apart from some things I also have to look up to know what they do).
+
+The first part is the **FileDBReader.exe** where we actually execute this .exe via the command. The next part is the -f which is a parameter that I know it needs to be there, but not sure what it stands for. Smarter people then me probably can answer that. Then we have the file we actually want to decompress, we navigate to the location of our **americana.a7tinfo file** which is in the **americana folder**. Then we habe another parameter -i I do not know what is does. And to finalize we have the fileformat we will be using in the decompression, **a7tinfo.xml** which is also in a subfolder where we have to navigate to from our main folder.
+
+We can copy paste this command inside the commandline.
+
+![filedbreader-4.jpg](./_sources/filedbreader-4.jpg)
+
+Then press enter to execute it. It will run the command and if everything goes well, decompress the americana.a7tinfo. You will see this in the commandline itself.
+
+![filedbreader-5.jpg](./_sources/filedbreader-5.jpg)
+
+You can then go to the **americana folder** inside your FileDBReader folder and you should see the americana.xml file there.
+
+![filedbreader-6.jpg](./_sources/filedbreader-6.jpg)
+
+Now that we have the xml file we can open this file to manipulate this! Let's have a look how this one looks and what every part does.
+
+```XML
+<Content>
+  <MapTemplate>
+    <Size>1856 1856</Size>
+    <PlayableArea>200 200 1656 1656</PlayableArea>
+    <RandomlyPlacedThirdParties />
+    <ElementCount>15</ElementCount>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>416 576</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1200 1232</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>808 232</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1224 536</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>272 1024</Position>
+        <Size>Large</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1000 648</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>ThirdParty</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>216 760</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>ThirdParty</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>240 1432</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>ThirdParty</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>920 1424</Position>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Pirate</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1272 240</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>288 264</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type>
+            <id>Starter</id>
+          </Type>
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>696 1096</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1000 944</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>1</ElementType>
+      <Element>
+        <Position>1344 944</Position>
+        <Size>Medium</Size>
+        <Difficulty />
+        <Config>
+          <Type />
+          <Difficulty />
+        </Config>
+      </Element>
+    </TemplateElement>
+    <TemplateElement>
+      <ElementType>2</ElementType>
+      <Element>
+        <Position>1616 1608</Position>
+      </Element>
+    </TemplateElement>
+  </MapTemplate>
+</Content>
+```
+
+### Dive into the map template files
+
+#### Island size
+
+If we have a look at the first part we have the `Size` of this map template. Depending on the map template you have choosen as a placeholder this can be a large, medium or small size. In our case we have a large size which is 1856 by 1856.
+
+We see that there is also `PlayableArea`. This is smaller and has 4 coordinates. This is because every map has 4 sides, and this determines from where the playable area starts and ends. This is not at 0 and not to 1856 because if we remember, when ships leave a map we see keep seeing them for some time until they dissapear. This is the part of the map tha is not playable and where you can not select the ship anymore but it is still visible.
+
+```XML
+<Content>
+  <MapTemplate>
+    <Size>1856 1856</Size>
+    <PlayableArea>200 200 1656 1656</PlayableArea>
+    <RandomlyPlacedThirdParties />
+    <ElementCount>15</ElementCount>
+    ...
+  </MapTemplate>
+</Content>
+```
+
+The map uses coordinates based on X and Y. it starts at 0,0 and ends at 1856,1856. Knowing this we can understand that the playable area starts at 200,200 and ends at 1656,1656 and 0,1656 and 1656,0.
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+NEED TO ADAPT THINGS UNDERNEATH - DO NOT USE YET
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+
 ### Time for magic, AnnoMapEditor!
 
-We are going to use a community tool made by another amazing modder, the **AnnoMapEditor**. This tool lets us change existing map templates and make complete new combinations of islands.
+We are going to use a community tool made by another amazing modder, the **AnnoMapEditor**. This tool lets us change existing map templates and make complete new combinations of existing islands.
 
 [https://github.com/anno-mods/AnnoMapEditor](https://github.com/anno-mods/AnnoMapEditor)
 
@@ -1348,7 +1689,7 @@ If you get an error when opening this tool, Windows blocks .exe files that are n
 
 You can find a short demo on the Github, but we will go over the tool in short.
 
-When we open the tool we first have to choose a basic map template we want to use to adapt. This can be a already created custom .a7t file or you can choose from the existing map templates from the game.
+When we open the tool we first have to choose a basic map template we want to use to adapt. This can be an already created custom .a7t file or you can choose from the existing map templates from the game.
 
 **REMARK!** As mentioned by the creator of the tool, this tool is still in development and does not work for all regions yet.
 
@@ -1371,9 +1712,6 @@ Let us save this map template.
 - Save your map template file at this location with the name americana.a7tinfo
 
 ![folders-map-template-3.jpg](./_sources/folders-map-template-3.jpg)
-
-As we can see, the only file that was created is the .a7tinfo file.
-We still need the other .a7t and .a7te file. We can copy those over from **data\sessions\maps\pool\colony01\colony01_l_01** and rename them to **americana.a7t** and **americana.a7te**.
 
 WORK IN PROGRESS...
 
