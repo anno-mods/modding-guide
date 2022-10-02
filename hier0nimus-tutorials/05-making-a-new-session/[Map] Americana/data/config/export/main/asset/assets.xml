@@ -284,8 +284,9 @@ Enjoy!
                 </Standard>
                 <MapTemplate>
                     <IslandSize>Large</IslandSize>
-                    <!-- <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_01/colony01_l_01.a7t</TemplateFilename>-->
-                    <TemplateFilename>data/sessions/maps/americana/americana.a7t</TemplateFilename>
+                    <!-- <TemplateFilename>data/sessions/maps/pool/colony01/colony01_l_01/colony01_l_01.a7t</TemplateFilename>
+                    <TemplateFilename>data/sessions/maps/americana/americana.a7t</TemplateFilename>-->
+                    <TemplateFilename>mods/[Map] Americana/data/sessions/maps/americana/americana.a7t</TemplateFilename>
                     <TemplateSize>Large</TemplateSize>
                     <TemplateRegion>Colony01</TemplateRegion>
                 </MapTemplate>
