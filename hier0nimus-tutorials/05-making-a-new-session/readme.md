@@ -1410,7 +1410,7 @@ The command we need is:
 
 If we have a look at this command it actually explains itself (apart from some things I also have to look up to know what they do).
 
-The first part is the **FileDBReader.exe** where we actually execute this .exe via the command. The next part is the -f which is a parameter that I know it needs to be there, but not sure what it stands for. Smarter people then me probably can answer that. Then we have the file we actually want to decompress, we navigate to the location of our **americana.a7tinfo file** which is in the **americana folder**. Then we have another parameter -i I do not know what is does. And to finalize we have the fileformat we will be using in the decompression, **a7tinfo.xml** which is also in a subfolder where we have to navigate to from our main folder.
+The first part is the **FileDBReader.exe** where we actually execute this .exe via the command. The next part is the -f which is a parameter that I know it needs to be there, but not sure what it stands for. Smarter people then me probably can answer that. Then we have the file we actually want to decompress, we navigate to the location of our **americana.a7tinfo file** which is in the **americana folder**. Then we have another parameter -i, which gives the tool an interpreter to use. And to finalize we have the fileformat we will be using in the decompression, **a7tinfo.xml** which is also in a subfolder where we have to navigate to from our main folder.
 
 We can copy paste this command inside the commandline.
 
@@ -1969,6 +1969,96 @@ This time we are not decompressing, but compressing. Our command also has some m
 We now have our compressed .a7tinfo again.
 
 ![filedbreader-7.jpg](./_sources/filedbreader-7.jpg)
+
+I renamed the `americana.xml` to `americana-a7tinfo-backup.xml` to have it as a backup in case I want to check something.
+
+### Opening the .a7t file
+
+#### Opening .a7t with RDAExplere
+
+The next file we will be opening is the `americana.a7t`. For this we do not need the commandline but in the first step we need the `RDAExplorer`. We can use the version with the UI and extract the `gamedata.data` file inside to our americana map folder inside the FileDBReader folder.
+
+![a7t-decompress.jpg](./_sources/a7t-decompress.jpg)
+
+![a7t-decompress-2.jpg](./_sources/a7t-decompress-2.jpg)
+
+#### Opening the gamedata.data
+
+Now we have a `gamedata.data` file and we need the FileDBReader again with the commandline.
+
+We have to again decompress the file, but we now have a .data file, so we need another FileFormat file te decompress.
+
+Use the commandline with command below to decompress to the final .xml file.
+
+`Filedbreader.exe decompress -f americana/gamedata.data -i FileFormats/Island_Gamedata_V2.xml`
+
+![a7t-decompress-3.jpg](./_sources/a7t-decompress-3.jpg)
+
+### Final XML
+
+If we now open the .xml we extracted, we see a really long file with also long binary parts.
+
+```XML
+<Content>
+  <FileVersion>8</FileVersion>
+  <GameSessionManager>
+    <SessionSettings>
+      <GlobalAmbientName>south_america_caribic_01</GlobalAmbientName>
+      <PlayableArea>200 200 1656 1656</PlayableArea>
+    </SessionSettings>
+    <SessionRandomManager />
+    <TerrainManager>
+      <WorldSize>1856 1856</WorldSize>
+    </TerrainManager>
+    <SessionCameraManager>
+      ...
+  </GameSessionManager>
+</Content>
+```
+
+We need to change only 1 thing at the beginning of the file. We have to add our main GUID of our session template.
+`<EditorSessionGUID>1742009000</EditorSessionGUID>`
+
+```XML
+<Content>
+  <FileVersion>8</FileVersion>
+  <GameSessionManager>
+    <SessionSettings>
+      <GlobalAmbientName>south_america_caribic_01</GlobalAmbientName>
+      <PlayableArea>200 200 1656 1656</PlayableArea>
+      <EditorSessionGUID>1742009000</EditorSessionGUID>
+    </SessionSettings>
+    <SessionRandomManager />
+    <TerrainManager>
+      <WorldSize>1856 1856</WorldSize>
+    </TerrainManager>
+    <SessionCameraManager>
+      ...
+  </GameSessionManager>
+</Content>
+```
+
+### Compress again to .a7t file
+
+Now it is time to compress our `.xml` back to a `.a7t` file. Again in 2 steps, first to a `.data` file and then the `.data` file again to a `.a7t` file.
+
+Note in the previous screenshot dat I changed the name of the `gamedata.data` to `gamedata-backup.data` to have a backup and not overwritten when compressing the xml again. We can do the same for the `americana.a7t` file.
+
+We use the commands below to do the job for us:
+
+Compress `xml` to `.data`:
+
+`Filedbreader.exe compress -f americana/gamedata.xml -o .data -c 2 -i FileFormats/Island_Gamedata_V2.xml`
+
+![a7t-compress-1.jpg](./_sources/a7t-compress-1.jpg)
+
+Compress `.data` to `.a7t`
+
+Done with RDAExplorer > See answer Shaodlife
+
+### Change path of .a7t
+
+Change path to explicit path
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
