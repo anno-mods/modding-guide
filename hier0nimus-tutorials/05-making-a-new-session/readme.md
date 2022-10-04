@@ -1125,7 +1125,7 @@ The most important thing that we need to change here is the position and maybe o
 ```XML
 <i>
     <hasValue>1</hasValue>
-    <Name></Name>
+    <Name>1742009000_0</Name>
     <Groups />
     <Dummies>
         <i>
@@ -1137,17 +1137,17 @@ The most important thing that we need to change here is the position and maybe o
                 <z>7.544896</z>
             </Position>
             <Orientation>
-		    <w>0.711145</w>
-		    <x>-0.000000</x>
-		    <y>0.911570</y>
-		    <z>0.000000</z>
+                <w>0.711145</w>
+                <x>-0.000000</x>
+                <y>0.911570</y>
+                <z>0.000000</z>
             </Orientation>
             <Extents>
                 <x>0.100000</x>
                 <y>0.100000</y>
                 <z>0.100000</z>
             </Extents>
-            <RotationY>3.989012</RotationY>
+            <RotationY>1.009012</RotationY>
             <Id>1742009</Id>
             <HeightAdaptationMode>1</HeightAdaptationMode>
         </i>
@@ -1910,11 +1910,7 @@ For normal islands this is a set of islands based on those parameters. For `Thir
 
 We could change positions here, add new islands, remove islands,... But remember to change the total `<ElementCount>` at the top of the file!
 
-### Add custom island
-
-We will be adding 3 new islands just as an example. 2 extra islands that will be taken from the pool of islands and 1 custom island with a fixed link to an island so we are sure this island is taken.
-
-#### Extra islands from pool
+### Add custom a island?
 
 First let's have a look at the current available islands for the New World. How many Large islands are there, how many medium and how many small. For that we go to the data6.rda folder but also the data24.rda folder because that contains some updated islands with a newer release.
 
@@ -1939,7 +1935,15 @@ In total we know that 15 items are loaded into the map template. We know this be
 
 Total of 15 elements like the number at the top states.
 
-If we have a look at the islands that are available we actually have a problem. There are 5 large islands used of the available islands. You could say we actually have 10 large islands, because we also have the river variants and the non-river variants.
+If we have a look at the islands that are available we actually have a problem. There are 5 large islands used of the available islands. You could say we actually have 10 large islands, because we also have the river variants and the non-river variants. But the game does not make a difference between the two, it is the same island when loaded, and the same island will not be loaded twice.
+
+In this map template we loaded, all the large islands are actually already used, 5. So, if we would add another large island the game would not load it because it does not have an available large island anymore. We still have 1 medium island we can add and the 4 small islands are still available.
+
+### Replace islands with custom island
+
+First we were planning to add the prologue island that is used at the beginning of the campaign. But after adding this island we encountered some problems. Tied to the island we have the buildings and elements that are backed into that part of the campaign. The character from the campaign was still in there. Also the fishing boat where you need to use the dynamite was still in there. When we tried to reach the beach to settle the island the beach was blocked. So... No can do.. There is another island in the same folder, but also that island could not be settled. Without big modding efforts we can not fix those islands, wso we have to take another island.
+
+Some people do not like the river islands of the new world. We could swap out all the large islands and manually insert all the riverless variants. We will do this for one of the large islands.
 
 Go to the first `<TemplateElement>` that is a normal Large variant.
 
@@ -1960,41 +1964,20 @@ Go to the first `<TemplateElement>` that is a normal Large variant.
 ...
 ```
 
-Copy this 2x underneath it and change the position to be for both of the copies in the middle of the map by changing the position to `928 928`. For now this position is ok, we will be changing positions later in a more flexible and visual way.
+We will be changing this version to a fixed island version.
 
-**Important to know!** Coordinates always have to be dividable by 8!
+- We include the path to the island with `<MapFilePath>`
+- We add add a rotation and a number with `<Rotation90>`.
+- We remove the `<ElementType>`
+- We remove the `<Size>`
 
 ```XML
 ...
 <TemplateElement>
-    <ElementType>1</ElementType>
     <Element>
         <Position>1200 1232</Position>
-        <Size>Large</Size>
-        <Difficulty />
-        <Config>
-            <Type />
-            <Difficulty />
-        </Config>
-    </Element>
-</TemplateElement>
-<TemplateElement>
-    <ElementType>1</ElementType>
-    <Element>
-        <Position>928 928</Position>
-        <Size>Large</Size>
-        <Difficulty />
-        <Config>
-            <Type />
-            <Difficulty />
-        </Config>
-    </Element>
-</TemplateElement>
-<TemplateElement>
-    <ElementType>1</ElementType>
-    <Element>
-        <Position>928 928</Position>
-        <Size>Large</Size>
+        <MapFilePath>data\sessions\islands\pool\colony01\colony01_l_05\colony01_l_05.a7m</MapFilePath>
+        <Rotation90>3</Rotation90>
         <Difficulty />
         <Config>
             <Type />
@@ -2005,47 +1988,50 @@ Copy this 2x underneath it and change the position to be for both of the copies 
 ...
 ```
 
-#### Extra fixed islands
+### Add another islands
 
-Apart from the islands taken from the pool we will also add a fixed island that is not randomly taken from the pool, but is always there. First we were planning to add the prologue island that is used at the beginning of the campaign. But after adding this island we encountered some problems. Tied to the island we have the buildings and elements that are backed into that part of the campaign. The character from the campaign was still in there. Also the fishing boat where you need to use the dynamite was still in there. When we tried to reach the beach to settle the island the beach was blocked. So... No can do... Let's take another fixed island.
+Let's add another island. This time a small variant, but again one that is randomized and taken from the pool of small islands. For that we can copy one of the normal large or medium islands. And then change the `<Size>` to `Small`.
 
-We can have a look at all the large island and pick one we really want an extra off.
-`data6.rda` > `data\sessions\islands\pool\colony01\`. For this example we will take `colony01_l_01` without rivers.
+We also have to add a position on the map. For now we will add this small island in the middle of the map. Which is `928 928`. We will be changing this position later.
 
-![island-large-extra.jpg](./_sources/island-large-extra.jpg)
-
-But how do we actually add this? Well, again let us create a new `<TemplateElement>` by copying an existing underneath the last and put it right in the middle of the map by changing the position to `928 928`. Again, for now this position is ok, we will be changing positions later in a more flexible and visual way.
-
-We can add a custom island with `<MapFilePath>` to add a specific island that is not taken from a pool but that will always be in there. We will do this for the prologue island.
-
-We can also add a rotation to have some randomness.
-
-Remove the `<Size>` node.
-
-```XML
-<Content>
-  <MapTemplate>
-    ...
-    <TemplateElement>
-      <Element>
-        <Position>928 928</Position>
-        <MapFilePath>data/sessions/islands/pool/colony01/colony01_l_01/colony01_l_01.a7m</MapFilePath>
-        <Rotation90>2</Rotation90>
-        <Difficulty />
-        <Config>
-          <Type />
-          <Difficulty />
-        </Config>
-      </Element>
-    </TemplateElement>
-</Content>
-```
-
-Do not forget to change the `<ElementCount>` to 15+3, so `18` because we added 3 new islands.
+**Remark!** All values for positions must be dividable by 8!
 
 ```XML
 ...
-<ElementCount>18</ElementCount>
+<TemplateElement>
+    <ElementType>1</ElementType>
+    <Element>
+        <Position>928 928</Position>
+        <Size>Small</Size>
+        <Difficulty />
+        <Config>
+            <Type />
+            <Difficulty />
+        </Config>
+    </Element>
+</TemplateElement>
+...
+```
+
+### Change the number of elements
+
+Do not forget to change the `<ElementCount>` to 15+1, so `16` because we added 1 extra islands.
+
+```XML
+...
+<ElementCount>16</ElementCount>
+...
+```
+
+### Change the size of the map
+
+We could close this file but we are going to add one last thing. We are going to make this map bigger. The current size of the map is `1856 1856`, but we are going to change that to `2560 2560`.
+But then we also have to change the `<PlayableArea>`. Let's take 200 on every size to get the playable area. From the 0 values it is the same, but for the other sides it is `200 200 2360 2360`.
+
+```XML
+...
+<Size>2560 2560</Size>
+<PlayableArea>200 200 2360 2360</PlayableArea>
 ...
 ```
 
@@ -2069,103 +2055,9 @@ We now have our compressed .a7tinfo again.
 
 I renamed the `americana.xml` to `americana-a7tinfo-backup.xml` to have it as a backup in case I want to check something.
 
-You could start your game now and see the new session with the adapted islands, but we still have to change the postions of the newly added islands.
+You could start your game now and see the new session with the adapted islands, but we still have to change the postions of the newly added island. We also expanded the map template in size in the one file, but there is also another location where we have to change that size, in the a7t file.
 
-First let's copy the compressed `americana.a7tinfo` to our mod folder and overwrite the file we took from the existing map template. Location `[Map] Americana\data\sessions\maps\americana\americana.a7tinfo`.
-
-Now we have our updated map template ready for some last magic.
-
-### Time for magic, AnnoMapEditor!
-
-We are going to use a community tool made by another amazing modder, the **AnnoMapEditor**. This tool lets us change existing map templates and make complete new combinations of existing islands and easily position islands in the map template.
-
-[https://github.com/anno-mods/AnnoMapEditor](https://github.com/anno-mods/AnnoMapEditor)
-
-If you get an error when opening this tool, Windows blocks .exe files that are not "trusted". Opening this is at your own risk but I think we can all agree the modder creating this tool has no bad intentions so you can just ignore this warning.
-
-You can find a short demo on the Github, but we will go over the tool in short.
-
-When we open the tool we first have to choose a basic map template we want to use to adapt. This can be an already created custom .a7t file or you can choose from the existing map templates from the game.
-
-**REMARK!** As mentioned by the creator of the tool, this tool is still in development and does not fully work for all regions yet.
-
-We will be using our map template that we created and where we added our custom islands onto.
-
-Choose `Open` > `Open File...` > And choose our `americana.a7tinfo` in our mod folder.
-
-![annomapeditor-1.jpg](./_sources/annomapeditor-1.jpg)
-
-When opened we immediatly see the set of islands and positions of the islands that will be used in game for the New World session and in the middle we see some stacked islands, the 3 islands we added.
-
-![annomapeditor-2.jpg](./_sources/annomapeditor-2.jpg)
-
-First on the left in the interface we change the region from `Moderate` to `New World`.
-
-We immediatly get a warning underneath the dropdown that we have included to many large islands to the pool and that only 5 islands will be loaded. We could actually already have thought about this. Remember that there are actually only 5 variants of Large New World Islands?
-
-This tool is still in development and this maybe will change in the future so islands can be included multiple times. Adding islands with actual paths of islands like the custom island we included solves this. But if we let the system pick islands from a pool this is limited by the amount of islands that are in the pool.
-
-So let's drag the islands to a position of our liking and remove the 2 extra Large islands we included. Do not remove the custom island.
-
-I also removed 2 of the 3 Third Party (purple) locations. So Isabel Sarmento will be spawning at the only available location. We could also remove her her or even remove the pirates if we want.
-
-Remove an island by dragging them over the edge of the map. A red cross will appear above the island.
-Play around with the amount of islands and remove/add what you want. But make sure to leave the fixed choosen island in on the map template. This is the island without a label.
-
-![annomapeditor-3.jpg](./_sources/annomapeditor-3.jpg)
-
-We can also see a yellow dot in the upper corner of the map. Remember we talked about the spawnpoint when you enter the region for the first time? This is that location. You could also drag this to another location if you want.
-
-There are no small island in this map template, there are 4 available in the pool. So let's add 2 of them for fun.
-
-Now let's have a look at our final result. We have `5 Large islands`, `4 medium islands`, `2 small islands`, `1 custom island` (no name above), `1 pirate island`, `1 thirdparty island` and the `spawn position`.
-
-![annomapeditor-4.jpg](./_sources/annomapeditor-4.jpg)
-
-Let us save this map template.
-
-- Click on the **save** button
-- Choose **as map template**
-- Browse to the data folder of your mod folder of your map
-- Overwrite your map template file at the location with the name `americana.a7tinfo`
-
-Again, we have taken a huge step! Copy you modfolder to the Anno 1800 mods folder, clear the cache and start a game with the new session!
-
-**REMARK!** Make sure when testing always use a savegame that never has the mod loaded before. When you load a mod and save the game after that, parts of the mod are backed into the savegame. If you then delete the mod inside that savegame, play for some time and then add the mod again the savegame can be corrupted and potentially break that savegame! When testing always use a new game or a savegame where you never used the mod before.
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-NEED TO ADAPT THINGS UNDERNEATH - DO NOT USE YET
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+First, before we forget let's copy the compressed `americana.a7tinfo` to our mod folder and overwrite the file we took from the existing map template. Location `[Map] Americana\data\sessions\maps\americana\americana.a7tinfo`.
 
 ### Opening the .a7t file
 
@@ -2211,8 +2103,7 @@ If we now open the .xml we extracted, we see a really long file with also long b
 </Content>
 ```
 
-We need to change only 1 thing at the beginning of the file. We have to add our main GUID of our session template.
-`<EditorSessionGUID>1742009000</EditorSessionGUID>`
+We need to change 2 things at the beginning of the file. We have to change the `<PlayableArea>` again and the `<WorldSize>`.
 
 ```XML
 <Content>
@@ -2220,12 +2111,11 @@ We need to change only 1 thing at the beginning of the file. We have to add our 
   <GameSessionManager>
     <SessionSettings>
       <GlobalAmbientName>south_america_caribic_01</GlobalAmbientName>
-      <PlayableArea>200 200 1656 1656</PlayableArea>
-      <EditorSessionGUID>1742009000</EditorSessionGUID>
+      <PlayableArea>200 200 2360 2360</PlayableArea>
     </SessionSettings>
     <SessionRandomManager />
     <TerrainManager>
-      <WorldSize>1856 1856</WorldSize>
+      <WorldSize>2560 2560</WorldSize>
     </TerrainManager>
     <SessionCameraManager>
       ...
@@ -2237,7 +2127,7 @@ We need to change only 1 thing at the beginning of the file. We have to add our 
 
 Now it is time to compress our `.xml` back to a `.a7t` file. Again in 2 steps, first to a `.data` file and then the `.data` file again to a `.a7t` file.
 
-Note in the previous screenshot dat I changed the name of the `gamedata.data` to `gamedata-backup.data` to have a backup and not overwritten when compressing the xml again. We can do the same for the `americana.a7t` file.
+Note in the previous screenshot that I changed the name of the `gamedata.data` to `gamedata-backup.data` to have a backup and not overwritten when compressing the xml again. We can do the same for the `americana.a7t` file.
 
 We use the commands below to do the job for us:
 
@@ -2248,20 +2138,80 @@ Compress `xml` to `.data`:
 ![a7t-compress-1.jpg](./_sources/a7t-compress-1.jpg)
 
 Compress `.data` to `.a7t`
+For this we can use the **RDAConsole**. This is another amazing tool from the community.
 
-Done with RDAExplorer > See answer Shaodlife
+- [https://github.com/anno-mods/RdaConsole](https://github.com/anno-mods/RdaConsole)
 
-### Change path of .a7t
+Download the latest version and copy the `RdaConsole.exe` to the same directory as the `FileDBReader.exe` inside the `FileDBReader` folder. That way we can easily use the commandline that is already open and execute the commands.
 
-Change path to explicit path
+`RdaConsole pack -f americana/gamedata.data -o americana/americana.a7t -v 2`
 
-> Removed custom island!
+![a7t-rdaconsole-1.jpg](./_sources/a7t-rdaconsole-1.jpg)
+
+Now also copy the `americana.a7t` file to the mod directory. You will see the new .a7t file is much bigger then the original one. This is fine.
+
+Now we have our updated map template ready for some last magic.
+
+### Time for magic, AnnoMapEditor!
+
+We are going to use a community tool made by another amazing modder, the **AnnoMapEditor**. This tool lets us change existing map templates and make complete new combinations of existing islands and easily position islands in the map template.
+
+[https://github.com/anno-mods/AnnoMapEditor](https://github.com/anno-mods/AnnoMapEditor)
+
+If you get an error when opening this tool, Windows blocks .exe files that are not "trusted". Opening this is at your own risk but I think we can all agree the modder creating this tool has no bad intentions so you can just ignore this warning.
+
+You can find a short demo on the Github, but we will go over the tool in short.
+
+When we open the tool we first have to choose a basic map template we want to use to adapt. This can be an already created custom .a7t file or you can choose from the existing map templates from the game.
+
+**REMARK!** As mentioned by the creator of the tool, this tool is still in development and does not fully work for all regions yet.
+
+We will be using our map template that we created and where we added our custom islands onto.
+
+Choose `Open` > `Open File...` > And choose our `americana.a7tinfo` in our mod folder.
+
+![annomapeditor-1.jpg](./_sources/annomapeditor-1.jpg)
+
+When opened we immediatly see the set of islands and positions of the islands that will be used in game for the New World session and in the middle we see our `small` island that we added. We also see that this region is so much bigger and a lot of free space. The original size was a lot smaller and we added all that space. Now we can add some more islands and reposition them.
+
+![annomapeditor-2.jpg](./_sources/annomapeditor-2.jpg)
+
+First on the left in the interface we change the region from `Moderate` to `New World`. We see the islands change to the New World islands. Be aware that those islands are just placeholders to show the size. When loading a new game the island itself will be randomized based on the available islands in the pool, apart from the fixed island we choose.
+
+So let's drag the islands to a position of our liking but keep in them in the playable area (light blue not the dark blue on the outside).
+
+I also removed 2 of the 3 Third Party (purple) locations. So Isabel Sarmento will be spawning at the only available location. We could also remove her completely or even remove the pirates if we want.
+
+Remove an island by dragging them over the edge of the map. A red cross will appear above the island.
+
+![annomapeditor-3.jpg](./_sources/annomapeditor-3.jpg)
+
+Play around with the amount of islands and remove/add what you want. But make sure to leave the fixed choosen island in on the map template. This is the island without a label amnd no preview. You will also get a warning on the left if you added more islands of a certain type then there are islands available in that pool.
+
+![annomapeditor-4.jpg](./_sources/annomapeditor-4.jpg)
+
+We can also see a yellow dot in the upper corner of the map. Remember we talked about the spawnpoint when you enter the region for the first time? This is that location. You could also drag this to another location if you want.
+
+Now let's have a look at our final result and save our new map template.
+
+![annomapeditor-5.jpg](./_sources/annomapeditor-5.jpg)
+
+Let us save this map template.
+
+- Click on the **save** button
+- Choose **as map template**
+- Browse to the data folder of your mod folder of your map
+- Overwrite your map template file at the location with the name `americana.a7tinfo`
+
+Again, we have taken a huge step! Copy you modfolder to the Anno 1800 mods folder, clear the cache and start a game with the new session!
+
+![map-final.jpg](./_sources/map-final.jpg)
+
+**REMARK!** Make sure when testing always use a savegame that never has the mod loaded before. When you load a mod and save the game after that, parts of the mod are backed into the savegame. If you then delete the mod inside that savegame, play for some time and then add the mod again the savegame can be corrupted and potentially break that savegame! When testing always use a new game or a savegame where you never used the mod before.
 
 WORK IN PROGRESS...
 
 ## To do:
-
-### Edit map template by unpacking with FileDBReader.
 
 ### Paths of ship routes on world map
 
