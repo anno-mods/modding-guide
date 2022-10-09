@@ -4,7 +4,9 @@ We already have different sessions in the standard game. Old World and New World
 
 Adding sessions to your game makes the game more challenging! But of course also puts a big performance hog on your computer. The more sessions the more difficult it is for your computer to manage all those sessions. During the past years some mods were already created where new sessions were added. Modder Kreitani created “Four Crowns” and ”Kingsgrove”, both new Old World sessions. “Four Crowns” was a direct hit for people loving the big island from Cape Trelawney, but it immediately showed performance problems because of the big constraints it puts on the computer. Flickering appeared for some people because of those performance problems. So, if you add new sessions be aware it puts a big pressure on your maybe already struggling game experience/computer.
 
-I created my first new session based on the work Kreitani already did. So a HUGE thanks to him. This tutorial uses his knowledge and I tweaked where I needed. Do know that the sky is again the limit for what you want to add to a session. In this tutorial we are not going to cover everything that is possible.
+I created my first new session based on the work Kreitani already did. So a HUGE thanks to him. This tutorial uses his knowledge and I tweaked where I needed. At the end I added the part of the shipping routes on the world map. This was based on the hard work of Taludas. Also a really big thank you to him. And actually I want to thank the whole community also for supporting me in this hard work. This tutorial was not possible with all the input I got from so many people.
+
+Do know that the sky is again the limit for what you want to add to a session. In this tutorial we are not going to cover everything that is possible.
 
 ## What are we going to do?
 
@@ -2209,10 +2211,117 @@ Again, we have taken a huge step! Copy you modfolder to the Anno 1800 mods folde
 
 **REMARK!** Make sure when testing always use a savegame that never has the mod loaded before. When you load a mod and save the game after that, parts of the mod are backed into the savegame. If you then delete the mod inside that savegame, play for some time and then add the mod again the savegame can be corrupted and potentially break that savegame! When testing always use a new game or a savegame where you never used the mod before.
 
-WORK IN PROGRESS...
-
-## To do:
-
 ### Paths of ship routes on world map
 
-This part is a really hard one and you could leave it out if you do not want to do it. This part contains the visual paths the ships take on the World Map. You see the curved striped lines from one session to another which the ships follow. To be able to do that you’ll need to add a lot of coordinates. I'll add this once I figured out how to do it.
+We have one last part to do. This part can be a hard one and you could leave it out if you do not want to do it. This part contains the visual paths the ships take on the World Map. You see the curved striped lines from one session to another which the ships follow. To be able to do that you’ll need to add a lot of coordinates.
+
+#### Preparations in Blender
+
+For those who did not have worked in Blender make sure you have some basic knowledge. If you have done the previous tutorials you would be ready to rock this. If not I would advise to read the previous tutorials so you know how you install the needed plugins and addons. We need the Anno Blender addon to be able to export our files.
+
+https://github.com/xormenter/Blender-Anno-.cfg-Import-Addon
+
+#### Download the world map blender file
+
+Download amazing file from the community that you can open in Blender and where you can see all sessions, expeditions with example paths.
+
+Download: [shippaths_start.blend](./_sources/shippaths_start.blend)
+
+#### Steps in Blender
+
+- Open Blender
+- Go the the installed Anno addon
+- Check the checkbox "Import/Export Spline Data (Experimental)"
+
+![world-map-americana-blender-1.jpg](./_sources/world-map-americana-blender-1.jpg)
+
+- Open the community world map file.
+
+![world-map-americana-blender-2.jpg](./_sources/world-map-americana-blender-2.jpg)
+
+- Save your version to a new file so you still have the original file
+- We will be adding our kontor on this map and then draw all the ship routes from and to our new session to and from all the other sessions and expeditions. We will be drawing both routes in both directions.
+- Add the kontor of your new session on the worldmap by copying an existing cube and renaming it in the treeview with the name and GUID of your new session. See existing sessions as examples.
+
+![world-map-americana-blender-3.jpg](./_sources/world-map-americana-blender-3.jpg)
+
+- Remove all curves and leave 1 curve. To work a bit easier you could hide all the not needed elements.
+
+![world-map-americana-blender-4.jpg](./_sources/world-map-americana-blender-4.jpg)
+
+- Position this curve and connect your your new session/cube with another point/cube on the map. Do not position the start and endpoint underneath the cube but a bit before it.
+
+![world-map-americana-blender-5.jpg](./_sources/world-map-americana-blender-5.jpg)
+
+- Select the curve in Object mode, change to Edit mode and check which way the arrows go.
+
+![world-map-americana-blender-6.jpg](./_sources/world-map-americana-blender-6.jpg)
+
+- Give the correct name to the curve based on the way the arrows go (v_STARTGUID_DESTINATIONGUID). You can see the GUID by selecting the cube in Object Mode and looking at the treeview.
+
+![world-map-americana-blender-7.jpg](./_sources/world-map-americana-blender-7.jpg)
+![world-map-americana-blender-8.jpg](./_sources/world-map-americana-blender-8.jpg)
+
+The arrows went from the right cube (Old World - 180023) to our new session (Americana - 1742009000). Change the name of the curve to `v_180023_1742009000` in the treeview.
+
+![world-map-americana-blender-9.jpg](./_sources/world-map-americana-blender-9.jpg)
+
+**Warning!** Cape, New World, Enbesa and The Arctic have 2 cubes/GUID's. One for the unlock and one for the normal version. Both are needed!
+
+- Also open the Anno scene tab and change the name of the curve also there
+
+![world-map-americana-blender-10.jpg](./_sources/world-map-americana-blender-10.jpg)
+
+- Apart from the name in the Anno Object tab we see ApproximationMapping. You can delete this CDATA, otherwise we have to delete it after the export in the exported file.
+
+![world-map-americana-blender-11.jpg](./_sources/world-map-americana-blender-11.jpg)
+
+- Same for all the ApproximationPoints. You can also delete those in the Anno Object tab. Leave one. This will make it easier later.
+
+![world-map-americana-blender-12.jpg](./_sources/world-map-americana-blender-12.jpg)
+
+- Copy the curve, connect another session with your new session. Make sure to keep the arrows in mind. First do all curves where your new session is the destination or the start. Again change the names of the curves based on the GUID's of the cubes.
+
+We choose the next point by selecting another cube in Object Mode, and looking at the name in the treeview to see the GUID.
+
+![world-map-americana-blender-13.jpg](./_sources/world-map-americana-blender-13.jpg)
+
+Then we change the name in the treeview and the Anno Object tab.
+
+![world-map-americana-blender-14.jpg](./_sources/world-map-americana-blender-14.jpg)
+
+We do this for all curves for destination OR starting point.
+
+![world-map-americana-blender-15.jpg](./_sources/world-map-americana-blender-15.jpg)
+
+- When you are done with all the curves, copy one of the curves and move it a little bit. We are now going to do the opposite directions of the path.
+- Change the name of the copied curve to the oppsite. The destination will become the start and vice versa.
+- Select the curve in Object mode, change to Edit mode. The arrows will appear again. and all the anchor points of your curve will also be highlighted.
+- Rightclick in the curve and in the context menu choose "Switch direction". The arrows will switch direction.
+- Do this for all curves.
+- Now change the ID of every curve in the Anno object tab. We start from the last ID on the world_map_01.fc. This is 351, so we go further with 352, ect. Important to know that this ID can be different depending on other map mods you have installed.
+- When you are done with all the curves it is time to export our MAIN_FILE to a cfg.
+- Before exporting delete all the not used things in the file like the islands, clouds,...
+- Select the MAIN_FILE in the treeview and export the file as a .cfg with the anno plugin. Make sure to check the checkboxes so also the .fc and .cf7 are exported. If you try to export to .cfg and you get errors this can be because your mod folder path is not declared in the file. This can also be the case because there are still elements that can not be found on the predefined mod path.
+
+### Changes to the exported .fc file from blender
+
+- Move <k> element above correct item and add correct combination of GUID's
+- Copy content of <ControlPoints> to content of <ApproximationPoints> amd overwrite the one element we have there.
+
+We had created a world_map_01.fc before with our new session. But we actually will be using another one at this point. At the moment of writing, a lot has changed. Others were also creating other new sessions. Taludas for example did huge efforts. He was so kind to share his final version where his ship routes paths and the ones from Kreitani and Taubenangriff were also included. So, we would be stupid not the use their world_map_01.fc as a base to insert all our paths.
+
+Download: [world_map_01-START.fc](./_sources/world_map_01-START.fc)
+
+### Merge all the info
+
+Now that we have the final world_map_01.fc file it is time to merge all our info together in this file.
+
+- We copy the position of the kontor on the world map. We actually already declared that before in our own world map file. But to be sure it is on the right location compared to our curves we will be using the coordinates from blender. Be aware that the coordinates are multiplied by -1 and the z and y coordinates are switched compared to what we see in Blender.
+  In our example this means x=-15.7563 becomes x=15.7563, y=-7.7331 and z=0.224438 becomes y=-0.224438 z=7.7331
+- We then copy our paths/curves from our temporary .fc file that we exported from blender to the final world_map_01.fc file. This is all the SplineData without all the existing <k> elements.
+- Move the final world_map_01.fc to the right location in the modfolder and start the game. You now should be able to see the paths ingame!
+
+![world-map-americana-routes-1.jpg](./_sources/world-map-americana-routes-1.jpg)
+
+STILL ADDING FINAL SCREENSHOTS AND EXTRA INFO!
