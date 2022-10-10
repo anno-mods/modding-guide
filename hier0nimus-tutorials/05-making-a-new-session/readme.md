@@ -2225,7 +2225,7 @@ https://github.com/xormenter/Blender-Anno-.cfg-Import-Addon
 
 Download amazing file from the community that you can open in Blender and where you can see all sessions, expeditions with example paths.
 
-Download: [shippaths_start.blend](./_sources/shippaths_start.blend)
+Download: [shippaths_start.blend](./_sources/shippaths_start.blend) - Thanks to Taludas
 
 #### Steps in Blender
 
@@ -2253,7 +2253,7 @@ Download: [shippaths_start.blend](./_sources/shippaths_start.blend)
 
 ![world-map-americana-blender-5.jpg](./_sources/world-map-americana-blender-5.jpg)
 
-- Select the curve in Object mode, change to Edit mode and check which way the arrows go.
+- Select the curve in Object mode, change to Edit mode and check which way the arrows go. Make also sure you are in Layout mode.
 
 ![world-map-americana-blender-6.jpg](./_sources/world-map-americana-blender-6.jpg)
 
@@ -2268,7 +2268,7 @@ The arrows went from the right cube (Old World - 180023) to our new session (Ame
 
 **Warning!** Cape, New World, Enbesa and The Arctic have 2 cubes/GUID's. One for the unlock and one for the normal version. Both are needed!
 
-- Also open the Anno scene tab and change the name of the curve also there
+- Also open the Anno scene tab and change the name of the curve also there. but without the `v_`, so `180023_1742009000`.
 
 ![world-map-americana-blender-10.jpg](./_sources/world-map-americana-blender-10.jpg)
 
@@ -2295,19 +2295,317 @@ We do this for all curves for destination OR starting point.
 ![world-map-americana-blender-15.jpg](./_sources/world-map-americana-blender-15.jpg)
 
 - When you are done with all the curves, copy one of the curves and move it a little bit. We are now going to do the opposite directions of the path.
+
+![world-map-americana-blender-16.jpg](./_sources/world-map-americana-blender-16.jpg)
+
 - Change the name of the copied curve to the oppsite. The destination will become the start and vice versa.
-- Select the curve in Object mode, change to Edit mode. The arrows will appear again. and all the anchor points of your curve will also be highlighted.
+
+![world-map-americana-blender-17.jpg](./_sources/world-map-americana-blender-17.jpg)
+
+- Select the curve in Object mode, change to Edit mode. The arrows will appear again in the same direction as before. Click on `A` on the keyboard so and all the anchor points of your curve will also be highlighted.
+
+![world-map-americana-blender-18.jpg](./_sources/world-map-americana-blender-18.jpg)
+
 - Rightclick in the curve and in the context menu choose "Switch direction". The arrows will switch direction.
+
+![world-map-americana-blender-19.jpg](./_sources/world-map-americana-blender-19.jpg)
+![world-map-americana-blender-20.jpg](./_sources/world-map-americana-blender-20.jpg)
+
 - Do this for all curves.
+
+![world-map-americana-blender-21.jpg](./_sources/world-map-americana-blender-21.jpg)
+
 - Now change the ID of every curve in the Anno object tab. We start from the last ID on the world_map_01.fc. This is 351, so we go further with 352, ect. Important to know that this ID can be different depending on other map mods you have installed.
+
+![world-map-americana-blender-22.jpg](./_sources/world-map-americana-blender-22.jpg)
+![world-map-americana-blender-23.jpg](./_sources/world-map-americana-blender-23.jpg)
+
 - When you are done with all the curves it is time to export our MAIN_FILE to a cfg.
 - Before exporting delete all the not used things in the file like the islands, clouds,...
-- Select the MAIN_FILE in the treeview and export the file as a .cfg with the anno plugin. Make sure to check the checkboxes so also the .fc and .cf7 are exported. If you try to export to .cfg and you get errors this can be because your mod folder path is not declared in the file. This can also be the case because there are still elements that can not be found on the predefined mod path.
+
+![world-map-americana-blender-24.jpg](./_sources/world-map-americana-blender-24.jpg)
+
+- Select the `MAIN_FILE_world_map_01.cfg` in the treeview and export the file as a .cfg with the anno plugin. Make sure to check the checkboxes so also the .fc and .cf7 are exported. If you try to export to .cfg and you get errors this can be because your mod folder path is not declared in the file. This can also be the case because there are still elements that can not be found on the predefined mod path.
+
+![world-map-americana-blender-25.jpg](./_sources/world-map-americana-blender-25.jpg)
 
 ### Changes to the exported .fc file from blender
 
-- Move <k> element above correct item and add correct combination of GUID's
-- Copy content of <ControlPoints> to content of <ApproximationPoints> amd overwrite the one element we have there.
+We now have a couple of files exported. A .fc, a .cf7 and a .cfg. The file we need is the .fc. Open this file in your code editor and look at the structure. We are not going to include the code on this page because it is just to big.
+
+The biggest part we need is the part where all the curves are declared. It starts at a part with a lot of <k> elements.
+
+```XML
+...
+		<k>2121100820480.000000</k>
+		<k>2121100820480.000000</k>
+		<k>2121100820480.000000</k>
+		<k>2121100820480.000000</k>
+		<k>2121100820480.000000</k>
+		<k>2121100820480.000000</k>
+		<k>2121100820480.000000</k>
+		<k>2121100165120.000000</k>
+		<k>2121100165120.000000</k>
+		<k>2121100165120.000000</k>
+		<k>2121100165120.000000</k>
+		<k>2121100165120.000000</k>
+		<v>
+			<Name>110934_1742009000</Name>
+			<ApproximationMapping />
+			<hasValue>1</hasValue>
+			<Id>352</Id>
+			<Closed>0</Closed>
+			<SegmentLength>0.250000</SegmentLength>
+			<ApproximationPoints>
+				<i>
+					<x>-0.044585</x>
+					<y>-0.181641</y>
+					<z>0.251998</z>
+				</i>
+			</ApproximationPoints>
+			<ControlPoints>
+				<i>
+					<x>-6.260734</x>
+					<y>-0.081189</y>
+					<z>4.795408</z>
+				</i>
+				<i>
+					<x>-6.281677</x>
+					<y>-0.081189</y>
+					<z>7.055476</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ControlPoints>
+		</v>
+		<k>110934_1742009000</k>
+...
+```
+
+After that long list of `<k>` elements we see a `<v>` element. Inside we see a `<Name>` element which has one of the combinations of paths that we declared in Blender. We also see the `<Id>` element with the first number we added.
+
+Then a bit lower we see a `<ApproximationPoints>` and a `<ControlPoints>` element. The `<ControlPoints>` are the anchor points of our curves we created in Blender. We will be overwriting the content of `<ApproximationPoints>` with the content of `<ControlPoints>`. At the complete bottom we have a `<k>` element with the same GUID combination of the `<Name>` element.
+
+If we scroll down we see this structure over and over again untill the end of the file. All those elements are all our curves that we declared in Blender. We have to do 2 manual things here, before we can copy all the curves to our world_map_01.fc.
+
+#### Fix `<k>` element
+
+The `<k>` element with the current GUID combination actually needs to be above the `<v>` element and not underneath. We have a `<k>` element already underneath every element so we could just reuse it and replace the content with the correct GUID combination that is 2 lines lower in the `<Name>`.
+
+```XML
+...
+  <k>110934_1742009000</k>
+  <v>
+			<Name>110934_1742009000</Name>
+			<ApproximationMapping />
+			<hasValue>1</hasValue>
+			<Id>352</Id>
+			<Closed>0</Closed>
+			<SegmentLength>0.250000</SegmentLength>
+			<ApproximationPoints>
+				<i>
+					<x>-0.044585</x>
+					<y>-0.181641</y>
+					<z>0.251998</z>
+				</i>
+			</ApproximationPoints>
+			<ControlPoints>
+				<i>
+					<x>-6.260734</x>
+					<y>-0.081189</y>
+					<z>4.795408</z>
+				</i>
+				<i>
+					<x>-6.281677</x>
+					<y>-0.081189</y>
+					<z>7.055476</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ControlPoints>
+		</v>
+		<k>112132_1742009000</k>
+		<v>
+			<Name>112132_1742009000</Name>
+			<ApproximationMapping />
+			<hasValue>1</hasValue>
+			<Id>353</Id>
+			<Closed>0</Closed>
+			<SegmentLength>0.250000</SegmentLength>
+			<ApproximationPoints>
+				<i>
+					<x>-0.044585</x>
+					<y>-0.181641</y>
+					<z>0.251998</z>
+				</i>
+			</ApproximationPoints>
+			<ControlPoints>
+				<i>
+					<x>-6.764018</x>
+					<y>-0.081189</y>
+					<z>12.867951</z>
+				</i>
+				<i>
+					<x>-6.784962</x>
+					<y>-0.081189</y>
+					<z>10.851763</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ControlPoints>
+		</v>
+...
+```
+
+See in the above code that we put `<k>110934_1742009000</k>` above our first `<v>` element.
+Then we reused the already existing `<k>` element above the next `<v>` element for our next GUID combination, `<k>112132_1742009000</k>`.
+
+We do this for every `<k>` element / GUID combination / curve until we are at the end of the curves. The delete then the last `<k>` element.
+
+#### Fix `<ApproximationPoints>`
+
+We have declared our curve anchor points inside our `<ControlPoints>`, but we actually also need to add those to `<ApproximationPoints>`.
+
+Copy the content of `<ControlPoints>` to content of `<ApproximationPoints>` and overwrite the one element we have there.
+
+Example of our previous first 2 elements:
+
+```XML
+...
+  <k>110934_1742009000</k>
+  <v>
+			<Name>110934_1742009000</Name>
+			<ApproximationMapping />
+			<hasValue>1</hasValue>
+			<Id>352</Id>
+			<Closed>0</Closed>
+			<SegmentLength>0.250000</SegmentLength>
+			<ApproximationPoints>
+				<i>
+					<x>-6.260734</x>
+					<y>-0.081189</y>
+					<z>4.795408</z>
+				</i>
+				<i>
+					<x>-6.281677</x>
+					<y>-0.081189</y>
+					<z>7.055476</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ApproximationPoints>
+			<ControlPoints>
+				<i>
+					<x>-6.260734</x>
+					<y>-0.081189</y>
+					<z>4.795408</z>
+				</i>
+				<i>
+					<x>-6.281677</x>
+					<y>-0.081189</y>
+					<z>7.055476</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ControlPoints>
+		</v>
+		<k>112132_1742009000</k>
+		<v>
+			<Name>112132_1742009000</Name>
+			<ApproximationMapping />
+			<hasValue>1</hasValue>
+			<Id>353</Id>
+			<Closed>0</Closed>
+			<SegmentLength>0.250000</SegmentLength>
+			<ApproximationPoints>
+				<i>
+					<x>-6.764018</x>
+					<y>-0.081189</y>
+					<z>12.867951</z>
+				</i>
+				<i>
+					<x>-6.784962</x>
+					<y>-0.081189</y>
+					<z>10.851763</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ApproximationPoints>
+			<ControlPoints>
+				<i>
+					<x>-6.764018</x>
+					<y>-0.081189</y>
+					<z>12.867951</z>
+				</i>
+				<i>
+					<x>-6.784962</x>
+					<y>-0.081189</y>
+					<z>10.851763</z>
+				</i>
+				<i>
+					<x>-5.085570</x>
+					<y>-0.081189</y>
+					<z>8.504116</z>
+				</i>
+				<i>
+					<x>15.209394</x>
+					<y>-0.181640</y>
+					<z>7.781194</z>
+				</i>
+			</ControlPoints>
+		</v>
+...
+```
+
+We do this again for all the curves. We are now ready with our curves and can include the paths inside our main world_map_01.fc.
 
 We had created a world_map_01.fc before with our new session. But we actually will be using another one at this point. At the moment of writing, a lot has changed. Others were also creating other new sessions. Taludas for example did huge efforts. He was so kind to share his final version where his ship routes paths and the ones from Kreitani and Taubenangriff were also included. So, we would be stupid not the use their world_map_01.fc as a base to insert all our paths.
 
@@ -2317,9 +2615,88 @@ Download: [world_map_01-START.fc](./_sources/world_map_01-START.fc)
 
 Now that we have the final world_map_01.fc file it is time to merge all our info together in this file.
 
-- We copy the position of the kontor on the world map. We actually already declared that before in our own world map file. But to be sure it is on the right location compared to our curves we will be using the coordinates from blender. Be aware that the coordinates are multiplied by -1 and the z and y coordinates are switched compared to what we see in Blender.
-  In our example this means x=-15.7563 becomes x=15.7563, y=-7.7331 and z=0.224438 becomes y=-0.224438 z=7.7331
-- We then copy our paths/curves from our temporary .fc file that we exported from blender to the final world_map_01.fc file. This is all the SplineData without all the existing <k> elements.
+We copy the position of the kontor on the world map. We actually already declared that before in our own world map file.
+
+```XML
+...
+    <i>
+      <hasValue>1</hasValue>
+      <Name>1742009000_0</Name>
+      <Groups />
+      <Dummies>
+        <i>
+          <hasValue>1</hasValue>
+          <Name>1742009000_0</Name>
+          <Position>
+            <x>15.628237</x>
+            <y>-0.123510</y>
+            <z>7.544896</z>
+          </Position>
+          <Orientation>
+            <w>0.711145</w>
+            <x>-0.000000</x>
+            <y>0.911570</y>
+            <z>0.000000</z>
+          </Orientation>
+          <Extents>
+            <x>0.100000</x>
+            <y>0.100000</y>
+            <z>0.100000</z>
+          </Extents>
+          <RotationY>1.009012</RotationY>
+          <Id>1742009</Id>
+          <HeightAdaptationMode>1</HeightAdaptationMode>
+        </i>
+      </Dummies>
+      <Id>1742010</Id>
+    </i>
+...
+```
+
+But to be sure it is on the right location compared to our curves we will be using the coordinates from blender. Be aware that the coordinates are multiplied by -1 and the z and y coordinates are switched compared to what we see in Blender.
+
+![world-map-americana-blender-26.jpg](./_sources/world-map-americana-blender-26.jpg)
+
+In our example this means x=-16.0287 becomes x=16.0287, y=-7.80752 and z=0.224438 becomes y=-0.224438 z=7.80752
+
+```XML
+...
+    <i>
+      <hasValue>1</hasValue>
+      <Name>1742009000_0</Name>
+      <Groups />
+      <Dummies>
+        <i>
+          <hasValue>1</hasValue>
+          <Name>1742009000_0</Name>
+          <Position>
+            <x>16.0287</x>
+            <y>-0.224438</y>
+            <z>7.80752</z>
+          </Position>
+          <Orientation>
+            <w>0.711145</w>
+            <x>-0.000000</x>
+            <y>0.911570</y>
+            <z>0.000000</z>
+          </Orientation>
+          <Extents>
+            <x>0.100000</x>
+            <y>0.100000</y>
+            <z>0.100000</z>
+          </Extents>
+          <RotationY>1.009012</RotationY>
+          <Id>1742009</Id>
+          <HeightAdaptationMode>1</HeightAdaptationMode>
+        </i>
+      </Dummies>
+      <Id>1742010</Id>
+    </i>
+...
+```
+
+We then copy our paths/curves from our temporary .fc file that we exported from blender to the final world_map_01.fc file. This is all the SplineData without all the existing <k> elements.
+
 - Move the final world_map_01.fc to the right location in the modfolder and start the game. You now should be able to see the paths ingame!
 
 ![world-map-americana-routes-1.jpg](./_sources/world-map-americana-routes-1.jpg)
