@@ -2337,56 +2337,56 @@ The biggest part we need is the part where all the curves are declared. It start
 
 ```XML
 ...
-		<k>2121100820480.000000</k>
-		<k>2121100820480.000000</k>
-		<k>2121100820480.000000</k>
-		<k>2121100820480.000000</k>
-		<k>2121100820480.000000</k>
-		<k>2121100820480.000000</k>
-		<k>2121100820480.000000</k>
-		<k>2121100165120.000000</k>
-		<k>2121100165120.000000</k>
-		<k>2121100165120.000000</k>
-		<k>2121100165120.000000</k>
-		<k>2121100165120.000000</k>
-		<v>
-			<Name>110934_1742009000</Name>
-			<ApproximationMapping />
-			<hasValue>1</hasValue>
-			<Id>352</Id>
-			<Closed>0</Closed>
-			<SegmentLength>0.250000</SegmentLength>
-			<ApproximationPoints>
-				<i>
-					<x>-0.044585</x>
-					<y>-0.181641</y>
-					<z>0.251998</z>
-				</i>
-			</ApproximationPoints>
-			<ControlPoints>
-				<i>
-					<x>-6.260734</x>
-					<y>-0.081189</y>
-					<z>4.795408</z>
-				</i>
-				<i>
-					<x>-6.281677</x>
-					<y>-0.081189</y>
-					<z>7.055476</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ControlPoints>
-		</v>
-		<k>110934_1742009000</k>
+<k>2121100820480.000000</k>
+<k>2121100820480.000000</k>
+<k>2121100820480.000000</k>
+<k>2121100820480.000000</k>
+<k>2121100820480.000000</k>
+<k>2121100820480.000000</k>
+<k>2121100820480.000000</k>
+<k>2121100165120.000000</k>
+<k>2121100165120.000000</k>
+<k>2121100165120.000000</k>
+<k>2121100165120.000000</k>
+<k>2121100165120.000000</k>
+<v>
+    <Name>110934_1742009000</Name>
+    <ApproximationMapping />
+    <hasValue>1</hasValue>
+    <Id>352</Id>
+    <Closed>0</Closed>
+    <SegmentLength>0.250000</SegmentLength>
+    <ApproximationPoints>
+        <i>
+            <x>-0.044585</x>
+            <y>-0.181641</y>
+            <z>0.251998</z>
+        </i>
+    </ApproximationPoints>
+    <ControlPoints>
+        <i>
+            <x>-6.260734</x>
+            <y>-0.081189</y>
+            <z>4.795408</z>
+        </i>
+        <i>
+            <x>-6.281677</x>
+            <y>-0.081189</y>
+            <z>7.055476</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ControlPoints>
+</v>
+<k>110934_1742009000</k>
 ...
 ```
 
@@ -2402,82 +2402,82 @@ The `<k>` element with the current GUID combination actually needs to be above t
 
 ```XML
 ...
-  <k>110934_1742009000</k>
-  <v>
-			<Name>110934_1742009000</Name>
-			<ApproximationMapping />
-			<hasValue>1</hasValue>
-			<Id>352</Id>
-			<Closed>0</Closed>
-			<SegmentLength>0.250000</SegmentLength>
-			<ApproximationPoints>
-				<i>
-					<x>-0.044585</x>
-					<y>-0.181641</y>
-					<z>0.251998</z>
-				</i>
-			</ApproximationPoints>
-			<ControlPoints>
-				<i>
-					<x>-6.260734</x>
-					<y>-0.081189</y>
-					<z>4.795408</z>
-				</i>
-				<i>
-					<x>-6.281677</x>
-					<y>-0.081189</y>
-					<z>7.055476</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ControlPoints>
-		</v>
-		<k>112132_1742009000</k>
-		<v>
-			<Name>112132_1742009000</Name>
-			<ApproximationMapping />
-			<hasValue>1</hasValue>
-			<Id>353</Id>
-			<Closed>0</Closed>
-			<SegmentLength>0.250000</SegmentLength>
-			<ApproximationPoints>
-				<i>
-					<x>-0.044585</x>
-					<y>-0.181641</y>
-					<z>0.251998</z>
-				</i>
-			</ApproximationPoints>
-			<ControlPoints>
-				<i>
-					<x>-6.764018</x>
-					<y>-0.081189</y>
-					<z>12.867951</z>
-				</i>
-				<i>
-					<x>-6.784962</x>
-					<y>-0.081189</y>
-					<z>10.851763</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ControlPoints>
-		</v>
+<k>110934_1742009000</k>
+<v>
+    <Name>110934_1742009000</Name>
+    <ApproximationMapping />
+    <hasValue>1</hasValue>
+    <Id>352</Id>
+    <Closed>0</Closed>
+    <SegmentLength>0.250000</SegmentLength>
+    <ApproximationPoints>
+        <i>
+            <x>-0.044585</x>
+            <y>-0.181641</y>
+            <z>0.251998</z>
+        </i>
+    </ApproximationPoints>
+    <ControlPoints>
+        <i>
+            <x>-6.260734</x>
+            <y>-0.081189</y>
+            <z>4.795408</z>
+        </i>
+        <i>
+            <x>-6.281677</x>
+            <y>-0.081189</y>
+            <z>7.055476</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ControlPoints>
+</v>
+<k>112132_1742009000</k>
+<v>
+    <Name>112132_1742009000</Name>
+    <ApproximationMapping />
+    <hasValue>1</hasValue>
+    <Id>353</Id>
+    <Closed>0</Closed>
+    <SegmentLength>0.250000</SegmentLength>
+    <ApproximationPoints>
+        <i>
+            <x>-0.044585</x>
+            <y>-0.181641</y>
+            <z>0.251998</z>
+        </i>
+    </ApproximationPoints>
+    <ControlPoints>
+        <i>
+            <x>-6.764018</x>
+            <y>-0.081189</y>
+            <z>12.867951</z>
+        </i>
+        <i>
+            <x>-6.784962</x>
+            <y>-0.081189</y>
+            <z>10.851763</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ControlPoints>
+</v>
 ...
 ```
 
@@ -2496,112 +2496,112 @@ Example of our previous first 2 elements:
 
 ```XML
 ...
-  <k>110934_1742009000</k>
-  <v>
-			<Name>110934_1742009000</Name>
-			<ApproximationMapping />
-			<hasValue>1</hasValue>
-			<Id>352</Id>
-			<Closed>0</Closed>
-			<SegmentLength>0.250000</SegmentLength>
-			<ApproximationPoints>
-				<i>
-					<x>-6.260734</x>
-					<y>-0.081189</y>
-					<z>4.795408</z>
-				</i>
-				<i>
-					<x>-6.281677</x>
-					<y>-0.081189</y>
-					<z>7.055476</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ApproximationPoints>
-			<ControlPoints>
-				<i>
-					<x>-6.260734</x>
-					<y>-0.081189</y>
-					<z>4.795408</z>
-				</i>
-				<i>
-					<x>-6.281677</x>
-					<y>-0.081189</y>
-					<z>7.055476</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ControlPoints>
-		</v>
-		<k>112132_1742009000</k>
-		<v>
-			<Name>112132_1742009000</Name>
-			<ApproximationMapping />
-			<hasValue>1</hasValue>
-			<Id>353</Id>
-			<Closed>0</Closed>
-			<SegmentLength>0.250000</SegmentLength>
-			<ApproximationPoints>
-				<i>
-					<x>-6.764018</x>
-					<y>-0.081189</y>
-					<z>12.867951</z>
-				</i>
-				<i>
-					<x>-6.784962</x>
-					<y>-0.081189</y>
-					<z>10.851763</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ApproximationPoints>
-			<ControlPoints>
-				<i>
-					<x>-6.764018</x>
-					<y>-0.081189</y>
-					<z>12.867951</z>
-				</i>
-				<i>
-					<x>-6.784962</x>
-					<y>-0.081189</y>
-					<z>10.851763</z>
-				</i>
-				<i>
-					<x>-5.085570</x>
-					<y>-0.081189</y>
-					<z>8.504116</z>
-				</i>
-				<i>
-					<x>15.209394</x>
-					<y>-0.181640</y>
-					<z>7.781194</z>
-				</i>
-			</ControlPoints>
-		</v>
+<k>110934_1742009000</k>
+<v>
+    <Name>110934_1742009000</Name>
+    <ApproximationMapping />
+    <hasValue>1</hasValue>
+    <Id>352</Id>
+    <Closed>0</Closed>
+    <SegmentLength>0.250000</SegmentLength>
+    <ApproximationPoints>
+        <i>
+            <x>-6.260734</x>
+            <y>-0.081189</y>
+            <z>4.795408</z>
+        </i>
+        <i>
+            <x>-6.281677</x>
+            <y>-0.081189</y>
+            <z>7.055476</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ApproximationPoints>
+    <ControlPoints>
+        <i>
+            <x>-6.260734</x>
+            <y>-0.081189</y>
+            <z>4.795408</z>
+        </i>
+        <i>
+            <x>-6.281677</x>
+            <y>-0.081189</y>
+            <z>7.055476</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ControlPoints>
+</v>
+<k>112132_1742009000</k>
+<v>
+    <Name>112132_1742009000</Name>
+    <ApproximationMapping />
+    <hasValue>1</hasValue>
+    <Id>353</Id>
+    <Closed>0</Closed>
+    <SegmentLength>0.250000</SegmentLength>
+    <ApproximationPoints>
+        <i>
+            <x>-6.764018</x>
+            <y>-0.081189</y>
+            <z>12.867951</z>
+        </i>
+        <i>
+            <x>-6.784962</x>
+            <y>-0.081189</y>
+            <z>10.851763</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ApproximationPoints>
+    <ControlPoints>
+        <i>
+            <x>-6.764018</x>
+            <y>-0.081189</y>
+            <z>12.867951</z>
+        </i>
+        <i>
+            <x>-6.784962</x>
+            <y>-0.081189</y>
+            <z>10.851763</z>
+        </i>
+        <i>
+            <x>-5.085570</x>
+            <y>-0.081189</y>
+            <z>8.504116</z>
+        </i>
+        <i>
+            <x>15.209394</x>
+            <y>-0.181640</y>
+            <z>7.781194</z>
+        </i>
+    </ControlPoints>
+</v>
 ...
 ```
 
@@ -2615,90 +2615,101 @@ Download: [world_map_01-START.fc](./_sources/world_map_01-START.fc)
 
 Now that we have the final world_map_01.fc file it is time to merge all our info together in this file.
 
-We copy the position of the kontor on the world map. We actually already declared that before in our own world map file.
+We copy the position of the kontor on the `world_map_01-START.fc`. We actually already declared that before in our own world map file. Take the first part with our kontor from our own `world_map_01.fc` and copy it to the `world_map_01-START.fc` at the same location.
 
 ```XML
 ...
-    <i>
-      <hasValue>1</hasValue>
-      <Name>1742009000_0</Name>
-      <Groups />
-      <Dummies>
+<i>
+    <hasValue>1</hasValue>
+    <Name>1742009000_0</Name>
+    <Groups />
+    <Dummies>
         <i>
-          <hasValue>1</hasValue>
-          <Name>1742009000_0</Name>
-          <Position>
-            <x>15.628237</x>
-            <y>-0.123510</y>
-            <z>7.544896</z>
-          </Position>
-          <Orientation>
-            <w>0.711145</w>
-            <x>-0.000000</x>
-            <y>0.911570</y>
-            <z>0.000000</z>
-          </Orientation>
-          <Extents>
-            <x>0.100000</x>
-            <y>0.100000</y>
-            <z>0.100000</z>
-          </Extents>
-          <RotationY>1.009012</RotationY>
-          <Id>1742009</Id>
-          <HeightAdaptationMode>1</HeightAdaptationMode>
+            <hasValue>1</hasValue>
+            <Name>1742009000_0</Name>
+            <Position>
+                <x>15.628237</x>
+                <y>-0.123510</y>
+                <z>7.544896</z>
+            </Position>
+            <Orientation>
+                <w>0.711145</w>
+                <x>-0.000000</x>
+                <y>0.911570</y>
+                <z>0.000000</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>1.009012</RotationY>
+            <Id>1742009</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
         </i>
-      </Dummies>
-      <Id>1742010</Id>
-    </i>
+    </Dummies>
+    <Id>1742010</Id>
+</i>
 ...
 ```
 
-But to be sure it is on the right location compared to our curves we will be using the coordinates from blender. Be aware that the coordinates are multiplied by -1 and the z and y coordinates are switched compared to what we see in Blender.
+But to be sure it is on the right position on the map compared to our curves we will be using the coordinates from blender. Be aware that the coordinates are multiplied by -1 and the z and y coordinates are switched compared to what we see in Blender.
 
 ![world-map-americana-blender-26.jpg](./_sources/world-map-americana-blender-26.jpg)
 
-In our example this means x=-16.0287 becomes x=16.0287, y=-7.80752 and z=0.224438 becomes y=-0.224438 z=7.80752
+In our example this means:
+
+- x=-16.0287 becomes x=16.0287
+- y=-7.80752 and z=0.224438 becomes y=-0.224438 z=7.80752
 
 ```XML
 ...
-    <i>
-      <hasValue>1</hasValue>
-      <Name>1742009000_0</Name>
-      <Groups />
-      <Dummies>
+<i>
+    <hasValue>1</hasValue>
+    <Name>1742009000_0</Name>
+    <Groups />
+    <Dummies>
         <i>
-          <hasValue>1</hasValue>
-          <Name>1742009000_0</Name>
-          <Position>
-            <x>16.0287</x>
-            <y>-0.224438</y>
-            <z>7.80752</z>
-          </Position>
-          <Orientation>
-            <w>0.711145</w>
-            <x>-0.000000</x>
-            <y>0.911570</y>
-            <z>0.000000</z>
-          </Orientation>
-          <Extents>
-            <x>0.100000</x>
-            <y>0.100000</y>
-            <z>0.100000</z>
-          </Extents>
-          <RotationY>1.009012</RotationY>
-          <Id>1742009</Id>
-          <HeightAdaptationMode>1</HeightAdaptationMode>
+            <hasValue>1</hasValue>
+            <Name>1742009000_0</Name>
+            <Position>
+                <x>16.0287</x>
+                <y>-0.224438</y>
+                <z>7.80752</z>
+            </Position>
+            <Orientation>
+                <w>0.711145</w>
+                <x>-0.000000</x>
+                <y>0.911570</y>
+                <z>0.000000</z>
+            </Orientation>
+            <Extents>
+                <x>0.100000</x>
+                <y>0.100000</y>
+                <z>0.100000</z>
+            </Extents>
+            <RotationY>1.009012</RotationY>
+            <Id>1742009</Id>
+            <HeightAdaptationMode>1</HeightAdaptationMode>
         </i>
-      </Dummies>
-      <Id>1742010</Id>
-    </i>
+    </Dummies>
+    <Id>1742010</Id>
+</i>
 ...
 ```
 
-We then copy our paths/curves from our temporary .fc file that we exported from blender to the final world_map_01.fc file. This is all the SplineData without all the existing <k> elements.
+We then copy our paths/curves from our temporary .fc file that we exported from blender to the final `world_map_01-START.fc` file. The parts we copy are all the SplineData without all the existing <k> elements.
 
-- Move the final world_map_01.fc to the right location in the modfolder and start the game. You now should be able to see the paths ingame!
+![world-map-americana-blender-27.jpg](./_sources/world-map-americana-blender-27.jpg)
+![world-map-americana-blender-28.jpg](./_sources/world-map-americana-blender-28.jpg)
+
+We put this code at the bottom, underneath the already existing curves just before the closing tag of the `</SplineData>`.
+
+![world-map-americana-blender-29.jpg](./_sources/world-map-americana-blender-29.jpg)
+![world-map-americana-blender-30.jpg](./_sources/world-map-americana-blender-30.jpg)
+
+We now have our final `world_map_01.fc` file. Rename the file from `world_map_01-START.fc` to `world_map_01.fc` and move the final file to the right location in your modfolder (`[Map] Americana\data\graphics\ui\3d_objects\world_map`), overwrite the existing `world_map_01.fc` at that location and start the game. You now should be able to see the paths ingame!
 
 ![world-map-americana-routes-1.jpg](./_sources/world-map-americana-routes-1.jpg)
 
-STILL ADDING FINAL SCREENSHOTS AND EXTRA INFO!
+Well, we are done for this tutorial. Offcourse a lot more can be done with this. But for now we have taken a huge modding step! You can make sessions also for other regions of your liking. But other sessions will have other challenges!
