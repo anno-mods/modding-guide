@@ -11,6 +11,7 @@
 - [RDP Particle Files](./guides/particles.md)
 - [Modinfo.json manual](https://github.com/anno-mods/Modinfo)
 - [Automatically build mods VSCode + annomod.json](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
+- [Create .rdm animations with Blender](./guides/rdm_animations.md) 
 
 ## Tools
 
