@@ -2030,6 +2030,9 @@ Do not forget to change the `<ElementCount>` to 15+1, so `16` because we added 1
 We could close this file but we are going to add one last thing. We are going to make this map bigger. The current size of the map is `1856 1856`, but we are going to change that to `2560 2560`.
 But then we also have to change the `<PlayableArea>`. Let's take 200 on every size to get the playable area. From the 0 values it is the same, but for the other sides it is `200 200 2360 2360`.
 
+!!!!!WARNING!!!!!
+This is actually not the correct way to do it. I made a mistake here by thinking this would work. Another more complex part in the file needs to be adapted when changing the size. So, skip this part for now. I'll update this part asap. You can take another sessiontemplate from an existing session that is bigger if you want to use a bigger size, but do not change the size manually.
+
 ```XML
 ...
 <Size>2560 2560</Size>
