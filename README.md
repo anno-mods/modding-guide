@@ -3,7 +3,8 @@
 ## General Guides
 
 - [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php)
-- [Hier0nimus' Tutorials](./hier0nimus-tutorials/)
+- [Hier0nimus' Tutorials](./hier0nimus-tutorials/) - learn how to write mods
+- [Mod Compatiblity Guide](./guides/mod-compatibility.md) - learn how to make mods compatible with others
 
 ## Specific Topics
 
