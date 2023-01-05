@@ -1,41 +1,27 @@
-# Modding Guides for Anno 1800
+# Modding Guide for Anno 1800
+
+## Getting Started
+
+- [Tools you need](./getting-started/tools-you-need.md)
+- [Structure of a mod](./getting-started/structure-of-a-mod.md)
+- [How to: Change an existing mod](./getting-started/change-existing-mod.md)
+- How to: Change menu entries (tbd)
+- How to: Add skins (tbd)
+
+## Tutorials
+
+- [Hier0nimus' Tutorials](./hier0nimus-tutorials/) - learn how to write mods
+
+## Handbooks
+
+- Comprehensive ModOps Guide (tbd)
+- [Mod Compatiblity Guide](./guides/mod-compatibility.md) - learn how to make mods compatible with others
+- [Object Variations](./guides/variations.md) (for Buildings, including automatic neighbors)
+- [Modinfo.json manual](https://github.com/anno-mods/Modinfo)
+- [Create .rdm animations with Blender](./guides/rdm_animations.md) 
+- [RDP Particle Files](./guides/particles.md)
+- [Automatically build mods VSCode + annomod.json](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
 
 ## General Guides
 
 - [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php)
-- [Hier0nimus' Tutorials](./hier0nimus-tutorials/) - learn how to write mods
-- [Mod Compatiblity Guide](./guides/mod-compatibility.md) - learn how to make mods compatible with others
-
-## Specific Topics
-
-- [Object Variations](./guides/variations.md) (for Buildings, including automatic neighbors)
-- [RDP Particle Files](./guides/particles.md)
-- [Modinfo.json manual](https://github.com/anno-mods/Modinfo)
-- [Automatically build mods VSCode + annomod.json](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
-- [Create .rdm animations with Blender](./guides/rdm_animations.md) 
-
-## Tools
-
-### Essentials
-
-- [Mod Loader](https://github.com/xforce/anno1800-mod-loader) (includes `xmltest` for testing)
-- [RDAExplorer](https://github.com/lysannschlegel/RDAExplorer) (or use this [.NET6 fork](https://github.com/jakobharder/RDAExplorer) if you embed dlls in your project)
-
-### Code Editors
-
-- [Visual Studio Code](https://code.visualstudio.com/Download)
-- [Anno Modding Tools plugin for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=JakobHarder.anno-modding-tools)
-
-### Models, Textures
-
-- [RDM <> glTF Converter](https://github.com/lukts30/rdm4) (commandline converter)
-- [Blender CFG Import/Export plugin](https://github.com/xormenter/Blender-Anno-.cfg-Import-Addon)
-- [annotex](https://github.com/jakobharder/annotex) (commandline PNG > DDS converter with LOD generation)
-- [Gimp DDS plugin](https://gist.github.com/taubenangriff/cb959efa00896d84c99236ea705680c2)
-
-### Other
-
-- [FileDBReader](https://github.com/anno-mods/FileDBReader) (commandline file converter for various Anno formats)
-- [AnnoFCConverter](https://github.com/jakobharder/AnnoFCConverter) (out of support, use FileDBReader instead)
-- [Map Editor](https://github.com/anno-mods/AnnoMapEditor)
-- [iModYourAnno](https://github.com/anno-mods/iModYourAnno) (mod manager)
