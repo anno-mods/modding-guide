@@ -10,7 +10,12 @@
 
 ## Tutorials
 
-- [Hier0nimus' Tutorials](./hier0nimus-tutorials/) - learn how to write mods
+1. [Tutorial 1 - Get started](./hier0nimus-tutorials/01-my-first-mod/readme.md)
+2. [Tutorial 2 - Making new specialists](./hier0nimus-tutorials/02-making-new-specialists/readme.md)
+3. [Tutorial 3 - Making a new production chain](./hier0nimus-tutorials/03-making-new-production-chain/readme.md)
+4. [Tutorial 4 - Making a new ship](./hier0nimus-tutorials/04-making-new-ship/readme.md)
+5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session//readme.md)
+- [Documentation](./hier0nimus-tutorials/00-documentation/readme.md)
 
 ## Handbooks
 
