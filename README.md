@@ -10,6 +10,8 @@
 
 ## Tutorials
 
+- [Fix GU 16 problems yourself](./guides/gu16-update-guide.md)
+
 1. [Tutorial 1 - Get started](./hier0nimus-tutorials/01-my-first-mod/readme.md)
 2. [Tutorial 2 - Making new specialists](./hier0nimus-tutorials/02-making-new-specialists/readme.md)
 3. [Tutorial 3 - Making a new production chain](./hier0nimus-tutorials/03-making-new-production-chain/readme.md)
