@@ -803,33 +803,138 @@ We can add multiple variations for the building.
 
 ##### ParticipantMessageArcheType
 
-- [NONE]
-- Resident_tier01 - Farmers
-- Resident_tier02 - Workers
-- Resident_tier03 - Artisan
-- Resident_tier04 - Engineers
-- Resident_tier05 - Investors
-- Resident_tier01_atWork - Farmers
-- Resident_tier02_atWork - Workers
-- Resident_tier03_atWork - Artisan
-- Resident_tier04_atWork - Engineers
-- Resident_tier04_atWork - Investors
-- SA_Resident_tier01 - Jornaleros
-- SA_Resident_tier02 - Obreros
-- SA_Resident_tier01_atWork - Jornaleros
-- SA_Resident_tier02_atWork - Obreros
-- Arctic_Resident_tier01 - Explorers
-- Arctic_Resident_tier02 - Technicians
-- Arctic_Resident_tier01_atWork - Explorers
-- Arctic_Resident_tier02_atWork - Technicians
-- Africa_Resident_tier01 - Shepherds
-- Africa_Resident_tier02 - Elders
-- Africa_Resident_tier03 - Scholars
-- Resident_Tourist
+Complete list:
+- Advisor_01_Hannah
+- Advisor_01_Hannah_BlackDress
+- Advisor_02_Aahrant
 - Campaign_character_01_demolition_expert
-- Void_Trader
+- Campaign_character_02_pyrophorian_red
+- Campaign_character_02_pyrophorian_red_blinded
+- Campaign_character_03_pyrophorian_silver
+- Campaign_character_04_pyrophorian_gold
+- Campaign_character_04b_pyrophorian_gold_nonattackable
+- Campaign_character_07_magistrate
+- Campaign_character_08_cousin_female
+- Campaign_character_09_cousin_male
+- Campaign_character_10_SA_ticketseller
+- Second_ai_11_Mercier
+- Second_ai_01_Jorgensen
+- Second_ai_02_Qing
+- Second_ai_03_Wibblesock
+- Second_ai_04_Smith
+- Second_ai_05_OMara
+- Second_ai_06_Gasparov
+- Second_ai_07_von_Malching
+- Second_ai_08_Gravez
+- Second_ai_09_Silva
+- Second_ai_10_Hunt
+- Third_party_09_Vasco_Silva
+- Third_enemy_01_Grant
+- Third_party_01_Queen
+- Third_party_02_Blake
+- Third_party_02b_Blake_AttacksPirate
+- Third_party_03_Pirate_Harlow
+- Third_party_04_Pirate_LaFortune
 - Third_party_05_Sarmento
+- Third_party_05b_Sarmento_Prosperity_Campaign
+- Third_party_05c_Sarmento_Attackable_Campaign
+- Third_party_06_Nate
+- Third_party_07_Jailor_Bleakworth
+- Third_party_08_Kahina
+- Resident_tier01
+- Resident_tier02
+- Resident_tier03
+- Resident_tier04
+- Resident_tier05
+- Captain
+- Visitor
+- Editor
+- SA_Resident_tier01
+- SA_Resident_tier02
+- SA_Resident_tier01_atWork
+- SA_Resident_tier02_atWork
+- Resident_tier01_atWork
+- Resident_tier02_atWork
+- Resident_tier03_atWork
+- Resident_tier04_atWork
+- Resident_tier05_atWork
+- Workforce_Commuter_Captain
+- Paloma
+- Human0
+- Human1
+- Human2
+- Human3
+- General_Enemy
+- Scenario_Item_Trader
+- Third_enemy_01_Grant
+- Arctic_Inuit
+- Arctic_SirJohn
+- Arctic_LadyFaithful
+- Third_party_06b_Nate_Arctic
+- Arctic_Resident_tier01
+- Arctic_Resident_tier01_atWork
+- Arctic_Resident_tier02
+- Arctic_Resident_tier02_atWork
+- Africa_Resident_tier01
+- Africa_Resident_tier02
+- Africa_Resident_tier03
+- Africa_Kidusi
+- Africa_Angereb
+- Africa_Waha
+- Africa_Ketema
+- Africa_Blake
+- Africa_Hippopotamus
+- Africa_Biniam
+- Africa_Kyria
+- Africa_KetemaFake
+- Africa_Blake
+- Africa_Nomads
+- Africa_Building
+- Void_Trader
+- Resident_Tourist
+- HighLife_Donald
+- HighLife_JennyEng
+- HighLife_JennyWorker
+- HighLife_William
+- Scenario02_Actuary
+- Scenario02_Vasco
+- Scenario02_Questgiver
+- Scenario3_Challenger1
+- Scenario3_Challenger2
+- Scenario3_Challenger3
+- Scenario3_Challenger4
+- Scenario3_Challenger5
+- Scenario3_Challenger6
+- Scenario3_Challenger7
+- Scenario3_Challenger8
+- Scenario3_Challenger9
+- Scenario3_Challenger10
+- Scenario3_Challenger11
+- Scenario3_Challenger12
+- Scenario3_Queen
+- Scenario3_Ketema
+- Scenario3_Archie
+- Scenario3_Eli
+- Scenario3_Nate
+- Scenario3_Paloma
+- Scenario3_Mercier
+- Scenario3_Mara
+- Scenario3_Fortune
+- Scenario3_Bente
+- Scenario3_Editor
+- Scenario4_Trader_Hunt
+- Scenario4_Trader_Yaosca
+- Scenario4_Trader_Malching
+- Scenario4_Trader_DaSilva
+- Scenario4_Trader_Paloma
+- Scenario4_Kahina
 - GGJ_Yaosca
+- GGJ_OldNate
+- GGJ_Pyrphorian
+- GGJ_Fisherman
+- GGJ_Maya
+- GGJ_Isabel
+- Mercier_DeserterWorker
 
 ```XML
 <Selection>
