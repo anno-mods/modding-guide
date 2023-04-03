@@ -29,16 +29,16 @@ Every building has an amount of tiles. 3x3, 5x4, ect. We will be using the same 
 
 ### Create new file in Blender 
 
-Open Blender and remove all the standard elements from the canvas. 
+Open Blender and remove all the standard elements from the workspace. 
 
-Now **Save** your file already and create the folder structure at the right location of your mod.
+Now already **Save** your file and create the folder structure at the right location of your mod.
 
 ![Location Dung Collector](./_sources/blender-1-1.jpg)
 ![Location Dung Collector](./_sources/blender-1-2.jpg)
 
 ### Link mod in Anno Object Tab 
 
-We have to make sure all our imported files and used textures are visibile in Blender. To make sure of that, we need to link our mood in the **Anno Object tab**.
+We have to make sure all our imported files and used textures are visibile in Blender. To make sure of that, we need to link our mod in the **Anno Object tab**.
 
 To open the **Anno Object tab**, press **"N"**.
 
@@ -48,7 +48,7 @@ Now link the folder of your mod in the **Anno Scene** > **Anno Mod Folder**.
 
 ### Import cfg with correct base tiles
 
-I personally find it easiest to import a building that has the correct basetiles already. That way I do not have to change that much to the Blocker files.
+I personally find it easiest to import a building that has the correct basetiles already. That way I do not have to change that much to the IFO files.
 
 To import the correct cfg we first need to find out which cfg we need to import and what the location is. We want the Haciende Fertiliser Works.
 
