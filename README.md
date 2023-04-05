@@ -10,7 +10,8 @@
 
 ## Tutorials
 
-- [Fix GU 16 problems yourself](./guides/gu16-update-guide.md)
+- [GU 17 update guide](./guides/gu17-update-guide.md)
+- [GU 16 update guide](./guides/gu16-update-guide.md)
 
 1. [Tutorial 1 - Get started](./hier0nimus-tutorials/01-my-first-mod/readme.md)
 2. [Tutorial 2 - Making new specialists](./hier0nimus-tutorials/02-making-new-specialists/readme.md)
