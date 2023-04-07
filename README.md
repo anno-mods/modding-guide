@@ -5,8 +5,6 @@
 - [Tools you need](./getting-started/tools-you-need.md)
 - [Structure of a mod](./getting-started/structure-of-a-mod.md)
 - [How to: Change an existing mod](./getting-started/change-existing-mod.md)
-- How to: Change menu entries (tbd)
-- How to: Add skins (tbd)
 
 ## Tutorials
 
