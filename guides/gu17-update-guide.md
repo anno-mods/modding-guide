@@ -10,6 +10,8 @@ Most common reason is using a string in `ModDependencies`:
 + "ModDependencies": [ "base_mod" ],
 ```
 
+You can use [iModYourAnno](https://github.com/anno-mods/iModYourAnno/releases) to automatically fix those.
+
 ## Known Issues
 
 Due to later loading of mods, there are some things that don't work currently:
