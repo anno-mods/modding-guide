@@ -224,7 +224,7 @@ The first skin is the building you defined in `Asset/Values/Object`. This skin i
 - `DefaultSkinDescription` is the corresponding description which pops up when you hover over the skin icon in the UI.
 - (optional): With `OverrideDefaultIcon` you can assign an icon to your default skin, which is different from the construction menu icon for that building. 
 
-- With `SkinAssetGuid` you add a second, third, forth etc. skin. Each Guid has to be defined in an explicit asset: 
+- With `SkinAssetGuid` you add a second, third, forth etc. skin (the default skin has no entry here). Each Skin has to be defined in an explicit asset: 
 
 ```xml
 <Asset>
@@ -255,6 +255,6 @@ The first skin is the building you defined in `Asset/Values/Object`. This skin i
 - `SkinDescription`: The description for this skin, shown in the UI (pop-up only). 
 - `FileName`: Path to your cfg. ⚠ Yes, it´s **FileName** (capitalized N) for skins! 
 
-If you have more than one variation in `Object/Variations` you also have to add the same amount of item entries in `SkinVariations`, since the game works index based here. So e.g. if you have 5 different building variations (shift V) you also need 5 skin variations for each skin you add. Otherwise the game gets confused and variation / skin cycles can be broken
+If you have more than one building variation in `Object/Variations` you also have to add the same amount of item entries in `SkinVariations`, since the game works index based here. So e.g. if you have 5 different building variations you also need 5 skin variations for each skin you add. Otherwise the game gets confused and variation / skin cycles can be broken
 
 Skins need to be unlocked via trigger, unless you set `DefaultLockedState` to `0`. 
