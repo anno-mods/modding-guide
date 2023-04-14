@@ -1,8 +1,8 @@
 # Object Variations
 
-## Add variations to a building
+## Add Variations to a Building
 
-Shift+V variations.
+Shift+V variations
 
 Keys you need to set:
 
@@ -14,8 +14,9 @@ Keys you need to set:
 Every building has at least one `/Values/Variations/Item` entry.
 You just need to add more entries and set `AllowChangeVariation` to `1` and you are done.
 
-Use `BuildModeStartVariation` to select a specific default variation instead of random choice when the player starts building.
-You won't be able to prevent AI players to use other variations though.
+Use `BuildModeStartVariation` to select a specific default variation instead of random choice when the player starts building: 
+- The index starts with `0` for the first cfg-entry in `Objects`, `1` for the second cfg-entry and so on.
+- You won't be able to prevent AI players to use other variations though.
 
 Modifying an existing building can be as short as:
 
@@ -30,16 +31,15 @@ Modifying an existing building can be as short as:
 </ModOp>
 ```
 
+⚠ Important: You need to make sure that you don't have `QuestObject` in your building and template.
+It will prevent the variations from working.
+
 Example: [New Town Hall](https://github.com/jakobharder/anno-1800-jakobs-mods) (as variations adds variations to an existing building, as buildings adds a new building with variations). 
 
-### Variation change arrows
+### Variation Change Arrows in the UI
 
-You can also enable arrows to switch through your variations like you know it from palace modules or depots if you use Generic UI (default for ornamental buildings).
-
-⚠ Important: You need to make sure that you don't have `QuestObject` in your building or template.
-It will prevent the arrows from showing somehow.
-
-You can set icons for the variations by adding this to `Asset/Values/Building`:
+You can enable arrows to switch through your variations like you know it from palace modules or depots **if you use the Generic UI** (default for ornamental buildings).
+Therefore set icons for the variations by adding this to `Asset/Values/Building`:
 
 ```xml
 <VariationIcons>
@@ -50,7 +50,7 @@ You can set icons for the variations by adding this to `Asset/Values/Building`:
 </VariationIcons>
 ```
 
-## Automatically change variation based on neighbors
+## Automatically Change Variation Based on Neighbors
 
 Fences, walls and residences with corner buildings use this mechanism.
 
@@ -199,3 +199,62 @@ Default facing is X towards NW, Y towards NE.
 ⚠ `DontCare` does seem to include all variations, even if you didn't define them in the `BuildingBlockPool`.
 
 Defaults are 0. `<Item />` is an item with variation and direction set to zero.
+
+
+# Object Skins
+
+You can add multiple `Skins` to your building by adding this to `Asset/Values/Object`:
+
+```xml
+<Skins>
+   <DefaultSkinName>23852</DefaultSkinName>
+   <DefaultSkinDescription>23853</DefaultSkinDescription>
+   <OverrideDefaultIcon>data\ui\2kimages\main\3dicons\narative_item\icon_skin_large_generic_brick_new_01.png</OverrideDefaultIcon>
+     <SkinList>
+       <Item>
+         <SkinAssetGuid>1000888</SkinAssetGuid>
+       </Item>
+       <!-- One entry per Skin -->
+     </SkinList>
+</Skins>
+```
+
+The first skin is the building you defined in `Asset/Values/Object`. This skin is called **Default Skin** and is automatically applied when you select the building directly in the construction menu. 
+- `DefaultSkinName` is the name for this skin shown in the UI. 
+- `DefaultSkinDescription` is the corresponding description which pops up when you hover over the skin icon in the UI.
+- (optional): With `OverrideDefaultIcon` you can assign an icon to your default skin, which is different from the construction menu icon for that building. 
+
+- With `SkinAssetGuid` you add a second, third, forth etc. skin. Each Guid has to be defined in an explicit asset: 
+
+```xml
+<Asset>
+   <Template>Skin</Template>
+   <Values>
+     <Standard>
+       <GUID>1000888</GUID>
+       <Name>My Second Skin</Name>
+       <IconFilename>data\ui\2kimages\main\3dicons\icon_my_second_skin.png</IconFilename>        
+     </Standard>
+     <Skin>  
+       <SkinName>1000889</SkinName>       
+       <SkinDescription>1000890</SkinDescription> 
+       <SkinVariations>
+         <Item>
+           <FileName>data\graphics\mod_buildings\my_second_skin.cfg</FileName>
+         </Item>  
+         <!-- One entry per Object Variation -->
+       </SkinVariations>
+     </Skin> 
+     <Locked />
+   </Values>
+</Asset>
+```
+
+- `IconFilename`: Icon for this skin, shown in the UI.
+- `SkinName`: The name for this skin, shown in the UI. 
+- `SkinDescription`: The description for this skin, shown in the UI (pop-up only). 
+- `FileName`: Path to your cfg. ⚠ Yes, it´s **FileName** (capitalized N) for skins! 
+
+If you have more than one variation in `Object/Variations` you also have to add the same amount of item entries in `SkinVariations`, since the game works index based here. So e.g. if you have 5 different building variations (shift V) you also need 5 skin variations for each skin you add. Otherwise the game gets confused and variation / skin cycles can be broken
+
+Skins need to be unlocked via trigger, unless you set `DefaultLockedState` to `0`. 
