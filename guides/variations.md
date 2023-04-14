@@ -209,7 +209,7 @@ You can add multiple `Skins` to your building by adding this to `Asset/Values/Ob
 <Skins>
    <DefaultSkinName>23852</DefaultSkinName>
    <DefaultSkinDescription>23853</DefaultSkinDescription>
-   <OverrideDefaultIcon>data\ui\2kimages\main\3dicons\narative_item\icon_skin_large_generic_brick_new_01.png</OverrideDefaultIcon>
+   <OverrideDefaultIcon>data\ui\2kimages\main\3dicons\icon_my_default_skin.png</OverrideDefaultIcon>
      <SkinList>
        <Item>
          <SkinAssetGuid>1000888</SkinAssetGuid>
