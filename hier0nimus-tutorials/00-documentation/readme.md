@@ -689,7 +689,8 @@ Defines **special terraintypes** where the building can be placed. This can be:
 - Water_Including_Coast
 - Water_Excluding_Coast
 - Coast
-- Terrain (used in special cases)
+- Terrain (default for `Building`; explicitly used in assets.xml only in special cases)
+- Beach (since "New World Rising")
 
 ##### SecondPartyRelevant
 
