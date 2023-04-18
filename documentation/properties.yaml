@@ -1,0 +1,19 @@
+topic1:
+  NeedProvideNeedUpgrade:
+    - "When SubstituteNeed is consumed and fulfilled, ProvidedNeed product will also be fulfilled.\n\nContent: `<Item><ProvidedNeed /><SubstituteNeed /></Item>`"
+  GoodConsumptionUpgrade:
+    - "Reduce consumption needs.\n\nContent: `<Item><ProvidedNeed /><AmountInPercent /></Item>`"
+  Values/Building:
+    - "Don't forget to set `SecondPartyRelevant` to 0 if AI should not use this building."
+  Values/Item:
+    - "Building GUID"
+  Locked:
+    - "Set `DefaultLockedState` to 0 to unlock without `FeatureUnlock` triggers."
+  DefaultLockedState:
+    - "`0` - unlocked and visible\n\n`1` - needs `FeatureUnlock` to unhide and unlock."
+  BuildingBlockPool:
+    - "Define which variation is used when building next to `InfluencedByNeighbors`."
+    - "Note: Multiple entries of the same variation with different rotations won't work.\nVanilla assets.xml also defines them, so they were supposed to work at some point."
+    - "[See guide on GitHub](https://github.com/anno-mods/modding-guide/blob/main/guides/variations.md)"
+topic2:
+  
