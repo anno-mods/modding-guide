@@ -993,6 +993,12 @@ https://github.com/microsoft/DirectXTex
 
 The converter lets us convert .dds files to for example .png files. We normally should already have installed this in previous tutorials, but we need this .exe file in a specific location to be accessible by Blender.
 
+#### AnnoFCConverter
+
+https://github.com/jakobharder/AnnoFCConverter/releases
+
+Allows to convert Anno 1800 .fc files into custom file formats.
+
 #### FileDBReader
 
 https://github.com/anno-mods/FileDBReader
