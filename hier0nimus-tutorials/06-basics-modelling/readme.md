@@ -17,6 +17,7 @@ Make sure you have set up Blender already like we did in [Tutorial 4](https://gi
 You have:
 - Added rdm4 converter
 - Added texconv.exe
+- Added AnnoFCConverter.exe
 - Added FileDBReader
 - Added Blender-Anno-.cfg-Import-Addon and linked all the paths correctly in this extension
 - Activated Mesh A.N.T.Landscape
