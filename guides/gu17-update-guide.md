@@ -10,6 +10,8 @@ Most common reason is using a string in `ModDependencies`:
 + "ModDependencies": [ "base_mod" ],
 ```
 
+You can use [iModYourAnno](https://github.com/anno-mods/iModYourAnno/releases) to automatically fix those.
+
 ## Known Issues
 
 Due to later loading of mods, there are some things that don't work currently:
@@ -35,7 +37,6 @@ Merge behavior has been made more predictable.
 
 GU16-like troubles should not occur anymore.
 
-
 ## Construction Menu
 
 There's a new tag to overwrite `IconFilename` for construction menus only.
@@ -51,4 +52,19 @@ It is used in residences, meaning if you have any buildings based on residences 
   <!-- overwrites IconFilename in construction menus -->
   <ConstructionMenuIcon>1500010225</ConstructionMenuIcon>
 </Constructable>
+```
+
+## Creative Mode
+
+Mods work just fine, but they will be hidden until their unhide/unlock is triggered.
+You need to add additional unlocks specifically for creative mode to unlock them immediately.
+
+```xml
+<TriggerCondition>
+  <Template>ConditionIsCreativeMode</Template>
+  <Values>
+    <Condition />
+    <ConditionIsCreativeMode />
+  </Values>
+</TriggerCondition>
 ```

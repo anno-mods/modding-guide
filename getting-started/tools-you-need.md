@@ -50,6 +50,6 @@ You have two option for that:
 ### Other
 
 - [FileDBReader](https://github.com/anno-mods/FileDBReader) (commandline file converter for various Anno formats)
-- [AnnoFCConverter](https://github.com/jakobharder/AnnoFCConverter) (out of support, use FileDBReader instead)
+- [AnnoFCConverter](https://github.com/jakobharder/AnnoFCConverter) (out of support, use FileDBReader instead; Still needed for the Blender CFG Import/Export plugin)
 - [Map Editor](https://github.com/anno-mods/AnnoMapEditor)
 - [iModYourAnno](https://github.com/anno-mods/iModYourAnno) (mod manager)
