@@ -8,8 +8,7 @@
 
 ## Tutorials
 
-- [GU 17 update guide](./guides/gu17-update-guide.md)
-- [GU 16 update guide](./guides/gu16-update-guide.md)
+Detailed walkthrough the creation of mods.
 
 1. [Tutorial 1 - Get started](./hier0nimus-tutorials/01-my-first-mod/readme.md)
 2. [Tutorial 2 - Making new specialists](./hier0nimus-tutorials/02-making-new-specialists/readme.md)
@@ -20,13 +19,24 @@
 
 ## Handbooks
 
-- Comprehensive ModOps Guide (tbd)
+### ModOps, Dependencies, modinfo.json
+
+- [New modloader features with GU17](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modloader10.md#modloader-10-changes) - more powerful ModOps, dependencies/loading order and sub-mods
+- [ModOps Guide](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modop-guide.md#modop-guide) - basic ModOp explanations
+- [XPath Cheat Sheet](https://devhints.io/xpath) - needed for advanced ModOps
 - [Mod Compatiblity Guide](./guides/mod-compatibility.md) - learn how to make mods compatible with others
+- [Explanation of inheritance](https://maug-projekt.com/forum/index.php?thread/715-vererbung-von-vectorelements/) (unfortunately German only)
+- [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, dependencies
+- [iModYourAnno Tweaks](https://github.com/anno-mods/iModYourAnno/wiki/Setting-up-your-Mod-for-tweaking)
+
+### Further Topics
+
+- [GU 17 update guide](./guides/gu17-update-guide.md)
+- [GU 16 update guide](./guides/gu16-update-guide.md)
 - [Object Variations and Skins](./guides/variations.md) (for Buildings, including automatic neighbors)
-- [Modinfo.json manual](https://github.com/anno-mods/Modinfo)
 - [Create .rdm animations with Blender](./guides/rdm_animations.md) 
 - [RDP Particle Files](./guides/particles.md)
-- [Automatically build mods VSCode + annomod.json](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
+- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
 
 ## More
 
