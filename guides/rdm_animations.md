@@ -1,16 +1,16 @@
-#### Create .rdm Animations with Blender
+# Create .rdm Animations with Blender
 
 Many production buildings, public services or ornamental assets use animations to generate a more lively atmosphere. This short tutorial shows how to set up your own animation with Blender and get it to work in Anno 1800. As an example we will animate a small crane extracted from the heavy weapons factory:
 
 ![vanilla crane](./_sources/tutorial_crane_0.png)
 
-# Requirements: 
+## Requirements: 
 
 -	Blender 2.8 or higher 
 -	rdm4-bin converter
 -   Anno Cfg Import / Export Addon
 
-# Ressources: 
+## Ressources: 
 
 Download the model, cfg file and, for checking, an example .blend file here: 
 
@@ -98,7 +98,7 @@ You will see that Blender automatically added a bone to the viewport and an arma
 
 When you look at your outline you will see that the model is linked to the armature, in other words: Vertex groups and bones are linked and ready for animation :)
 
-## Part 5: Add an Animation
+## Step 5: Add an Animation
 
 Now the fun part begins.
 
@@ -164,7 +164,7 @@ Both ensures that you get a smooth transition between the loops.
 > Blender will choose the shortest path between two keyframes, so if you want to rotate a vertex group by 2pi… you will see nothing, the object won´t move. Solution: > Set more key frames. Even 180° is not stable in many cases, so I recommend an angle of 90° (4 key frames).   
 > Example
 
-## Part 6: Export your Animation and Convert it to .rdm
+## Step 6: Export your Animation and Convert it to .rdm
 
 - Once you finished your animation, switch into **OBJECT MODE** and select the following: 
 
