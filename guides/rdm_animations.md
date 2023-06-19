@@ -6,13 +6,13 @@ Many production buildings, public services or ornamental assets use animations t
 
 ## Requirements: 
 
--	Blender 2.8 or higher (3.5.1 recommended)
--	rdm4-bin converter
--   	Anno Cfg Import / Export Addon
+- Blender 2.8 or higher (3.5.1 recommended)
+- rdm4-bin converter
+- Anno Cfg Import / Export Addon
 
 ## Ressources: 
 
-Download the model, cfg file and, for checking, an example .blend file here: 
+Download the model, cfg file and, for checking, an example .blend file in the releases section.
 
 ## Step 1: Adjust Materials
 
