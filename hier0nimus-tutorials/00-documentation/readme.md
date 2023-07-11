@@ -27,6 +27,12 @@ When modding having an overview or snippets of common used tags and code can sav
 - data20: Pedestrian Zone Pack
 - data21: Eden Burning Scenario
 - data22: Seeds of Change DLC
+- data23: Industrial Zone Pack
+- data24: Empire of the Skies DLC
+- data25: New World Rising DLC
+- data26: Dragon Garden Pack
+- data27: Old Town Pack
+- data28: Fiesta Pack
 
 ## Supported languages
 
