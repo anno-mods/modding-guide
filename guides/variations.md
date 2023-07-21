@@ -1,6 +1,6 @@
-# Object Variations
+# Object Variations and Skins
 
-## Add Variations to a Building
+## Add Object Variations to a Building
 
 Shift+V variations
 
@@ -201,7 +201,7 @@ Default facing is X towards NW, Y towards NE.
 Defaults are 0. `<Item />` is an item with variation and direction set to zero.
 
 
-# Object Skins
+## Add Object Skins to a Building
 
 You can add multiple `Skins` to your building by adding this to `Asset/Values/Object`:
 
