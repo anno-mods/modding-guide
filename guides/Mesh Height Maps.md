@@ -66,9 +66,11 @@ The basic structure is a following:
 
 - The value inbetween should represent a height lower than your building reaches under the ground level in Blender. In the example, the value `-3` was chosen.
 
-![MeshHeightMap1](/sources/meshheightmap1.png)
+Maybe pictures make it more clear: 
 
-![MeshHeightMap2](/sources/meshheightmap1.png)
+![MeshHeightMap2](./_sources/meshheightmap2.png)
+
+![MeshHeightMap3](./_sources/meshheightmap3.png)
 
 ## 2. After the import to Blender
 
@@ -78,7 +80,7 @@ The basic structure is a following:
 - Select the points aka vertices and move them along their z-axis until they match the faces of your stairs, ramps, whatever.
 > You can´t add new points in Blender - well you actually can, but they won´t be exported.
 
-![MeshHeightMap3](/sources/meshheightmap3.png)
+![MeshHeightMap1](./_sources/meshheightmap1.png)
 
 - Done. 
 
