@@ -34,8 +34,9 @@ Detailed walkthrough the creation of mods.
 - [GU 17 update guide](./guides/gu17-update-guide.md)
 - [GU 16 update guide](./guides/gu16-update-guide.md)
 - [Object Variations and Skins](./guides/variations.md) (for Buildings, including automatic neighbors)
-- [Create .rdm animations with Blender](./guides/rdm_animations.md) 
+- [Create .RDM Animations with Blender](./guides/rdm_animations.md) 
 - [RDP Particle Files](./guides/particles.md)
+- [Mesh Height Maps](./guides/Mesh-Height-Maps.md) 
 - [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
 
 ## More
