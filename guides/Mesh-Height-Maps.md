@@ -1,7 +1,7 @@
 
 # Mesh Height Maps
 
-`MeshHeightmaps` are necessary for dynamic feedback units, whenever they should walk into or out of buildings which do not adjust to terrain height. Prime examples are stairs and ramps. 
+`MeshHeightmaps` are necessary for dynamic feedback units*, whenever they should walk into or out of buildings which do not adjust to terrain height. Prime examples are stairs and ramps. 
 
 The maps are implemented as an entry in the .ifo file of such a building. As you will see, the code can be extremely long, since these maps often consists of thousands of points, named `<i>`, and each of them needs its own line. 
 
@@ -11,6 +11,38 @@ Basically there are four steps to create such a map:
 2. Import the building with its .ifo file to Blender
 3. Adjust the z-positions of each `<i>` which are located at the spots where dynamic units should enter / leave the building.
 4. Export your building as usual
+
+<details>
+  <summary><b>* Dynamic Feedbach Units</b></summary>
+<br />
+Dynamic feedback describes residents or workers who are spawned "randomly" in or around your asset and do actions according to their name. This makes your assets more lively, less static. Since their naming convetion already determines their action they do not need a feedback_config in your .fc or s.a.f.e file, only a `DummyGroup` with dummies. These DummyGroups are named with a preceding `feedback_` + the name of the action. Most common one is probably `feedback_door`, where dummies walk into or out of your building. But there are lot of other hardcoded sequences available. E.g.: 
+<br />
+<br />
+
+`feedback_door`
+`feedback_talk`
+`feedback_sit`
+`feedback_celebrate`
+`feedback_pray`
+`feedback_react`
+`feedback_trade`
+`feedback_listen`
+`feedback_greet`
+`feedback_protest`
+`feedback_cheet`
+`feedback_laydown`
+`feedback_workThink`
+`feedback_ship`
+... 
+<br />
+<br />
+Each DummyGroup can have as many dummies as you want and are placed in Blender with cf7 or s.a.f.e just like the static feedback dummies with feedback_configs. 
+
+In the assets.xml you have to assign your buildings to a `FeedbackBuildingGroup`.
+
+</details>
+
+  
 
 ## 1. The ifo Code
 
