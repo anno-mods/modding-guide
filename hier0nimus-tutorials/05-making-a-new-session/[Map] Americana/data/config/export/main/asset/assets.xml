@@ -284,7 +284,7 @@ Enjoy!
                 </Standard>
                 <MapTemplate>
                     <IslandSize>Large</IslandSize>
-                    <TemplateFilename>mods/[Map] Americana/data/sessions/maps/americana/americana.a7t</TemplateFilename>
+                    <TemplateFilename>data/sessions/maps/americana/americana.a7t</TemplateFilename>
                     <TemplateSize>Large</TemplateSize>
                     <TemplateRegion>Colony01</TemplateRegion>
                 </MapTemplate>
@@ -300,6 +300,7 @@ Enjoy!
             <Text>1742009001</Text>
             <Active>Session;WorldMap</Active>
             <Identifier>1742009000</Identifier>
+			<AvailableOnPlatforms>PC;Xbox;PS;Stadia</AvailableOnPlatforms>
         </Item>
     </ModOp>
 
