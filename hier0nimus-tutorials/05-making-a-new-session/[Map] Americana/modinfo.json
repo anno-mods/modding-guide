@@ -1,0 +1,31 @@
+{
+  "Version": "1.0.0",
+  "ModID": "[Map] America",
+  
+  "Category": {
+    "Chinese": "Map",
+    "English": "Map",
+    "French": "Map",
+    "German": "Map",
+    "Italian": "Map",
+    "Japanese": "Map",
+    "Korean": "Map",
+    "Polish": "Map",
+    "Russian": "Map",
+    "Spanish": "Map",
+    "Taiwanese": "Map"
+  },
+  "ModName": {
+    "Chinese": "America",
+    "English":  "America",
+    "French":  "America",
+    "German":  "America",
+    "Italian":  "America",
+    "Japanese":  "America",
+    "Korean":  "America",
+    "Polish":  "America",
+    "Russian":  "America",
+    "Spanish": "America",
+    "Taiwanese":  "America"
+  }
+}
