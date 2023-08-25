@@ -8038,7 +8038,7 @@ We now have our final `world_map_01.fc.xml` file. Move the final file to the rig
 ```JSON
 {
   "Version": "1.0.0",
-  "ModID": "[Map] America",
+  "ModID": "[Map] Americana",
   
   "Category": {
     "Chinese": "Map",
@@ -8054,17 +8054,17 @@ We now have our final `world_map_01.fc.xml` file. Move the final file to the rig
     "Taiwanese": "Map"
   },
   "ModName": {
-    "Chinese": "America",
-    "English":  "America",
-    "French":  "America",
-    "German":  "America",
-    "Italian":  "America",
-    "Japanese":  "America",
-    "Korean":  "America",
-    "Polish":  "America",
-    "Russian":  "America",
-    "Spanish": "America",
-    "Taiwanese":  "America"
+    "Chinese": "Americana",
+    "English":  "Americana",
+    "French":  "Americana",
+    "German":  "Americana",
+    "Italian":  "Americana",
+    "Japanese":  "Americana",
+    "Korean":  "Americana",
+    "Polish":  "Americana",
+    "Russian":  "Americana",
+    "Spanish": "Americana",
+    "Taiwanese":  "Americana"
   }
 }
 
