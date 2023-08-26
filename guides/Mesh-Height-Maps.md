@@ -68,7 +68,7 @@ The basic structure is a following:
       <i>-3.000000</i>
       ... vast amount of <i> entries ...
     </Map>
-  </HeightMap>
+  </Heightmap>
 </MeshHeightmap>
 ```
 `<StartPos>`: `<y>` and `<x>` are the starting coordinates which spans your plane aka MeshHeightmap. Usually this plane is the same size as your BuildBlocker. You can use any of the four possible point pairs: (x/y); (-x/y); (x/-y); (-x/-y). 
