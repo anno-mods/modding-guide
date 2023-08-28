@@ -46,47 +46,47 @@ So, here is my default trigger setup for this:
 
 ```XML
 <Asset>
-    <Template>Trigger</Template>
-    <Values>
-        <Standard>
-            <GUID>2001000000</GUID>
-            <Name>Trigger Reinitialize Script</Name>
-        </Standard>
-        <Trigger>
-            <TriggerCondition>
-                <Template>ConditionEvent</Template>
-                <Values>
-                    <Condition />
-                    <ConditionEvent>
-                        <ConditionEvent>SessionEnter</ConditionEvent>
-                    </ConditionEvent>
-                </Values>
-            </TriggerCondition>
-            <TriggerActions>
-                <Item>
-                    <TriggerAction>
-                        <Template>ActionExecuteScript</Template>
-                        <Values>
-                            <Action />
-                            <ActionExecuteScript>
-                                <ScriptFileName>data/scripts/my_script.lua</ScriptFileName>
-                            </ActionExecuteScript>
-                        </Values>
-                    </TriggerAction>
-                </Item>
-                <Item>
-                    <TriggerAction>
-                        <Template>ActionResetTrigger</Template>
-                        <Values>
-                            <Action />
-                            <ActionResetTrigger />
-                        </Values>
-                    </TriggerAction>
-                </Item>
-            </TriggerActions>
-        </Trigger>
-        <TriggerSetup />
-    </Values>
+	<Template>Trigger</Template>
+	<Values>
+		<Standard>
+			<GUID>2001000000</GUID>
+			<Name>Trigger Reinitialize Script</Name>
+		</Standard>
+		<Trigger>
+			<TriggerCondition>
+				<Template>ConditionEvent</Template>
+				<Values>
+					<Condition />
+					<ConditionEvent>
+						<ConditionEvent>SessionEnter</ConditionEvent>
+					</ConditionEvent>
+				</Values>
+			</TriggerCondition>
+			<TriggerActions>
+				<Item>
+					<TriggerAction>
+						<Template>ActionExecuteScript</Template>
+						<Values>
+							<Action />
+							<ActionExecuteScript>
+								<ScriptFileName>data/scripts/my_script.lua</ScriptFileName>
+							</ActionExecuteScript>
+						</Values>
+					</TriggerAction>
+				</Item>
+				<Item>
+					<TriggerAction>
+						<Template>ActionResetTrigger</Template>
+						<Values>
+							<Action />
+							<ActionResetTrigger />
+						</Values>
+					</TriggerAction>
+				</Item>
+			</TriggerActions>
+		</Trigger>
+		<TriggerSetup />
+	</Values>
 </Asset>
 ```
 
@@ -162,54 +162,54 @@ AISpawner.SpawnParticipant("jorgensen")
 ```XML
 <!-- assets.xml -->
 <ModOp GUID="130216" Type="addNextSibling">
-    <Asset>
-        <Template>Trigger</Template>
-        <Values>
-            <Standard>
-                <GUID>930101</GUID>
-                <Name>Built: Bente Jorgensen</Name>
-                <IconFilename/>
-            </Standard>
-            <Trigger>
-                <TriggerCondition>
-                    <!-- the Trigger listens to Bente's Flagship being built -->
-                    <Template>ConditionEvent</Template>
-                    <Values>
-                        <Condition/>
-                        <ConditionEvent>
-                            <ConditionEvent>ObjectBuilt</ConditionEvent>
-                            <ContextAsset>930001</ContextAsset>
-                        </ConditionEvent>
-                        <ConditionPropsNegatable/>
-                    </Values>
-                </TriggerCondition>
-                <TriggerActions>
-                    <!-- ActionExecuteScript runs the wrapper script -->
-                    <Item>
-                        <TriggerAction>
-                            <Template>ActionExecuteScript</Template>
-                            <Values>
-                                <Action/>
-                                <ActionExecuteScript>
-                                    <ScriptFileName>data/scripts/bente.lua</ScriptFileName>
-                                </ActionExecuteScript>
-                            </Values>
-                        </TriggerAction>
-                    </Item>
-                    <Item>
-                        <TriggerAction>
-                            <Template>ActionResetTrigger</Template>
-                            <Values>
-                                <Action/>
-                                <ActionResetTrigger/>
-                            </Values>
-                        </TriggerAction>
-                    </Item>
-                </TriggerActions>
-            </Trigger>
-            <TriggerSetup/>
-        </Values>
-    </Asset>
+	<Asset>
+		<Template>Trigger</Template>
+		<Values>
+			<Standard>
+				<GUID>930101</GUID>
+				<Name>Built: Bente Jorgensen</Name>
+				<IconFilename />
+			</Standard>
+			<Trigger>
+				<TriggerCondition>
+					<!-- the Trigger listens to Bente's Flagship being built -->
+					<Template>ConditionEvent</Template>
+					<Values>
+						<Condition />
+						<ConditionEvent>
+							<ConditionEvent>ObjectBuilt</ConditionEvent>
+							<ContextAsset>930001</ContextAsset>
+						</ConditionEvent>
+						<ConditionPropsNegatable />
+					</Values>
+				</TriggerCondition>
+				<TriggerActions>
+					<!-- ActionExecuteScript runs the wrapper script -->
+					<Item>
+						<TriggerAction>
+							<Template>ActionExecuteScript</Template>
+							<Values>
+								<Action />
+								<ActionExecuteScript>
+									<ScriptFileName>data/scripts/bente.lua</ScriptFileName>
+								</ActionExecuteScript>
+							</Values>
+						</TriggerAction>
+					</Item>
+					<Item>
+						<TriggerAction>
+							<Template>ActionResetTrigger</Template>
+							<Values>
+								<Action />
+								<ActionResetTrigger />
+							</Values>
+						</TriggerAction>
+					</Item>
+				</TriggerActions>
+			</Trigger>
+			<TriggerSetup />
+		</Values>
+	</Asset>
 </ModOp>
 ```
 
@@ -222,84 +222,85 @@ When Bente passed all conditions and successfully spawned, the script calls `Acc
 ```XML
 <!-- assets.xml -->
 <ModOp GUID="152280" Type="addNextSibling">
-		<Asset>
-			<BaseAssetGUID>930250</BaseAssetGUID>
-			<Values>
-				<Standard>
-					<GUID>930251</GUID>
-					<Name>Accept Second_ai_01 (Bente Jorgensen)</Name>
-				</Standard>
-				<Quest>
-					<OnQuestStart>
-						<Values>
-							<ActionList>
-								<Actions>
-                                    <!-- Adds Construction Material to Bentes Ship -->
-									<Item>
-										<Action>
-											<Template>ActionAddGoodsToItemContainer</Template>
-											<Values>
-												<Action/>
-												<ActionAddGoodsToItemContainer>
-													<Goods>
-														<Item>
-															<Good>1010196</Good>
-															<Amount>50</Amount>
-														</Item>
-														<Item>
-															<Good>1010218</Good>
-															<Amount>50</Amount>
-														</Item>
-													</Goods>
-													<ItemContainerObjects>
-														<Values>
-															<ObjectFilter>
-																<ObjectGUID>930001</ObjectGUID>
-															</ObjectFilter>
-														</Values>
-													</ItemContainerObjects>
-												</ActionAddGoodsToItemContainer>
-											</Values>
-										</Action>
-									</Item>
-                                    <!-- Hands the Ship over to Bente, who is now created. Otherwise, this would not work. -->
-									<Item>
-										<Action>
-											<Template>ActionChangeParticipant</Template>
-											<Values>
-												<Action/>
-												<ActionChangeParticipant>
-													<NewParticipantID>Second_ai_01_Jorgensen</NewParticipantID>
-												</ActionChangeParticipant>
-												<ObjectFilter>
-													<ObjectGUID>930001</ObjectGUID>
-												</ObjectFilter>
-											</Values>
-										</Action>
-									</Item>
-                                    <!-- Converts Bente Jorgensens "Special Flagship" into a default Flagship -->
-									<Item>
-										<Action>
-											<Template>ActionSetObjectGUID</Template>
-											<Values>
-												<Action/>
-												<ActionSetObjectGUID>
-													<NewGUID>101121</NewGUID>
-												</ActionSetObjectGUID>
-												<ObjectFilter>
-													<ObjectGUID>930001</ObjectGUID>
-												</ObjectFilter>
-											</Values>
-										</Action>
-									</Item>
-								</Actions>
-							</ActionList>
-						</Values>
-					</OnQuestStart>
-				</Quest>
-			</Values>
-		</Asset>
-	</ModOp>
+	<Asset>
+		<BaseAssetGUID>930250</BaseAssetGUID>
+		<Values>
+			<Standard>
+				<GUID>930251</GUID>
+				<Name>Accept Second_ai_01 (Bente Jorgensen)</Name>
+			</Standard>
+			<Quest>
+				<OnQuestStart>
+					<Values>
+						<ActionList>
+							<Actions>
+								<!-- Adds Construction Material to Bentes Ship -->
+								<Item>
+									<Action>
+										<Template>ActionAddGoodsToItemContainer</Template>
+										<Values>
+											<Action />
+											<ActionAddGoodsToItemContainer>
+												<Goods>
+													<Item>
+														<Good>1010196</Good>
+														<Amount>50</Amount>
+													</Item>
+													<Item>
+														<Good>1010218</Good>
+														<Amount>50</Amount>
+													</Item>
+												</Goods>
+												<ItemContainerObjects>
+													<Values>
+														<ObjectFilter>
+															<ObjectGUID>930001</ObjectGUID>
+														</ObjectFilter>
+													</Values>
+												</ItemContainerObjects>
+											</ActionAddGoodsToItemContainer>
+										</Values>
+									</Action>
+								</Item>
+								<!-- Hands the Ship over to Bente, who is now created. Otherwise, this would not
+								work. -->
+								<Item>
+									<Action>
+										<Template>ActionChangeParticipant</Template>
+										<Values>
+											<Action />
+											<ActionChangeParticipant>
+												<NewParticipantID>Second_ai_01_Jorgensen</NewParticipantID>
+											</ActionChangeParticipant>
+											<ObjectFilter>
+												<ObjectGUID>930001</ObjectGUID>
+											</ObjectFilter>
+										</Values>
+									</Action>
+								</Item>
+								<!-- Converts Bente Jorgensens "Special Flagship" into a default Flagship -->
+								<Item>
+									<Action>
+										<Template>ActionSetObjectGUID</Template>
+										<Values>
+											<Action />
+											<ActionSetObjectGUID>
+												<NewGUID>101121</NewGUID>
+											</ActionSetObjectGUID>
+											<ObjectFilter>
+												<ObjectGUID>930001</ObjectGUID>
+											</ObjectFilter>
+										</Values>
+									</Action>
+								</Item>
+							</Actions>
+						</ActionList>
+					</Values>
+				</OnQuestStart>
+			</Quest>
+		</Values>
+	</Asset>
+</ModOp>
 ```
 
 > As you may have spotted, not everything is lua scripted. In general, it is a safer, faster, easier and no-more-headaches way to just use the GameEvents pipeline whenever you can. However, in some cases the API does things the GameEvents pipeline simply cannot. Also, complex control flows can be a nightmare using GameEvents. In these cases, you should write a script. 
