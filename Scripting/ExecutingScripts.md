@@ -20,15 +20,15 @@ More important and versatile, The GameEvent Pipeline has an Action to run a lua 
 
 ```XML
 <Item>
-    <Action>
-        <Template>ActionExecuteScript</Template>
-        <Values>
-            <Action />
-            <ActionExecuteScript>
-                <ScriptFileName>data/script/myscript.lua</ScriptFileName>
-            </ActionExecuteScript>
-        </Values>
-    </Action>
+	<Action>
+		<Template>ActionExecuteScript</Template>
+		<Values>
+			<Action />
+			<ActionExecuteScript>
+				<ScriptFileName>data/script/myscript.lua</ScriptFileName>
+			</ActionExecuteScript>
+		</Values>
+	</Action>
 </Item>
 ```
 

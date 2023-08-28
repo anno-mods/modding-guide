@@ -1,0 +1,6 @@
+# EditorConfig is awesome: https://EditorConfig.org
+root = true
+
+[{Scripting/**.md}]
+indent_style = tab
+indent_size = 2
