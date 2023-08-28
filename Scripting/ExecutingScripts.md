@@ -5,12 +5,12 @@ There are some entry points where you can directly run lua Commands. GlobalGUIBa
 ```XML
 
 <ModOp Type="add" GUID='2001271' Path="/Values/GUIConfig/KeyBindings">
-    <Item>
-        <KeyTypes>Shift;F3</KeyTypes>
-        <Command>mods.reload()</Command>
-        <Active>Session;WorldMap</Active>
-        <AvailableOnPlatforms>PC</AvailableOnPlatforms>
-    </Item>
+  <Item>
+    <KeyTypes>Shift;F3</KeyTypes>
+    <Command>mods.reload()</Command>
+    <Active>Session;WorldMap</Active>
+    <AvailableOnPlatforms>PC</AvailableOnPlatforms>
+  </Item>
 </ModOp>
 ```
 
@@ -20,15 +20,15 @@ More important and versatile, The GameEvent Pipeline has an Action to run a lua 
 
 ```XML
 <Item>
-	<Action>
-		<Template>ActionExecuteScript</Template>
-		<Values>
-			<Action />
-			<ActionExecuteScript>
-				<ScriptFileName>data/script/myscript.lua</ScriptFileName>
-			</ActionExecuteScript>
-		</Values>
-	</Action>
+  <Action>
+    <Template>ActionExecuteScript</Template>
+    <Values>
+      <Action />
+      <ActionExecuteScript>
+        <ScriptFileName>data/script/myscript.lua</ScriptFileName>
+      </ActionExecuteScript>
+    </Values>
+  </Action>
 </Item>
 ```
 
@@ -46,47 +46,47 @@ So, here is my default trigger setup for this:
 
 ```XML
 <Asset>
-	<Template>Trigger</Template>
-	<Values>
-		<Standard>
-			<GUID>2001000000</GUID>
-			<Name>Trigger Reinitialize Script</Name>
-		</Standard>
-		<Trigger>
-			<TriggerCondition>
-				<Template>ConditionEvent</Template>
-				<Values>
-					<Condition />
-					<ConditionEvent>
-						<ConditionEvent>SessionEnter</ConditionEvent>
-					</ConditionEvent>
-				</Values>
-			</TriggerCondition>
-			<TriggerActions>
-				<Item>
-					<TriggerAction>
-						<Template>ActionExecuteScript</Template>
-						<Values>
-							<Action />
-							<ActionExecuteScript>
-								<ScriptFileName>data/scripts/my_script.lua</ScriptFileName>
-							</ActionExecuteScript>
-						</Values>
-					</TriggerAction>
-				</Item>
-				<Item>
-					<TriggerAction>
-						<Template>ActionResetTrigger</Template>
-						<Values>
-							<Action />
-							<ActionResetTrigger />
-						</Values>
-					</TriggerAction>
-				</Item>
-			</TriggerActions>
-		</Trigger>
-		<TriggerSetup />
-	</Values>
+  <Template>Trigger</Template>
+  <Values>
+    <Standard>
+      <GUID>2001000000</GUID>
+      <Name>Trigger Reinitialize Script</Name>
+    </Standard>
+    <Trigger>
+      <TriggerCondition>
+        <Template>ConditionEvent</Template>
+        <Values>
+          <Condition />
+          <ConditionEvent>
+            <ConditionEvent>SessionEnter</ConditionEvent>
+          </ConditionEvent>
+        </Values>
+      </TriggerCondition>
+      <TriggerActions>
+        <Item>
+          <TriggerAction>
+            <Template>ActionExecuteScript</Template>
+            <Values>
+              <Action />
+              <ActionExecuteScript>
+                <ScriptFileName>data/scripts/my_script.lua</ScriptFileName>
+              </ActionExecuteScript>
+            </Values>
+          </TriggerAction>
+        </Item>
+        <Item>
+          <TriggerAction>
+            <Template>ActionResetTrigger</Template>
+            <Values>
+              <Action />
+              <ActionResetTrigger />
+            </Values>
+          </TriggerAction>
+        </Item>
+      </TriggerActions>
+    </Trigger>
+    <TriggerSetup />
+  </Values>
 </Asset>
 ```
 
@@ -102,22 +102,22 @@ Because you only get so far with theory, in this code walkthrough, I am gonna br
 -- ai_shipyard.lua (Library of functions, stripped down for readability)
 
 local Participants = {
-	"jorgensen"
+  "jorgensen"
     -- ... and many more
 }
 
 local ParticipantID = {
-	["jorgensen"] = 25
+  ["jorgensen"] = 25
     -- ... and many more
 }
 
 local DenyQuest = {
-	["AlreadyIngame"] = 930500,
-	["tooManyAIs"] = 930501
+  ["AlreadyIngame"] = 930500,
+  ["tooManyAIs"] = 930501
 }
 
 local AcceptQuest = {
-	["jorgensen"] = 930251
+  ["jorgensen"] = 930251
     -- .. and many more
 }
 
@@ -127,27 +127,27 @@ local TooManyParticipants -- Have we reached the participant limit yet?
 
 -- Accepts a Participant
 local function Accept(ParticipantName)
-	ts.SessionParticipants.SetCheatCreateSessionParticipant(ParticipantID[ParticipantName])
-	ts.Quests.StartQuestForCurrentPlayerNet(AcceptQuest[ParticipantName])
+  ts.SessionParticipants.SetCheatCreateSessionParticipant(ParticipantID[ParticipantName])
+  ts.Quests.StartQuestForCurrentPlayerNet(AcceptQuest[ParticipantName])
 end
 
 -- Initiates Spawn of a participant and accepts or denies them.
 local function Spawn(ParticipantName)
-	if not IsValidParticipant(ParticipantName) then
-		return
-	end
+  if not IsValidParticipant(ParticipantName) then
+    return
+  end
 
-	if IsDefined(ParticipantName) then
-		ts.Quests.StartQuestForCurrentPlayerNet(DenyQuest["AlreadyIngame"])
-	elseif TooManyParticipants() then
-		ts.Quests.StartQuestForCurrentPlayerNet(DenyQuest["tooManyAIs"])
-	else
-		Accept(ParticipantName)
-	end
+  if IsDefined(ParticipantName) then
+    ts.Quests.StartQuestForCurrentPlayerNet(DenyQuest["AlreadyIngame"])
+  elseif TooManyParticipants() then
+    ts.Quests.StartQuestForCurrentPlayerNet(DenyQuest["tooManyAIs"])
+  else
+    Accept(ParticipantName)
+  end
 end
 
 AISpawner = {
-	SpawnParticipant = Spawn,
+  SpawnParticipant = Spawn,
 }
 ```
 
@@ -162,54 +162,54 @@ AISpawner.SpawnParticipant("jorgensen")
 ```XML
 <!-- assets.xml -->
 <ModOp GUID="130216" Type="addNextSibling">
-	<Asset>
-		<Template>Trigger</Template>
-		<Values>
-			<Standard>
-				<GUID>930101</GUID>
-				<Name>Built: Bente Jorgensen</Name>
-				<IconFilename />
-			</Standard>
-			<Trigger>
-				<TriggerCondition>
-					<!-- the Trigger listens to Bente's Flagship being built -->
-					<Template>ConditionEvent</Template>
-					<Values>
-						<Condition />
-						<ConditionEvent>
-							<ConditionEvent>ObjectBuilt</ConditionEvent>
-							<ContextAsset>930001</ContextAsset>
-						</ConditionEvent>
-						<ConditionPropsNegatable />
-					</Values>
-				</TriggerCondition>
-				<TriggerActions>
-					<!-- ActionExecuteScript runs the wrapper script -->
-					<Item>
-						<TriggerAction>
-							<Template>ActionExecuteScript</Template>
-							<Values>
-								<Action />
-								<ActionExecuteScript>
-									<ScriptFileName>data/scripts/bente.lua</ScriptFileName>
-								</ActionExecuteScript>
-							</Values>
-						</TriggerAction>
-					</Item>
-					<Item>
-						<TriggerAction>
-							<Template>ActionResetTrigger</Template>
-							<Values>
-								<Action />
-								<ActionResetTrigger />
-							</Values>
-						</TriggerAction>
-					</Item>
-				</TriggerActions>
-			</Trigger>
-			<TriggerSetup />
-		</Values>
-	</Asset>
+  <Asset>
+    <Template>Trigger</Template>
+    <Values>
+      <Standard>
+        <GUID>930101</GUID>
+        <Name>Built: Bente Jorgensen</Name>
+        <IconFilename />
+      </Standard>
+      <Trigger>
+        <TriggerCondition>
+          <!-- the Trigger listens to Bente's Flagship being built -->
+          <Template>ConditionEvent</Template>
+          <Values>
+            <Condition />
+            <ConditionEvent>
+              <ConditionEvent>ObjectBuilt</ConditionEvent>
+              <ContextAsset>930001</ContextAsset>
+            </ConditionEvent>
+            <ConditionPropsNegatable />
+          </Values>
+        </TriggerCondition>
+        <TriggerActions>
+          <!-- ActionExecuteScript runs the wrapper script -->
+          <Item>
+            <TriggerAction>
+              <Template>ActionExecuteScript</Template>
+              <Values>
+                <Action />
+                <ActionExecuteScript>
+                  <ScriptFileName>data/scripts/bente.lua</ScriptFileName>
+                </ActionExecuteScript>
+              </Values>
+            </TriggerAction>
+          </Item>
+          <Item>
+            <TriggerAction>
+              <Template>ActionResetTrigger</Template>
+              <Values>
+                <Action />
+                <ActionResetTrigger />
+              </Values>
+            </TriggerAction>
+          </Item>
+        </TriggerActions>
+      </Trigger>
+      <TriggerSetup />
+    </Values>
+  </Asset>
 </ModOp>
 ```
 
@@ -222,84 +222,84 @@ When Bente passed all conditions and successfully spawned, the script calls `Acc
 ```XML
 <!-- assets.xml -->
 <ModOp GUID="152280" Type="addNextSibling">
-	<Asset>
-		<BaseAssetGUID>930250</BaseAssetGUID>
-		<Values>
-			<Standard>
-				<GUID>930251</GUID>
-				<Name>Accept Second_ai_01 (Bente Jorgensen)</Name>
-			</Standard>
-			<Quest>
-				<OnQuestStart>
-					<Values>
-						<ActionList>
-							<Actions>
-								<!-- Adds Construction Material to Bentes Ship -->
-								<Item>
-									<Action>
-										<Template>ActionAddGoodsToItemContainer</Template>
-										<Values>
-											<Action />
-											<ActionAddGoodsToItemContainer>
-												<Goods>
-													<Item>
-														<Good>1010196</Good>
-														<Amount>50</Amount>
-													</Item>
-													<Item>
-														<Good>1010218</Good>
-														<Amount>50</Amount>
-													</Item>
-												</Goods>
-												<ItemContainerObjects>
-													<Values>
-														<ObjectFilter>
-															<ObjectGUID>930001</ObjectGUID>
-														</ObjectFilter>
-													</Values>
-												</ItemContainerObjects>
-											</ActionAddGoodsToItemContainer>
-										</Values>
-									</Action>
-								</Item>
-								<!-- Hands the Ship over to Bente, who is now created. Otherwise, this would not
-								work. -->
-								<Item>
-									<Action>
-										<Template>ActionChangeParticipant</Template>
-										<Values>
-											<Action />
-											<ActionChangeParticipant>
-												<NewParticipantID>Second_ai_01_Jorgensen</NewParticipantID>
-											</ActionChangeParticipant>
-											<ObjectFilter>
-												<ObjectGUID>930001</ObjectGUID>
-											</ObjectFilter>
-										</Values>
-									</Action>
-								</Item>
-								<!-- Converts Bente Jorgensens "Special Flagship" into a default Flagship -->
-								<Item>
-									<Action>
-										<Template>ActionSetObjectGUID</Template>
-										<Values>
-											<Action />
-											<ActionSetObjectGUID>
-												<NewGUID>101121</NewGUID>
-											</ActionSetObjectGUID>
-											<ObjectFilter>
-												<ObjectGUID>930001</ObjectGUID>
-											</ObjectFilter>
-										</Values>
-									</Action>
-								</Item>
-							</Actions>
-						</ActionList>
-					</Values>
-				</OnQuestStart>
-			</Quest>
-		</Values>
-	</Asset>
+  <Asset>
+    <BaseAssetGUID>930250</BaseAssetGUID>
+    <Values>
+      <Standard>
+        <GUID>930251</GUID>
+        <Name>Accept Second_ai_01 (Bente Jorgensen)</Name>
+      </Standard>
+      <Quest>
+        <OnQuestStart>
+          <Values>
+            <ActionList>
+              <Actions>
+                <!-- Adds Construction Material to Bentes Ship -->
+                <Item>
+                  <Action>
+                    <Template>ActionAddGoodsToItemContainer</Template>
+                    <Values>
+                      <Action />
+                      <ActionAddGoodsToItemContainer>
+                        <Goods>
+                          <Item>
+                            <Good>1010196</Good>
+                            <Amount>50</Amount>
+                          </Item>
+                          <Item>
+                            <Good>1010218</Good>
+                            <Amount>50</Amount>
+                          </Item>
+                        </Goods>
+                        <ItemContainerObjects>
+                          <Values>
+                            <ObjectFilter>
+                              <ObjectGUID>930001</ObjectGUID>
+                            </ObjectFilter>
+                          </Values>
+                        </ItemContainerObjects>
+                      </ActionAddGoodsToItemContainer>
+                    </Values>
+                  </Action>
+                </Item>
+                <!-- Hands the Ship over to Bente, who is now created. Otherwise, this would not
+                work. -->
+                <Item>
+                  <Action>
+                    <Template>ActionChangeParticipant</Template>
+                    <Values>
+                      <Action />
+                      <ActionChangeParticipant>
+                        <NewParticipantID>Second_ai_01_Jorgensen</NewParticipantID>
+                      </ActionChangeParticipant>
+                      <ObjectFilter>
+                        <ObjectGUID>930001</ObjectGUID>
+                      </ObjectFilter>
+                    </Values>
+                  </Action>
+                </Item>
+                <!-- Converts Bente Jorgensens "Special Flagship" into a default Flagship -->
+                <Item>
+                  <Action>
+                    <Template>ActionSetObjectGUID</Template>
+                    <Values>
+                      <Action />
+                      <ActionSetObjectGUID>
+                        <NewGUID>101121</NewGUID>
+                      </ActionSetObjectGUID>
+                      <ObjectFilter>
+                        <ObjectGUID>930001</ObjectGUID>
+                      </ObjectFilter>
+                    </Values>
+                  </Action>
+                </Item>
+              </Actions>
+            </ActionList>
+          </Values>
+        </OnQuestStart>
+      </Quest>
+    </Values>
+  </Asset>
 </ModOp>
 ```
 
