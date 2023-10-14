@@ -13,6 +13,7 @@ There are some entry points where you can directly run lua Commands. GlobalGUIBa
   </Item>
 </ModOp>
 ```
+> Commands executed this way (supports all lua commands) are only executed for the player who hit this button, not for others (but still synced).
 
 # ActionExecuteScript 
 
@@ -34,7 +35,20 @@ More important and versatile, The GameEvent Pipeline has an Action to run a lua 
 
 You use this just like any other action in any place where you can add them. At the end, you find a practical example how the AI shipyard uses lua scripting. 
 
-> A script is executed for all players through ActionExecuteScript. 
+> A script is executed from perspective of all (human!) players through ActionExecuteScript, regardless who executed this action in the Trigger (so eg. if you unlock research recipes in  the script, all human players will get it).
+> Pro-Hint: You can use this helper mod https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main#shared-whichplayer-condition to at least make sure to only execute the script for the executing player by checking the unlock before calling the action and within your script with ts.Unlock.GetIsUnlocked(1500001613) 
+
+# logging
+You can use print("mytext") to print something into the games console. The logger is not accessable, so to write something to file you may use "io." eg. like this:
+```lua
+function mylog(t)
+  file = io.open("mylog.txt", "a")
+  io.output(file)
+  io.write(t,"\n")
+  io.close(file)
+end 
+```
+It will be saved to the installation directory of Anno1800.
 
 # Executing a Script on Game Start
 
