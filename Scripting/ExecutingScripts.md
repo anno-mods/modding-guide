@@ -41,8 +41,8 @@ You use this just like any other action in any place where you can add them. At 
 # logging
 You can use print("mytext") to print something into the games console. The logger is not accessable, so to write something to file you may use "io." eg. like this:
 ```lua
-function mylog(t)
-  file = io.open("mylog.txt", "a")
+local function modlog(t)
+  file = io.open("logs/modlog.txt", "a")
   io.output(file)
   io.write(t,"\n")
   io.close(file)
