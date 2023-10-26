@@ -39,3 +39,20 @@ You can also take a look at the (bit outdated) **_textsourcelist.json_** file th
 Eg. there is "ts.Selection.", in the console you can enter this and hit TAB to show all available commands, or you can search for it in textsourcelist.json and will find CSelectionManager (with "Alias" : "Selection"), this "Alias" is what you will use in console/lua usually. Lets use ts.Selection.Object to get the currently from executing player selected object (beware in Coop games this might not be what you expect).<br>
 textsourcelist.json tells you that with "Alias" : "Object" will get a "ReturnType" : "CGameObject". So now you can search the file for "CGameObject" to find the table what is included in it. Since you have a selected GameObject now, you will see most  properties here you already now from xml, like "Walking", "Building","Factory" and so on. To find out what values you can fetch from these, again simply search for their ReturnType. You can also get the GUID from the Object with ts.Selection.Object.GUID .<br>
 When you compare the autocompletes of the console with the Alias options you will notice that in console many commands will have a "Get" or a "Set" in front, while in file they often don't. Get/Set are usually used when the commands needs "Arguments", also listed in textsourcelist.json, because then you need a function call to provide the arguments. "Get" if for getting a result and "Set" is for changing values, eg. ts.Selection.Object.SetChangeSkin(newSkinIndex). For commands without arguments I think it makes no difference if you do "ts.Selection.Object.GUID" or "ts.Selection.Object.GetGUID()". From textsourcelist.json it is not easily visible if something supports "Set" or not, so here it is best to again take a look at the autocomplete from the console.
+
+# Multiplayer Sync
+
+## General
+Most commands, especially the textsource commands, are automatically synced in multiplayer and therefore cause no desync. But it is better to always test your code in Multiplayer!<br>
+Since most commands are synced, it is also fine to use math.random() from lua to generate some randomness, as long as it results in commands that are synced.<br>
+One command that unfortunately causes desync is for example `condition.changeOwnerOfSelected(25)` which changes the owner of currently selected object to Bente.<br>
+While talking of "Selection": Keep in mind that in Multiplayer COOP games the "selection" is not explicit, because one coop player can have sth else selected than the other and doing a synced command on it may result in changing all selections.
+
+
+## Keybind Commands
+In GUID 2001271 KeyBindings you see and can add Keybindings and when this key is hit, execute a lua command like: `<Command>ts.Cheat.GlobalCheats.ToggleSuperShipSpeed()</Command>`.<br>
+Commands executed this way are **only** executed for the player who hits the key and the result is in most cases synced.
+
+## ActionExecuteScript
+Lua code that is executed via ActionExecuteScript (see also https://github.com/anno-mods/modding-guide/blob/main/Scripting/ExecutingScripts.md#actionexecutescript ) is executed for all human players, regardless who executed this action in the Trigger. Eg. if you credit the player money via `ts.Area.Current.Economy.AddAmount(1010017,100000)` (only works while over an island), every human player will credit himself the money only and then the result is synced, so all humans got more money.<br>
+Pro-Hint: You can use this helper mod https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main#shared-whichplayer-condition to at least make sure to only execute the script for the executing player by checking the unlock before calling the action and within your script with ts.Unlock.GetIsUnlocked(1500001613)
