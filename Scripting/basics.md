@@ -46,7 +46,7 @@ When you compare the autocompletes of the console with the Alias options you wil
 Most commands, especially the textsource commands, are automatically synced in multiplayer and therefore cause no desync. But it is better to always test your code in Multiplayer!<br>
 Since most commands are synced, it is also fine to use math.random() from lua to generate some randomness, as long as it results in commands that are synced.<br>
 One command that unfortunately causes desync is for example `condition.changeOwnerOfSelected(25)` which changes the owner of currently selected object to Bente.<br>
-While talking of "Selection": Keep in mind that in Multiplayer COOP games the "selection" is not explicit, because one coop player can have sth else selected than the other and doing a synced command on it may result in changing all selections.
+While talking of "Selection": Keep in mind that in Multiplayer COOP games the "selection" is not explicit, because one coop player can have sth else selected than the other and doing a synced command on it may result in changing all selections. Same is true for xml `ConditionActiveSession` and the lua commands starting with `session.`, because the human can be active in multiple sessions at once.
 
 
 ## Keybind Commands
