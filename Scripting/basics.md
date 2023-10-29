@@ -56,3 +56,6 @@ Commands executed this way are **only** executed for the player who hits the key
 ## ActionExecuteScript
 Lua code that is executed via ActionExecuteScript (see also https://github.com/anno-mods/modding-guide/blob/main/Scripting/ExecutingScripts.md#actionexecutescript ) is executed for all human players, regardless who executed this action in the Trigger. Eg. if you credit the player money via `ts.Area.Current.Economy.AddAmount(1010017,100000)` (only works while over an island), every human player will credit himself the money only and then the result is synced, so all humans got more money.<br>
 Pro-Hint: You can use this helper mod https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main#shared-whichplayer-condition to at least make sure to only execute the script for the executing player by checking the unlock before calling the action and within your script with ts.Unlock.GetIsUnlocked(1500001613)
+### COOP
+Also in Coop a script is executed for each coop player separately and then again synced.<br>
+This means a script will be **executed multiple times**!! And unfortunately I found no way to prevent this yet...
