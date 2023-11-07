@@ -1,6 +1,6 @@
 
 - [Console Textsource Commands](ENUMs.md#console-textsource-commands)
-- [Other Console Commands](ENUMs.md#propertyids)
+- [Other Console Commands](ENUMs.md#other-console-commands)
 - [PropertyIDs](ENUMs.md#propertyids)
 
 
@@ -4110,7 +4110,7 @@ As already mentioned, may ts commands can be found in the bit outdated testsourc
 
 # Other console commands
 session.
-  'spawnDebugGameObject' = function: 000001F05D4746B8
+-  'spawnDebugGameObject' = function: 000001F05D4746B8
 -  'toggleResidentView' = function: 000001F05D468AD8
 -  'getObjectByID' = function: 000001F05D4755B8
 -  'togglePostcardView' = function: 000001F05D468EF8
@@ -4652,11 +4652,11 @@ game.
 system.  (geht wohl nicht mit getmetatable, aber da kurz einfach aus konsole abgeschrieben)
 wird genutzt um threads zu starten, siehe ein paar meiner skripte bzw. https://github.com/anno-mods/modding-guide/blob/main/Scripting/ReadAfterWrite.md
 -  internal
-    coroutines
-  resumeCoroutines
-  start
-  waitForGameTime
-  waitForGameTimeDelta
+-  -  coroutines
+-  resumeCoroutines
+-  start
+-  waitForGameTime
+-  waitForGameTimeDelta
 
 
 # PropertyIDs
