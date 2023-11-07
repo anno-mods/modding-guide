@@ -5,7 +5,7 @@
 
 
 # Console Textsource Commands
-As already mentioned, may ts commands can be found in the bit outdated testsourcelist.json file of the game. There you can also see what arguments for a function are expected and that it will return. But still not everything listed there can be used in the console and the console also might have a few things not listed there. So I use debug.getmetatable(ts) and our custom modlog function to dump all the content that can be used within the console. Since I did this within lua and all functions are in fact C functions, we can not get information about the arguments this way unfortunately.
+As already mentioned, many ts commands can be found in the bit outdated testsourcelist.json file of the game. There you can also see what arguments for a function are expected and what it will return. But still not everything listed there can be used in the console and the console also might have a few things not listed there. So I use debug.getmetatable(ts) and our custom modlog function to dump all the content that can be used within the console. Since I did this within lua and all functions are in fact C functions, we can not get information about the arguments this way unfortunately.You can find the same also with help of the autocomplete feature of the console ingame.
 
 
 
@@ -4109,6 +4109,9 @@ As already mentioned, may ts commands can be found in the bit outdated testsourc
 
 
 # Other console commands
+Besides the textsrouce commands, there are also a few others (visible when you hit Tab==autocomplete on an empty console. Here the most relevant ones.
+
+
 session.
 -  'spawnDebugGameObject' = function: 000001F05D4746B8
 -  'toggleResidentView' = function: 000001F05D468AD8
