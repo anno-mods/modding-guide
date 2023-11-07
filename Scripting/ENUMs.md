@@ -1,6 +1,8 @@
-- [PropertyIDs](ENUMs.md#propertyids)
+
 - [Console Textsource Commands](ENUMs.md#console-textsource-commands)
 - [Other Console Commands](ENUMs.md#propertyids)
+- [PropertyIDs](ENUMs.md#propertyids)
+
 
 # Console Textsource Commands
 As already mentioned, may ts commands can be found in the bit outdated testsourcelist.json file of the game. There you can also see what arguments for a function are expected and that it will return. But still not everything listed there can be used in the console and the console also might have a few things not listed there. So I use debug.getmetatable(ts) and our custom modlog function to dump all the content that can be used within the console. Since I did this within lua and all functions are in fact C functions, we can not get information about the arguments this way unfortunately.
@@ -4106,6 +4108,555 @@ As already mentioned, may ts commands can be found in the bit outdated testsourc
 -  GetMetaObjects : function: 00007FF7D313CD90
 
 
+# Other console commands
+session.
+  'spawnDebugGameObject' = function: 000001F05D4746B8
+-  'toggleResidentView' = function: 000001F05D468AD8
+-  'getObjectByID' = function: 000001F05D4755B8
+-  'togglePostcardView' = function: 000001F05D468EF8
+-  'morale' = function: 000001F05D46E8F8
+-  'buildShipInBuilding' = function: 000001F05D473698
+-  'recordCameraSequence' = function: 000001F05D469798
+-  'startCameraShake' = function: 000001F05D473CF8
+-  'drawPathplannerLayer' = function: 000001F0CB230198
+-  'getObjectGroupByProperty' = function: 000001F05D474178
+-  'feedbackForceFieldRadiusSoft' = function: 000001F05D46F5B8
+-  'listenerPositionInterpolationValue' = function: 000001F05D46E178
+-  'feedbackSetDebugMode' = function: 000001F05D469A98
+-  '__pairs' = function: 00007FF7D237C7A0
+-  'toggleDrawDistanceToIslandLayer' = function: 000001F0CB22B698
+-  'aiDebugRenderContext' = function: 000001F05D46CF78
+-  'executeTargetManagerEvent' = function: 000001F05D46F258
+-  'getNearestLabelAtCameraPos' = function: 000001F05D469678
+-  'setDefaultRotation' = function: 000001F05D4696D8
+-  'startFeedbackSequence' = function: 000001F05D472F18
+-  '__type' = table (
+-  -  'is' = function: 00007FF7D23746E0
+-  -  'name' = 'rdgs::CMetaGameManager'
+-  )
+-  'showStreet' = function: 000001F05D46A2D8
+-  'drawDebugLayer' = function: 000001F0CB22AF18
+-  'toggleCamSettings' = function: 000001F05D469618
+-  'showTestRandomArea' = function: 000001F05D471F58
+-  'spawnDebugGameObjects' = function: 000001F05D475498
+-  'getObjectByLabel' = function: 000001F05D475618
+-  'getSessionGUID' = function: 000001F05D46A818
+-  'hasNeverBeenEntered' = function: 000001F05D473038
+-  'increaseDangerLayer' = function: 000001F0CB230618
+-  'selectNextObjectInWorld' = function: 000001F05D475E58
+-  'jumpToSelection' = function: 000001F05D467B78
+-  'toggleAIDebug' = function: 000001F0CB22B878
+-  'cameraFarClip' = function: 000001F05D46EEF8
+-  'squadAddDestroyTask' = function: 000001F05D468958
+-  'showAllCollectables' = function: 000001F05D468C58
+-  'openSelectedObjectInToolOne' = function: 000001F05D474838
+-  'hideStreets' = function: 000001F05D468418
+-  'executeBuildModeEvent' = function: 000001F05D46EA78
+-  '__newindex' = function: 000001D9A3D3DD48
+-  'new' = function: 000001F0CB22F298
+-  'getObject' = function: 000001F05D4752B8
+-  'openSelectedObject' = function: 000001F05D472E58
+-  'killGameObject' = function: 000001F05D475A38
+-  'startFleetBombardementTargetMode' = function: 000001F06BFA6528
+-  'createTestStreetGridTiles' = function: 000001F06BFA7068
+-  'executeWorldMapEvent' = function: 000001F05D470218
+-  'forceWeather' = function: 000001F05D46A6F8
+-  'setCameraToObjectPosAndRot' = function: 000001F05D469438
+-  'hideTestRandomArea' = function: 000001F05D4719B8
+-  'executeBuildRailwayEvent' = function: 000001F05D470E78
+-  'isNewSession' = function: 000001F05D472C18
+-  '__index' = function: 000001D9A3D3E258
+-  'executeBuildStreetEvent' = function: 000001F05D470C38
+-  'executeTargetManagerGamepadEvent' = function: 000001F05D46E358
+-  'getObjectGroupByName' = function: 000001F05D4757F8
+-  'executeTargetManagerEventMouse' = function: 000001F05D46F618
+-  'unloadSession' = function: 000001F05D46A9F8
+-  'selection' = function: 000001F05D46F018
+-  'stopSequence' = function: 000001F05D4736F8
+-  'daytime' = function: 000001F05D46E658
+-  'showStreets' = function: 000001F05D46A758
+-  'forceSequenceCamera' = function: 000001F05D473C38
+-  'feedbackForceFieldRadiusHard' = function: 000001F05D46DB78
+-  'startSequence' = function: 000001F05D471838
+-  'setStance' = function: 000001F05D4698B8
+-  'feedbackToggleDebugFlag' = function: 000001F05D46CDF8
+-  'feedbackForceFieldSpeed' = function: 000001F05D46F2B8
+-  'cameraFOV' = function: 000001F05D46ED18
+-  'enableAllConstructionAreas' = function: 000001F05D474DD8
+-  'startNegotiationMenu' = function: 000001F05D46AB78
+-  'startIslandSequence' = function: 000001F05D4738D8
+-  'preloadObject' = function: 000001F05D4735D8
+-  'feedbackSetDebugRenderMode' = function: 000001F05D46D398
+-  'class_cast' = userdata: 00007FF7D235E8B0
+-  'class_check' = userdata: 00007FF7D235E920
+-  'squadAddRouteTask' = function: 000001F05D468838
+-  'setCameraToPreset' = function: 000001F05D469258
+-  '__eq' = function: 00007FF7D239C430
+-  'switchCameraControl' = function: 000001F05D466D38
+-  'hideDebugLayers' = function: 000001F0CB22AC18
+-  'getSelectedFactory' = function: 000001F05D474778
+-  'selectNextObject' = function: 000001F05D475D38
+-  'getObjectGroupByObject' = function: 000001F05D474D18
+-  'startSequenceByAsset' = function: 000001F05D471538
+-  'openInfoTip' = function: 000001F05D474718
+-  'destroySelectionNextGametick' = function: 000001F05D473D58
+-  'openSelectedObjectInT9' = function: 000001F05D4756D8
+
+
+userdata: funktionen (debug.getmetatable(session.getSelectedFactory()) bei schiff, sieht bei gebäude genauso aus)
+table (
+-  'startTimedEffect' = function: 000001D9910C79E8
+-  'isMoving' = function: 000001D9910C6428
+-  'addHealPercent' = function: 000001D9910C6068
+-  'getName' = function: 000001D9910C61E8               "GameObject, oid 8589934647" -> scheint ein string zu sein, müssen also die oid daraus extrahieren...
+-  'visible' = function: 000001D9910C7148
+-  '__gc' = function: 00007FF7D236EA90
+-  'moveToRadius' = function: 000001D9910C67E8
+-  'addToSelection' = function: 000001D9910C8B88
+-  'setDirection' = function: 000001D9910C5E28
+-  '__pairs' = function: 00007FF7D24CD8B0
+-  'kill' = function: 000001D9910C6DE8               tötet objekt ohne nachfrage, sieht bei objekten ohne sterbeanimation (was zb schiffe haben) komisch aus, weil grafik noch ~10 sek da bleibt, zb bei Gebäuden
+-  'showGroundDecal' = function: 000001D9910C7628
+-  'changeGUID' = function: 000001D9910C78C8               funzt ABER vorher/nachher muss selbe properties und bei gebäuden baugröße haben, sonst passiert einfach nichts (oder crasht)
+           und funzt wohl nicht bei allen objekten.. zb Farmfelder kann ich anscheinend so nicht ändern?
+           zum GLÜCK wird das ergebnis gesynced und es gibt kein desync (wie bei condition.changeOwnerOfSelected)
+-  '__index' = function: 000001D99521A578
+-  '__type' = table (
+-  -  'is' = function: 00007FF7D3515D70
+-  -  'name' = 'rdgs::CScriptGameObject'
+-  )
+-  'hideGroundDecal' = function: 000001D9910C7748
+-  'moveTo' = function: 000001D9910C6848               (coordinates, gibt aber auch ein CGameObject.Move Befehl in textsourcelist oder ActionMove zu Objekt)
+-  'removePropsAtBlocking' = function: 000001D9910C6BA8
+-  'debugStop' = function: 000001D9910C7E68
+-  'destruct' = function: 000001D9910C5D08               wie wenn man Entf gedrückt hat, gibt dann je nach objekt auch noch eine Bestätigungsabfrrage. ist gedacht für Gebäude von der Graphic die abgespielt wird. Bestätigungsabfrage lässt sich wohl nicht umgehen, bei Dingen die Building/DestructionConfirmation haben (ob man das bei schiffen auch ein/aus schalten kann weiß ich nicht)
+-  'select' = function: 000001D9910C8E28
+-  'addDamagePercent' = function: 000001D9910C5408
+-  'enableAmbientArea' = function: 000001D9910C9788
+-  'startSequence' = function: 000001D9910C93C8
+-  'setPosition' = function: 000001D9910C5888               wenn wir jetzt auch noch getPosition oderso hätten, dann könnte man damit gespawnde objekte an jede gewüschte stelle verschieben oder mit moveTo bewegen...
+            wenn ich hier einfach werte von 0,0 bis 5000,5000 eintrage, oder auch eins negativ, ist schiff immer außerhalb der map...angeblich von 0 bis 1920 möglich
+-  'showPropsAtBlocking' = function: 000001D9910C7208
+-  'class_cast' = userdata: 00007FF7D350FD50
+-  'class_check' = userdata: 00007FF7D350FDC0
+-  '__eq' = function: 00007FF7D24DFA50
+-  'removeUpgrade' = function: 000001D9910C7388
+-  'getType' = function: 000001D9910C51C8
+-  'addUpgrade' = function: 000001D9910C8048
+-  '__newindex' = function: 000001D99521BFE8
+-  'new' = function: 000001D9910C47A8
+-  'hidePropsAtBlocking' = function: 000001D9910C7448
+-  'enterBombardementTargetMode' = function: 000001D9910C6FC8
+-  'getProperty' = function: 000001D9910C6368               macht nur unhandled exception "caught (...) exception" auch wenn wir zb 3 übergeben
+-  'setDebugInvincible' = function: 000001D9910C5EE8               true/false übergeben
+-  'getOID' = function: 000001D9910C64E8               man bekommt die ObjectID und AreaID in ner liste? Und mit der ObjectID (OID["ObjectID"]) kann man ts.Objects.GetObject(ObjectID) machen und hat dann das Objetk worauf man zb. .Owner machen kann
+              wir kriegen hier eine kleine ObjectID (zb 55). Aber offenbar brauchen wir eigentlich die OID (die wir hier scheinbar nicht bekommen!)
+               in getName ist die korrekte OID enthalten! und diese funzt dann auch in ts.Objects.GetObject(OID)
+             Die AreaID ist dict mit:
+              AreaIndex=1, SessionID=2, IslandID=7
+             da die Zahlen so klein sind, ist das bestimmt auch nicht die echte AreaID die wir für diverse calls brauchen.
+              aber vermutlich kann mans dennoch als Vergleich nutzen um zu checken, ob zwei objekte auf derselben Insel sind (vermutlich nur vomselben owner?)
+                OID = session.getSelectedFactory():getOID()    AreaID = OID["AreaID"]     AreaID["IslandID"]
+              für schiffe ist AreaIndex und IslandID immer 0, aber SessionID bekannt
+)
+
+
+condition.
+-  showConditionTree : function: 000001D9910C8BE8 C
+-  __eq : function: 00007FF7D28DF640 C
+-  class_cast : userdata: 00007FF7D28D7C30 
+-  class_check : userdata: 00007FF7D28D7CA0 
+-  __pairs : function: 00007FF7D28DD9F0 C
+-  changeOwnerOfSelected : function: 000001D9910CACE8 C               (ParticicantID) funzt UND funktioniert mit ParticicantID Argument! changed nur eines der selected objects!
+          ACHTUNG condition.changeOwnerOfSelected(ParticicantID) scheint NICHT im Multiplayer gesynced zu werden und verursacht daher desync!
+         alternativ natürlich ts.Selection.ChangeParticipantOfSelected() was LEIDER ohne Argument und daher nur möglich den owner zum processing spieler zu wechseln?!
+-  registerTrigger : function: 000001D9910CA028 C
+-  satisfyTrigger : function: 000001D9910CAE68 C
+-  __newindex : function: 000001D99521B658 C
+-  showVariableOptions : function: 000001D9910C9188 C
+-  new : function: 000001D9910C8948 C
+-  __index : table: 000001F03839D0E8 
+-  showConditionType : function: 000001D9910C90C8 C
+-  __name : sol.rdgs::CConditionManager* 
+-  -  __index : table: 000001D9A1A107F8 
+-  __type : table: 000001F03839CA58 
+
+
+game.
+-  -  setNewSampling : function: 000001D9A244AD08 C
+-  getCorporationTime : function: 000001D9A244B4E8 C
+-  startBuildCheat : function: 000001D9A24455A8 C
+-  startBuildModule : function: 000001D9A24468C8 C
+-  reloadData : function: 000001D9A2448548 C
+-  __pairs : function: 00007FF7D237C940 C
+-  toggleTickDayTime : function: 000001D9A2448368 C
+-  toggleTextSourceResolving : function: 000001D9A244AB88 C
+-  __type : table: 000001D99F858E68 
+-  __eq : function: 00007FF7D238B9F0 C
+-  unblockGameTiming : function: 000001D9A244BDE8 C
+-  toggleLightBoundToCamera : function: 000001D9A2447E28 C
+-  gainRandomAchievement : function: 000001D9A2448248 C
+-  ModManager : function: 000001D9A2450E88 C
+-  -  __eq : function: 00007FF7D23AD860 C
+-  -  class_cast : userdata: 00007FF7D235DD20 
+-  -  class_check : userdata: 00007FF7D235DD90 
+-  -  __pairs : function: 00007FF7D237C6D0 C
+-  -  reload : function: 000001D99F8850C8 C
+-  -  __newindex : function: 000001D99F801108 C
+-  -  new : function: 000001D9A2450CA8 C
+-  -  __index : table: 000001D99F85C978 
+-  -  __name : sol.rdgs::CModManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  __type : table: 000001D99F85C7E8 
+-  rotateCameraAroundLookAt : function: 000001D9A2446D48 C
+-  stopAllFx : function: 000001D9A244C9E8 C
+-  destructObjectGroup : function: 000001D9A244AC48 C
+-  testTimeQueue : function: 000001D9A244BAE8 C
+-  openDebugInfoPage : function: 000001D9A24481E8 C
+-  rotateCameraAroundObjectWithDuration : function: 000001D9A2446F28 C
+-  toggleTelemetry : function: 000001D9A2448E48 C
+-  environmentSetRainDensity : function: 000001D9A2449DA8 C
+-  ConditionManager : function: 000001F06BFAE7A8 C
+-  -  showConditionTree : function: 000001F06BFADA28 C
+-  -  __eq : function: 00007FF7D28DF640 C
+-  -  class_cast : userdata: 00007FF7D28D7C30 
+-  -  class_check : userdata: 00007FF7D28D7CA0 
+-  -  __pairs : function: 00007FF7D28DD9F0 C
+-  -  changeOwnerOfSelected : function: 000001F06BF9E968 C
+-  -  registerTrigger : function: 000001F06BF9E368 C
+-  -  satisfyTrigger : function: 000001F06BF9E248 C
+-  -  __newindex : function: 000001D9A3D41978 C
+-  -  showVariableOptions : function: 000001F06BFAEB08 C
+-  -  new : function: 000001F06BFAE5C8 C
+-  -  __index : table: 000001F03839D0E8 
+-  -  showConditionType : function: 000001F06BFAD488 C
+-  -  __type : table: 000001D9E6936D08 
+-  toggleFrameCaptureMode : function: 000001D9A2446B08 C
+-  setMasterVolume : function: 000001D9A2447528 C
+-  startMouseMode : function: 000001D9A24467A8 C
+-  rotateCameraAroundObjectGUIDWithDuration : function: 000001D9A2448A88 C
+-  gainAchievement : function: 000001D9A2448188 C
+-  getSessionTime : function: 000001D9A2449AA8 C
+-  loadSavegame : function: 000001D9A244DDC8 C
+-  toggleVideoPortraitEditor : function: 000001D9A244A288 C
+-  ScriptManager : function: 000001D99FA747C8 C
+-  -  __eq : function: 00007FF7D26E3E40 C
+-  -  class_cast : userdata: 00007FF7D26D3320 
+-  -  class_check : userdata: 00007FF7D26D3390 
+-  -  __pairs : function: 00007FF7D26E2530 C
+-  -  startScript : function: 000001D99FA74228 C
+-  -  autoComplete : function: 000001D99FA74588 C
+-  -  __newindex : function: 000001D99F803E08 C
+-  -  cheat : function: 000001D99FA74468 C
+-  -  new : function: 000001D99FA74EE8 C
+-  -  __index : table: 000001D99FA10E58 
+-  -  toggleVisibility : function: 000001D99FA75308 C
+-  -  __name : sol.rdgs::CScriptManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  __type : table: 000001D99FA10B88 
+-  __newindex : function: 000001D99F8001D8 C
+-  toggleLensFlarePostEffect : function: 000001D9A2449088 C
+-  new : function: 000001D9A2444CA8 C
+-  isSessionLoadingDone : function: 000001D9A244C748 C
+-  initCorporationTime : function: 000001D9A244B3C8 C
+-  TextSourceManager : function: 000001D99FA74D68 C
+-  -  setDebugTextSource : function: 000001D99FA73B68 C
+-  -  __eq : function: 00007FF7D26E6B30 C
+-  -  class_cast : userdata: 00007FF7D26D2770 
+-  -  class_check : userdata: 00007FF7D26D27E0 
+-  -  __pairs : function: 00007FF7D26E2430 C
+-  -  setDebugTextSourceStyle : function: 000001D99FA73E08 C
+-  -  __newindex : function: 000001D99F8031A8 C
+-  -  new : function: 000001D99FA739E8 C
+-  -  __index : table: 000001D99FA116C8 
+-  -  __name : sol.rdgs::CTextSourceManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  __type : table: 000001D99FA11948 
+-  debugBreak : function: 000001D9A2446148 C
+-  setBenchTag : function: 000001D9A24497A8 C
+-  simulateWindowClose : function: 000001D9A244AFA8 C
+-  rotateCameraAroundLookAtWithDuration : function: 000001D9A24476A8 C
+-  playCameraSequenceSound : function: 000001D9A2446808 C
+-  GameEventManager : function: 000001D9A244F7A8 C
+-  -  __eq : function: 00007FF7D2389CC0 C
+-  -  class_cast : userdata: 00007FF7D2361560 
+-  -  class_check : userdata: 00007FF7D23615D0 
+-  -  __pairs : function: 00007FF7D237C9D0 C
+-  -  OnLeaveUIState : table: 000001D99F85BAC8 
+-  -  OnSessionLoaded : table: 000001D99F85B578 
+-  -  OnCameraSequenceEnd : table: 000001D99F85ADF8 
+-  -  __newindex : function: 000001D99F7FEEB8 C
+-  -  OnSessionEnter : table: 000001D99F85BB18 
+-  -  new : function: 000001D9A244F088 C
+-  -  __index : function: 000001D99F8004A8 C
+-  -  __name : sol.rdgs::CGameEventManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  OnSessionLoad : table: 000001D99F85B528 
+-  -  __type : table: 000001D99F85B258 
+-  ActivitiesManager : function: 000001D99FA64988 C
+-  -  __eq : function: 00007FF7D2384D00 C
+-  -  class_cast : userdata: 00007FF7D2362A80 
+-  -  class_check : userdata: 00007FF7D2362AF0 
+-  -  __pairs : function: 00007FF7D237CAB0 C
+-  -  __newindex : function: 000001D99F7FD298 C
+-  -  new : function: 000001D99FA64B08 C
+-  -  __index : table: 000001D99FA0E1A8 
+-  -  launchActivity : function: 000001D99FA649E8 C
+-  -  __name : sol.rdgs::CActivitiesManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  __type : table: 000001D99FA0E158 
+-  GUIManager : function: 000001D99F88B0C8 C
+-  -  setAudioLanguage : function: 000001D99F88BC68 C
+-  -  showChatWindowScene : function: 000001D99F88C988 C
+-  -  distancefieldinnersize : function: 000001D99F88F148 C
+-  -  animationspeed : function: 000001D99F88D588 C
+-  -  __newindex : function: 000001D99F801E88 C
+-  -  new : function: 000001D99F88A108 C
+-  -  dumpFontManagerBitmap : function: 000001D99F88D2E8 C
+-  -  distancefieldoutergradient : function: 000001D99F88EAE8 C
+-  -  __name : sol.rdgs::CGUIManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  showCharacterNotification : function: 000001D99F88AD68 C
+-  -  __pairs : function: 00007FF7D237C800 C
+-  -  playCharacterAudioMessage : function: 000001D99F88AAC8 C
+-  -  Scenes : function: 000001D99F88E608 C
+-  -  __index : function: 000001D99F8029C8 C
+-  -  copyBuildStringToClipboard : function: 000001D99F88B068 C
+-  -  __type : table: 000001D99F85E7C8 
+-  -  distancefieldinnergradient : function: 000001D99F88D228 C
+-  -  __eq : function: 00007FF7D2397FF0 C
+-  -  playAudioText : function: 000001D99F88BDE8 C
+-  -  setTextDisplayMode : function: 000001D99F88BCC8 C
+-  -  toggleFeedback : function: 000001D99F88B728 C
+-  -  distancefieldoutersize : function: 000001D99F88DBE8 C
+-  -  toggleDistanceFieldManager : function: 000001D99F88D3A8 C
+-  -  class_cast : userdata: 00007FF7D235F3A0 
+-  -  class_check : userdata: 00007FF7D235F410 
+-  -  distancefieldgradient : function: 000001D99F88CFE8 C
+-  -  forceLazyLoading : function: 000001D99F88CC28 C
+-  -  showNotification : function: 000001D99F88BC08 C
+-  -  distancefieldthickness : function: 000001D99F88C6E8 C
+-  -  showSurvey : function: 000001D99F88B968 C
+-  -  changeDistanceFieldResolution : function: 000001D99F88C388 C
+-  -  setLanguage : function: 000001D99F88B4E8 C
+-  -  isUIStartUpPastSceneCreation : function: 000001D99F88CD48 C
+-  -  showOnlyRunningAnimations : function: 000001D99F88D108 C
+-  -  showAnimationsFromActiveScenes : function: 000001D99F88C8C8 C
+-  -  showDebugOnScreenText : function: 000001D99F88B428 C
+-  -  toggleMinimap : function: 000001D99F88B1E8 C
+-  OnlineManager : function: 000001D99F885248 C
+-  -  enableStats : function: 000001D99F889C28 C
+-  -  debugCreateCustomSession : function: 000001D99F8875E8 C
+-  -  showOverlayUrl : function: 000001D99F886D48 C
+-  -  enableTextToSpeech : function: 000001D99F8889C8 C
+-  -  sendTestBlob : function: 000001D99F886B08 C
+-  -  __newindex : function: 000001D99F802548 C
+-  -  chatterMuteRelation : function: 000001D99F888F08 C
+-  -  new : function: 000001D99F885A28 C
+-  -  restartLoginFlow : function: 000001D99F88A9A8 C
+-  -  showAnnoShop : function: 000001D99F8877C8 C
+-  -  sendText : function: 000001D99F888608 C
+-  -  __name : sol.rdgs::COnlineManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  uploadFile : function: 000001D99F886C88 C
+-  -  __pairs : function: 00007FF7D237C6A0 C
+-  -  enableService : function: 000001D99F8870A8 C
+-  -  setLoginCounter : function: 000001D99F8898C8 C
+-  -  setMicActiviationLevel : function: 000001D99F8891A8 C
+-  -  joinMultiplayerLobby : function: 000001D99F884D68 C
+-  -  __index : function: 000001D99F802428 C
+-  -  resumeStom : function: 000001D99F8896E8 C
+-  -  suspendStom : function: 000001D99F88A288 C
+-  -  __type : table: 000001D99F85CDD8 
+-  -  inviteFriend : function: 000001D99F886808 C
+-  -  __eq : function: 00007FF7D23AF8C0 C
+-  -  enableLoopback : function: 000001D99F887F48 C
+-  -  chatterEnable : function: 000001D99F8886C8 C
+-  -  unlockFirstPartyAchievement : function: 000001D99F888FC8 C
+-  -  forceDeSync : function: 000001D99F88A228 C
+-  -  acceptInvite : function: 000001D99F884A08 C
+-  -  openHelpPage : function: 000001D99F885188 C
+-  -  sendBlob : function: 000001D99F889DA8 C
+-  -  debugKickPeer : function: 000001D99F887768 C
+-  -  cancelJoinSession : function: 000001D99F885548 C
+-  -  startQuickMatch : function: 000001D99F88A828 C
+-  -  logout : function: 000001D99F88A2E8 C
+-  -  chatterMuteSpeaker : function: 000001D99F887E88 C
+-  -  loadSavegameAndLeaveSession : function: 000001D99F885D28 C
+-  -  setLogLevel : function: 000001D99F889BC8 C
+-  -  requestHostChange : function: 000001D99F8872E8 C
+-  -  declineInvite : function: 000001D99F884A68 C
+-  -  class_cast : userdata: 00007FF7D235CDF0 
+-  -  class_check : userdata: 00007FF7D235CE60 
+-  -  leaveSession : function: 000001D99F8853C8 C
+-  -  debugCopyHostDescriptorToClipboard : function: 000001D99F886628 C
+-  -  enableSpeechToText : function: 000001D99F887A08 C
+-  -  uploadFakeDesync : function: 000001D99F888668 C
+-  -  loadMultiplayerSession : function: 000001D99F885068 C
+-  -  cancelConnect : function: 000001D99F889F88 C
+-  -  chatterMuteMic : function: 000001D99F887CA8 C
+-  -  autoConnect : function: 000001D99F887348 C
+-  -  showOverlay : function: 000001D99F886208 C
+-  -  showInviteOverlay : function: 000001D99F886F88 C
+-  -  enablePushToTalk : function: 000001D99F888E48 C
+-  -  joinSession : function: 000001D99F885668 C
+-  setMusicVolume : function: 000001D9A24470A8 C
+-  rotateCameraAroundObject : function: 000001D9A2446E68 C
+-  createLerpFX : function: 000001D9A244D3A8 C
+-  __index : function: 000001D99F7FF188 C
+-  finishTransition : function: 000001D9A244BE48 C
+-  crash : function: 000001D9A24461A8 C
+-  startSessionLoadBlocking : function: 000001D9A244D6A8 C
+-  environmentSetSnowDensity : function: 000001D9A244A6A8 C
+-  publishLoadedSession : function: 000001D9A244B608 C
+-  useDebugGameSetup : function: 000001D9A244B6C8 C
+-  startBuildMove : function: 000001D9A2445608 C
+-  DebugRenderManager : function: 000001D99FA765C8 C
+-  -  __eq : function: 00007FF7D23864F0 C
+-  -  isPostEffectDOFEnabled : function: 000001D99FA76868 C
+-  -  new : function: 000001D99FA768C8 C
+-  -  benchmarkStopped : function: 000001D99FA75D88 C
+-  -  __name : sol.rdgs::CDebugRenderManager* 
+-  -  -  __index : table: 000001D9A1A107F8 
+-  -  class_cast : userdata: 00007FF7D2362050 
+-  -  class_check : userdata: 00007FF7D23620C0 
+-  -  __pairs : function: 00007FF7D237CAA0 C
+-  -  benchmarkStarted : function: 000001D99FA757E8 C
+-  -  benchmarkSequenceStarted : function: 000001D99FA76448 C
+-  -  benchmarkSequenceStopped : function: 000001D99FA776A8 C
+-  -  setRenderEnableFlag : function: 000001D99FA758A8 C
+-  -  setDebugOutputMode : function: 000001D99FA75668 C
+-  -  setPostEffectDOF : function: 000001D99FA759C8 C
+-  -  __index : table: 000001D99FA12848 
+-  -  __newindex : function: 000001D99F804798 C
+-  -  toggleRenderQuestHints : function: 000001D99FA75A28 C
+-  -  __type : table: 000001D99FA12A78 
+-  startLoopSequence : function: 000001D9A24482A8 C
+-  startProfileStream : function: 000001D9A244C268 C
+-  storeCameraView : function: 000001D9A2447588 C
+-  stopProfileStream : function: 000001D9A244BC08 C
+-  takeScreenshot : function: 000001D9A2448B48 C
+-  setCameraPos : function: 000001D9A2449208 C
+-  printCallstack : function: 000001D9A244B248 C
+-  changeRotation : function: 000001D9A2445548 C
+-  changeVariation : function: 000001D9A24466E8 C
+-  increaseTimeOfDay : function: 000001D9A2448968 C
+-  reloadAssetInfos : function: 000001D9A244A648 C
+-  __name : sol.rdgs::CGameManager* 
+-  -  __index : table: 000001D9A1A107F8 
+-  togglePortraitEditor : function: 000001D9A2449FE8 C
+-  class_cast : userdata: 00007FF7D2360AB0 
+-  class_check : userdata: 00007FF7D2360B20 
+-  restoreCameraView : function: 000001D9A2447CA8 C
+-  playSound : function: 000001D9A2446088 C
+-  setSFXVolume : function: 000001D9A2447108 C
+-  environmentSetWindDir : function: 000001D9A2449F88 C
+-  writeMemorySnapshot : function: 000001D9A244A1C8 C
+-  initRandomSeed : function: 000001D9A244C628 C
+-  setPostEffectEnabled : function: 000001D9A244A048 C
+-  MetaGameManager : function: 000001F0CB22F8F8 C
+-  -  spawnDebugGameObject : function: 000001F05D4746B8 C
+-  -  toggleResidentView : function: 000001F05D468AD8 C
+-  -  getObjectByID : function: 000001F05D4755B8 C
+-  -  togglePostcardView : function: 000001F05D468EF8 C
+-  -  morale : function: 000001F05D46E8F8 C
+-  -  buildShipInBuilding : function: 000001F05D473698 C
+-  -  recordCameraSequence : function: 000001F05D469798 C
+-  -  startCameraShake : function: 000001F05D473CF8 C
+-  -  drawPathplannerLayer : function: 000001F0CB230198 C
+-  -  getObjectGroupByProperty : function: 000001F05D474178 C
+-  -  feedbackForceFieldRadiusSoft : function: 000001F05D46F5B8 C
+-  -  listenerPositionInterpolationValue : function: 000001F05D46E178 C
+-  -  feedbackSetDebugMode : function: 000001F05D469A98 C
+-  -  __pairs : function: 00007FF7D237C7A0 C
+-  -  toggleDrawDistanceToIslandLayer : function: 000001F0CB22B698 C
+-  -  aiDebugRenderContext : function: 000001F05D46CF78 C
+-  -  executeTargetManagerEvent : function: 000001F05D46F258 C
+-  -  getNearestLabelAtCameraPos : function: 000001F05D469678 C
+-  -  setDefaultRotation : function: 000001F05D4696D8 C
+-  -  startFeedbackSequence : function: 000001F05D472F18 C
+-  -  __type : table: 000001D9E6936E98 
+-  -  showStreet : function: 000001F05D46A2D8 C
+-  -  drawDebugLayer : function: 000001F0CB22AF18 C
+-  -  toggleCamSettings : function: 000001F05D469618 C
+-  -  showTestRandomArea : function: 000001F05D471F58 C
+-  -  spawnDebugGameObjects : function: 000001F05D475498 C
+-  -  getObjectByLabel : function: 000001F05D475618 C
+-  -  getSessionGUID : function: 000001F05D46A818 C
+-  -  hasNeverBeenEntered : function: 000001F05D473038 C
+-  -  increaseDangerLayer : function: 000001F0CB230618 C
+-  -  selectNextObjectInWorld : function: 000001F05D475E58 C
+-  -  jumpToSelection : function: 000001F05D467B78 C
+-  -  toggleAIDebug : function: 000001F0CB22B878 C
+-  -  cameraFarClip : function: 000001F05D46EEF8 C
+-  -  squadAddDestroyTask : function: 000001F05D468958 C
+-  -  showAllCollectables : function: 000001F05D468C58 C
+-  -  openSelectedObjectInToolOne : function: 000001F05D474838 C
+-  -  hideStreets : function: 000001F05D468418 C
+-  -  executeBuildModeEvent : function: 000001F05D46EA78 C
+-  -  __newindex : function: 000001D9A3D3DD48 C
+-  -  new : function: 000001F0CB22F298 C
+-  -  getObject : function: 000001F05D4752B8 C
+-  -  openSelectedObject : function: 000001F05D472E58 C
+-  -  killGameObject : function: 000001F05D475A38 C
+-  -  startFleetBombardementTargetMode : function: 000001F06BFA6528 C
+-  -  createTestStreetGridTiles : function: 000001F06BFA7068 C
+-  -  executeWorldMapEvent : function: 000001F05D470218 C
+-  -  forceWeather : function: 000001F05D46A6F8 C
+-  -  setCameraToObjectPosAndRot : function: 000001F05D469438 C
+-  -  hideTestRandomArea : function: 000001F05D4719B8 C
+-  -  executeBuildRailwayEvent : function: 000001F05D470E78 C
+-  -  isNewSession : function: 000001F05D472C18 C
+-  -  __index : function: 000001D9A3D3E258 C
+-  -  executeBuildStreetEvent : function: 000001F05D470C38 C
+-  -  executeTargetManagerGamepadEvent : function: 000001F05D46E358 C
+-  -  getObjectGroupByName : function: 000001F05D4757F8 C
+-  -  executeTargetManagerEventMouse : function: 000001F05D46F618 C
+-  -  unloadSession : function: 000001F05D46A9F8 C
+-  -  selection : function: 000001F05D46F018 C
+-  -  stopSequence : function: 000001F05D4736F8 C
+-  -  daytime : function: 000001F05D46E658 C
+-  -  showStreets : function: 000001F05D46A758 C
+-  -  forceSequenceCamera : function: 000001F05D473C38 C
+-  -  feedbackForceFieldRadiusHard : function: 000001F05D46DB78 C
+-  -  startSequence : function: 000001F05D471838 C
+-  -  setStance : function: 000001F05D4698B8 C
+-  -  feedbackToggleDebugFlag : function: 000001F05D46CDF8 C
+-  -  feedbackForceFieldSpeed : function: 000001F05D46F2B8 C
+-  -  cameraFOV : function: 000001F05D46ED18 C
+-  -  enableAllConstructionAreas : function: 000001F05D474DD8 C
+-  -  startNegotiationMenu : function: 000001F05D46AB78 C
+-  -  startIslandSequence : function: 000001F05D4738D8 C
+-  -  preloadObject : function: 000001F05D4735D8 C
+-  -  feedbackSetDebugRenderMode : function: 000001F05D46D398 C
+-  -  class_cast : userdata: 00007FF7D235E8B0 
+-  -  class_check : userdata: 00007FF7D235E920 
+-  -  squadAddRouteTask : function: 000001F05D468838 C
+-  -  setCameraToPreset : function: 000001F05D469258 C
+-  -  __eq : function: 00007FF7D239C430 C
+-  -  switchCameraControl : function: 000001F05D466D38 C
+-  -  hideDebugLayers : function: 000001F0CB22AC18 C
+-  -  getSelectedFactory : function: 000001F05D474778 C
+-  -  selectNextObject : function: 000001F05D475D38 C
+-  -  getObjectGroupByObject : function: 000001F05D474D18 C
+-  -  startSequenceByAsset : function: 000001F05D471538 C
+-  -  openInfoTip : function: 000001F05D474718 C
+-  -  destroySelectionNextGametick : function: 000001F05D473D58 C
+-  -  openSelectedObjectInT9 : function: 000001F05D4756D8 C
+-  stopSound : function: 000001D9A2447408 C
+-  fastQuit : function: 000001D9A2443B68 C
+-  toggleBlueprintMode : function: 000001D9A2445128 C
+-  startBuild : function: 000001D9A2445668 C
+
+
+system.  (geht wohl nicht mit getmetatable, aber da kurz einfach aus konsole abgeschrieben)
+wird genutzt um threads zu starten, siehe ein paar meiner skripte bzw. https://github.com/anno-mods/modding-guide/blob/main/Scripting/ReadAfterWrite.md
+-  internal
+    coroutines
+  resumeCoroutines
+  start
+  waitForGameTime
+  waitForGameTimeDelta
 
 
 # PropertyIDs
