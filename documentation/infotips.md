@@ -51,3 +51,20 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 17  ?
 - - 18  ?
 - - 19 seems to be used for listing attributes, eg. all effects from a buff.
+
+### Code Snippets
+To add a separator line (but they are as buggy as the vanilla lines below headers. Sometimes they are visible, sometimes not..)
+```xml
+<InfoElement>
+  <ElementType>6</ElementType>
+  <VisibilityElement>
+    <ElementType>
+      <ElementType>2</ElementType>
+    </ElementType>
+    <OperatorType />
+  </VisibilityElement>
+  <Text>
+    <Style />
+  </Text>
+</InfoElement>
+```
