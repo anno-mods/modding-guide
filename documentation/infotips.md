@@ -7,13 +7,47 @@ Alternatively I attached the extracted file in the modding discord channel here:
 
 
 ### Enums
-The infotips use alot of numbers to express operations. We have to test and find out the meaning ourself. Here what we already found out (no guarantee that it is correct):
-- CompareOperator:
-0 Equals
-1 Unequals
-2 smaller than
-3 smaller than or equal
-4 bigger than or equal
-5 bigger than
+The infotips use alot of numbers to express operations. By default all not-defined integer values are 0. 
+We have to test and find out the meaning ourself. Here what we already found out (no guarantee that it is correct):
+
+- **VisibilityElement**: these usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. 
+
+- **CompareOperator**:
+- - 0 (or not defined) Equals
+- - 1 Unequals
+- - 2 smaller than
+- - 3 smaller than or equal
+- - 4 bigger than or equal
+- - 5 bigger than
 
 
+- **ResultType**:
+- - 0 (or not defined) boolean (if ExpectedValueBool is not defined, it is "True")
+- - 1 integer (if ExpectedValueInt is not defined, it is 0)
+- - 2 float (if ExpectedValueFloat is not defined, it is 0)
+
+- **OperatorType** (is used after VisibilityElement to define the logic for the conditions contained in them):
+- - 0 all VisibilityElement listed on the same level are chained with "and" (so all of them must be true at the same time)
+- - 1 all VisibilityElement listed on the same level are chained with "or" (so one of the conditions must be true)
+
+- **ElementType** (they define the kind of tooltip/box/structure):
+- - 0  ?
+- - 1 seems to be some kind of header
+- - 2  ?
+- - 3  ?
+- - 4 seems to be used for attributes, eg: "Speed:    +10%"
+- - 5 used for dark-grey "background" text.
+- - 6  ?
+- - 7  ?
+- - 8  ?
+- - 9  ?
+- - 10  ?
+- - 11  ?
+- - 12  ?
+- - 13  ?
+- - 14  ?
+- - 15  ?
+- - 16  ?
+- - 17  ?
+- - 18  ?
+- - 19 seems to be used for listing attributes, eg. all effects from a buff.
