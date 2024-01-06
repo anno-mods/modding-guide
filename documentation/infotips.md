@@ -25,6 +25,8 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 0 (or not defined) boolean (if ExpectedValueBool is not defined, it is "True")
 - - 1 integer (if ExpectedValueInt is not defined, it is 0)
 - - 2 float (if ExpectedValueFloat is not defined, it is 0)
+- - Unfortunately it seems eg. ExpectedValueInt can really only deal with Int, **not** with constructs like this, which evaluate to an int: ```[ItemAssetData([RefGuid]) InputAmountUpgradeProduct(#index0#)]```
+
 
 - **OperatorType** (is used after VisibilityElement to define the logic for the conditions contained in them):
 - - 0 all VisibilityElement listed on the same level are chained with "and" (so all of them must be true at the same time)
