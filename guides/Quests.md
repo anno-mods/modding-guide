@@ -1,7 +1,7 @@
 # WIP Tutorial Quests, written by Serp:
 
 The Anno devs meanwhile finally published an xml file that contains all allowed properties and values with sometimes a short description (next to assets.xml of game files):
-properties-toolone.xml ( https://github.com/anno-mods/modding-guide/blob/main/documentation/properties-toolone.xml will call it p-t.xml as abbreviation)
+[properties-toolone.xml](https://github.com/anno-mods/modding-guide/blob/main/documentation/properties-toolone.xml) will call it p-t.xml as abbreviation
 You can look up many quest related values there to find out what they do.
 
 # The Quest itself:
@@ -42,7 +42,7 @@ This action will start the **Quest 150621 in Old World session 180023**.
 Hardcoding the session like this is always the easiest way to define the session the quest should start.
 
 ***Important Note:***  
-Starting a Quest with `ActionStartQuest` does ignore many things Quests can have defined, especially it does ignore the `PreConditionList` of a Quest! If you want to use all features from Quests, you maybe better should use a QuestPool https://github.com/anno-mods/modding-guide/tree/main/guides/Quests.md#QuestPools
+Starting a Quest with `ActionStartQuest` does ignore many things Quests can have defined, especially it does ignore the `PreConditionList` of a Quest! If you want to use all features from Quests, you maybe better should use a [QuestPool](https://github.com/anno-mods/modding-guide/blob/main/guides/Quests.md#questpools).
 
 
 ### Advanced Usage:
@@ -53,10 +53,162 @@ TODO evlt auch Interhit UseCurrentSession GetQuestSessionFromArea usw eingehen.
 ## QuestPools:
 (Again take a look at p-t.xml and search for `<Name>QuestPool</Name>` (the one that has "DisabledByDefault" difrectly below it) to see all allowed values and some description.)
 
-QuestPools are a helper construct to automatically start quests on regular basis if PreConditions are fullfilled. Eg. if you made like 10 Quests that simply should be chosen randomly if preconditions are fullfilled (just like the games Random Quests) you can put your Quests in a pool and define how often the pool should start up to how many quests at once and so on.
-It also supports adding QuestLines into the pool instead of Quests directly to make sure they are started one after the other.
+QuestPools are a helper construct to automatically start quests on regular basis if PreConditions are fullfilled. Eg. if you made like 10 Quests that simply should be chosen randomly if preconditions are fullfilled (just like the games Random Quests) you can put your Quests in a pool and define how often the pool should start up to how many quests at once and so on. It also supports adding QuestLines into the pool instead of Quests directly to make sure they are started one after the other.
+Pools can even include other pools, 
 
-Example: `<GUID>150082</GUID> <Name>OQ_B.Jorgensen_Pool</Name>`  
+#### Example for QuestLine `<GUID>112116</GUID> <Name>STQ_SunkenTreasure_Singleplayer_Pool</Name>`
+```xml
+<Asset>
+  <Template>QuestPool</Template>
+  <Values>
+    <Standard>
+      <GUID>112116</GUID>
+      <Name>STQ_SunkenTreasure_Singleplayer_Pool</Name>
+    </Standard>
+    <QuestPool>
+      <Quests>
+        <Item>
+          <Quest>113430</Quest>
+        </Item>
+        <Item>
+          <Quest>113432</Quest>
+        </Item>
+      </Quests>
+      <IsMainStoryPool>1</IsMainStoryPool>
+      <IsTopLevel>1</IsTopLevel>
+      <QuestLimit>3</QuestLimit>
+      <PoolCooldown>0</PoolCooldown>
+      <QuestCooldown>0</QuestCooldown>
+      <QuestPoolActionCallbacks>
+        <OnQuestStart>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestStart>
+        <OnQuestDeclined>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestDeclined>
+        <OnQuestActive>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestActive>
+        <OnQuestAborted>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestAborted>
+        <OnQuestTimedOut>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestTimedOut>
+        <OnQuestFailed>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestFailed>
+        <OnQuestSucceeded>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestSucceeded>
+        <OnQuestEnd>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestEnd>
+        <OnQuestDiscarded>
+          <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+          <Values>
+            <ActionList />
+          </Values>
+        </OnQuestDiscarded>
+      </QuestPoolActionCallbacks>
+    </QuestPool>
+    <Locked />
+    <PreConditionList>
+      <Condition>
+        <Template>ConditionIsDLCActive</Template>
+        <Values>
+          <Condition />
+          <ConditionIsDLCActive>
+            <DLCAssetList>
+              <Item>
+                <DLCAsset>410040</DLCAsset>
+              </Item>
+            </DLCAssetList>
+          </ConditionIsDLCActive>
+          <ConditionPropsNegatable />
+        </Values>
+      </Condition>
+      <SubConditions>
+        <Item>
+          <SubCondition>
+            <Template>PreConditionList</Template>
+            <Values>
+              <PreConditionList>
+                <Condition>
+                  <Template>ConditionUnlocked</Template>
+                  <Values>
+                    <Condition />
+                    <ConditionUnlocked>
+                      <UnlockNeeded>113818</UnlockNeeded>
+                    </ConditionUnlocked>
+                    <ConditionPropsNegatable />
+                  </Values>
+                </Condition>
+              </PreConditionList>
+            </Values>
+          </SubCondition>
+        </Item>
+        <Item>
+          <SubCondition>
+            <Template>PreConditionList</Template>
+            <Values>
+              <PreConditionList>
+                <Condition>
+                  <Template>ConditionIsMultiplayer</Template>
+                  <Values>
+                    <Condition />
+                    <ConditionIsMultiplayer />
+                    <ConditionPropsNegatable>
+                      <NegateCondition>1</NegateCondition>
+                    </ConditionPropsNegatable>
+                  </Values>
+                </Condition>
+              </PreConditionList>
+            </Values>
+          </SubCondition>
+        </Item>
+      </SubConditions>
+    </PreConditionList>
+  </Values>
+</Asset>
+```
+- At first this pool lists the Quests or QuestLines this Pool should start (in p-t.xml you see that Quest and QuestLine is valid: `<NeededProperty>Quest;QuestLine</NeededProperty>`)
+A `QuestLine` is simply a list of Quests one after the other and the pool will make sure to start them once in that order if the previous Quest is done.
+- not sure what `IsMainStoryPool` is for, but I guess we don't need it for quests added by mods.
+- `IsTopLevel`=1 is relevant because Pools can even include other pools. Only the TopLevel pool (the one that is not included within other pools) should have this set to 1 and it means that this pool is the one responsible to start the quests (while lower-level pools wait for "instructions" from their higher pool).
+- `QuestLimit`: "The max number of quests that this pool can call simultaneously". So the amount of quests that can be active at the same time from this pool (if PreConditions are met). Not really sure why vanilla sets it to 3 here, while it only inlcudes 2 Questlines, which means the max is 2 Quests at once anyway.
+- `PoolCooldown`: "Defines the time the pool is blocked after calling a quest". Eg. if you want to start a quest once every 30 minutes or so, enter a time in ms here. Since this vanilla pool wants to start the Questline Quests as soon as the PreConditions are fullfilled and the quest before is done, it uses a cooldown of 0.
+- `QuestCooldown`: "A quest of this pool is blocked for this time when it was resolved.", so if you want to make sure the same quest is not chosen again too soon, if you allow a quest to be active multiple times. In this vanilla example all quests are only active once, so does not really matter.
+- `QuestPoolActionCallbacks`: Here you can define Actions eg. on success or on discard and so on of Quests started via this Pool. You can also define these actions within the Quests itself, but if you want them to be the same for all quests of this pool, define it here. In vanilla there is eg. often code to remove the Quest-Offer-Ship (the one with a star above) if the Quest is discarded (rejected from the user before it really starts).
+- `PreConditionList`: Here you can define Conditions that must be true for the Pool to start Quests. As long as they are not true, the pool does not start Quests. You can also define PreConditions for individual Quests in the Quests themself. If a Quest has `KeepCheckingPreconditionsWhenRunning`=1 defined, the Quest is also aborted if PreConditions are no longer fullfilled, while the Quest already started.
+
+
+#### Advanced Example with random Quests: `<GUID>150082</GUID> <Name>OQ_B.Jorgensen_Pool</Name>`  
+TODO dann auch mit TopLevel pool usw.
 This is one of the pools that should start optional random quests from the AI for the human players.
 ```xml
 <Asset>
@@ -239,14 +391,4 @@ At first you see `QuestGroup` which is according to p-t.xml
 > A list of quest groups that this pool can call.
 
 When you search for the GUID -616566410 you will find it to be a Group GUID above alot of Assets being Quests from Jorgensen. This is a easy way to automatically include all Quests within that Group, but it is not very clear for the reader and modder. Because it also means you must take care where to put your own quest to avoid accidently adding it to such a existing group!  
-Another way to add yours quests is listing them one by one using:
-```xml
-<Quests>
-  <Item>
-    <Quest>113430</Quest>
-  </Item>
-  <Item>
-    <Quest>113432</Quest>
-  </Item>
-</Quests>
-```
+
