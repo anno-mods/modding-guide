@@ -3,16 +3,10 @@
 This tutorial will show you how to create quests and how to properly start them.
 
 
-# The Quest itself:
-- [Quests Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)  
-- [Creating a Quest](./Creating%20a%20Quest.md)  
- 
-
-# How to start a Quest:
-- [Starting Quests](./Starting%20Quests.md)  
+[Quests Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)  
+[QuestPools Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)  
 
 
-
-# QuestPools:
-- [QuestPools Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)
-- [Creating QuestPools](./Creating%20QuestPools.md)  
+1) [Creating a Quest](./Creating%20a%20Quest.md)  
+2) [Starting Quests](./Starting%20Quests.md)  
+3) [Creating QuestPools](./Creating%20QuestPools.md)  
