@@ -3,6 +3,11 @@ Written by Serp
 - [Quests](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)
 - [QuestPools](./Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)
 
+The Anno devs meanwhile finally published an xml file that contains all allowed properties and values with sometimes a short description (next to assets.xml of game files):
+[properties-toolone.xml](https://github.com/anno-mods/modding-guide/blob/main/documentation/properties-toolone.xml) (I will call it p-t.xml below as abbreviation).  
+You can look up many things there to find out what is supported where and what they do.  
+In the following I copy pasted these property descriptions and added some notes to it to make some things a bit more clear.  
+
 # Properties/Values of Quests explained:
 See templates.xml searching for `<Name>A7_Quest` to see the properties a normal quest has. See p-t.xml and search for `<Name>Quest</Name>` (there are multiple results, in current version it is in line 46508) and the other relevant properties.    
 Properties/values I don't mention here should be self explanatory or already explained enough by the description in p-t.xml.  
