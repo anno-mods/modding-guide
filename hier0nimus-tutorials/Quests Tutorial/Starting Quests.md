@@ -35,4 +35,5 @@ Starting a Quest with `ActionStartQuest` does ignore many things Quests can have
 
 
 ### Advanced Usage:
-TODO evlt auch Interhit UseCurrentSession GetQuestSessionFromArea usw eingehen.
+TODO evlt auch Interhit UseCurrentSession GetQuestSessionFromArea usw eingehen.  
+SubQuests die automatisch durch ConditionQuestSubQuest gestartet werden.
