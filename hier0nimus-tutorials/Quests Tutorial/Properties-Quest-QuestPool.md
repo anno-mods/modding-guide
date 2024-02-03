@@ -1,5 +1,8 @@
 Written by Serp
 
+- [Quests](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)
+- [QuestPools](./Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)
+
 # Properties/Values of Quests explained:
 See templates.xml searching for `<Name>A7_Quest` to see the properties a normal quest has. See p-t.xml and search for `<Name>Quest</Name>` (there are multiple results, in current version it is in line 46508) and the other relevant properties.    
 Properties/values I don't mention here should be self explanatory or already explained enough by the description in p-t.xml.  
