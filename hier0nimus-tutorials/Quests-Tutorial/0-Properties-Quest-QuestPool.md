@@ -73,7 +73,8 @@ Eg. `OnQuestStart` already happens as soon as the player is able to accept the Q
 
 #### `MaxCallOut/MaxSolveCount/MaxAbortCount`:
 *"Maximum number that this quest can be triggered."* / *"Maximum number that this quest can be solved."* / *"Maximum number that this quest can be aborted."*  
-Defaults to -1. A value <= 0 means infinite calls are possible. Eg. use these to make sure eg. a QuestPool can only start your Quest once at all/until solved once. 
+Defaults to -1. A value <= 0 means infinite calls are possible. Eg. use these to make sure eg. a QuestPool can only start your Quest once at all/until solved once.  
+The same Quest can only be active once at the same time IF started via a QuestPool (ActionStartQuest can start multiple times), regardless of any other settings. 
 
 #### `CountForQuestLimit`:
 *"True if this quest counts for the global and the pool quest limits."*. Defaults to 1. Set this to 0 if you don't want a quest to prevent other quests of the same pool to be started. I don't know if there really is a global limit and how much it is.
