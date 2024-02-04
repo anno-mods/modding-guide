@@ -252,7 +252,7 @@ So most of the time this is not relevant for you.
 Did not use this yet. Feel free to add how to use this if you know more about it.
 
 #### `CanBeActiveForMultipleParticipants`:
-*"Only takes effect in quest pools. Checking this will stop preventing the quest from being called from the pool, while another player has this quest running"*. Defaults to 0, but set it to 1 if you only want one human player to have the same Quest active at the same time.
+*"Only takes effect in quest pools. Checking this will stop preventing the quest from being called from the pool, while another player has this quest running"*. Defaults to 0, but set it to 1 if you want it possible that the Quest can be active for more than one human player at the same time.
 
 
 # Properties/Values of Questpools:
