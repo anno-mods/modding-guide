@@ -254,6 +254,72 @@ Did not use this yet. Feel free to add how to use this if you know more about it
 #### `CanBeActiveForMultipleParticipants`:
 *"Only takes effect in quest pools. Checking this will stop preventing the quest from being called from the pool, while another player has this quest running"*. Defaults to 0, but set it to 1 if you want it possible that the Quest can be active for more than one human player at the same time.
 
+#### `QuestOptional`:
+This contains on what object (where) you want your Quest to start. Mostly relevant if you set `QuestActivation` to `ManualActivation`, then this object will be the one with the star-icon over it the player has to click on to get the Quest offered.  
+- `<Name>QuestOptional</Name>`/`<Name>ConditionStarterObject</Name>` copied from p-t.xml to see all allowed nodes:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <Property>
+    <Name>QuestOptional</Name>
+    <ValueDefinition>
+      <DataType>Choice</DataType>
+      <Name>HasStarterObject</Name>
+      <Category>Init</Category>
+      <ReadOnlyDependingOnExportVersions>1</ReadOnlyDependingOnExportVersions>
+      <DataSet>QuestStarterObjectChoice</DataSet>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>AutoCreateAsset</DataType>
+      <Name>StarterObject</Name>
+      <Category>Init</Category>
+      <ReadOnlyDependingOnExportVersions>1</ReadOnlyDependingOnExportVersions>
+      <AllowedTemplates>ConditionStarterObject</AllowedTemplates>
+      <AllowedProperties />
+    </ValueDefinition>
+  </Property>
+
+
+  <Property>
+    <Name>ConditionStarterObject</Name>
+    <ValueDefinition>
+      <DataType>Boolean</DataType>
+      <Name>MoveIntoSession</Name>
+      <Description>True, if the StarterObjectObject should move into the session to the docking place. False, if the StarterObjectObject should be selectable from the very beginning</Description>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Float</DataType>
+      <Name>DockingPlaceDistance</Name>
+      <Description>If MoveIntoSession is true, then the StarterObjectObject tries to come near StarterObjectDockingPlace, respecting this distance</Description>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>AutoCreateAsset</DataType>
+      <Name>StarterObjectObject</Name>
+      <Description>The object that needs to be selected to start the quest. If MoveIntoSession is true, this object (=ship) will need to move into position first</Description>
+      <AllowedTemplates>ConditionObjectPlayerKontor;ConditionObjectClientQuestObject;ConditionObjectPrebuiltObject;ObjectFilterWithSignsAndFeedback;ConditionObjectSpawnedObject</AllowedTemplates>
+      <AllowedProperties />
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>AutoCreateAsset</DataType>
+      <Name>StarterObjectDockingPlace</Name>
+      <Description>The place where the StarterObjectObject tries to move to, when MoveIntoSession is true</Description>
+      <AllowedTemplates>ConditionObjectClientQuestObject;ConditionObjectPlayerKontor;ConditionObjectPrebuiltObject</AllowedTemplates>
+      <AllowedProperties />
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Boolean</DataType>
+      <Name>OverwriteExistingQuestArea</Name>
+      <Description>If true, the starter condition will not only set the area of the starter object as quest area when it is empty but also when is already set</Description>
+    </ValueDefinition>
+  </Property>
+  ```
+  </details>
+`HasStarterObject` is in vanilla only `None` (for no starter object) or `Specific` to define one. Technically also `QuestGiver` is allowed, but never used by vanilla, so I don't know what it does.  
+The both most used `StarterObjectObject` in vanilla are: 
+- `ConditionObjectPrebuiltObject` to make an already existing object the starter of a Quest, eg. a Lighthouse or Harbour from AI
+- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship from the QuestGiver as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests.
+
 
 # Properties/Values of Questpools:
 (Again take a look at p-t.xml and search for `<Name>QuestPool</Name>` (the one that has "DisabledByDefault" directly below it) to see all allowed values and some description)
