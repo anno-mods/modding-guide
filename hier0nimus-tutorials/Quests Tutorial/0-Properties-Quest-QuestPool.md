@@ -318,7 +318,65 @@ This contains on what object (where) you want your Quest to start. Mostly releva
 `HasStarterObject` is in vanilla only `None` (for no starter object) or `Specific` to define one. Technically also `QuestGiver` is allowed, but never used by vanilla, so I don't know what it does.  
 The both most used `StarterObjectObject` in vanilla are: 
 - `ConditionObjectPrebuiltObject` to make an already existing object the starter of a Quest, eg. a Lighthouse or Harbour from AI
-- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship from the QuestGiver as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests.
+  <details>
+  <summary>(CLICK) example CODE</summary>  
+  
+  ```xml
+  <ConditionStarterObject>
+    <StarterObjectObject>
+      <Template>ConditionObjectPrebuiltObject</Template>
+      <Values>
+        <ConditionObjectPrebuiltObject>
+          <PrebuiltObject>1010294</PrebuiltObject>
+          <PrebuiltObjectCheckOwner>1</PrebuiltObjectCheckOwner>
+          <PrebuiltUseProcessingParticipant>1</PrebuiltUseProcessingParticipant>
+        </ConditionObjectPrebuiltObject>
+        <ConditionScanner />
+        <ConditionObjectiveSignsAndFeedback>
+          <Infolayer>500693</Infolayer>
+          <MinimapToken>2001840</MinimapToken>
+        </ConditionObjectiveSignsAndFeedback>
+      </Values>
+    </StarterObjectObject>
+  </ConditionStarterObject>
+  ```
+  </details>
+- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship from the QuestGiver as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests.  
+  <details>
+  <summary>(CLICK) example CODE</summary>  
+  
+  ```xml
+  <ConditionStarterObject>
+    <StarterObjectObject>
+      <Template>ConditionObjectSpawnedObject</Template>
+      <Values>
+        <ConditionObjectSpawnedObject>
+          <ExecutionObject>102590</ExecutionObject>
+          <ObjectSpawnArea>
+            <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+            <Values>
+              <SpawnArea>
+                <SpawnContext>Object</SpawnContext>
+                <ContextGUID>100708</ContextGUID>
+                <DistanceToContext>20</DistanceToContext>
+              </SpawnArea>
+            </Values>
+          </ObjectSpawnArea>
+          <DoSetVisualObjectOwner>1</DoSetVisualObjectOwner>
+          <VisualObjectOwner>Third_party_04_Pirate_LaFortune</VisualObjectOwner>
+        </ConditionObjectSpawnedObject>
+        <ConditionScanner />
+        <ConditionObjectiveSignsAndFeedback>
+          <Infolayer>500173</Infolayer>
+        </ConditionObjectiveSignsAndFeedback>
+      </Values>
+    </StarterObjectObject>
+  </ConditionStarterObject>
+  ```
+  </details>
+
+
+---
 
 
 # Properties/Values of Questpools:
