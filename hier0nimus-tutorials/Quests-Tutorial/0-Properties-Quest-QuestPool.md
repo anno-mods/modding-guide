@@ -317,11 +317,13 @@ This contains on what object (where) you want your Quest to start. Mostly releva
   </details>
 `HasStarterObject` is in vanilla only `None` (for no starter object) or `Specific` to define one. Technically also `QuestGiver` is allowed, but never used by vanilla, so I don't know what it does.  
 The both most used `StarterObjectObject` in vanilla are: 
-- `ConditionObjectPrebuiltObject` to make an already existing object the starter of a Quest, eg. a Lighthouse or Harbour from AI
+- `ConditionObjectPrebuiltObject` to make an already existing object the starter of a Quest, eg. a Lighthouse or Harbour from AI.  
+  **Note**: the Quest signs will be over ALL objects that match this GUID/Owner. So it is often better to use unique objects, like lighthouses of AI or spawn a unique object first.  
   <details>
   <summary>(CLICK) example CODE</summary>  
   
-  Start Quest at a schnapps destillery owned by us with the default quest icons (infolayer)
+  Start Quest at schnapps destilleries owned by us with the default quest icons (infolayer).  
+  
   ```xml
   <ConditionStarterObject>
     <StarterObjectObject>
