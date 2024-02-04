@@ -9,7 +9,7 @@ You can look up many things there to find out what is supported where and what t
 In the following I copy pasted these property descriptions and added some notes to it to make some things a bit more clear.  
 
 # Properties/Values of Quests explained:
-See templates.xml searching for `<Name>A7_Quest` to see the properties a normal quest has. See p-t.xml and search for `<Name>Quest</Name>` (there are multiple results, in current version it is in line 46508) and the other relevant properties.    
+See templates.xml searching for `<Name>QuestTypes</Name>` to see the properties a normal quest has. See p-t.xml and search for `<Name>Quest</Name>` (there are multiple results, in current version it is in line 46508) and the other relevant properties.    
 Properties/values I don't mention here should be self explanatory or already explained enough by the description in p-t.xml.  
 
 **"Defaults to**" is based on the default values defined in properties.xml. There may be other values defined in the template you are using (if defined nowhere the values will be 0).
