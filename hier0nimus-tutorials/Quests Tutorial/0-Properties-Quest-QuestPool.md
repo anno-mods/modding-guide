@@ -25,7 +25,36 @@ Eg. the pirate Anne Harlow (`GUID 73`) is using:
 </ParticipantMessageObject>
 ```
 while in the asset `GUID 148` are notifications defined that should be played in specific situations, eg. on "QuestSuccessful" and so on.  
-So most of the time for generic quests it is enough to leave this "Message" values from the Quest empty or even better do completely skip them (not mention them at all in your code) since they are inherited from the templates anyways.
+So most of the time for generic quests it is enough to leave this "Message" values from the Quest empty or even better do completely skip them (not mention them at all in your code) since they are inherited from the templates anyways unless you want to add your own text/audio for specific messages:
+- A custom Notification you can put into any of these messages looks like this:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  For explanation what node does what, see properties-toolone.xml searching for `<Name>BaseNotification</Name>` and `<Name>CharacterNotification</Name>`
+  ```xml
+  <Notification>
+    <Template>CharacterNotification</Template>
+    <Values>
+      <CharacterNotification>
+        <Profile>45</Profile>
+        <NotificationTextFemale>FEMALE_TEXT_GUID</NotificationTextFemale>
+      </CharacterNotification>
+      <BaseNotification>
+        <NotificationText>MALE_TEXT_GUID</NotificationText>
+        <NotificationPriority>400</NotificationPriority>
+        <DisplayTimeout>30000</DisplayTimeout>
+        <NotificationMinDisplayTime>60000</NotificationMinDisplayTime>
+      </BaseNotification>
+      <NotificationSubtitle>
+        <Subtitle>AAUDIOTEXT_GUID</Subtitle>
+      </NotificationSubtitle>
+    </Values>
+  </Notification>
+  ```
+  As I already mentioned, the game already defaults to the QuestGiver, so adding "Profile" here to define who will be speaking is not needed, if you want it to be the QuestGiver.
+  You can also leave out NotificationPriority/DisplayTimeout/NotificationMinDisplayTime to use the default values and be on the save side.
+  </details>
+
 
 #### `OnQuestStart/OnQuestDeclined`:
   and all those "On..." values followed by `ActionList`:  
