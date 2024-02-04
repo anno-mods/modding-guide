@@ -321,6 +321,7 @@ The both most used `StarterObjectObject` in vanilla are:
   <details>
   <summary>(CLICK) example CODE</summary>  
   
+  Start Quest at a schnapps destillery owned by us with the default quest icons (infolayer)
   ```xml
   <ConditionStarterObject>
     <StarterObjectObject>
