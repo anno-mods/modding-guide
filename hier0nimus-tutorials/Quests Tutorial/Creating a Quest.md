@@ -490,8 +490,8 @@ It is enough to have these text-GUIDs defined in the text files, no need to add 
 - As [QuestActivation](./0-Properties-Quest-QuestPool.md#questactivation) I will use ManualActivation, so the user must click on this star-icon on the map to activate it.
 - [IsAbortable](./0-Properties-Quest-QuestPool.md#isabortable) set to 1, so user can abort it if he wants.
 - [NeededProgressLevel](./0-Properties-Quest-QuestPool.md#neededprogresslevel) will not be mentioned, so it will default to all progresslevels being allowed.
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [DelayTimer](./0-Properties-Quest-QuestPool.md#latencytimerdelaytimer) for a bit immersion we will use a DelayTimer of 10000ms, so the Quest is not instantly offered after PreConditions are fullfilled.
+- [QuestTrackerVisibility/QuestBookVisibility](./0-Properties-Quest-QuestPool.md#questtrackervisibilityquestbookvisibility) default values are fine, so we also don't mention them.
 - [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
 - [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
 - [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
