@@ -8,7 +8,7 @@ For this Tutorial we will create 2 simple Quests (search assets.xml of the game 
 - a delivery quest (deliver product x with a ship to kontor of Y) using template A7_QuestDeliveryObject (deliver to pirates as long you have peace with them)
 
 ## A7_QuestSustain
-Ok, we want to make a Quest from Archibald, offered as soon as we unlocked schnapps, to sustain an amount of schnapps in our island storage above 20 tons.
+Ok, we want to make a Quest from the Queen, offered as soon as we unlocked schnapps, to sustain an amount of schnapps in our island storage above 20 tons.
 
 
 It is always good to take a look how the vanilla game made this, so we will search for a A7_QuestSustain that looks similar to what we want to do and copy paste and adjust it.  
@@ -483,7 +483,7 @@ The very same is true for these [On-Actions](./0-Properties-Quest-QuestPool.md#o
 
 ### Quest
 Now we finally come to the [relevant values](./0-Properties-Quest-QuestPool.md#questgiver).  
-- We want to have **Archibald GUID 45** as our QuestGiver, you can either find his GUID in the assets.xml yourself or use a tool like this: https://a1800.net/?langSearch=english&textSearch=Archibald+Blake .  
+- We want to have **Queen GUID 75** as our QuestGiver, you can either find his GUID in the assets.xml yourself or use a tool like this: https://a1800.net/?langSearch=english&textSearch=The+Queen .  
 - Enter your GUIDs for StoryText/DescriptionText/AlternativeRewardTitle/QuestHints, see here how to add your own strings: https://github.com/anno-mods/modding-guide/tree/main/hier0nimus-tutorials/02-making-new-specialists#structure-of-the-file
 It is enough to have these text-GUIDs defined in the text files, no need to add assets for them in the assets.xml file.
 - [MaxCallOut/MaxSolveCount/MaxAbortCount](./0-Properties-Quest-QuestPool.md#maxcalloutmaxsolvecountmaxabortcount): For now our Quest should only be solveable a single time, but how often it is triggered or aborted we don't care. So we set MaxSolveCount to 1 and the others will not be mentioned, which makes them default to -1==disabled.
@@ -496,7 +496,7 @@ It is enough to have these text-GUIDs defined in the text files, no need to add 
 - [DelayTimer](./0-Properties-Quest-QuestPool.md#latencytimerdelaytimer) for a bit immersion we will use a DelayTimer of 10000ms, so the Quest is not instantly offered after PreConditions are fullfilled.
 - [QuestTrackerVisibility/QuestBookVisibility](./0-Properties-Quest-QuestPool.md#questtrackervisibilityquestbookvisibility) default values are fine, so we also don't mention them.
 - [ConfirmOnReached](./0-Properties-Quest-QuestPool.md#confirmonreachedcustomizeconfirmonreachedconditionconfirmonreachedcondition): while for many quests it makes sense to ask if one wants to complete the quest, it does not make that much sense for a Sustain-Quest, so we will not mention it which makes it default to 0 (keep in mind that your choosen template also sets values. some templates set this to 1, meaning if you don't mention it with other templates it defaults to 1 then). We also don't need to mention CustomizeConfirmOnReachedCondition/ConfirmOnReachedCondition in this case.
-- [HasExclusiveQuestGiver](./0-Properties-Quest-QuestPool.md#hasexclusivequestgiver): Setting it to 0, because we want Archibald to also offer his other Quests at the same time.
+- [HasExclusiveQuestGiver](./0-Properties-Quest-QuestPool.md#hasexclusivequestgiver): Setting it to 0, because we want The Queen to also offer her other Quests at the same time.
 - [QuestSessionDependencies](./0-Properties-Quest-QuestPool.md#questsessiondependenciesquestblockedsessions) use the Old World Session GUID 180023 here, because this is were Archibald is active and we want the Quest to start in.
 - [QuestDifficulty](./0-Properties-Quest-QuestPool.md#questdifficulty) the money reward balancing should see our Quest as Medium Difficulty.
 - [KeepCheckingPreconditionsWhenRunning](./0-Properties-Quest-QuestPool.md#keepcheckingpreconditionswhenrunning) does not matter for this Quest, because the PreConditions can not be false again anyways. Not mentioning it, which defaults to 0=disabled.
@@ -511,23 +511,12 @@ Here you can add whatever conditions you want that must be true before this Ques
 Since our Quest is about sustaining an amount of schnapps, we will only start the Quest after the player unlocked the product and built at least 2 Schnapps Distilleries.  
 
 ### QuestOptional
-As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest on one of our own Schnapps Distilleries. Using PrebuiltObjectCheckOwner=1 and PrebuiltUseProcessingParticipant=1 makes sure it is owned by us and not anyone. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap).
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectSpawnedObject ` and spawn a Queen starter-object near of our own Schnapps Distilleries. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap).
 
 
 ## A7_QuestDeliveryObject
-Quest from pirate. reputation invert from other pirate, start on spawned ship, precondition peace and abort if no longer peace. delivery wood, sails and money with ship.
+Quest from pirate. reputation invert from other pirate, start on prebuilt lighthouse, precondition peace and abort if no longer peace. delivery wood, sails and money with ship.
 
-As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will spawn a new starter-ship. The asset code of such a ship can be a simple copy of an existing one, it just needs a new GUID, eg:
-```xml
-  <ModOp Type="addNextSibling" GUID="102589">
-    <Asset>
-      <BaseAssetGUID>102589</BaseAssetGUID>
-      <Values>
-        <Standard>
-          <GUID>2001000000</GUID>
-          <Name>Ship Quest (Harlow)</Name>
-        </Standard>
-      </Values>
-    </Asset>
-  </ModOp>
-```
+### QuestOptional
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest at the lighthouse from Harlow. 
+
