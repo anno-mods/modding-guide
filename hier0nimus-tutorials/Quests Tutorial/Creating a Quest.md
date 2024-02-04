@@ -511,6 +511,12 @@ Here you can add whatever conditions you want that must be true before this Ques
 Since our Quest is about sustaining an amount of schnapps, we will only start the Quest after the player unlocked the product and built at least 2 Schnapps Distilleries.  
 
 ### QuestOptional
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest on one of our own Schnapps Distilleries. Using PrebuiltObjectCheckOwner=1 and PrebuiltUseProcessingParticipant=1 makes sure it is owned by us and not anyone. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap).
+
+
+## A7_QuestDeliveryObject
+Quest from pirate. reputation invert from other pirate
+
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will spawn a new starter-ship. The asset code of such a ship can be a simple copy of an existing one, it just needs a new GUID, eg:
 ```xml
 <ModOp Type="addNextSibling" GUID="102588">
@@ -518,14 +524,10 @@ As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will spaw
     <BaseAssetGUID>102588</BaseAssetGUID>
     <Values>
       <Standard>
-        <GUID>1500003515</GUID>
-        <Name>Ship Quest (Archibald Blake)</Name>
+        <GUID>2001000000</GUID>
+        <Name>Ship Quest (Harlow)</Name>
       </Standard>
     </Values>
   </Asset>
 </ModOp>
 ```
-
-
-## A7_QuestDeliveryObject
-Quest from pirate. reputation invert from other pirate
