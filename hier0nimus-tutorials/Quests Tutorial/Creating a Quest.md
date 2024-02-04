@@ -515,19 +515,19 @@ As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use 
 
 
 ## A7_QuestDeliveryObject
-Quest from pirate. reputation invert from other pirate
+Quest from pirate. reputation invert from other pirate, start on spawned ship, precondition peace and abort if no longer peace. delivery wood, sails and money with ship.
 
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will spawn a new starter-ship. The asset code of such a ship can be a simple copy of an existing one, it just needs a new GUID, eg:
 ```xml
-<ModOp Type="addNextSibling" GUID="102588">
-  <Asset>
-    <BaseAssetGUID>102588</BaseAssetGUID>
-    <Values>
-      <Standard>
-        <GUID>2001000000</GUID>
-        <Name>Ship Quest (Harlow)</Name>
-      </Standard>
-    </Values>
-  </Asset>
-</ModOp>
+  <ModOp Type="addNextSibling" GUID="102589">
+    <Asset>
+      <BaseAssetGUID>102589</BaseAssetGUID>
+      <Values>
+        <Standard>
+          <GUID>2001000000</GUID>
+          <Name>Ship Quest (Harlow)</Name>
+        </Standard>
+      </Values>
+    </Asset>
+  </ModOp>
 ```
