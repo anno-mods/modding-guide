@@ -236,7 +236,9 @@ Adding a list with `ReputationParticipant` *"The participant that rewards reputa
   </Property>
   ```
   </details>
-If you also want an Item or RewardPool including Items as reward, make sure to think about if you need to set `<GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>` otherwise the reward will not appear, if the player did not unlock it (eg. the item) yet.
+Usual Reward will be `<Reward>150038</Reward>` which is the "MoneyPool", so basically just money, but because it is in this pool it can scale by QuestDifficulty. Usual Amount for this MoneyPool Reward are between 1 and 10, test it ingame in how much this results, I don't know exactly.  
+If you also want an Item or RewardPool including Items or other possibly Locked things as reward, make sure to set `<GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>` otherwise the reward will not appear, if the player did not unlock it (eg. the item) yet.  
+
 
 
 #### `ResetPreconditionsAfterQuestWasTriggered`:
