@@ -5,9 +5,12 @@ The vanilla game offers several templates for different kinds of quests (search 
 
 For this Tutorial we will create 2 simple Quests (search assets.xml of the game for vanilla examples of other quest types):
 - a A7_QuestSustain quest, like "own X for a time of Y".
-- a delivery quest (deliver product x with a ship to kontor of Y) using template A7_QuestDeliveryObject
+- a delivery quest (deliver product x with a ship to kontor of Y) using template A7_QuestDeliveryObject (deliver to pirates as long you have peace with them)
 
 ## A7_QuestSustain
+Ok, we want to make a Quest from Archibald, offered as soon as we unlocked bear, to sustain a amount of bear in our island storage above 50 tons.
+
+
 It is always good to take a look how the vanilla game made this, so we will search for a A7_QuestSustain that looks similar to what we want to do and copy paste and adjust it.  
 
 - Vanilla Code GUID 152411 : **Champaign shower - Gasparov**
@@ -492,11 +495,14 @@ It is enough to have these text-GUIDs defined in the text files, no need to add 
 - [NeededProgressLevel](./0-Properties-Quest-QuestPool.md#neededprogresslevel) will not be mentioned, so it will default to all progresslevels being allowed.
 - [DelayTimer](./0-Properties-Quest-QuestPool.md#latencytimerdelaytimer) for a bit immersion we will use a DelayTimer of 10000ms, so the Quest is not instantly offered after PreConditions are fullfilled.
 - [QuestTrackerVisibility/QuestBookVisibility](./0-Properties-Quest-QuestPool.md#questtrackervisibilityquestbookvisibility) default values are fine, so we also don't mention them.
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [ConfirmOnReached](./0-Properties-Quest-QuestPool.md#confirmonreachedcustomizeconfirmonreachedconditionconfirmonreachedcondition): while for many quests it makes sense to ask if one wants to complete the quest, it does not make that much sense for a Sustain-Quest, so we will not mention it which makes it default to 0 (keep in mind that your choosen template also sets values. some templates set this to 1, meaning if you don't mention it with other templates it defaults to 1 then). We also don't need to mention CustomizeConfirmOnReachedCondition/ConfirmOnReachedCondition in this case.
+- [HasExclusiveQuestGiver](./0-Properties-Quest-QuestPool.md#hasexclusivequestgiver): Setting it to 0, because we want Archibald to also offer his other Quests at the same time.
+- [QuestSessionDependencies](./0-Properties-Quest-QuestPool.md#questsessiondependenciesquestblockedsessions) use the Old World Session GUID 180023 here, because this is were Archibald is active and we want the Quest to start in.
+- [QuestDifficulty](./0-Properties-Quest-QuestPool.md#questdifficulty) the money reward balancing should see our Quest as Medium Difficulty.
+- [KeepCheckingPreconditionsWhenRunning](./0-Properties-Quest-QuestPool.md#keepcheckingpreconditionswhenrunning) does not matter for this Quest, because the PreConditions can not be false again anyways. NMot mentioning it, which defaults to 0=disabled.
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
 - [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
 
 
