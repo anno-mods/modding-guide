@@ -483,9 +483,22 @@ Now we finally come to the [relevant values](./0-Properties-Quest-QuestPool.md#q
 - We want to have **Archibald GUID 45** as our QuestGiver, you can either find his GUID in the assets.xml yourself or use a tool like this: https://a1800.net/?langSearch=english&textSearch=Archibald+Blake .  
 - Enter your GUIDs for StoryText/DescriptionText/AlternativeRewardTitle/QuestHints, see here how to add your own strings: https://github.com/anno-mods/modding-guide/tree/main/hier0nimus-tutorials/02-making-new-specialists#structure-of-the-file
 It is enough to have these text-GUIDs defined in the text files, no need to add assets for them in the assets.xml file.
-- For now our Quest should only be available a single time [MaxCallOut/MaxSolveCount/MaxAbortCount](./0-Properties-Quest-QuestPool.md#maxcalloutmaxsolvecountmaxabortcount), so we set all of these values to 1.
+- [MaxCallOut/MaxSolveCount/MaxAbortCount](./0-Properties-Quest-QuestPool.md#maxcalloutmaxsolvecountmaxabortcount):For now our Quest should only be solveable a single time, but how often it is triggered or aborted we don't care. So we set MaxSolveCount to 1 and the others to -1 to disable them.
 - [CountForQuestLimit](./0-Properties-Quest-QuestPool.md#countforquestlimit) will also be 1, relevant for later for QuestPools.
 - [PreActivationTimer/QuestTimeLimit](./0-Properties-Quest-QuestPool.md#preactivationtimerquesttimelimit): We don't want our quest to be cancelled while it is offered, so we set the first to 0. And as time to complete the Quest we use 40 minutes (2400000 in ms).
-- 
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) always should be RandomQuest
+- As [QuestActivation](./0-Properties-Quest-QuestPool.md#questactivation) I will use ManualActivation, so the user must click on this star-icon on the map to activate it.
+- [IsAbortable](./0-Properties-Quest-QuestPool.md#isabortable) set to 1, so user can abort it if he wants.
+- [NeededProgressLevel](./0-Properties-Quest-QuestPool.md#neededprogresslevel) will not be mentioned, so it will default to all progresslevels being allowed.
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory)
+- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
+
+
 
 ## A7_QuestDeliveryObject
