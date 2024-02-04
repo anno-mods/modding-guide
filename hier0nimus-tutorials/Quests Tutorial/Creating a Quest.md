@@ -8,7 +8,7 @@ For this Tutorial we will create 2 simple Quests (search assets.xml of the game 
 - a delivery quest (deliver product x with a ship to kontor of Y) using template A7_QuestDeliveryObject (deliver to pirates as long you have peace with them)
 
 ## A7_QuestSustain
-Ok, we want to make a Quest from Archibald, offered as soon as we unlocked bear, to sustain a amount of bear in our island storage above 50 tons.
+Ok, we want to make a Quest from Archibald, offered as soon as we unlocked schnapps, to sustain an amount of schnapps in our island storage above 20 tons.
 
 
 It is always good to take a look how the vanilla game made this, so we will search for a A7_QuestSustain that looks similar to what we want to do and copy paste and adjust it.  
@@ -499,12 +499,33 @@ It is enough to have these text-GUIDs defined in the text files, no need to add 
 - [HasExclusiveQuestGiver](./0-Properties-Quest-QuestPool.md#hasexclusivequestgiver): Setting it to 0, because we want Archibald to also offer his other Quests at the same time.
 - [QuestSessionDependencies](./0-Properties-Quest-QuestPool.md#questsessiondependenciesquestblockedsessions) use the Old World Session GUID 180023 here, because this is were Archibald is active and we want the Quest to start in.
 - [QuestDifficulty](./0-Properties-Quest-QuestPool.md#questdifficulty) the money reward balancing should see our Quest as Medium Difficulty.
-- [KeepCheckingPreconditionsWhenRunning](./0-Properties-Quest-QuestPool.md#keepcheckingpreconditionswhenrunning) does not matter for this Quest, because the PreConditions can not be false again anyways. NMot mentioning it, which defaults to 0=disabled.
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
-- [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) 
+- [KeepCheckingPreconditionsWhenRunning](./0-Properties-Quest-QuestPool.md#keepcheckingpreconditionswhenrunning) does not matter for this Quest, because the PreConditions can not be false again anyways. Not mentioning it, which defaults to 0=disabled.
+- [ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation](./0-Properties-Quest-QuestPool.md#reputationquestfailreputationquestdeclinedreward-rewardreputation): Since this is a Quest for Archibald, who does not really care for what we do, we don't need to deal with reputation and just dont add them to use the default which does nothing I think (template has -2/+3 ReputationAmount but no ReputationParticipant defined, which defaults to Human0 and no one cares about the opinion of Human0 about us).  
+As `RewardAsset` we will use the MoneyPool and an Item from the Archibald Rewardpool GUID 192540 `<Name>Third_party_02 (Archibald Blake) Forced Voluntary Reward</Name>` (but of course you can also create your own RewardPool with custom rewards and chances)  
+In the vanilla Quest above you will see alot of `VectorElement/InheritanceMapV2`, we do not really know if this does anything at all, but even if it does, it is not needed. Simply remove all of this and just enter the allowed nodes based on p-t.xml. 
+- [HasStarterSpeechBubble/StarterSpeechBubble/HasSuccessSpeechBubble/SuccessSpeechBubble](./0-Properties-Quest-QuestPool.md#hasstarterspeechbubblestarterspeechbubblehassuccessspeechbubblesuccessspeechbubble): I don't care for these Speech-Bubbles, so I will remove them.
+- [CanBeActiveForMultipleParticipants](./0-Properties-Quest-QuestPool.md#canbeactiveformultipleparticipants): I'm fine with having multiple humans at the same time doing this Quest, so I set this to 1.
 
+### PreConditionList
+Here you can add whatever conditions you want that must be true before this Quest is allowed to be triggered.  
+Since our Quest is about sustaining an amount of schnapps, we will only start the Quest after the player unlocked the product and built at least 2 Schnapps Distilleries.  
+
+### QuestOptional
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will spawn a new starter-ship. The asset code of such a ship can be a simple copy of an existing one, it just needs a new GUID, eg:
+```xml
+<ModOp Type="addNextSibling" GUID="102588">
+  <Asset>
+    <BaseAssetGUID>102588</BaseAssetGUID>
+    <Values>
+      <Standard>
+        <GUID>1500003515</GUID>
+        <Name>Ship Quest (Archibald Blake)</Name>
+      </Standard>
+    </Values>
+  </Asset>
+</ModOp>
+```
 
 
 ## A7_QuestDeliveryObject
+Quest from pirate. reputation invert from other pirate
