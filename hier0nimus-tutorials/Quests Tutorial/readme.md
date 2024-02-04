@@ -1,6 +1,9 @@
 # WIP Tutorial Quests, written by Serp:
 
-This tutorial will show you how to create quests and how to properly start them.
+This tutorial will show you how to create quests and how to properly start them. 
+ 
+I will use GUIDs from the personal GUID Range: https://github.com/anno-mods/GuidRanges?tab=readme-ov-file#personal-guid-range  
+If you plan to publish your mod, make sure to reserve your own GUID Range there to not conflict with other mods.  
 
 
 [Quests Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)  
