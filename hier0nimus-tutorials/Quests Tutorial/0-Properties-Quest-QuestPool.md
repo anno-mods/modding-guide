@@ -345,13 +345,14 @@ The both most used `StarterObjectObject` in vanilla are:
   <details>
   <summary>(CLICK) example CODE</summary>  
   
+  Spawn a copy of the LaFortune Quest-Ship-Starter near the Lighthouse of LaFortune, disguised with owner LaFortune (Quest ships always belong to Neutral, so they can not be attacked by anyone)
   ```xml
   <ConditionStarterObject>
     <StarterObjectObject>
       <Template>ConditionObjectSpawnedObject</Template>
       <Values>
         <ConditionObjectSpawnedObject>
-          <ExecutionObject>102590</ExecutionObject>
+          <ExecutionObject>2001000000</ExecutionObject>
           <ObjectSpawnArea>
             <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
             <Values>
@@ -372,6 +373,19 @@ The both most used `StarterObjectObject` in vanilla are:
       </Values>
     </StarterObjectObject>
   </ConditionStarterObject>
+
+  <!-- Ship Asset copy for starter object from LaFortune -->
+  <ModOp Type="addNextSibling" GUID="102590">
+    <Asset>
+      <BaseAssetGUID>102590</BaseAssetGUID>
+      <Values>
+        <Standard>
+          <GUID>2001000000</GUID>
+          <Name>Ship Quest (LaFortune)</Name>
+        </Standard>
+      </Values>
+    </Asset>
+  </ModOp>
   ```
   </details>
 
