@@ -6,8 +6,8 @@ I will use GUIDs from the personal GUID Range: https://github.com/anno-mods/Guid
 If you plan to publish your mod, make sure to reserve your own GUID Range there to not conflict with other mods.  
 
 
-[Quests Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)  
-[QuestPools Properties](./Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)  
+[Quests Properties](./0-Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)  
+[QuestPools Properties](./0-Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)  
 
 
 1) [Creating a Quest](./Creating%20a%20Quest.md)  
