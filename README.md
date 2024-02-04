@@ -19,7 +19,7 @@ Detailed walkthrough the creation of mods.
 ### Advanced Tutorials/Guides
 5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session//readme.md)
 - [Lua Scripting](./Scripting)
-- [Tutorial Making Quests](./Quests-Tutorial)
+- [Tutorial Making Quests](./hier0nimus-tutorials/Quests-Tutorial)
 
 ## Handbooks
 
