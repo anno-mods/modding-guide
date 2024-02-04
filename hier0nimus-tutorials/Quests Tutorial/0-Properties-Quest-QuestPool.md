@@ -132,7 +132,111 @@ The game does already cancels Quests to players you declare war to, but this is 
 
 #### `ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation`:
 Adding a list with `ReputationParticipant` *"The participant that rewards reputation"* and `ReputationAmount` *"The amount of reputation that is rewarded. This number can be negative to create a reputation loss"*. So you can make the player loose reputation when a quest fails, but also gain reputation with other AIs (not only QuestGiver).  
-`Reward/RewardReputation` is defined outside of the Quest property, but works the same and is awared on Success of the Quest.
+`Reward/RewardReputation` is defined outside of the Quest property, but works the same and is awared on Success of the Quest.  
+- `<Name>Reward</Name>` copied from p-t.xml to see all allowed nodes:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <Property>
+    <Name>Reward</Name>
+    <ValueDefinition>
+      <DataType>Vector</DataType>
+      <Name>RewardAssets</Name>
+      <Items>
+        <ValueDefinition>
+          <DataType>Asset</DataType>
+          <Name>Reward</Name>
+          <NeededProperty>Product;Item;RewardPool;RegionRewardPool;ResourceRewardPool;Session;BuildPermit</NeededProperty>
+        </ValueDefinition>
+        <ValueDefinition>
+          <DataType>Integer</DataType>
+          <Name>Amount</Name>
+        </ValueDefinition>
+        <ValueDefinition>
+          <DataType>Boolean</DataType>
+          <Name>SentToQuestArea</Name>
+          <Description>Indicates if the reward should be sent to the kontor of the quest area</Description>
+        </ValueDefinition>
+        <ValueDefinition>
+          <DataType>Boolean</DataType>
+          <Name>IsHidden</Name>
+          <Description>Indicates whether this reward should not be shown as a reward preview upon quest invitation (i.e. Bonus Reward)</Description>
+        </ValueDefinition>
+        <ValueDefinition>
+          <DataType>Boolean</DataType>
+          <Name>IsDisguised</Name>
+          <Description>Indicates whether this (item) reward is disguised as visible, but unknown reward to not give away the actual item earned upon invitation</Description>
+        </ValueDefinition>
+      </Items>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Vector</DataType>
+      <Name>RewardReputation</Name>
+      <Description>List of reputation rewards distributed</Description>
+      <Items>
+        <ValueDefinition>
+          <DataType>Choice</DataType>
+          <Name>ReputationParticipant</Name>
+          <Description>The participant that rewards reputation</Description>
+          <DataSet>ParticipantID</DataSet>
+        </ValueDefinition>
+        <ValueDefinition>
+          <DataType>Integer</DataType>
+          <Name>ReputationAmount</Name>
+          <Description>The amount of reputation that is rewarded. This number can be negative to create a reputation loss</Description>
+        </ValueDefinition>
+      </Items>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Boolean</DataType>
+      <Name>GenerateIgnoreUnlocks</Name>
+      <Description>do not check unlocks when generating rewards</Description>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Boolean</DataType>
+      <Name>GenerateRewardsUnique</Name>
+      <Description>same Reward GUID is not chosen multiple times if a pool is listed as reward asset</Description>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Vector</DataType>
+      <Name>PenaltyList</Name>
+      <Items>
+        <ValueDefinition>
+          <DataType>Struct</DataType>
+          <Name>Penalty</Name>
+          <Items>
+            <ValueDefinition>
+              <DataType>AutoCreateAsset</DataType>
+              <Name>Action</Name>
+              <AllowedTemplates />
+              <AllowedProperties>Action</AllowedProperties>
+            </ValueDefinition>
+            <ValueDefinition>
+              <DataType>Boolean</DataType>
+              <Name>IsHidden</Name>
+            </ValueDefinition>
+            <ValueDefinition>
+              <DataType>Boolean</DataType>
+              <Name>IsDisguised</Name>
+            </ValueDefinition>
+            <ValueDefinition>
+              <DataType>Asset</DataType>
+              <Name>Icon</Name>
+            </ValueDefinition>
+            <ValueDefinition>
+              <DataType>Text</DataType>
+              <Name>Infotip</Name>
+              <NeededProperty>Text</NeededProperty>
+            </ValueDefinition>
+          </Items>
+        </ValueDefinition>
+      </Items>
+    </ValueDefinition>
+  </Property>
+  ```
+  </details>
+
 
 #### `ResetPreconditionsAfterQuestWasTriggered`:
 *"If true, the interal state of all preconditions will be reset. This is especially important for ConditionEvent which otherwise endlessly remembers any received event"*. Defaults to 0. I think this is only relevant if your PreCondition contain ConditionEvent like SessionEnter an such events. If you use such an event and leave this value 0, only "Entering the Session" once is enough to have the PreCondition true always, also for the next time the same Quest might start. If you set it to 1 instead, you must enter the Session everytime again to again allow the Quest to be started.  
