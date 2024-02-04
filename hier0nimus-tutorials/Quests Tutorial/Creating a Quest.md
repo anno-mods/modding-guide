@@ -485,7 +485,7 @@ Now we finally come to the [relevant values](./0-Properties-Quest-QuestPool.md#q
 It is enough to have these text-GUIDs defined in the text files, no need to add assets for them in the assets.xml file.
 - [MaxCallOut/MaxSolveCount/MaxAbortCount](./0-Properties-Quest-QuestPool.md#maxcalloutmaxsolvecountmaxabortcount): For now our Quest should only be solveable a single time, but how often it is triggered or aborted we don't care. So we set MaxSolveCount to 1 and the others will not be mentioned, which makes them default to -1==disabled.
 - [CountForQuestLimit](./0-Properties-Quest-QuestPool.md#countforquestlimit) will not be mentioned and defaults to 1, relevant later for QuestPools.
-- [PreActivationTimer/QuestTimeLimit](./0-Properties-Quest-QuestPool.md#preactivationtimerquesttimelimit): We don't want our quest to be cancelled while it is offered, so we set the first to 0. And as time to complete the Quest we use 40 minutes (2400000 in ms).
+- [PreActivationTimer/QuestTimeLimit](./0-Properties-Quest-QuestPool.md#preactivationtimerquesttimelimit): We don't want our quest to be cancelled while it is offered, so we dont mention PreActivationTimer which defaults to 0==disabled. And as time to complete the Quest we use 40 minutes (2400000 in ms).
 - [QuestCategory](./0-Properties-Quest-QuestPool.md#questcategory) always should be RandomQuest
 - As [QuestActivation](./0-Properties-Quest-QuestPool.md#questactivation) I will use ManualActivation, so the user must click on this star-icon on the map to activate it.
 - [IsAbortable](./0-Properties-Quest-QuestPool.md#isabortable) set to 1, so user can abort it if he wants.
