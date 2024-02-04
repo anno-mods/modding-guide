@@ -476,7 +476,7 @@ It is always good to take a look how the vanilla game made this, so we will sear
 
 This is quite alot of code. 
 ### Messages:
-Here [Quest Messages](./0-Properties-Quest-QuestPool.md#startermessagesuccessmessage-) we read, that some default messages are added automatically depending on the QuestGiver. And since the structure is inherited from the template anyways, we can clear up the code already by just removing all these Message nodes and only leave the ones where we want to add custom text/audio.  
+Here ([Quest Messages](./0-Properties-Quest-QuestPool.md#startermessagesuccessmessage-)) we read, that some default messages are added automatically depending on the QuestGiver. And since the structure is inherited from the template anyways, we can clear up the code already by just removing all these Message nodes and only leave the ones where we want to add custom text/audio.  
 
 ### On-Actions:
 The very same is true for these [On-Actions](./0-Properties-Quest-QuestPool.md#onqueststartonquestdeclined), simply clear the code up be removing all of them you don't want to add actions to.
