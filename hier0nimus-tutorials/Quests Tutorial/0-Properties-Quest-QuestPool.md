@@ -236,6 +236,7 @@ Adding a list with `ReputationParticipant` *"The participant that rewards reputa
   </Property>
   ```
   </details>
+If you also want an Item or RewardPool including Items as reward, make sure to think about if you need to set `<GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>` otherwise the reward will not appear, if the player did not unlock it (eg. the item) yet.
 
 
 #### `ResetPreconditionsAfterQuestWasTriggered`:
