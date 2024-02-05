@@ -26,7 +26,8 @@ Eg. the pirate Anne Harlow (`GUID 73`) is using:
 </ParticipantMessageObject>
 ```
 while in the asset `GUID 148` are notifications defined that should be played in specific situations, eg. on "QuestSuccessful" and so on.  
-So most of the time for generic quests it is enough to leave this "Message" values from the Quest empty or even better do completely skip them (not mention them at all in your code) since they are inherited from the templates anyways unless you want to add your own text/audio for specific messages:
+So most of the time for generic quests it is enough to leave this "Message" values from the Quest empty or even better do completely skip them (not mention them at all in your code) since they are inherited from the templates/internally prefilled with PaMSy anyways unless you want to add your own text/audio for specific messages.  
+**Note:** Some Quest templates are ...
 - A custom Notification you can put into any of these messages looks like this:
   <details>
   <summary>(CLICK) CODE</summary>  
