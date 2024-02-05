@@ -43,6 +43,7 @@ Detailed walkthrough the creation of mods.
 - [RDP Particle Files](./guides/particles.md)
 - [Mesh Height Maps](./guides/Mesh-Height-Maps.md) 
 - [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
+- [Edit-Island-Meshes.md](./guides/Edit-Island-Meshes.md) 
 
 ## More
 
