@@ -27,7 +27,7 @@ Eg. the pirate Anne Harlow (`GUID 73`) is using:
 ```
 while in the asset `GUID 148` are notifications defined that should be played in specific situations, eg. on "QuestSuccessful" and so on.  
 So most of the time for generic quests it is enough to leave this "Message" values from the Quest empty or even better do completely skip them (not mention them at all in your code) since they are inherited from the templates/internally prefilled with PaMSy anyways unless you want to add your own text/audio for specific messages.  
-**Note:** Some Quest templates are ...
+**Note:** This "internally prefilled" mechanic of PaMSy seems not to work like normal inheritance. Because otherwise a template Notification adding new Text should not overwrite a Subtitle. But it does for whatever reason. So if your Quest template adds not-empty Notifications (like A7_QuestSustain does for InvitationMessage), you most likely have to add at least the NotificationSubtitle from PaMSy again (eg. open assets.xml, go to GUID 148 for Harlow and search for QuestInvitation and copy paste the part with subtitle into your Quests InvitationMessage Notification)
 - A custom Notification you can put into any of these messages looks like this:
   <details>
   <summary>(CLICK) CODE</summary>  
@@ -48,7 +48,9 @@ So most of the time for generic quests it is enough to leave this "Message" valu
         <NotificationMinDisplayTime>60000</NotificationMinDisplayTime>
       </BaseNotification>
       <NotificationSubtitle>
+        <!-- Subtitle or SubtitleGroup, not both -->
         <Subtitle>AAUDIOTEXT_GUID</Subtitle>
+        <SubtitleGroup>GROUP_GUID</SubtitleGroup>
       </NotificationSubtitle>
     </Values>
   </Notification>
@@ -133,8 +135,9 @@ Both also accept Regions.
 The game does already cancels Quests to players you declare war to, but this is bugged since it only cancels one Quest. If there are multiple they are not all cancelled, so it is better to also include this as PreCondition if practicable.
 
 #### `ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation`:
-Adding a list with `ReputationParticipant` *"The participant that rewards reputation"* and `ReputationAmount` *"The amount of reputation that is rewarded. This number can be negative to create a reputation loss"*. So you can make the player loose reputation when a quest fails, but also gain reputation with other AIs (not only QuestGiver).  
+Adding a list here with `ReputationParticipant` (*"The participant that rewards reputation"*) and `ReputationAmount` (*"The amount of reputation that is rewarded. This number can be negative to create a reputation loss"*). So you can make the player loose reputation when a quest fails, but also gain reputation with other AIs (not only QuestGiver).  
 `Reward/RewardReputation` is defined outside of the Quest property, but works the same and is awared on Success of the Quest, see also [Reward](#reward).  
+**Note:** Many Quest templates prefill `ReputationQuestFail` and `RewardReputation` with a `ReputationAmount` (for no sane reason). So if you don't want any reputation gain/malus it is not enough to simply not mention it in your Quest (because it defaults to Human0 as ReputationParticipant, which does nothing, but is still displayed). Instead you have to overwrite the inherited list in your asset by adding `<ReputationFailList />` and `<RewardReputation />`.
 
 #### `Reward`:
 - `<Name>Reward</Name>` copied from p-t.xml to see all allowed nodes:
