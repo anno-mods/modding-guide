@@ -648,8 +648,8 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
                         <Values>
                           <SpawnArea>
                             <SpawnContext>Object</SpawnContext>
-                            <ContextGUID>1010294</ContextGUID>
-                            <DistanceToContext>5</DistanceToContext>
+                            <MatcherGUID>2001000003</MatcherGUID>
+                            <DistanceToContext>3</DistanceToContext>
                           </SpawnArea>
                         </Values>
                       </ObjectSpawnArea>
@@ -693,6 +693,59 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
   </ModOp>
   ```
   </details>
+- And GUID 2001000003 is a Matcher Asset, which is looking for a Schnapps Destillery owned by use:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <ModOp Type="addNextSibling" GUID="150725">
+    <Asset>
+      <Template>Matcher</Template>
+      <Values>
+        <Standard>
+          <GUID>2001000003</GUID>
+          <Name>Schnapps Destillery Processing</Name>
+        </Standard>
+        <Matcher>
+          <Criterion>
+            <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+            <Values>
+              <MatcherCriterion />
+              <MatcherCriterionAnd>
+                <CriterionOperandListAnd>
+                  <Item>
+                    <CriterionOperand>
+                      <Template>MatcherCriterionGUID</Template>
+                      <Values>
+                        <MatcherCriterion />
+                        <MatcherCriterionGUID>
+                          <ObjectMatched>1010294</ObjectMatched>
+                        </MatcherCriterionGUID>
+                      </Values>
+                    </CriterionOperand>
+                  </Item>
+                  <Item>
+                    <CriterionOperand>
+                      <Template>MatcherCriterionOwner</Template>
+                      <Values>
+                        <MatcherCriterion />
+                        <MatcherCriterionOwner>
+                          <UseProcessingParticipant>1</UseProcessingParticipant>
+                        </MatcherCriterionOwner>
+                      </Values>
+                    </CriterionOperand>
+                  </Item>
+                </CriterionOperandListAnd>
+              </MatcherCriterionAnd>
+            </Values>
+          </Criterion>
+        </Matcher>
+      </Values>
+    </Asset>
+  </ModOp>
+  ```
+  </details>
+
 
 
 ## A7_QuestDeliveryObject
@@ -701,3 +754,42 @@ Quest from pirate. reputation invert from other pirate, start on prebuilt lighth
 ### QuestOptional
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest at the lighthouse from Harlow. 
 
+
+## Starting the Quest: QuestPool
+- We will [start the Quests](./Starting%20Quests.md) with help of a QuestPool:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <ModOp Type="addNextSibling" GUID="150725">
+    <Asset>
+      <Template>QuestPool</Template>
+      <Values>
+        <Standard>
+          <GUID>2001000002</GUID>
+          <Name>QuestPool</Name>
+        </Standard>
+        <QuestPool>
+          <Quests>
+            <Item>
+              <Quest>2001000001</Quest>
+              <Weight>10</Weight>
+            </Item>
+          </Quests>
+          <PoolCooldown>60000</PoolCooldown>
+          <QuestCooldown>0</QuestCooldown>
+          <CooldownOnQuestStart>1</CooldownOnQuestStart>
+          <CooldownOnQuestEnd>0</CooldownOnQuestEnd>
+          <AffectedByCooldownFactor>1</AffectedByCooldownFactor>
+          <IsMainStoryPool>0</IsMainStoryPool>
+          <IsTopLevel>1</IsTopLevel>
+          <QuestLimit>1</QuestLimit>
+        </QuestPool>
+        <Locked>
+          <DefaultLockedState>0</DefaultLockedState>
+        </Locked>
+      </Values>
+    </Asset>
+  </ModOp>
+  ```
+  </details>
