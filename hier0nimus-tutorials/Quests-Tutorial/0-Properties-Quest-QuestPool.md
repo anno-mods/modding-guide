@@ -302,7 +302,7 @@ Usual `RewardAssets` will be `<Reward>150038</Reward>` which is the "MoneyPool",
   ```
   </details>
 If you also want an Item or RewardPool including Items or other possibly Locked things as reward, make sure to set `<GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>` otherwise the reward will not appear, if the player did not unlock it (eg. the item) yet.
-There is also `PenaltyList` within the Reward Property, but although it is used for a few Quests, in my tests the action defined in there did nothing, neither on succes nor on fail of the Qest, so I don't know if and how this works.    
+There is also `PenaltyList` within the Reward Property, but although it is used for a few Quests, in my tests the action defined in there did nothing, neither on succes nor on fail of the Quest, so I don't know if and how this works.    
 
 
 
