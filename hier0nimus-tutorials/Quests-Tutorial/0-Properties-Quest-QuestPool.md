@@ -69,10 +69,10 @@ Eg. `OnQuestStart` already happens as soon as the player is able to accept the Q
 *"This is the guys picture will be shown in the quest"*. As mentioned above this is also where the default messages will be taken from. A quest can not start, if the QuestGiver does not exist in the game (eg. Jorgensen can not start a quest if she is not part of the game). Most neutral QuestGivers like the farmers (`<GUID>86</GUID>`) are using the `Profile_Virtual_NeverOwnsObjects` template which has `<CreateModeMeta>AutoCreate_Always</CreateModeMeta>` defined to make sure they always exist in every game.
 
 #### `StoryText/DescriptionText/AlternativeRewardTitle/QuestHints`:
-`StoryText`: *"This is the fluff text of a quest."* eg. an embellished story.  
-`DescriptionText`: *"This is the description of a quest."* telling the player what to do exactly in short. Not needed if the WinConditions are self explanatory already.  
-`AlternativeRewardTitle`: *"An alternative headline for the rewards"*. Defaults to GUID 2653 ("Reward"). So use it if you think this word does not fit for your Quest.  
-`QuestHints`: Add Text GUIDs here for short hints how to solve the Quest like "Search near X" or mention the session name where to look and stuff like this.
+- `StoryText`: *"This is the fluff text of a quest."* eg. an embellished story.  
+- `DescriptionText`: *"This is the description of a quest."* telling the player what to do exactly in short. Not needed if the WinConditions are self explanatory already.  
+- `AlternativeRewardTitle`: *"An alternative headline for the rewards"*. Defaults to GUID 2653 ("Reward"). So use it if you think this word does not fit for your Quest.  
+- `QuestHints`: Add Text GUIDs here for short hints how to solve the Quest like "Search near X" or mention the session name where to look and stuff like this.
 
 #### `MaxCallOut/MaxSolveCount/MaxAbortCount`:
 *"Maximum number that this quest can be triggered."* / *"Maximum number that this quest can be solved."* / *"Maximum number that this quest can be aborted."*  
@@ -83,17 +83,17 @@ The same Quest can only be active once at the same time IF started via a QuestPo
 *"True if this quest counts for the global and the pool quest limits."*. Defaults to 1. Set this to 0 if you don't want a quest to prevent other quests of the same pool to be started. I don't know if there really is a global limit and how much it is.
 
 #### `PreActivationTimer/QuestTimeLimit`:
-`PreActivationTimer`: *"This timer cancelles a quest if the quest has not become active until the timer runs out."* Eg. used for Quests that need to be accepted by the user first, eg. the ones popping up in the world with a star-icon spinning over them. If the user does not activate/accept the quest within PreActivationTimer, it is cancelled. Default will be 0 which disables this timer.  
-`QuestTimeLimit`: *"If a time limit is set, the quest will fail if it is not completed within this time"*. Defaults to 1800000 ms. Timer starts after the Quest was activated/accepted.
+- `PreActivationTimer`: *"This timer cancelles a quest if the quest has not become active until the timer runs out."* Eg. used for Quests that need to be accepted by the user first, eg. the ones popping up in the world with a star-icon spinning over them. If the user does not activate/accept the quest within PreActivationTimer, it is cancelled. Default will be 0 which disables this timer.  
+- `QuestTimeLimit`: *"If a time limit is set, the quest will fail if it is not completed within this time"*. Defaults to 1800000 ms. Timer starts after the Quest was activated/accepted.
 
 #### `QuestCategory`:
 *"The category of the quest defines the internal behaviour of the quest."*. Defaults to MainQuest. Since we can neither change nor look at the "interal behaviour", we can only test a bit what this does exactly. See datasets.xml QuestCategory for all allowed values. But it might be best to always use "RandomQuest" here unless you want to add a new Quest to the vanilla Story Questline.
 
 #### `QuestActivation`:
 *"Defines at which point this quest changes its status to "Activated"*. Defaults to QuestStart. Only activated quests are visible in the Quest Tracker." For allowed values see datasets.xml QuestActivationTime.  
-`ManualActivation` means the Quest will appear as acceptable Quest on the map eg. with the star-icon (see also [QuestOptional](#questoptional)) and the user can select and start it this way.  
-`QuestStart` means the Quest will directly be active in the players Questlog without a choice to accept/decline, but of course the player might be able to abort it (if IsAbortable=1).  
-`ConfirmationDialog` will directly starts the Invitation Notification and asks you to accept the quest or not.  
+- `ManualActivation` means the Quest will appear as acceptable Quest on the map eg. with the star-icon (see also [QuestOptional](#questoptional)) and the user can select and start it this way.  
+- `QuestStart` means the Quest will directly be active in the players Questlog without a choice to accept/decline, but of course the player might be able to abort it (if IsAbortable=1).  
+- `ConfirmationDialog` will directly starts the Invitation Notification and asks you to accept the quest or not.  
 
 #### `IsAbortable`:
 *"If true, this quest can be aborted in the assignment center or the quest tracker"*. Defaults to 1. Allow to abort accepted/active quests or not.
@@ -102,18 +102,18 @@ The same Quest can only be active once at the same time IF started via a QuestPo
 *"This quest can only be triggered if the player progress level matches these checked levels."* Defaults to `EarlyGame;EarlyMidGame;MidGame;LateMidGame;LateGame;EndGame` so all progresslevels are allowed by default.
 
 #### `LatencyTimer/DelayTimer`:
-`LatencyTimer`: *"Latency before a quest can start after all other preconditions are fulfilled. The latency starts again if a single precondition check fails during the countdown. This needs to be checked over the whole duration and is EXPENSIVE for game performance"*.  
-`DelayTimer`: *"Delay the quest after the preconditions were fulfilled once. The preconditions will be checked once again after the delay finished. This is a CHEAPER alternative to the latency timer in terms of performance"*.  
+- `LatencyTimer`: *"Latency before a quest can start after all other preconditions are fulfilled. The latency starts again if a single precondition check fails during the countdown. This needs to be checked over the whole duration and is EXPENSIVE for game performance"*.  
+- `DelayTimer`: *"Delay the quest after the preconditions were fulfilled once. The preconditions will be checked once again after the delay finished. This is a CHEAPER alternative to the latency timer in terms of performance"*.  
 Use one of these, at best DelayTimer, if you want the PreConditions of the Quest to be fullfilled for a specific amount of time before the Quest is allowed to appear.
 
 #### `QuestTrackerVisibility/QuestBookVisibility`:
-`QuestTrackerVisibility`: *"Defines when this quest will be visible in the quest tracker."* Defaults to Session (so only visible in the session the Quest is active in). See datasets.xml QuestTrackerVisibility.   
-`QuestBookVisibility`: *"Defines when this quest will be visible in the quest book."* Defaults to SameAsQuestTracker. See datasets.xml QuestBookVisibility.  
+- `QuestTrackerVisibility`: *"Defines when this quest will be visible in the quest tracker."* Defaults to Session (so only visible in the session the Quest is active in). See datasets.xml QuestTrackerVisibility.   
+- `QuestBookVisibility`: *"Defines when this quest will be visible in the quest book."* Defaults to SameAsQuestTracker. See datasets.xml QuestBookVisibility.  
 
 #### `ConfirmOnReached/CustomizeConfirmOnReachedCondition/ConfirmOnReachedCondition`:
-`ConfirmOnReached`: *"After solving the quest stays in quest tracker and needs to be confirmed by player"*. Defaults to 0.  
-`CustomizeConfirmOnReachedCondition`: *"If true, a custom confirmOnReached condition can be configured for this quest specifically"*. Defaults to 0.  
-`ConfirmOnReachedCondition`: *"Use this to provide a custom configuration for the resolve confirmation for this quest"*. Needs CustomizeConfirmOnReachedCondition set to 1 to be used. Also see p-t.xml and vanilla usage of it for more info how to use. It is not needed for basic quests.  
+- `ConfirmOnReached`: *"After solving the quest stays in quest tracker and needs to be confirmed by player"*. Defaults to 0.  
+- `CustomizeConfirmOnReachedCondition`: *"If true, a custom confirmOnReached condition can be configured for this quest specifically"*. Defaults to 0.  
+- `ConfirmOnReachedCondition`: *"Use this to provide a custom configuration for the resolve confirmation for this quest"*. Needs CustomizeConfirmOnReachedCondition set to 1 to be used. Also see p-t.xml and vanilla usage of it for more info how to use. It is not needed for basic quests.  
 
 #### `HasExclusiveQuestGiver`:
 *"Optional quests are only started if no other exclusive quest is already running with the same quest giver"*. Defaults to 1. Most of the time you should set this to 0 if you don't want to block other quests from the same QuestGiver.
@@ -122,8 +122,8 @@ Use one of these, at best DelayTimer, if you want the PreConditions of the Quest
 I don't know what this does, it is neither used in vanilla nor explained in p-t.xml. I assume quests listed here can not be active at the same time? But one needs to test.
 
 #### `QuestSessionDependencies/QuestBlockedSessions`:
-`QuestSessionDependencies`: *"If not empty, the quest can only be triggered if **one** of the specified sessions is loaded"*. I think if nothing else is defined and the quest is started via a QuestPool, this is also the Quest the session will be active in.  
-`QuestBlockedSessions`: *"If not empty, the quest can not be triggered in one of the specified sessions"*.  
+- `QuestSessionDependencies`: *"If not empty, the quest can only be triggered if **one** of the specified sessions is loaded"*. I think if nothing else is defined and the quest is started via a QuestPool, this is also the Quest the session will be active in.  
+- `QuestBlockedSessions`: *"If not empty, the quest can not be triggered in one of the specified sessions"*.  
 Both also accept Regions. 
 
 #### `QuestDifficulty`:
@@ -474,9 +474,11 @@ Disabled Pools do not start Quests. Defaults to 0. For basic usage, just leave t
 
 #### `Quests/Groups/SubPools`:
 Lists inlucding Quests/Groups/SubPools, you can define a Weight for each of them to have some more likely to be chosen.    
-`Quests`: can be directly the Quest GUIDs you want to include or `QuestLine` objects to make sure they are automatically played one after the other.  
-`Groups`: When you search for the `GUID -616566410` you will find it to be a Group GUID above alot of Assets being Quests from Jorgensen and used in a QuestPool. This is a easy way to automatically include all Quests within that Group, but it is not very clear for the reader and modder. Because it also means you must take care **where to put** your own quest to avoid accidently adding it to such a existing group!  
-`SubPools`: Pools can even include other Pools. Eg. you want a Pool to start some random Quests, but you have many Quests of different categories and want different cooldowns for them. Then you can order them into different SubPools with their own Cooldowns and start them with a TopLevel Pool. Eg. the TopLevel Pool calls a Quest once every 30 minutes and your SubPools have a PoolCooldown of 60 minutes, to make sure the same category of Quest is not chosen two times in a row.  
+- `Quests`: can be directly the Quest GUIDs you want to include or `QuestLine` objects to make sure they are automatically played one after the other.  
+- `Groups`: When you search for the `GUID -616566410` you will find it to be a Group GUID above alot of Assets being Quests from Jorgensen and used in a QuestPool. This is a easy way to automatically include all Quests within that Group, but it is not very clear for the reader and modder. Because it also means you must take care **where to put** your own quest to avoid accidently adding it to such a existing group!  
+- `SubPools`: Pools can even include other Pools. Eg. you want a Pool to start some random Quests, but you have many Quests of different categories and want different cooldowns for them. Then you can order them into different SubPools with their own Cooldowns and start them with a TopLevel Pool. Eg. the TopLevel Pool calls a Quest once every 30 minutes and your SubPools have a PoolCooldown of 60 minutes, to make sure the same category of Quest is not chosen two times in a row.  
+
+I found no integrated way to make the pool randomly start no Quest after the Cooldown (similar to random rewardpools using EmptyRewardPool to have the chance for no reward). But adding an AutoSolved-Quest kinds of act like this, you find one in my shared mod [shared_ObjectDummies](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main/shared_ObjectDummies)(v1.04 and higher).  
 
 #### `IsMainStoryPool`:
 Defaults to 0. Not really sure what this does, but I assume it should only be used for vanilla story Quests, so better don't touch this.
@@ -488,15 +490,15 @@ Defaults to 0. Not really sure what this does, but I assume it should only be us
 *"The max number of quests that this pool can call simultaneously"*. Defaults to 1. So the amount of quests that can be active at the same time started from this pool (if PreConditions are met). 
  
 #### `PoolCooldown/CooldownOnQuestStart/CooldownOnQuestEnd/QuestCooldown/AffectedByCooldownFactor`:
-`PoolCooldown`: *"Defines the time the pool is blocked after calling a quest"*. Defaults to 120000 ms. Eg. if you want to trigger any quest of the pool once every 30 minutes or so, enter a time in ms here. Use a cooldown of 0 if you want all quests to directly be triggered as soon as all PreConditions are met.  
-`CooldownOnQuestStart`: *"Starts the pool cooldown if no pool cooldown is running and a quest started"*. "Quest started" in this case is already true as soon as the Quest is triggered by the Pool, even if it is only currently offered on the map and the player still has to click and activate the Quest! This means if you use only this and put Cooldown eg. to 10 minutes, while the user discards/abort a Quest 11 minutes after it appeared on the map, the pool can immediately start another Quest.   
-`CooldownOnQuestEnd`: *"Starts the pool cooldown if no pool cooldown is running and a quest ended"*. "OnQuestEnd", so it does not matter if it succeeded, failed or aborted/discarded.   
+- `PoolCooldown`: *"Defines the time the pool is blocked after calling a quest"*. Defaults to 120000 ms. Eg. if you want to trigger any quest of the pool once every 30 minutes or so, enter a time in ms here. Use a cooldown of 0 if you want all quests to directly be triggered as soon as all PreConditions are met.  
+- `CooldownOnQuestStart`: *"Starts the pool cooldown if no pool cooldown is running and a quest started"*. "Quest started" in this case is already true as soon as the Quest is triggered by the Pool, even if it is only currently offered on the map and the player still has to click and activate the Quest! This means if you use only this and put Cooldown eg. to 10 minutes, while the user discards/abort a Quest 11 minutes after it appeared on the map, the pool can immediately start another Quest.   
+- `CooldownOnQuestEnd`: *"Starts the pool cooldown if no pool cooldown is running and a quest ended"*. "OnQuestEnd", so it does not matter if it succeeded, failed or aborted/discarded.   
 Keep in mind that this could have weird side effects, since the Cooldown is only started if cooldown is not already running. Eg. if you set it to 30 minutes and the user finishes the Quest in 29 minutes, 1 minute later the Pool can start another Quest. But if the user needs 31 minutes instead, there will be another Cooldown of 30 minutes. Setting both CooldownOnQuestStart and CooldownOnQuestStart to 0 disables to PoolCooldown, so it will start all available Quests immediately without Cooldown.   
-`QuestCooldown`: *"A quest of this pool is blocked for this time when it was resolved."*. Defaults to 300000 ms. So if you want to make sure the same quest is not chosen again too soon, if you allow a quest to be active multiple times. Set it to 0 if you don't want such a cooldown. This has no effect in Pools only including SubPools. This cooldown is tight to the Quest and always starts at the end of the Quest, regardless of CooldownOnQuestStart/CooldownOnQuestEnd.   
-`AffectedByCooldownFactor`: *"When true, the cooldown will be affected by the cooldown multiplier of the quest frequencies in the difficulty settings"*. Defaults to 1. In vanilla these cooldown factors are *1 on "often", *2 on "normal" and *3 on "seldom" quest frequency gamesetting (see GUID 2002450 OptionalQuestFrequency). This also only affects PoolCooldown, not QuestCooldown.  
+- `QuestCooldown`: *"A quest of this pool is blocked for this time when it was resolved."*. Defaults to 300000 ms. So if you want to make sure the same quest is not chosen again too soon, if you allow a quest to be active multiple times. Set it to 0 if you don't want such a cooldown. This has no effect in Pools only including SubPools. This cooldown is tight to the Quest and always starts at the end of the Quest, regardless of CooldownOnQuestStart/CooldownOnQuestEnd.   
+- `AffectedByCooldownFactor`: *"When true, the cooldown will be affected by the cooldown multiplier of the quest frequencies in the difficulty settings"*. Defaults to 1. In vanilla these cooldown factors are *1 on "often", *2 on "normal" and *3 on "seldom" quest frequency gamesetting (see GUID 2002450 OptionalQuestFrequency). This also only affects PoolCooldown, not QuestCooldown.  
 
 #### `QuestSessionDependencies`:
-`QuestSessionDependencies`: *"If any sessions will be linked here, than this pool does only select new quests if **one** of the given sessions is currently running"*. Also supports Region.   
+*"If any sessions will be linked here, than this pool does only select new quests if **one** of the given sessions is currently running"*. Also supports Region.   
 
 #### `QuestPoolCooldownMultiplierList`:
 No description and never used from the game, but looking at p-t.xml `<Name>QuestPoolCoodownMultiplier</Name>` looks like one can make a Pool to multiply his Cooldown based on the Happiness of a specific population to make Quests appear more often. 
