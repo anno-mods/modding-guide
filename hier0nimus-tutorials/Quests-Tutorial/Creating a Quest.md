@@ -756,40 +756,4 @@ As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use 
 
 
 ## Starting the Quests: QuestPool
-- We will [start the Quests](./Starting%20Quests.md) with help of a **QuestPool**:
-  <details>
-  <summary>(CLICK) CODE</summary>  
-  
-  ```xml
-  <ModOp Type="addNextSibling" GUID="150725">
-    <Asset>
-      <Template>QuestPool</Template>
-      <Values>
-        <Standard>
-          <GUID>2001000002</GUID>
-          <Name>QuestPool</Name>
-        </Standard>
-        <QuestPool>
-          <Quests>
-            <Item>
-              <Quest>2001000001</Quest>
-              <Weight>10</Weight>
-            </Item>
-          </Quests>
-          <PoolCooldown>60000</PoolCooldown>
-          <QuestCooldown>0</QuestCooldown>
-          <CooldownOnQuestStart>1</CooldownOnQuestStart>
-          <CooldownOnQuestEnd>0</CooldownOnQuestEnd>
-          <AffectedByCooldownFactor>1</AffectedByCooldownFactor>
-          <IsMainStoryPool>0</IsMainStoryPool>
-          <IsTopLevel>1</IsTopLevel>
-          <QuestLimit>1</QuestLimit>
-        </QuestPool>
-        <Locked>
-          <DefaultLockedState>0</DefaultLockedState>
-        </Locked>
-      </Values>
-    </Asset>
-  </ModOp>
-  ```
-  </details>
+See here how to [create a QuestPools](./Creating%20QuestPools.md)
