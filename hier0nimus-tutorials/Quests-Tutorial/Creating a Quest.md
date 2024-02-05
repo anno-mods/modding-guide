@@ -476,7 +476,7 @@ It is always good to take a look how the vanilla game made this, so we will sear
 
 This is quite alot of code. 
 ### Messages:
-Here ([Quest Messages](./0-Properties-Quest-QuestPool.md#startermessagesuccessmessage-)) we read, that some default messages are added automatically depending on the QuestGiver. And since the structure is inherited from the template anyways, we can clear up the code already by just removing all these Message nodes and only leave the ones where we want to add custom text/audio.  
+Here ([Quest Messages](./0-Properties-Quest-QuestPool.md#startermessagesuccessmessage-)) we read, that some default messages are added automatically depending on the QuestGiver. And since the structure is inherited from the template anyways, we can clear up the code already by just removing nearly all these Message nodes and only leave the ones where we want to add custom text/audio. As mentioned on that link, the `A7_QuestSustain` Template does set custom text for the InvitationMessage. So we have to add our default PaMSy Subtitle back, which can be found in GUID 150 (PaMSy of the Queen) and is `<SubtitleGroup>-85031022</SubtitleGroup>`.  
 
 ### On-Actions:
 The very same is true for these [On-Actions](./0-Properties-Quest-QuestPool.md#onqueststartonquestdeclined), simply clear the code up be removing all of them you don't want to add actions to.
@@ -514,8 +514,185 @@ Since our Quest is about sustaining an amount of schnapps, we will only start th
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectSpawnedObject ` and spawn a Queen starter-object near of our own Schnapps Distilleries. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap).
 
 ### Adding the Quest Asset to assets.xml:
-As mentioned ([here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the game often uses Group GUIDs to add Pools to QuestPools (and Items to Rewardpools!). This means it does matter where you add your Quest (or Item) Asset with ModOp AddNextSibling, to not accidently adding your Asset to a vanilla Pool. For Quests I think it is safe to add your **Quest next to GUID 152264** and for **Items next to GUID 112574**, because these do not seem to belong to any Group that has its own GUID.  
-- Our Quest Code:
+As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the game often uses Group GUIDs to add Pools to QuestPools (and Items to Rewardpools!). This means it does matter where you add your Quest (or Item) Asset with ModOp AddNextSibling, to not accidently adding your Asset to a vanilla Pool. For Quests I think it is safe to add your **Quest next to GUID 152264** and for **Items next to GUID 112574**, because these do not seem to belong to any Group that has its own GUID.  
+- Our Quest Code now looks like this:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <ModOp Type="addNextSibling" GUID="152264">
+    <Asset>
+      <Template>A7_QuestSustain</Template>
+      <Values>
+        <Standard>
+          <GUID>2001000001</GUID>
+          <Name>Sustain Beer - Queen</Name>
+        </Standard>
+        <Quest>
+          <InvitationMessage>
+            <Notification>
+              <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+              <Values>
+                <NotificationSubtitle>
+                  <SubtitleGroup>-85031022</SubtitleGroup>
+                </NotificationSubtitle>
+              </Values>
+            </Notification>
+          </InvitationMessage>
+          <QuestGiver>75</QuestGiver>
+          <StoryText>18198</StoryText>
+          <MaxSolveCount>1</MaxSolveCount>
+          <QuestTimeLimit>2400000</QuestTimeLimit>
+          <QuestCategory>RandomQuest</QuestCategory>
+          <QuestActivation>ManualActivation</QuestActivation>
+          <IsAbortable>1</IsAbortable>
+          <DelayTimer>10000</DelayTimer>
+          <HasExclusiveQuestGiver>0</HasExclusiveQuestGiver>
+          <QuestDifficulty>Medium</QuestDifficulty>
+          <QuestSessionDependencies>
+            <Item>
+              <SessionOrRegion>180023</SessionOrRegion>
+            </Item>
+          </QuestSessionDependencies>
+          <CanBeActiveForMultipleParticipants>1</CanBeActiveForMultipleParticipants>
+          <ReputationQuestFail>
+            <ReputationFailList />
+          </ReputationQuestFail>
+        </Quest>
+        <PreConditionList>
+          <Condition>
+            <Template>ConditionUnlocked</Template>
+            <Values>
+              <Condition />
+              <ConditionUnlocked>
+                <UnlockNeeded>1010216</UnlockNeeded>
+              </ConditionUnlocked>
+              <ConditionPropsNegatable />
+            </Values>
+          </Condition>
+          <SubConditions>
+            <Item>
+              <SubCondition>
+                <Template>PreConditionList</Template>
+                <Values>
+                  <PreConditionList>
+                    <Condition>
+                      <Template>ConditionPlayerCounter</Template>
+                      <Values>
+                        <Condition />
+                        <ConditionPlayerCounter>
+                          <PlayerCounter>ObjectBuilt</PlayerCounter>
+                          <Context>1010294</Context>
+                          <ComparisonOp>AtLeast</ComparisonOp>
+                          <CounterAmount>2</CounterAmount>
+                        </ConditionPlayerCounter>
+                      </Values>
+                    </Condition>
+                  </PreConditionList>
+                </Values>
+              </SubCondition>
+            </Item>
+          </SubConditions>
+        </PreConditionList>
+        <Reward>
+          <RewardAssets>
+            <Item>
+              <Reward>150038</Reward>
+              <Amount>1</Amount>
+            </Item>
+            <Item>
+              <Reward>192540</Reward>
+              <Amount>1</Amount>
+            </Item>
+          </RewardAssets>
+          <RewardReputation />
+          <GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>
+        </Reward>
+        <Objectives>
+          <WinConditions>
+            <Item>
+              <Objective>
+                <Template>SustainObjective</Template>
+                <Values>
+                  <ConditionQuestObjective />
+                  <ConditionPlayerCounter>
+                    <PlayerCounter>GoodsInStock</PlayerCounter>
+                    <Context>1010216</Context>
+                    <CounterAmount>20</CounterAmount>
+                  </ConditionPlayerCounter>
+                  <ConditionQuestSustain>
+                    <SustainTime>30000</SustainTime>
+                  </ConditionQuestSustain>
+                  <ConditionPropsExecutionPlaceSettings>
+                    <ExecutionPlaceConfirmOnReached>0</ExecutionPlaceConfirmOnReached>
+                  </ConditionPropsExecutionPlaceSettings>
+                </Values>
+              </Objective>
+            </Item>
+          </WinConditions>
+        </Objectives>
+        <QuestOptional>
+          <HasStarterObject>Specific</HasStarterObject>
+          <StarterObject>
+            <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+            <Values>
+              <Condition />
+              <ConditionStarterObject>
+                <StarterObjectObject>
+                  <Template>ConditionObjectSpawnedObject</Template>
+                  <Values>
+                    <ConditionObjectSpawnedObject>
+                      <ExecutionObject>2001000000</ExecutionObject>
+                      <ObjectSpawnArea>
+                        <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+                        <Values>
+                          <SpawnArea>
+                            <SpawnContext>Object</SpawnContext>
+                            <ContextGUID>1010294</ContextGUID>
+                            <DistanceToContext>5</DistanceToContext>
+                          </SpawnArea>
+                        </Values>
+                      </ObjectSpawnArea>
+                      <DoSetVisualObjectOwner>1</DoSetVisualObjectOwner>
+                      <VisualObjectOwner>Third_party_01_Queen</VisualObjectOwner>
+                    </ConditionObjectSpawnedObject>
+                    <ConditionScanner />
+                    <ConditionObjectiveSignsAndFeedback />
+                  </Values>
+                </StarterObjectObject>
+              </ConditionStarterObject>
+              <ConditionQuestObjective />
+              <ConditionPropsSessionSettings />
+            </Values>
+          </StarterObject>
+        </QuestOptional>
+      </Values>
+    </Asset>
+  </ModOp>
+  ```
+  </details>
+- While GUID 2001000000 is a copy of `<GUID>133229</GUID><Name>Queen Object + Standee</Name>` made visible and with proper `MeshPlacement`:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <ModOp Type="addNextSibling" GUID="133229">
+    <Asset>
+      <BaseAssetGUID>133229</BaseAssetGUID>
+      <Values>
+        <Standard>
+          <GUID>2001000000</GUID>
+          <Name>Queen Quest Starter</Name>
+        </Standard>
+        <Mesh>
+          <MeshPlacement>Default</MeshPlacement>
+          <InitialVisibility>1</InitialVisibility>
+        </Mesh>
+      </Values>
+    </Asset>
+  </ModOp>
+  ```
+  </details>
 
 
 ## A7_QuestDeliveryObject
