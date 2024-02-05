@@ -1,6 +1,6 @@
 # Compact guide to edit island meshes
 
-From **Taludas** written here: https://discord.com/channels/578443209940926465/578443576552325143/1204023503658164326
+From **Taludas** written here (Anno Mod-Corner International): https://discord.com/channels/578443209940926465/578443576552325143/1204023503658164326
 
 ## How to unpack/edit/repack island mesh files (.tmc):
 
