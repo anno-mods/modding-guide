@@ -46,7 +46,7 @@ From **Taludas** written here: https://discord.com/channels/578443209940926465/5
   [text() = 'hello']
   ```
   </details>
-Note: Edit the code in the lower half before running the .bat file if you want to set up some patching. Uses regular ModOp expressions.
+**Note:** Edit the code in the lower half before running the .bat file if you want to set up some patching. Uses regular ModOp expressions.
 I've set this up to replace the flower props of one region with those of the other region. 
 - run the .bat file. You will now find inside the individual folder "0,1,..." the original .tmc file, the original interprated .xml file, if you set it up the _patch.xml file.
 - if you want, do manual edits to the _patch.xml file (lots of work duh...)  
@@ -54,9 +54,9 @@ I've set this up to replace the flower props of one region with those of the oth
 **Repack:**
 - copy the following tmc_compressor.bat file to each folder "0,1..." (eg. `_gamedata/moderate_c_01_colony01/meshes/0` and so on):
   <details>
-  <summary>(CLICK) tmc_converter.bat CODE</summary>  
+  <summary>(CLICK) tmc_compressor.bat CODE</summary>  
   
-  Save this code as tmc_converter.bat file.  
+  Save this code as tmc_compressor.bat file.  
   ```batch file
   @ECHO off
   
