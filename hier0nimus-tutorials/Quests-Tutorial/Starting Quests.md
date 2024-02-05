@@ -31,9 +31,12 @@ This action will start the **Quest 150621 in Old World session 180023**.
 Hardcoding the session like this is always the easiest way to define the session the quest should start.
 
 ***Important Note:***  
-Starting a Quest with `ActionStartQuest` does ignore many things Quests can have defined, especially it does ignore the `PreConditionList` of a Quest! If you want to use all features from Quests, you maybe better should use a [QuestPool](https://github.com/anno-mods/modding-guide/blob/main/guides/Quests.md#questpools).
+Starting a Quest with `ActionStartQuest` does ignore many things Quests can have defined, especially it does ignore the `PreConditionList` of a Quest! If you want to use all features from Quests, you maybe better should use a [QuestPool](./Creating%20QuestPools.md).
 
 
 ### Advanced Usage:
 TODO evlt auch Interhit UseCurrentSession GetQuestSessionFromArea usw eingehen.  
 SubQuests die automatisch durch ConditionQuestSubQuest gestartet werden.
+
+# QuestPools:
+See also [Creating QuestPools](./Creating%20QuestPools.md)
