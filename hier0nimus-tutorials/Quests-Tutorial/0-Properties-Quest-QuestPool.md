@@ -125,7 +125,7 @@ I don't know what this does, it is neither used in vanilla nor explained in p-t.
 Both also accept Regions. 
 
 #### `QuestDifficulty`:
-*"This is the balanced difficulty of this quest"*. Defaults to Easy. Allowed values: Easy, Medium or Hard. These are mostly relevant for (money) reward balancing you can find in RewardBalancing GUID 140501.  
+*"This is the balanced difficulty of this quest"*. Defaults to Easy. Allowed values: Easy, Medium or Hard. These are mostly relevant for (money) reward balancing you can find in RewardBalancing GUID 140501, see also [Reward](#reward).  
 
 #### `KeepCheckingPreconditionsWhenRunning`:
 *"If true, the quest keeps checking the preconditions and will abort automatically if they are not met any longer"*. Defaults to 0. This is eg. especially helpful for Quests involving QuestGivers you can have different treaties with. Eg. you can add a PreCondition that the player must at least have TradeRights with the QuestGiver and set KeepCheckingPreconditionsWhenRunning=1 to automatically abort the active Quest if this is no longer the case.  
