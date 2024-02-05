@@ -134,7 +134,9 @@ The game does already cancels Quests to players you declare war to, but this is 
 
 #### `ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation`:
 Adding a list with `ReputationParticipant` *"The participant that rewards reputation"* and `ReputationAmount` *"The amount of reputation that is rewarded. This number can be negative to create a reputation loss"*. So you can make the player loose reputation when a quest fails, but also gain reputation with other AIs (not only QuestGiver).  
-`Reward/RewardReputation` is defined outside of the Quest property, but works the same and is awared on Success of the Quest.  
+`Reward/RewardReputation` is defined outside of the Quest property, but works the same and is awared on Success of the Quest, see also [Reward](./#reward).  
+
+#### `Reward`:
 - `<Name>Reward</Name>` copied from p-t.xml to see all allowed nodes:
   <details>
   <summary>(CLICK) CODE</summary>  
