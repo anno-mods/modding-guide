@@ -499,7 +499,37 @@ Keep in mind that this could have weird side effects, since the Cooldown is only
 `QuestSessionDependencies`: *"If any sessions will be linked here, than this pool does only select new quests if **one** of the given sessions is currently running"*. Also supports Region.   
 
 #### `QuestPoolCooldownMultiplierList`:
-No description and never used from the game, but looking at p-t.xml `<Name>QuestPoolCoodownMultiplier</Name>` looks like one can make a Pool to multiply his Cooldown based on the Happiness of a specific population to make Quests appear more often. Not tested if this works. If you test it, please update this text.  
+No description and never used from the game, but looking at p-t.xml `<Name>QuestPoolCoodownMultiplier</Name>` looks like one can make a Pool to multiply his Cooldown based on the Happiness of a specific population to make Quests appear more often. 
+- In my test I tried this, but saw no effect:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <QuestPoolCooldownMultiplierList>
+    <Item>
+      <QuestPoolCooldownMultiplier>
+        <Template>QPCDMultiplierHappiness</Template>
+        <Values>
+          <QPCDMultiplierBase />
+          <QPCDMultiplerHappiness>
+            <QPCD_PopulationLevel>15000000</QPCD_PopulationLevel>
+            <MinRequiredPopulation>1</MinRequiredPopulation>
+            <MaxConsideredPopulation>20</MaxConsideredPopulation>
+            <MinFactorPopulation>0.1</MinFactorPopulation>
+            <MaxFactorPopulation>0.5</MaxFactorPopulation>
+            <MinRequiredHappiness>1</MinRequiredHappiness>
+            <MaxConsideredHappiness>20</MaxConsideredHappiness>
+            <MinFactorHappiness>0.1</MinFactorHappiness>
+            <MaxFactorHappiness>0.5</MaxFactorHappiness>
+          </QPCDMultiplerHappiness>
+        </Values>
+      </QuestPoolCooldownMultiplier>
+    </Item>
+  </QuestPoolCooldownMultiplierList>
+  ```
+  </details>
+Maybe I made sth wrong or it simply does not work. One can also find a typo in properties-toolone.xml "QuestPoolCoodownMultiplier" (missing "l" from "Cooldown"), which could mean, if this is an extract of the internal naming, that it is named differently at 2 locations in vanilla code and means it will never work. (Also tried QuestPoolCoodownMultiplier in my code, still no effect)
+
 
 #### `QuestPoolActionCallbacks`:
 Here you can define Actions eg. on success or on discard and so on of Quests started via this Pool. You can also define these actions within the Quests itself, but if you want them to be the same for all quests of this pool, define it here. In vanilla there is eg. often code to remove the Quest-Offer-Ship (the one with a star above) if the Quest is discarded (rejected from the user before it really starts).  
