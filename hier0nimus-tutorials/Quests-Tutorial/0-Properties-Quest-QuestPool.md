@@ -238,8 +238,66 @@ Adding a list with `ReputationParticipant` *"The participant that rewards reputa
   </Property>
   ```
   </details>
-Usual Reward will be `<Reward>150038</Reward>` which is the "MoneyPool", so basically just money, but because it is in this pool it can scale by QuestDifficulty. Usual Amount for this MoneyPool Reward are between 1 and 10, test it ingame in how much this results, I don't know exactly.  
-If you also want an Item or RewardPool including Items or other possibly Locked things as reward, make sure to set `<GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>` otherwise the reward will not appear, if the player did not unlock it (eg. the item) yet.  
+Usual `RewardAssets` will be `<Reward>150038</Reward>` which is the "MoneyPool", so basically just money, but because it is in this pool it can scale by QuestDifficulty and also scales by ProgressLevel. Usual Amount for this MoneyPool Reward are between 1 and 10. To give you an idea a value of 1 results for Medium QuestDifficulty in EarlyGame in around ~4000 money. In LateGame (engineers) it is already around 18.000 money.
+- The exact calculation can be found in assets.xml `<GUID>140501</GUID><Name>RewardBalancing</Name>` and are in vanilla:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+    <Asset>
+    <Template>RewardConfig</Template>
+    <Values>
+      <Standard>
+        <GUID>140501</GUID>
+        <Name>RewardBalancing</Name>
+        <ID>RewardBalancing</ID>
+      </Standard>
+      <RewardConfig>
+        <ResourceBalancing>
+          <Item>
+            <Resource>1010017</Resource>
+            <BaseAmount>2000</BaseAmount>
+            <MaxBonusPercent>25</MaxBonusPercent>
+            <ProgressFactor>
+              <EarlyGame>
+                <Factor>1</Factor>
+              </EarlyGame>
+              <EarlyMidGame>
+                <Factor>2</Factor>
+              </EarlyMidGame>
+              <MidGame>
+                <Factor>3</Factor>
+              </MidGame>
+              <LateMidGame>
+                <Factor>4</Factor>
+              </LateMidGame>
+              <LateGame>
+                <Factor>5</Factor>
+              </LateGame>
+              <EndGame>
+                <Factor>6</Factor>
+              </EndGame>
+            </ProgressFactor>
+            <QuestDifficultyFactor>
+              <Easy>
+                <Factor>1</Factor>
+              </Easy>
+              <Medium>
+                <Factor>2</Factor>
+              </Medium>
+              <Hard>
+                <Factor>3</Factor>
+              </Hard>
+            </QuestDifficultyFactor>
+          </Item>
+        </ResourceBalancing>
+      </RewardConfig>
+    </Values>
+  </Asset>
+  ```
+  </details>
+If you also want an Item or RewardPool including Items or other possibly Locked things as reward, make sure to set `<GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>` otherwise the reward will not appear, if the player did not unlock it (eg. the item) yet.
+There is also `PenaltyList` within the Reward Property, but although it is used for a few Quests, in my tests the action defined in there did nothing, neither on succes nor on fail of the Qest, so I don't know if and how this works.    
 
 
 
