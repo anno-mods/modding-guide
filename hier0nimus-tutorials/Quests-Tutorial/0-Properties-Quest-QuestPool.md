@@ -89,9 +89,9 @@ The same Quest can only be active once at the same time IF started via a QuestPo
 
 #### `QuestActivation`:
 *"Defines at which point this quest changes its status to "Activated"*. Defaults to QuestStart. Only activated quests are visible in the Quest Tracker." For allowed values see datasets.xml QuestActivationTime.  
-`ManualActivation` means the Quest will appear as acceptable Quest on the map eg. with the star-icon and the user can select and start it this way.  
-`QuestStart` means the Quest will directly be active in the players Questlog without a choice to accept/decline, but of course the player might be able to abort it.  
-`ConfirmationDialog` not tested by me, I assume it directly starts a notification if you want accept the quest or not.  
+`ManualActivation` means the Quest will appear as acceptable Quest on the map eg. with the star-icon (see also [QuestOptional](./#questoptional)) and the user can select and start it this way.  
+`QuestStart` means the Quest will directly be active in the players Questlog without a choice to accept/decline, but of course the player might be able to abort it (if IsAbortable=1).  
+`ConfirmationDialog` will directly starts the Invitation Notification and asks you to accept the quest or not.  
 
 #### `IsAbortable`:
 *"If true, this quest can be aborted in the assignment center or the quest tracker"*. Defaults to 1. Allow to abort accepted/active quests or not.
