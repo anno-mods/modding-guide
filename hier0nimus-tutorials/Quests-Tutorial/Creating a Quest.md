@@ -513,6 +513,10 @@ Since our Quest is about sustaining an amount of schnapps, we will only start th
 ### QuestOptional
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectSpawnedObject ` and spawn a Queen starter-object near of our own Schnapps Distilleries. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap).
 
+### Adding the Quest Asset to assets.xml:
+As mentioned ([here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the game often uses Group GUIDs to add Pools to QuestPools (and Items to Rewardpools!). This means it does matter where you add your Quest (or Item) Asset with ModOp AddNextSibling, to not accidently adding your Asset to a vanilla Pool. For Quests I think it is safe to add your **Quest next to GUID 152264** and for **Items next to GUID 112574**, because these do not seem to belong to any Group that has its own GUID.  
+- Our Quest Code:
+
 
 ## A7_QuestDeliveryObject
 Quest from pirate. reputation invert from other pirate, start on prebuilt lighthouse, precondition peace and abort if no longer peace. delivery wood, sails and money with ship.
