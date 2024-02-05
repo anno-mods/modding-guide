@@ -693,7 +693,7 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
   </ModOp>
   ```
   </details>
-- And GUID 2001000003 is a Matcher Asset, which is looking for a Schnapps Destillery owned by use:
+- And GUID 2001000003 is a Matcher Asset, which is looking for a Schnapps Destillery owned by us:
   <details>
   <summary>(CLICK) CODE</summary>  
   
@@ -755,8 +755,8 @@ Quest from pirate. reputation invert from other pirate, start on prebuilt lighth
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest at the lighthouse from Harlow. 
 
 
-## Starting the Quest: QuestPool
-- We will [start the Quests](./Starting%20Quests.md) with help of a QuestPool:
+## Starting the Quests: QuestPool
+- We will [start the Quests](./Starting%20Quests.md) with help of a **QuestPool**:
   <details>
   <summary>(CLICK) CODE</summary>  
   
