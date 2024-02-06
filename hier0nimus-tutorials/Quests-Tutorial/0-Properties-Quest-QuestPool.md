@@ -308,7 +308,8 @@ There is also `PenaltyList` within the Reward Property, but although it is used 
 
 #### `ResetPreconditionsAfterQuestWasTriggered`:
 *"If true, the interal state of all preconditions will be reset. This is especially important for ConditionEvent which otherwise endlessly remembers any received event"*. Defaults to 0. I think this is only relevant if your PreCondition contain ConditionEvent like SessionEnter an such events. If you use such an event and leave this value 0, only "Entering the Session" once is enough to have the PreCondition true always, also for the next time the same Quest might start. If you set it to 1 instead, you must enter the Session everytime again to again allow the Quest to be started.  
-So most of the time this is not relevant for you.
+So most of the time this is not relevant for you.  
+**Note:** For testing is also helpful to set this to 1! Because without it, changing the code of PreConditions has no effect on savegames! (Already started quests can not be changed much anyways, but even newly started Quests of that GUID won't have your new code as PreCondition without this set to 1)    
 
 #### `RespectRelatedQuestSession`:
 *"If true, this quest tries to spawn in the same session as another quest that is configured in the preconditions. We try to determine the correct quest out of all conditions given. An assert will be thrown if we don't manage to find a quest but this flag is set"*. Better define the sessions in different way to be sure, eg. in QuestSessionDependencies if started via a Pool or with QuestSession if started via ActionStartQuest.
