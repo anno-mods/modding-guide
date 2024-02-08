@@ -90,7 +90,7 @@ The same Quest can only be active once at the same time IF started via a QuestPo
 *"The category of the quest defines the internal behaviour of the quest."*. Defaults to MainQuest. Since we can neither change nor look at the "interal behaviour", we can only test a bit what this does exactly. See datasets.xml QuestCategory for all allowed values. But it might be best to always use "RandomQuest" here unless you want to add a new Quest to the vanilla Story Questline.
 
 #### `QuestActivation`:
-*"Defines at which point this quest changes its status to "Activated"*. Defaults to QuestStart. Only activated quests are visible in the Quest Tracker." For allowed values see datasets.xml QuestActivationTime.  
+*"Defines at which point this quest changes its status to "Activated". Only activated quests are visible in the Quest Tracker."* Defaults to `QuestStart`. For allowed values see datasets.xml QuestActivationTime.  
 - `ManualActivation` means the Quest will appear as acceptable Quest on the map eg. with the star-icon (see also [QuestOptional](#questoptional)) and the user can select and start it this way.  
 - `QuestStart` means the Quest will directly be active in the players Questlog without a choice to accept/decline, but of course the player might be able to abort it (if IsAbortable=1).  
 - `ConfirmationDialog` will directly starts the Invitation Notification and asks you to accept the quest or not.  
