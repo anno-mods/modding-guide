@@ -460,8 +460,96 @@ The both most used `StarterObjectObject` in vanilla are:
 
 ### `WinConditions`:
 You can set up as many WinConditions to any quest as you like. 
-- With `WinConditionCompletionOrder`, which defaults to `Parallel` you can define if all you WinConditions should be displayed at once anc can be done in any order. Or with `Linear` you force them to be completed one after the other (only showing a single one at a time), or with `MutuallyExclusive` you want the player to complete one of the tasks to complete the Quest.
-There are several WinCondition `Objectives` to choose from, see templates.xml an search for `<Name>QuestObjectives</Name>` to see them all. I will not go into detail with all of them, study the templates, vanilla assets.xml and properties-toolone.xml to find out how they work and what they do. Also see my [Tutorial Creating a Quest](./Creating%20a%20Quest.md#winconditions) for a few examples.
+- With `WinConditionCompletionOrder`, which defaults to `Parallel` you can define if all you WinConditions should be displayed at once anc can be done in any order. Or with `Linear` you force them to be completed one after the other (only showing a single one at a time), or with `MutuallyExclusive` you want the player to complete one of the tasks to complete the Quest.  
+
+There are several WinCondition `Objectives` to choose from, see templates.xml and search for `<Name>QuestObjectives</Name>` to see them all. I will not go into detail with all of them, study the templates, vanilla assets.xml and properties-toolone.xml to find out how they work and what they do. Also see my [Tutorial Creating a Quest](./Creating%20a%20Quest.md#winconditions) for a few examples.
+#### `ConditionQuestObjective`:
+Regardless what objective you choose, all templates have this `ConditionQuestObjective` property.
+- Here you can define some details about this particular objective from your Quest. properties-toolone.xml infos of it:  
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <Property>
+    <Name>ConditionQuestObjective</Name>
+    <ValueDefinition>
+      <DataType>Boolean</DataType>
+      <Name>IsVisibleInQuestTracker</Name>
+      <Description>true, if this condition should be shown in the quest tracker</Description>
+      <Category>ConditionQuestObjective</Category>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Text</DataType>
+      <Name>TextCombinedContextValue</Name>
+      <Description>this is the combined description text with a value text of a quest objetive (e.g. "Build houses 2 / 5")</Description>
+      <Category>ConditionQuestObjective</Category>
+      <NeededProperty>Text</NeededProperty>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>FileName</DataType>
+      <Name>QuestTrackerIcon</Name>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>AutoCreateAsset</DataType>
+      <Name>ObjectiveSignsAndFeedback</Name>
+      <Category>ConditionQuestObjective</Category>
+      <AllowedTemplates>ConditionObjectiveSignsAndFeedback</AllowedTemplates>
+      <AllowedProperties />
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Struct</DataType>
+      <Name>FakeMinimapPings</Name>
+      <Description>Mininmappings that are not related to the objective can be defined here</Description>
+      <Items>
+        <ValueDefinition>
+          <DataType>Vector</DataType>
+          <Name>Objects</Name>
+          <Items>
+            <ValueDefinition>
+              <DataType>AutoCreateAsset</DataType>
+              <Name>FakeMinimapObjects</Name>
+              <AllowedTemplates>ObjectFilter</AllowedTemplates>
+              <AllowedProperties />
+            </ValueDefinition>
+            <ValueDefinition>
+              <DataType>AutoCreateAsset</DataType>
+              <Name>SignsAndFeedback</Name>
+              <AllowedTemplates>ConditionObjectiveSignsAndFeedback</AllowedTemplates>
+              <AllowedProperties />
+            </ValueDefinition>
+          </Items>
+        </ValueDefinition>
+      </Items>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>AutoCreateAsset</DataType>
+      <Name>ObjectiveSuccessMessage</Name>
+      <AllowedTemplates>CharacterNotification</AllowedTemplates>
+      <AllowedProperties />
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Choice</DataType>
+      <Name>JumpToVisibility</Name>
+      <Description>Defines the visibility of the jump-to button for this objective</Description>
+      <DataSet>QuestJumpToButtonVisibility</DataSet>
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>AutoCreateAsset</DataType>
+      <Name>OnSuccessActions</Name>
+      <AllowedTemplates>Actions</AllowedTemplates>
+      <AllowedProperties />
+    </ValueDefinition>
+    <ValueDefinition>
+      <DataType>Boolean</DataType>
+      <Name>LinkAllQuestActionsToQuest</Name>
+    </ValueDefinition>
+  </Property>
+  ```
+  </details>
+The most relevant values are:  
+`TextCombinedContextValue`: *"this is the combined description text with a value text of a quest objetive (e.g. "Build houses 2 / 5")"*. Most templates have already fitting texts defined here, but you should check if the text really fits your objective best and maybe use another text.  
+`ObjectiveSuccessMessage / OnSuccessActions`: use these to send a message or execute actions after this specific objective was completed. **Note:** Unfortunately it seems the `ObjectiveSuccessMessage` is sent AFTER a `ResolveConfirmationMessage` that might be shown to complete the Quest or the next objective. I found no way to have correct order here (setting priority does not help, because the game really starts these messages in wrong order).
+
 
 
 ---
