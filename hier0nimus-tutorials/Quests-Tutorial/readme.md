@@ -21,7 +21,7 @@ To **easier test your code ingame**, feel free to use this Cheatmod:
 ## Multiplayer
 There is a reason why most vanilla Story Quests are disabled in Multiplayer. Random Quests usually work fine.  
 - **Desyncs:** Conditions like "MovieFinished/NotificationRemoved/EnterUIState/LeaveUIState" and similar, looking for the client dealing with UI are unfortunately causing desyncs.  
-Workarounds can be found in my **"Campaign in Coop (Serp)"** mod you may find here https://github.com/Serpens66/Anno-1800-Mods/tree/master either in "YouKnowWhatYouDo-Mods" or in "WorkInProgress-Mods" folder.  
+Workarounds can be found in my **"Campaign in Coop (Serp)"** mod you may find here https://github.com/Serpens66/Anno-1800-Mods either in "YouKnowWhatYouDo-Mods" or in "WorkInProgress-Mods" folder.  
 - **DecisionQuests:** DecisionObjective are not fully multiplayer compatible.
 - - AutoShowDecisionScreen will open the Decision Screen for all human players, even for those not having any Quest active. So do not use this for Multiplayer.
 - - If several different human players have the same DecisionQuest (GUID) active, the decision one of them chooses is automatically also chosen for the other human player. A workaround for this is to make one Asset with unique GUID per human player (Human0 to Human3) to make sure Human0 never can have the same DecisionQuest GUID active like any other Human.  
