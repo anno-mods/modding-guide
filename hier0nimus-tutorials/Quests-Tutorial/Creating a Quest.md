@@ -764,7 +764,9 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
 Now real quick without explaining everything again, lets make a simple Quest from pirate Harlow to deliver wood, sails and money with ship to her lighthouse and also starting there. You will get reputation from her, but negative reputation from LaFortune when completing the Quest. As PreCondition we will check for TradeRights and checking that harbor from pirates is not destroyed and will abort the Quest if this is no longer true.
 
 ### QuestOptional
-As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will simply use <HasStarterObject>QuestGiver</HasStarterObject> to start the Quest at the `lighthouse` of Harlow. 
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will simply use `<HasStarterObject>QuestGiver</HasStarterObject>` to offer/start the Quest at the lighthouse of Harlow. 
+
+TODO explanation of new things
 
 - Our A7_QuestDeliveryObject Code now looks like this:
   <details>
