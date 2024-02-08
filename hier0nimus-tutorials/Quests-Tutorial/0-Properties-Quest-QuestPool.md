@@ -548,7 +548,7 @@ Regardless what objective you choose, all templates have this `ConditionQuestObj
   </details>
 The most relevant values are:  
 `TextCombinedContextValue`: *"this is the combined description text with a value text of a quest objetive (e.g. "Build houses 2 / 5")"*. Most templates have already fitting texts defined here, but you should check if the text really fits your objective best and maybe use another text.  
-`ObjectiveSuccessMessage / OnSuccessActions`: use these to send a message or execute actions after this specific objective was completed. **Note:** Unfortunately it seems the `ObjectiveSuccessMessage` is sent AFTER a `ResolveConfirmationMessage` that might be shown to complete the Quest or the next objective. I found no way to have correct order here (setting priority does not help, because the game really starts these messages in wrong order).
+`ObjectiveSuccessMessage / OnSuccessActions`: use these to send a message or execute actions after this specific objective was completed. **Note:** Unfortunately it seems the `ObjectiveSuccessMessage` is sent AFTER a `ResolveConfirmationMessage` that might be shown to complete the Quest or the next objective. Setting priority does not help, because the game really starts these messages in wrong order. Instead of fixing this issue the Anno devs themself started to use a workaround: not using `ObjectiveSuccessMessage`, but `OnSuccessActions` with `ActionNotification`, because this way it is correct order.
 
 
 
