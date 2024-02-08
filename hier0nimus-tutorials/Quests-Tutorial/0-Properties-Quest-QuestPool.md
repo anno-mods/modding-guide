@@ -111,7 +111,7 @@ Use one of these, at best DelayTimer, if you want the PreConditions of the Quest
 - `QuestBookVisibility`: *"Defines when this quest will be visible in the quest book."* Defaults to SameAsQuestTracker. See datasets.xml QuestBookVisibility.  
 
 #### `ConfirmOnReached/CustomizeConfirmOnReachedCondition/ConfirmOnReachedCondition`:
-- `ConfirmOnReached`: *"After solving the quest stays in quest tracker and needs to be confirmed by player"*. Defaults to 0. Btw. each [WinCondition](#winconditions) can set `ConfirmOnReach` to 1/0 for their own, while this here is for the total Quest after all WinConditions are done.   
+- `ConfirmOnReached`: *"After solving the quest stays in quest tracker and needs to be confirmed by player"*. Defaults to 0. Btw. each [WinCondition](#winconditions) can set `ConfirmOnReach` or `ExecutionPlaceConfirmOnReached` and such (depending on which template you choose) to 1/0 for their own, while this here is for the total Quest after all WinConditions are done.   
 - `CustomizeConfirmOnReachedCondition`: *"If true, a custom confirmOnReached condition can be configured for this quest specifically"*. Defaults to 0.  
 - `ConfirmOnReachedCondition`: *"Use this to provide a custom configuration for the resolve confirmation for this quest"*. Needs CustomizeConfirmOnReachedCondition set to 1 to be used. Also see p-t.xml and vanilla usage of it for more info how to use. It is not needed for basic quests.  
 
