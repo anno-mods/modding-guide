@@ -771,7 +771,7 @@ Now we will expand the Sustain Quest we already created above and add some "comp
 - Spawn the Starter Object (the Queen) on the island with the highest Population from the player.
 - Make use of the QuestArea (Area==Island), so you have to sustain and deliver the schnapps on that island, not anywhere else.
 - Add another Objective, executed Linear: Delivery on Island (give the Queen some schnapps), where the amount to deliver should scale based on progresslevel (this only works for delivery quests)
-- Make the Queen-starter object moveable and move her after delivering here schnapps to the next tavern before you have to sustain an amount of schnapps.  
+- Make the Queen-starter object moveable and move her after delivering her schnapps to the next tavern while you have to sustain an amount of schnapps.  
 
 TODO Explanation  
 
