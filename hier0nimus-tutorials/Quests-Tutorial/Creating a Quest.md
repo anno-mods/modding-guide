@@ -511,11 +511,12 @@ Here you can add whatever conditions you want that must be true before this Ques
 Since our Quest is about sustaining an amount of schnapps, we will only start the Quest after the player unlocked the product and built at least 2 Schnapps Distilleries.  
 
 ### QuestOptional
-As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectSpawnedObject` and spawn a Queen starter-object near of our own Schnapps Distilleries. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap).
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectSpawnedObject` and spawn a Queen starter-object near of our own Schnapps Distilleries. As Infolayer (the icon around our quest starter) we will use the default quest marker (same for minimap). See example code below.  
 
 ### WinConditions
 As [WinConditions](./0-Properties-Quest-QuestPool.md#winconditions) we will use the `SustainObjective` we already have in the vanilla Quest we copied initially and slightly change it.  
-As PlayerCounter we will check for `GoodsInStock` instead (see datasets.xml `<Name>PlayerCounter</Name>` for allowed values) and enter the Schnapps GUID 1010216 as `Context` and set CounterAmount to 30. If we do not set `CounterScope` it defaults to Global, so it does not matter where we have the 30 tons of schnapps. `SustainTime` will be for testing 1 minute (60000 ms) and we want the timer to start from new, if the player goes below the 30 schnapps, so we set `<ResetTimer>1</ResetTimer>`. The text `TextCombinedContextValue` is used to describe this particular objective and is in the template `SustainObjective` set to GUID 12761. When we look this up eg. in vanilla texts_english.xml you see that this is ment for usage with `PopulationSatisfactionByGood`, but we want to sustain a specific amount of goods instead. So we can either write our own text, search the texts file for better fitting ones or better search the vanilla assets.xml for Sustain Quests that already use `GoodsInStock` and see what they use as text. This way you will find `<TextCombinedContextValue>20078</TextCombinedContextValue>` which fits better.
+As PlayerCounter we will check for `GoodsInStock` instead (see datasets.xml `<Name>PlayerCounter</Name>` for allowed values) and enter the Schnapps GUID 1010216 as `Context` and set CounterAmount to 30. If we do not set `CounterScope` it defaults to Global, so it does not matter where we have the 30 tons of schnapps. `SustainTime` will be for testing 1 minute (60000 ms) and we want the timer to start from new, if the player goes below the 30 schnapps, so we set `<ResetTimer>1</ResetTimer>`. The text `TextCombinedContextValue` is used to describe this particular objective and is in the template `SustainObjective` set to GUID 12761. When we look this up eg. in vanilla texts_english.xml you see that this is ment for usage with `PopulationSatisfactionByGood`, but we want to sustain a specific amount of goods instead. So we can either write our own text, search the texts file for better fitting ones or better search the vanilla assets.xml for Sustain Quests that already use `GoodsInStock` and see what they use as text. This way you will find `<TextCombinedContextValue>20078</TextCombinedContextValue>` which fits better.  
+For each objective there will be a value for "confirm or not", in this case it is `ExecutionPlaceConfirmOnReached` we will set to 0, to not have to confirm after we completed this particular objective.  
 
 ### Adding the Quest Asset to assets.xml:
 As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the game often uses Group GUIDs to add Pools to QuestPools (and Items to Rewardpools!). This means it does matter where you add your Quest (or Item) Asset with ModOp AddNextSibling, to not accidently adding your Asset to a vanilla Pool. For Quests I think it is safe to add your **Quest next to GUID 152264** and for **Items next to GUID 112574**, because these do not seem to belong to any Group that has its own GUID.  
@@ -530,7 +531,7 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
       <Values>
         <Standard>
           <GUID>2001000001</GUID>
-          <Name>Sustain Beer - Queen</Name>
+          <Name>Sustain Schnapps - Queen</Name>
         </Standard>
         <Quest>
           <InvitationMessage>
@@ -545,8 +546,7 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
           </InvitationMessage>
           <QuestGiver>75</QuestGiver>
           <StoryText>18198</StoryText>
-          <MaxSolveCount>1</MaxSolveCount>
-          <QuestTimeLimit>2400000</QuestTimeLimit>
+          <QuestTimeLimit>120000</QuestTimeLimit>
           <QuestCategory>RandomQuest</QuestCategory>
           <QuestActivation>ManualActivation</QuestActivation>
           <IsAbortable>1</IsAbortable>
@@ -622,10 +622,11 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
                   <ConditionPlayerCounter>
                     <PlayerCounter>GoodsInStock</PlayerCounter>
                     <Context>1010216</Context>
-                    <CounterAmount>20</CounterAmount>
+                    <CounterAmount>30</CounterAmount>
                   </ConditionPlayerCounter>
                   <ConditionQuestSustain>
                     <SustainTime>30000</SustainTime>
+                    <ResetTimer>1</ResetTimer>
                   </ConditionQuestSustain>
                   <ConditionPropsExecutionPlaceSettings>
                     <ExecutionPlaceConfirmOnReached>0</ExecutionPlaceConfirmOnReached>
