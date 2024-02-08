@@ -381,7 +381,7 @@ This contains on what object (where) you want your Quest to start. Mostly releva
   </Property>
   ```
   </details>
-`HasStarterObject` is in vanilla only `None` (for no starter object) or `Specific` to define one. Technically also `QuestGiver` is allowed, but never used by vanilla, so I don't know what it does.  
+`HasStarterObject` is in vanilla only `None` (for no starter object) or `Specific` to define one. Technically also `QuestGiver` is allowed, but never used by vanilla. When using this and not setting up a StarterOjbect, it seems the `QuestStarterObject` defined in the asset of the QuestGiver is the object starting the Quest (eg. lighthouse of AI). If multiple Quests from this QuestGiver are offered at the same lighthouse, the player can cycle through them by clikcing on the lighthouse and hit the upper right X to close the message to get the offer from the next Quest (or simply accept/decline them).   
 The both most used `StarterObjectObject` in vanilla are: 
 - `ConditionObjectPrebuiltObject` to make an already existing object the starter of a Quest, eg. a Lighthouse or Harbour from AI.  
   **Note**: the Quest signs will be over ALL objects that match this GUID/Owner. So it is often better to use unique objects, like lighthouses of AI or spawn a unique object first.  
