@@ -13,3 +13,7 @@ If you plan to publish your mod, make sure to reserve your own GUID Range there 
 1) [Creating a Quest](./Creating%20a%20Quest.md)  
 2) [Starting Quests](./Starting%20Quests.md)  
 3) [Creating QuestPools](./Creating%20QuestPools.md)  
+
+## Testing ingame
+To **easier test your code ingame**, feel free to use this Cheatmod:
+[Cheat Keybinds (Serp) v1.02](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/releases/tag/testing-cheat)
