@@ -761,11 +761,224 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
 
 
 ## A7_QuestDeliveryObject
-Now real quick without explaining everything again, lets make a simple Quest from pirate Harlow to deliver wood, sails and money with ship to her lighthouse and also starting there. You will get reputation from her, but negative reputation from LaFortune when completing the Quest. As PreCondition we will check for TradeRights and abort the Quest if you have no longer TradeRights.
+Now real quick without explaining everything again, lets make a simple Quest from pirate Harlow to deliver wood, sails and money with ship to her lighthouse and also starting there. You will get reputation from her, but negative reputation from LaFortune when completing the Quest. As PreCondition we will check for TradeRights and checking that harbor from pirates is not destroyed and will abort the Quest if this is no longer true.
 
 ### QuestOptional
-As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest at the lighthouse from Harlow. 
+As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will simply use <HasStarterObject>QuestGiver</HasStarterObject> to start the Quest at the `lighthouse` of Harlow. 
 
+- Our A7_QuestDeliveryObject Code now looks like this:
+  <details>
+  <summary>(CLICK) CODE</summary>  
+  
+  ```xml
+  <ModOp Type="addNextSibling" GUID="152264">
+    <Asset>
+      <Template>A7_QuestDeliveryObject</Template>
+      <Values>
+        <Standard>
+          <GUID>2001000004</GUID>
+          <Name>Harlow Deliver Stuff</Name>
+        </Standard>
+        <Quest>
+          <QuestGiver>73</QuestGiver>
+          <StoryText>10515</StoryText>
+          <PreActivationTimer>1800000</PreActivationTimer>
+          <DelayTimer>10000</DelayTimer>
+          <QuestCategory>RandomQuest</QuestCategory>
+          <QuestActivation>ManualActivation</QuestActivation>
+          <IsAbortable>1</IsAbortable>
+          <HasExclusiveQuestGiver>0</HasExclusiveQuestGiver>
+          <KeepCheckingPreconditionsWhenRunning>1</KeepCheckingPreconditionsWhenRunning>
+          <ResetPreconditionsAfterQuestWasTriggered>1</ResetPreconditionsAfterQuestWasTriggered>
+          <QuestDifficulty>Hard</QuestDifficulty>
+          <QuestSessionDependencies>
+            <Item>
+              <SessionOrRegion>180023</SessionOrRegion>
+            </Item>
+          </QuestSessionDependencies>
+          <CanBeActiveForMultipleParticipants>1</CanBeActiveForMultipleParticipants>
+          <ReputationQuestFail>
+            <ReputationFailList>
+              <Item>
+                <ReputationAmount>-2</ReputationAmount>
+                <ReputationParticipant>Third_party_03_Pirate_Harlow</ReputationParticipant>
+              </Item>
+            </ReputationFailList>
+          </ReputationQuestFail>
+          <ReputationQuestDeclined>
+            <ReputationDeclinedList>
+              <Item>
+                <ReputationAmount>-1</ReputationAmount>
+                <ReputationParticipant>Third_party_03_Pirate_Harlow</ReputationParticipant>
+              </Item>
+              <Item>
+                <ReputationAmount>1</ReputationAmount>
+                <ReputationParticipant>Third_party_04_Pirate_LaFortune</ReputationParticipant>
+              </Item>
+            </ReputationDeclinedList>
+          </ReputationQuestDeclined>
+        </Quest>
+        <PreConditionList>
+          <Condition>
+            <Template>ConditionIsDiscovered</Template>
+            <Values>
+              <Condition />
+              <ParticipantRelation>
+                <SourceIsOwner>1</SourceIsOwner>
+                <TargetParticipant>Third_party_03_Pirate_Harlow</TargetParticipant>
+              </ParticipantRelation>
+              <ConditionIsDiscovered />
+              <ConditionPropsNegatable />
+            </Values>
+          </Condition>
+          <SubConditions>
+            <Item>
+              <SubCondition>
+                <Template>PreConditionList</Template>
+                <Values>
+                  <PreConditionList>
+                    <Condition>
+                      <Template>ConditionPlayerCounter</Template>
+                      <Values>
+                        <Condition />
+                        <ConditionPlayerCounter>
+                          <PlayerCounter>ObjectBuilt</PlayerCounter>
+                          <Context>100681</Context>
+                          <CounterAmount>1</CounterAmount>
+                          <CheckSpecificParticipant>1</CheckSpecificParticipant>
+                          <CheckedParticipant>Third_party_03_Pirate_Harlow</CheckedParticipant>
+                        </ConditionPlayerCounter>
+                      </Values>
+                    </Condition>
+                    <SubConditions>
+                      <Item>
+                        <SubCondition>
+                          <Template>PreConditionList</Template>
+                          <Values>
+                            <PreConditionList>
+                              <Condition>
+                                <Template>ConditionPlayerCounter</Template>
+                                <Values>
+                                  <Condition />
+                                  <ConditionPlayerCounter>
+                                    <PlayerCounter>RuinCount</PlayerCounter>
+                                    <Context>100681</Context>
+                                    <CounterAmount>0</CounterAmount>
+                                    <ComparisonOp>AtMost</ComparisonOp>
+                                    <CheckSpecificParticipant>1</CheckSpecificParticipant>
+                                    <CheckedParticipant>Third_party_03_Pirate_Harlow</CheckedParticipant>
+                                  </ConditionPlayerCounter>
+                                </Values>
+                              </Condition>
+                              <SubConditions>
+                                <Item>
+                                  <SubCondition>
+                                    <Template>PreConditionList</Template>
+                                    <Values>
+                                      <PreConditionList>
+                                        <Condition>
+                                          <Template>ConditionDiplomaticState</Template>
+                                          <Values>
+                                            <Condition />
+                                            <ConditionDiplomaticState>
+                                              <SourceIsQuestOwner2>1</SourceIsQuestOwner2>
+                                              <TargetParticipant2>Third_party_03_Pirate_Harlow</TargetParticipant2>
+                                              <DesiredState>TradeRights</DesiredState>
+                                            </ConditionDiplomaticState>
+                                            <ConditionPropsNegatable />
+                                          </Values>
+                                        </Condition>
+                                      </PreConditionList>
+                                    </Values>
+                                  </SubCondition>
+                                </Item>
+                              </SubConditions>
+                            </PreConditionList>
+                          </Values>
+                        </SubCondition>
+                      </Item>
+                    </SubConditions>
+                  </PreConditionList>
+                </Values>
+              </SubCondition>
+            </Item>
+          </SubConditions>
+        </PreConditionList>
+        <Reward>
+          <RewardAssets>
+            <Item>
+              <Reward>150038</Reward>
+              <Amount>1</Amount>
+            </Item>
+            <Item>
+              <Reward>190975</Reward>
+              <Amount>1</Amount>
+            </Item>
+          </RewardAssets>
+          <RewardReputation />
+          <GenerateIgnoreUnlocks>1</GenerateIgnoreUnlocks>
+          <RewardReputation>
+            <Item>
+              <ReputationParticipant>Third_party_03_Pirate_Harlow</ReputationParticipant>
+              <ReputationAmount>2</ReputationAmount>
+            </Item>
+            <Item>
+              <ReputationParticipant>Third_party_04_Pirate_LaFortune</ReputationParticipant>
+              <ReputationAmount>-2</ReputationAmount>
+            </Item>
+          </RewardReputation>
+        </Reward>
+        <Objectives>
+          <WinConditions>
+            <Item>
+              <Objective>
+                <Template>DeliveryObjective</Template>
+                <Values>
+                  <ConditionQuestDelivery>
+                    <DeliveryObject_cqd>
+                      <Item>
+                        <ObjectGUID>1010017</ObjectGUID>
+                        <Min>1000</Min>
+                        <Max>2000</Max>
+                      </Item>
+                      <Item>
+                        <ObjectGUID>1010196</ObjectGUID>
+                        <Min>30</Min>
+                        <Max>40</Max>
+                      </Item>
+                      <Item>
+                        <ObjectGUID>1010210</ObjectGUID>
+                        <Min>10</Min>
+                        <Max>20</Max>
+                      </Item>
+                    </DeliveryObject_cqd>
+                    <DeliveryExecutionPlace>
+                      <Template>ConditionObjectStarterObject</Template>
+                      <Values>
+                        <ConditionScanner />
+                        <ConditionObjectStarterObject />
+                        <ConditionObjectiveSignsAndFeedback />
+                      </Values>
+                    </DeliveryExecutionPlace>
+                  </ConditionQuestDelivery>
+                  <ConditionQuestObjective>
+                    <TextCombinedContextValue>12754</TextCombinedContextValue>
+                  </ConditionQuestObjective>
+                  <ObjectiveScaling />
+                  <ConditionPropsSessionSettings />
+                </Values>
+              </Objective>
+            </Item>
+          </WinConditions>
+        </Objectives>
+        <QuestOptional>
+          <HasStarterObject>QuestGiver</HasStarterObject>
+        </QuestOptional>
+      </Values>
+    </Asset>
+  </ModOp>
+  ```
+  </details>
 
 ## Starting the Quests: QuestPool
 See here how to [create a QuestPools](./Creating%20QuestPools.md)
