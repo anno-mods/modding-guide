@@ -2,7 +2,7 @@
 
 - [Quest A7_QuestSustain](#a7_questsustain)
 - [Adding the Quest Asset to assets.xml](#adding-the-quest-asset-to-assetsxml)
-- [Quest A7_QuestDeliveryObject](a7_questdeliveryobject)
+- [Quest A7_QuestDeliveryObject](#a7_questdeliveryobject)
 - [Starting the Quests: QuestPool](#starting-the-quests-questpool)
 - [Advanced Sustain Quest](#advanced-sustain-quest)
 
