@@ -22,7 +22,7 @@ QuestPools are a helper construct to automatically start quests on regular basis
               <Quest>2001000001</Quest>
               <Weight>10</Weight>
             </Item>
-            Item>
+            <Item>
               <Quest>2001000004</Quest>
               <Weight>10</Weight>
             </Item>
