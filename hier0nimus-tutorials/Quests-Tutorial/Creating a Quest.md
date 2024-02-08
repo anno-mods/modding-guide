@@ -501,7 +501,7 @@ It is enough to have these text-GUIDs defined in the text files, no need to add 
 - [QuestDifficulty](./0-Properties-Quest-QuestPool.md#questdifficulty) the money reward balancing should see our Quest as Medium Difficulty.
 - [KeepCheckingPreconditionsWhenRunning](./0-Properties-Quest-QuestPool.md#keepcheckingpreconditionswhenrunning) does not matter for this Quest, because the PreConditions can not be false again anyways. Not mentioning it, which defaults to 0=disabled.
 - [ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation](./0-Properties-Quest-QuestPool.md#reputationquestfailreputationquestdeclinedreward-rewardreputation): Since this is a Quest for The Queen, who does not really care for what we do, we don't want reputation from anyone. Unfortunately our template adds -2/+3 ReputationAmount (see link for explanation), so we have to empty these by using `<ReputationFailList />` and `<RewardReputation />`.  
-As `RewardAsset` we will use the MoneyPool and an Item from the Archibald Rewardpool GUID 192540 `<Name>Third_party_02 (Archibald Blake) Forced Voluntary Reward</Name>` (but of course you can also create your own RewardPool with custom rewards and chances)  
+As `RewardAsset` we will use the MoneyPool and an Item from the Archibald Rewardpool GUID 192540 `<Name>Third_party_02 (Archibald Blake) Forced Voluntary Reward</Name>` (but of course you can also create your own RewardPool with custom rewards and chances). Since our Quest Starter is no ship, we can not really pick up our reward-item, so we have to add `<SentToQuestArea>1</SentToQuestArea>` to the Reards, so they are directly credited to our island storage.    
 In the vanilla Quest above you will see alot of `VectorElement/InheritanceMapV2`, we do not really know if this does anything at all, but even if it does, it is not needed. Simply remove all of this and just enter the allowed nodes based on p-t.xml. 
 - [HasStarterSpeechBubble/StarterSpeechBubble/HasSuccessSpeechBubble/SuccessSpeechBubble](./0-Properties-Quest-QuestPool.md#hasstarterspeechbubblestarterspeechbubblehassuccessspeechbubblesuccessspeechbubble): I don't care for these Speech-Bubbles, so I will remove them.
 - [CanBeActiveForMultipleParticipants](./0-Properties-Quest-QuestPool.md#canbeactiveformultipleparticipants): I'm fine with having multiple humans at the same time doing this Quest, so I set this to 1.
@@ -602,10 +602,12 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
           <RewardAssets>
             <Item>
               <Reward>150038</Reward>
+              <SentToQuestArea>1</SentToQuestArea>
               <Amount>1</Amount>
             </Item>
             <Item>
               <Reward>192540</Reward>
+              <SentToQuestArea>1</SentToQuestArea>
               <Amount>1</Amount>
             </Item>
           </RewardAssets>
@@ -761,3 +763,12 @@ As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use 
 
 ## Starting the Quests: QuestPool
 See here how to [create a QuestPools](./Creating%20QuestPools.md)
+
+---
+
+## Advanced Sustain Quest
+Now we will expand the Sustain Quest we already created above and add some "complicated" stuff to it:
+- Spawn the Starter Object (the Queen) on the island with the highest Population from the player.
+- Make use of the QuestArea (Area==Island), so you have to sustain and deliver the schnapps on that island, not anywhere else.
+- Add another Objective, executed Linear: Delivery on Island (give the Queen some schnapps), where the amount to deliver should scale based on progresslevel (this only works for delivery quests)
+- Make the Queen-starter object moveable and move her after delivering here schnapps to the next tavern before you have to sustain an amount of schnapps.
