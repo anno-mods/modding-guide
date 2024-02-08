@@ -698,7 +698,7 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
   </ModOp>
   ```
   </details>
-- And GUID 2001000003 is a Matcher Asset, which is looking for a Schnapps Destillery owned by us:
+- And GUID 2001000003 is a Matcher Asset, which is looking for a Schnapps Destillery owned by us (Matchers can only be used in actions spawning things nearby X and define a few details about next to what exactly we want to spawn something):
   <details>
   <summary>(CLICK) CODE</summary>  
   
@@ -752,9 +752,8 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
   </details>
 
 
-
 ## A7_QuestDeliveryObject
-Quest from pirate. reputation invert from other pirate, start on prebuilt lighthouse, precondition peace and abort if no longer peace. delivery wood, sails and money with ship.
+Now real quick without explaining everything again, lets make a simple Quest from pirate Harlow to deliver wood, sails and money with ship to her lighthouse and also starting there. You will get reputation from her, but negative reputation from LaFortune when completing the Quest. As PreCondition we will check for TradeRights and abort the Quest if you have no longer TradeRights.
 
 ### QuestOptional
 As [QuestOptional](./0-Properties-Quest-QuestPool.md#questoptional) we will use `ConditionObjectPrebuiltObject` and start the Quest at the lighthouse from Harlow. 
