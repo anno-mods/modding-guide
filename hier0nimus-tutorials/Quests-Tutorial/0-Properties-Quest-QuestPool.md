@@ -111,7 +111,7 @@ Use one of these, at best DelayTimer, if you want the PreConditions of the Quest
 - `QuestBookVisibility`: *"Defines when this quest will be visible in the quest book."* Defaults to SameAsQuestTracker. See datasets.xml QuestBookVisibility.  
 
 #### `ConfirmOnReached/CustomizeConfirmOnReachedCondition/ConfirmOnReachedCondition`:
-- `ConfirmOnReached`: *"After solving the quest stays in quest tracker and needs to be confirmed by player"*. Defaults to 0.  
+- `ConfirmOnReached`: *"After solving the quest stays in quest tracker and needs to be confirmed by player"*. Defaults to 0. Btw. each [WinCondition](#winconditions) can set `ConfirmOnReach` to 1/0 for their own, while this here is for the total Quest after all WinConditions are done.   
 - `CustomizeConfirmOnReachedCondition`: *"If true, a custom confirmOnReached condition can be configured for this quest specifically"*. Defaults to 0.  
 - `ConfirmOnReachedCondition`: *"Use this to provide a custom configuration for the resolve confirmation for this quest"*. Needs CustomizeConfirmOnReachedCondition set to 1 to be used. Also see p-t.xml and vanilla usage of it for more info how to use. It is not needed for basic quests.  
 
@@ -320,7 +320,7 @@ Did not use this yet. Feel free to add how to use this if you know more about it
 #### `CanBeActiveForMultipleParticipants`:
 *"Only takes effect in quest pools. Checking this will stop preventing the quest from being called from the pool, while another player has this quest running"*. Defaults to 0, but set it to 1 if you want it possible that the Quest can be active for more than one human player at the same time.
 
-#### `QuestOptional`:
+### `QuestOptional`:
 This contains on what object (where) you want your Quest to start. Mostly relevant if you set `QuestActivation` to `ManualActivation`, then this object will be the one with the star-icon over it the player has to click on to get the Quest offered.  
 - `<Name>QuestOptional</Name>`/`<Name>ConditionStarterObject</Name>` copied from p-t.xml to see all allowed nodes:
   <details>
@@ -457,6 +457,11 @@ The both most used `StarterObjectObject` in vanilla are:
   </ModOp>
   ```
   </details>
+
+### `WinConditions`:
+You can set up as many WinConditions to any quest as you like. 
+- With `WinConditionCompletionOrder`, which defaults to `Parallel` you can define if all you WinConditions should be displayed at once anc can be done in any order. Or with `Linear` you force them to be completed one after the other (only showing a single one at a time), or with `MutuallyExclusive` you want the player to complete one of the tasks to complete the Quest.
+There are several WinCondition `Objectives` to choose from, see templates.xml an search for `<Name>QuestObjectives</Name>` to see them all. I will not go into detail with all of them, study the templates, vanilla assets.xml and properties-toolone.xml to find out how they work and what they do. Also see my [Tutorial Creating a Quest](./Creating%20a%20Quest.md#winconditions) for a few examples.
 
 
 ---
