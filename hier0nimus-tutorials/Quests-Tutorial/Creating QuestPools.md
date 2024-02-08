@@ -45,6 +45,13 @@ QuestPools are a helper construct to automatically start quests on regular basis
   ```
   </details>
 
+This Pool will automatically start the Quests as soon as the PreConditions of the Pool and of a Quest are met. There is no need to add this pool somewhere else or to activate it. If you set DisabledByDefault=1 in a pool it will be disabled (not starting any quests) and need to be enabled first with ActionSetQuestPoolEnablement and IsQuestPoolEnabled=1. But enabling/disabling pools with ActionSetQuestPoolEnablement is only needed if you are not able to include it as PreCondition (this vanilla pool is eg. disabled when the player looses the continental island).
+Some QuestPools are also added to AI player assets, like <QuestPool>150082</QuestPool> is added to Jorgensen. This is not mandatory, as far as I know this only means that Quests are offered at the lighthouse of the AI and you don't have to define the starting point of a Quest in the Quest itself (?).
+
+## Pools including SubPools
+Pools can include other Pools as [SubPools](./0-Properties-Quest-QuestPool.md#questsgroupssubpools) (see explanation on that link, it is already quite good explained there why you may want to use SubPools).  
+
+
 ## QuestLine:
 They are a very simple lists including Quests in your preferred order. You can add the GUID of a `QuestLine` to a`QuestPool` instead of `Quest`.  
 The `QuestLine` will make sure that the Quests must be solved in this specific order. The first Quest must be completed before the second one can start and so on (PreConditions of each Quest must be fullfilled of course).  
