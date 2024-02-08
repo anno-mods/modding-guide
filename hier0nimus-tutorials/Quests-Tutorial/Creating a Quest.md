@@ -545,7 +545,7 @@ As mentioned [here](./0-Properties-Quest-QuestPool.md#questsgroupssubpools), the
             </Notification>
           </InvitationMessage>
           <QuestGiver>75</QuestGiver>
-          <StoryText>18198</StoryText>
+          <StoryText>14038</StoryText>
           <QuestTimeLimit>120000</QuestTimeLimit>
           <QuestCategory>RandomQuest</QuestCategory>
           <QuestActivation>ManualActivation</QuestActivation>
