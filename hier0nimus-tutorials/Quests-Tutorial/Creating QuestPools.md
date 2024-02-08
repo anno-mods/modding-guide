@@ -40,3 +40,10 @@ QuestPools are a helper construct to automatically start quests on regular basis
   </ModOp>
   ```
   </details>
+
+## QuestLine:
+They are a very simple list including Quests in your preferred order. You can add the GUID of a `QuestLine` to a`QuestPool` instead of `Quest`.  
+The `QuestLine` will make sure that the Quests must be solved in this specific order. The first Quest must be completed before the second one can start and so on (PreConditions of each Quest must be fullfilled of course).  
+- Failing/Aborting a Quest will make the QuestLine to start that Quest again (if the `MaxCallOut` setting of your Quests allow it and of course after your PoolCooldown) until you solved it. After you solved all Quests of the QuestLine it may start over again from the very first Quest, if the `MaxSolveCount` of your Quests allow it.
+- Quests that have reached their `MaxSolveCount` will not be triggered again. Usually you should use the same value for all the Quests being in the same QuestLine. Assuming you set it to 1 for the first Quest and unlimited for the others, the QuestLine is unable to start from beginning again after you solved all of them once.
+- Same is true for MaxCallOut. If a Quest reaches this and was not solved, it will be impossible to continue the QuestLine.
