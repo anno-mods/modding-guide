@@ -1,5 +1,11 @@
 # Creating a Quest
 
+- [Quest A7_QuestSustain](#a7_questsustain)
+- [Adding the Quest Asset to assets.xml](#adding-the-quest-asset-to-assetsxml)
+- [Quest A7_QuestDeliveryObject](a7_questdeliveryobject)
+- [Starting the Quests: QuestPool](#starting-the-quests-questpool)
+- [Advanced Sustain Quest](#advanced-sustain-quest)
+
 At first you should think about what kind of Quest you would like to have.  
 The vanilla game offers several templates for different kinds of quests (search templates.xml for `<Name>QuestTypes</Name>`), mostly different regarding their WinCondition and some prefilled text. Using the correct template will make it a bit easier, but is not mandatory. Since all Quest templates have as far as I know the very same properties, you can use any of them and replace the values like you want and use any WinCondition and combine them like you want.
 
