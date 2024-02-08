@@ -774,7 +774,7 @@ See here how to [create a QuestPools](./Creating%20QuestPools.md)
 
 ## Advanced Sustain Quest
 Now we will expand the Sustain Quest we already created above and add some "complicated" stuff to it:
-- Spawn the Starter Object (the Queen) on the island with the highest Population from the player that also haves 3 schnapps destilleries and a tavern building.
+- Spawn the Starter Object (the Queen) on the island with the highest Population from the player that also has 3 schnapps distilleries and a tavern building.
 - Make use of the QuestArea (Area==Island), so you have to sustain and deliver the schnapps on that island, not anywhere else.
 - Add another Objective, executed Linear: Delivery on Island (give the Queen some schnapps), where the amount to deliver should scale based on progresslevel (this only works for delivery quests)
 - Make the Queen-starter object moveable and move her after delivering her schnapps to the next tavern while you have to sustain an amount of schnapps.  
