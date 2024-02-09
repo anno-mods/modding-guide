@@ -572,6 +572,7 @@ Lists inlucding Quests/Groups/SubPools, you can define a Weight for each of them
 - `Groups`: When you search for the `GUID -616566410` you will find it to be a Group GUID above alot of Assets being Quests from Jorgensen and used in a QuestPool. This is a easy way to automatically include all Quests within that Group, but it is not very clear for the reader and modder. Because it also means you must take care **where to put** your own quest to avoid accidently adding it to such a existing group!  
 - `SubPools`: Pools can even include other Pools. Eg. you want a Pool to start some random Quests, but you have many Quests of different categories and want different cooldowns for them. Then you can order them into different SubPools with their own Cooldowns and start them with a TopLevel Pool. Eg. the TopLevel Pool calls a Quest once every 30 minutes and your SubPools have a PoolCooldown of 60 minutes, to make sure the same category of Quest is not chosen two times in a row.  
 
+**Note:** I think one can not combine SubPools and Quests within the same QuestPool, at least in my test the Quest never triggered.  
 I found no integrated way to make the pool randomly start no Quest after the Cooldown (similar to random rewardpools using EmptyRewardPool to have the chance for no reward). But adding an AutoSolved-Quest kinds of act like this, you find one in my shared mod [shared_ObjectDummies](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main/shared_ObjectDummies) (v1.04 and higher).  
 
 #### `IsMainStoryPool`:
