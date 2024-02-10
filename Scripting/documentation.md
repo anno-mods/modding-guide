@@ -17,7 +17,7 @@ CounterValueType/PlayerCounter/CounterScope and ParticipantID can be found in da
 
 ### Unlock/Relock assets
 - `ts.Unlock.GetIsUnlocked(AssetGUID)`: returns booleane if sth is locked or not.
-- `s.Unlock.SetUnlockNet(AssetGUID)`
+- `ts.Unlock.SetUnlockNet(AssetGUID)`
 - `ts.Unlock.SetRelockNet(AssetGUID)`
 
 
