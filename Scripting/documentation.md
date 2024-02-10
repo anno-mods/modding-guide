@@ -20,6 +20,10 @@ CounterValueType/PlayerCounter/CounterScope and ParticipantID can be found in da
 - `ts.Unlock.SetUnlockNet(AssetGUID)`
 - `ts.Unlock.SetRelockNet(AssetGUID)`
 
+### Make Trader build a new Ship
+- `ts.SessionParticipants.GetParticipant(ParticipantID).Trader.ForceBuild()` based on TradeFleet/WarFleet of the neutral Trader/Pirate, can not exceed the number defined there. Most relevant for pirates.   
+**Note:** Can only force-build one ship per GameTick. But this is actually a good thing, because it makes this multiplayer compatible out of the box (not executed one time per local player this way). Simply call your script with this command multiple times, if you want to force-build multiple ships.
 
-
+### Get Highscore Data
+Eg. MilitaryShipScore: `ts.Participants.GetParticipant(ParticipantID).Highscore.HighscoreData.GetMilitaryShipScore()`: eg useful if you want to compare ship strenght of two players. xml only supports MilitaryStrength which sums up ships and land defense.  
  
