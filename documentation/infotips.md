@@ -7,10 +7,13 @@ Alternatively I attached the extracted file in the modding discord channel here:
 
 
 ### Enums
-The infotips use alot of numbers to express operations. By default all not-defined integer values are 0. 
+Infotips are called **InfoTipData** in the code and are adressed as usual by Guids. Infotips use a lot of numbers to express operations. By default all non-defined integer values are 0. 
 We have to test and find out the meaning ourself. Here what we already found out (no guarantee that it is correct):
 
-- **VisibilityElement**: these usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. 
+-**InfoElements**
+- - Each InfoTip is made of any number of InfoElements. Their order in the code corresponds to the display in the game: The first InfoElement (if visible, see below) represents the top of the Infotip and vice versa.
+
+- **VisibilityElement**: these usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
 
 - **CompareOperator**:
 - - 0 (or not defined) Equals
@@ -51,7 +54,7 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 15  ?
 - - 16  ?
 - - 17  ?
-- - 18  ?
+- - 18 used for text in italics like fluff-texts of buffs / items
 - - 19 seems to be used for listing attributes, eg. all effects from a buff.
 
 ### Code Snippets
