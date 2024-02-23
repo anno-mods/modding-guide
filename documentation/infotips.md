@@ -10,10 +10,11 @@ Alternatively I attached the extracted file in the modding discord channel here:
 Infotips are called **InfoTipData** in the code and are adressed as usual by Guids. Infotips use a lot of numbers to express operations. By default all non-defined integer values are 0. 
 We have to test and find out the meaning ourself. Here what we already found out (no guarantee that it is correct):
 
--**InfoElements**
+- **InfoElement**
 - - Each InfoTip is made of any number of InfoElements. Their order in the code corresponds to the display in the game: The first InfoElement (if visible, see below) represents the top of the Infotip and vice versa.
 
-- **VisibilityElement**: these usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
+- **VisibilityElement**:
+- - They usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
 
 - **CompareOperator**:
 - - 0 (or not defined) Equals
