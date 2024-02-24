@@ -1,7 +1,7 @@
 Written by Serp
 
-- [Quests](./Properties-Quest-QuestPool.md#propertiesvalues-of-quests-explained)
-- [QuestPools](./Properties-Quest-QuestPool.md#propertiesvalues-of-questpools)
+- [Quests](#propertiesvalues-of-quests-explained)
+- [QuestPools](#propertiesvalues-of-questpools)
 
 The Anno devs meanwhile finally published an xml file that contains all allowed properties and values with sometimes a short description (next to assets.xml of game files):
 [properties-toolone.xml](https://github.com/anno-mods/modding-guide/blob/main/documentation/properties-toolone.xml) (I will call it p-t.xml below as abbreviation).  
