@@ -2,7 +2,7 @@
 
 There is no official documentation.The textsourcelist.json is quite outdated, but still partly tells us what arguments are expected and what is returned, although not everything from it is useable in lua.  
 Here we will collect some helpful lua commands, what they do and how they are used. Feel free to contribute.  
-(See also here for more documentated commands https://github.com/Pnski/Anno1800ModDoku/tree/main)
+(See also here for more documentated commands [Pnksi Lua Command Documentation](https://github.com/Pnski/Anno1800ModDoku/blob/main/Readme.md) )
 
 ### PlayerCounter in lua
 `ts.Participants.GetParticipant(ParticipantID).ProfileCounter.Stats.GetCounter(CounterValueType,PlayerCounter,Context,CounterScope,ScopeContext)`  
