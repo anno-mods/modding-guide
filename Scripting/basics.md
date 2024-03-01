@@ -48,7 +48,6 @@ Since most commands are synced, it is also fine to use math.random() from lua to
 One command that unfortunately causes desync is for example `condition.changeOwnerOfSelected(25)` which changes the owner of currently selected object to Bente.<br>
 While talking of "Selection": Keep in mind that in Multiplayer COOP games the "selection" is not explicit, because one coop player can have sth else selected than the other and doing a synced command on it may result in changing all selections. Same is true for xml `ConditionActiveSession` and the lua commands starting with `session.`, because the human can be active in multiple sessions at once.
 
-
 ## Keybind Commands
 In GUID 2001271 KeyBindings you see and can add Keybindings and when this key is hit, execute a lua command like: `<Command>ts.Cheat.GlobalCheats.ToggleSuperShipSpeed()</Command>`.<br>
 Commands executed this way are **only** executed for the player who hits the key and the result is in most cases synced.
@@ -59,3 +58,6 @@ Pro-Hint: You can use this helper mod https://github.com/Serpens66/Anno-1800-Sha
 ### COOP
 Also in Coop a script is executed for each coop player separately and then again synced.<br>
 This means a script will be **executed multiple times**!! And unfortunately I found no way to prevent this yet...
+
+### Not synced commands
+Commands that are not automatically synced by the game, like `condition.changeOwnerOfSelected(25)` or also `ts.Participants.SetChangeParticipantReputationTo(%i, %i, repchange)` can still be used in MP without causing desync IF all players execute the very same command in the very same gametick hitting the very same objects. Here it comes in handy that "ActionExecuteScript" is executed for all players at once. Although for commands affecting the "selected" object this is still not really practical, since all players also must have the same object selected.. (you can force selectiong and then force previous selection again, but this also only works if everyone is in the same session.. you can force players to enter another session, but this sucks and is still very error prone..)
