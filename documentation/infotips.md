@@ -36,6 +36,11 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 0 all VisibilityElement listed on the same level are chained with "and" (so all of them must be true at the same time)
 - - 1 all VisibilityElement listed on the same level are chained with "or" (so one of the conditions must be true)
 
+- **Condition**:
+- - [RefGuid] Most basic condition which checks for the Guid of a selected asset or an asset where the mouse hovers over at the moment. 
+- - [Selection ... ] These conditions only work for selected assets, mouse-over is not recognized. This way, infotips change their information depending on which building was selected last (unwanted behaviour).
+- - [StaticData ... ] These conditions work for mouse-over too, e.g. when hovering over construction menu icons. However, valid arguments are very limited. 
+
 - **ElementType** (they define the kind of tooltip/box/structure):
 - - 0  ?
 - - 1 seems to be some kind of header
