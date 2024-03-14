@@ -50,10 +50,12 @@ In addition to the entries there you must make sure:
 ## Replace buildings
 - In `ConstructionAI/BuildingReplacements` you can define special GUIDs for AI, eg. Mercier using a special theatre instead of the normal one.
 - Global replacement of building if DLC is active `DlcController/ReplaceBuildingsWhenDLCisActive` (can also set IgnoreSecondParty if you dont want it for AI.)
+Both of them only work on new games or games where you just enabled the DLC on.
 
 ## Building Placement
 - `GlobalConstructionAIBalancing` ? Don't know how this works, will most likely effect every AI the same.
 
-## Unlock things for AI only
+## Unlock buildings for AI only
 - `ConstructionAI/UnlockReferenceAssets`: here you can define sth like "if you unlocked X, also unlock Y"
-- or with help of Serps mod [shared_IsAIPlayer_Condition](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main/shared_IsAIPlayer_Condition)
+- A workaround Taube mentioned: The AI only checks if a building is in the Construction Menu and if it is unlocked, then the AI can build it. If you put your building into a "ProductionChain" and this chain into the menu, you can unlock the building, which will allow AI to build it. But players won't be able to build it since they also need the ProductionChain unlocked.
+- With help of Serps mod [shared_IsAIPlayer_Condition](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/tree/main/shared_IsAIPlayer_Condition)
