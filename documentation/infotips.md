@@ -49,7 +49,7 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 2  ?
 - - 3  ?
 - - 4 seems to be used for attributes, eg: "Speed:    +10%"
-- - 5 used for dark-grey "background" text.
+- - 5 used for dark-grey "background" text (can´t handle `Icons` and `Values`, only plain text; use Type `4` instead if you want to use these)
 - - 6  ?
 - - 7  ?
 - - 8  ?
