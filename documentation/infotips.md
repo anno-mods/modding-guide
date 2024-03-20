@@ -50,8 +50,8 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 4  attributes (from buffs etc): `Icon`, `Text` and `Value`; both in bright color; writes text in one line only, no matter how long it is. --> most universal type to use
 - - 5  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`)
 - - 6  separator line
-- - 7  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has <Source>...</Source> on same level
-- - 8  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has <Source>...</Source> only on sub-levels
+- - 7  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` on same level
+- - 8  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` only on sub-levels
 - - 9  InfoLayer-hints: `Text` is bold and written in one line only (no wordwraps); used for UI-buttons e.g. in the construction menu and within buildings. Can't display icons.
 - - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Column>` on same level. 
 - - 11  ... seems to have sth to do with asset costs (materials, permits, godlikes, blueprints, upgradability)
@@ -59,7 +59,7 @@ We have to test and find out the meaning ourself. Here what we already found out
 - - 13  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
 - - 14  plain text: `Text` in medium-grey color (can´t display `Icon` and `Value`); used for action-descriptions (e.g. click on ... to jump to ...); does not adapt infotip size to text length!
 - - 15  does nothing?
-- - 16  used for main category infotips, e.g. MonumentEventCategories. Needs at least <Headline> to show text.
+- - 16  used for main category infotips, e.g. MonumentEventCategories. Needs at least `<Headline>` to show text.
 - - 17  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`); does not adapt infotip size to text length!
 - - 18  used for text in italics like fluff-texts of buffs / items
 - - 19  seems to be used for listing attributes, eg. all effects from a buff (needs `TemplateGUID` to display sth)
