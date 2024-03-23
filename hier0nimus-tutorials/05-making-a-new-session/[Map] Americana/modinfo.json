@@ -1,0 +1,31 @@
+{
+  "Version": "1.0.0",
+  "ModID": "[Map] Americana",
+  
+  "Category": {
+    "Chinese": "Map",
+    "English": "Map",
+    "French": "Map",
+    "German": "Map",
+    "Italian": "Map",
+    "Japanese": "Map",
+    "Korean": "Map",
+    "Polish": "Map",
+    "Russian": "Map",
+    "Spanish": "Map",
+    "Taiwanese": "Map"
+  },
+  "ModName": {
+    "Chinese": "Americana",
+    "English":  "Americana",
+    "French":  "Americana",
+    "German":  "Americana",
+    "Italian":  "Americana",
+    "Japanese":  "Americana",
+    "Korean":  "Americana",
+    "Polish":  "Americana",
+    "Russian":  "Americana",
+    "Spanish": "Americana",
+    "Taiwanese":  "Americana"
+  }
+}

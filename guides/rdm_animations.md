@@ -1,18 +1,18 @@
-#### Create .rdm Animations with Blender
+# Create .rdm Animations with Blender
 
 Many production buildings, public services or ornamental assets use animations to generate a more lively atmosphere. This short tutorial shows how to set up your own animation with Blender and get it to work in Anno 1800. As an example we will animate a small crane extracted from the heavy weapons factory:
 
 ![vanilla crane](./_sources/tutorial_crane_0.png)
 
-# Requirements: 
+## Requirements: 
 
--	Blender 2.8 or higher 
--	rdm4-bin converter
--   Anno Cfg Import / Export Addon
+- Blender 2.8 or higher (3.5.1 recommended)
+- rdm4-bin converter
+- Anno Cfg Import / Export Addon
 
-# Ressources: 
+## Ressources: 
 
-Download the model, cfg file and, for checking, an example .blend file here: 
+Download the model, cfg file and, for checking, an example .blend file in the releases section.
 
 ## Step 1: Adjust Materials
 
@@ -34,7 +34,7 @@ I guess you usually export your model as a .rdm file from Blender with the Anno 
 
 Anno mirrors objects along the x-axis and so does the Import / Export Addon (if you haven´t unticked the „mirror along x“ in the addon preferences). If you open your exported model with a 3D-viewer of your choice you´ll see it´s mirrored. Anno will mirror it „back“ again, so ingame it looks like in Blender.
 
-![mirror](./_sources/mirrored_objects_abstract.png)
+![mirror](./_sources/mirrored_objects_abstract_0.png)
 
 To create your animation, use the mirrored model. Therefore you have two options, both should do the trick:
 
@@ -53,7 +53,7 @@ A vertex group consists of vertices you assigned to it. Each group can change lo
 To define vertex groups...
 
 - Click on your model and go into **EDIT MODE**
-- In the properties tab on the left you will find the property `Vertex groups` (left pic). Add 3 groups with `+` and name them *base*, *top* and *hook* (or any other name you want) (right pic).  
+- In the properties tab on the left you will find the property `Vertex groups` (1st pic). Add 3 groups with `+` and name them *base*, *top* and *hook* (or any other name you want) (2nd pic).  
 
 ![vertex_group](./_sources/tutorial_crane_1.png)
 
@@ -98,7 +98,7 @@ You will see that Blender automatically added a bone to the viewport and an arma
 
 When you look at your outline you will see that the model is linked to the armature, in other words: Vertex groups and bones are linked and ready for animation :)
 
-## Part 5: Add an Animation
+## Step 5: Add an Animation
 
 Now the fun part begins.
 
@@ -164,7 +164,7 @@ Both ensures that you get a smooth transition between the loops.
 > Blender will choose the shortest path between two keyframes, so if you want to rotate a vertex group by 2pi… you will see nothing, the object won´t move. Solution: > Set more key frames. Even 180° is not stable in many cases, so I recommend an angle of 90° (4 key frames).   
 > Example
 
-## Part 6: Export your Animation and Convert it to .rdm
+## Step 6: Export your Animation and Convert it to .rdm
 
 - Once you finished your animation, switch into **OBJECT MODE** and select the following: 
 
@@ -172,7 +172,7 @@ Both ensures that you get a smooth transition between the loops.
 
 - Click on FILE --> EXPORT --> `gltf 2.0 (.gltf / .glb)` and use the settings below: 
 
-![vanilla crane](./_sources/vanilla_crane.png)
+![export settings](./_sources/rdm_anim_export_settings.png)
 
 - Open a console (cmd, gitbash, powershell etc) and follow the instructions on the [rdm4-bin github page](https://github.com/lukts30/rdm4). 
 
