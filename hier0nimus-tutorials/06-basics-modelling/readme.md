@@ -1,6 +1,6 @@
 # Modelling in Blender for Anno 1800
 
-We already did some things in Blender in previous tutorials but at this point do we actually know enough to make a new model or to actually know if something is not correctand  fix it? I have to be honest, I do not always know they ins and outs. I try multiple things and sometimes something does not work out as intended. I do a lot of things wrong. When modding, be kind to yourself. Take a step back and see what you did wrong or can do better.
+We already did some things in Blender in previous tutorials but at this point do we actually know enough to make a new model or to actually know if something is not correctand  fix it? I have to be honest, I do not always know the ins and outs. I try multiple things and sometimes something does not work out as intended. I do a lot of things wrong. When modding, be kind to yourself. Take a step back and see what you did wrong or can do better.
 
 For me personally Blender or I should actually say modelling and everything that comes with it like materials, animations, feedback is a huge effort to learn. In the Discord a lot of people already helped a lot, but dispite all their efforts I sometimes keep making mistakes, still do not understand where I go wrong and still have a lot to learn about a lot of aspects.
 
@@ -441,13 +441,9 @@ Depending on the buildings and how much effort you want to put into it you will 
 
 The important part here is to understand how you move parts around and how to add and delete parts. That is what we did above.
 
-Now I'll do some changes of my own without actually going into to much detail and describing all of them. The changes are basicly all what I described above, moving, adding, deleting parts of the building.
-
 In this case maybe before merging both buildings together we could first make a duplicate, remove a lot of the parts and then when we have a final second part only then merge it into the other building. That would be much easier to select vertices from the second building and not accidently selecting parts of the other building.
 
 ![Lumberjack's Hut variation](./_sources/blender-64-0.jpg)
-
-Go nuts! And have fun! See you at the end result!
 
 ### Some tips
 
@@ -461,19 +457,19 @@ Go nuts! And have fun! See you at the end result!
 
 ![Lumberjack's Hut variation](./_sources/blender-67-0.jpg)
 
-### Stitching buildings together9
+### Stitching buildings together
+
 Making sure the buildings are nicely stictched together by adapting/moving multiple points on their own or in smaller groups. 
 
 ![Lumberjack's Hut variation](./_sources/blender-68-0.jpg)
 
-
-### Remving the door leaving a hole and filling the hole with a new or existing part
+### Removing the door leaving a hole and filling the hole with a new or existing part
 
 When we remove the door the wall has a hole into it. We now need to fill that hole. We can dot this in different ways.
 
 ![Lumberjack's Hut variation](./_sources/blender-69-0.jpg)
 
-### Extending existing neibouring parts
+### Extending existing neigbouring parts
 
 The first and easiest solution is to extend a part next to it. This will result in the existing part being stretched and sometimes misformed resulting in not a good result. It really depends on the location and the surrounding vertices and the materials that are wrapped around it.
 
@@ -537,6 +533,7 @@ Duplicate the existing deck with the roof.
 If we remove a big part, we loose a big part of the deck that we still need. 
 
 Example:
+
 ![Lumberjack's Hut variation](./_sources/blender-83-0.jpg)
 
 To solve this we will be moving some of the anchor points around, resulting in disformed materials, but we will be fixing those in a second. See the benath taken steps to get the result.
@@ -605,7 +602,7 @@ Now we have to make the decision to place our building on a good part of the dec
 
 I hope you saved the changes already from time to time to make sure when Blender would crash you would not loose all the work.
 
-Go back into the top view and remove the backup building. Then move the new building on a location. Because we made the building kindoff big, and we do not have that much space we made it hard for ourselves to fit in the building on this decal if we want to match the ground a bit. Not putting it above a piece of pathway or above something else that does not make sense. You will immediatly see the struggles you can have. Do not take the propsor animations into account at the moment. We will move them after. The only thing to look out for is to stay a bit from the edges and within the BuildBlocker that can be selected inside the IFOFILE.
+Go back into the top view and remove the backup building. Then move the new building on a location. Because we made the building kindoff big, and we do not have that much space we made it hard for ourselves to fit in the building on this decal if we want to match the ground a bit. Not putting it above a piece of pathway or above something else that does not make sense. You will immediatly see the struggles you can have. Do not take the feedback into account at the moment. We will move them after. The only thing to look out for is to stay a bit from the edges and within the BuildBlocker that can be selected inside the IFOFILE.
 
 ![Lumberjack's Hut variation](./_sources/blender-99-0.jpg)
 
@@ -621,7 +618,7 @@ And maybe remove some of them or move some of them around to create some differe
 
 ![Lumberjack's Hut variation](./_sources/blender-102-0.jpg)
 
-Adapt the existing pile of wood a bit bu turning it 180 degrees and moving it a bit.
+Adapt the existing pile of wood a bit by turning it 180 degrees and moving it a bit.
 
 ![Lumberjack's Hut variation](./_sources/blender-103-0.jpg)
 
