@@ -19,7 +19,8 @@ Detailed walkthrough the creation of mods.
 - [Guide to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
 
 ### Advanced Tutorials/Guides
-5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session//readme.md)
+5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session/readme.md)
+5. [Tutorial 6 - Basics Modelling](./hier0nimus-tutorials/06-making-a-new-session/06-basics-modelling/readme.md)
 - [Lua Scripting](./Scripting)
 - [Tutorial Making Quests](./hier0nimus-tutorials/Quests-Tutorial)
 

@@ -2,7 +2,7 @@
 
 We already did some things in Blender in previous tutorials but at this point do we actually know enough to make a new model or to actually know if something is not correctand  fix it? I have to be honest, I do not always know they ins and outs. I try multiple things and sometimes something does not work out as intended. I do a lot of things wrong. When modding, be kind to yourself. Take a step back and see what you did wrong or can do better.
 
-For me personally Blender or I should actually say modelling and everything that comes with it like materials, animations is a huge effort to learn. In the Discord a lot of people already helped a lot, but dispite all their efforts I sometimes keep making mistakes, still do not understand where I go wrong and still have a lot to learn about a lot of aspects.
+For me personally Blender or I should actually say modelling and everything that comes with it like materials, animations, feedback is a huge effort to learn. In the Discord a lot of people already helped a lot, but dispite all their efforts I sometimes keep making mistakes, still do not understand where I go wrong and still have a lot to learn about a lot of aspects.
 
 Because there are a lot of people like me that want to get started with moddeling and making buildings I thought I could already make a basic modelling tutorial for a building, building (pun inteded) on top of the ship making tutorial.
 
@@ -115,7 +115,7 @@ If we look at all the files the most important ones are:
 - .cfg
 - .ifo
 
-The cf7 and the .fc file are both for animations. When creating animations in your building, when exporting the building to a .cfg file, it will export specific animation information inside the .cf7 and .fc file. The .cfg file will look for those files. So, if you link the .cfg file in your building path in the building asset in the assets.xml, that cfg will be loaded inside the game and the game will look for those .cf7 and .fc file via the .cfg file.
+The cf7 and the .fc file are both for feedback/animations. When creating feedback and animations in your building, when exporting the building to a .cfg file, it will export specific feedback/animation information inside the .cf7 and .fc file. The .cfg file will look for those files. So, if you link the .cfg file in your building path in the building asset in the assets.xml, that cfg will be loaded inside the game and the game will look for those .cf7 and .fc file via the .cfg file.
 
 The .ifo file contains additional information about the workspace the building is within (tilesize, height in which the building can be viewed, places where animations can walk, where fire can be placed with incidents,...) and additional technical placements like where the cart to pickup or deliver goods will go or the info icon that is floating above the building. This file will also be created when exporting the .cfg file from blender and so the .cfg file needs this file just like the animation files to work proporly if they are used in the model.
 
@@ -206,13 +206,13 @@ If we dive deeper into every element we discover that every element has their ow
 
 #### ANIMATION_SEQUENCES
 
-If we open this, we see 2 different children elements. One for the **idle** state, and one for the **work** state. We will come back to this later in this tutorial or a different tutorial. It is good enough for now to know this is needed for animations that are used in this building and it has 2 states depending if the building is working or idle. For example when working smoke could come out of the chimney and when idle there is no smoke. This is is small but clear example and animation. 
+If we open this, we see 2 different children elements. One for the **idle** state, and one for the **work** state. We will come back to this later in this tutorial or a different tutorial. It is good enough for now to know this is needed for feedback / animations that are used in this building and it has 2 states depending if the building is working or idle. For example when working smoke could come out of the chimney and when idle there is no smoke. This is is small but clear example and animation. 
 
 ![Lumberjack's Hut variation](./_sources/blender-24-0.jpg)
 
 #### CF7FILE
 
-If we open this element we see a lot of different children that again contain children. The cf7file contains all the animated elements for this building. So for example people running around doing things to make the building more alive instead of just a static building. This is also tied to the ANIMATION_SEQUENCES states. When the building is idle those people will probably not be there running around but only there when it is in a working state.
+If we open this element we see a lot of different children that again contain children. The cf7file contains all the animated feedback elements for this building. So for example people running around doing things to make the building more alive instead of just a static building. This is also tied to the ANIMATION_SEQUENCES states. When the building is idle those people will probably not be there running around but only there when it is in a working state.
 
 ![Lumberjack's Hut variation](./_sources/blender-25-0.jpg)
 
@@ -737,9 +737,9 @@ Last thing we will be importing is a wooden storage box. This can be found in th
 
 ![Lumberjack's Hut variation](./_sources/blender-124-0.jpg)
 
-#### Moving all animations from CF7
+#### Moving all feedback units from CF7
 
-Now there is another thing to do, checking all the animations. I'm going to be honest, this is not my strongest part. I'm still learning about this at the moment so the things I'm going to do are going to be basic.
+Now there is another thing to do, checking all the feedback units. I'm going to be honest, this is not my strongest part. I'm still learning about this at the moment so the things I'm going to do are going to be basic and there are probably going to be some small mistakes
 
 First let us check the CF7 file. 
 
@@ -754,9 +754,9 @@ We have:
 - Walking
 - Woodcutter
 
-To be able to move the animations around, make sure you are in Object mode!
+To be able to move the feedback units around, make sure you are in Object mode!
 
-Let's go ingame and have a look at the original animations and how the people move around.
+Let's go ingame and have a look at the original feedback and how the people move around.
 
 ![Lumberjack's Hut variation](./_sources/blender-105-0.jpg)
 
@@ -969,5 +969,15 @@ So we complete our ModOp with the correct path and the correct addition of our c
 ```
 
 We can now save everything, move the mod folder to our game mods folder and start the game to check out if we did not make any mistakes!
+
+Looking good!
+
+![Lumberjack's Hut variation](./_sources/blender-142-0.jpg)
+
+Comparison with the normal lumberjack's hut.
+
+![Lumberjack's Hut variation](./_sources/blender-143-0.jpg)
+
+We do have some small feedback unit mistakes, but that is for a more advanced tutorial.
 
 Next on the agenda is a more complex building and creating custum animations and adding new feedback units and more complex assets.
