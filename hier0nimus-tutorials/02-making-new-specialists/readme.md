@@ -335,7 +335,8 @@ The item we will be creating is a legendary item. Which you want to take depends
 
 ### ItemType
 
-The itemtype we are using for this specialist is **"Specialist"**. But there are also "Normal" used for Cultural items.
+The itemtype we are using for this specialist is **"Specialist"**. But there are also "Normal" used for Cultural items.  
+(One different behaviour that was already found is, that "Normal" ItemType can not use passive buffs (by socketing like VehicleUpgrade) + an ItemAction (effect when you click the socketed item) at the same time. While ItemType=Specialist can have these both working together.)
 
 ### Allocation
 
