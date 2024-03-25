@@ -30,7 +30,7 @@ We have to test and find out the meaning ourself. Here what we already found out
 - **ResultType**:
 - - 0 (or not defined) boolean (if ExpectedValueBool is not defined, it is "True")
 - - 1 integer (if ExpectedValueInt is not defined, it is 0)
-- - 2 float (if ExpectedValueFloat is not defined, it is 0)
+- - 2 float (if ExpectedValueFloat is not defined, it is 0). Use numbers seperated by "dot" here, like "1.2", not "1,2".
 - - Unfortunately it seems eg. ExpectedValueInt can really only deal with Int, **not** with constructs like this, which evaluate to an int: ```[ItemAssetData([RefGuid]) InputAmountUpgradeProduct(#index0#)]```
 
 
