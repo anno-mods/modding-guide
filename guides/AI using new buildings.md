@@ -15,7 +15,7 @@
 
 ### Productions Buildings
 - `ConstructionAI/TradeRules/OverProduction`.
-- `ConstructionAI/EconomyRules/ConstructionMaterials` to produce goods that are not needed for needs, but for building. Many of these in defined in templates and Profile_2ndParty-asset. Quite complicated structured.
+- `ConstructionAI/EconomyRules/ConstructionMaterials` to produce goods that are not needed for needs, but for building. Many of these in defined in templates and Profile_2ndParty-asset. Quite complicated structured. But to add your new product simply use a `<ModOp Type="add" GUID="168,169,170" Path="Values/ConstructionAI/EconomyRules/ConstructionMaterials/MainMaterialInfos">`  
 
 #### Limitations
 They only build the most efficient buildings to produce a good: if there are multiple and the efficient one is unlocked later, they may get stuck.  
