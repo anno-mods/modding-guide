@@ -34,7 +34,9 @@ In this case, import via option 2 is faster, so I used that one here.
 - In this case, the vertices on the left can be black, since they should move the most, the adjacent vertices should move a bit less. So either adjust the color again or simply use the `Strength` slider to get any grey tone.
 - I left the vertices next to the pole and the upper vertices white, but they should actually be slightly grey to achieve a more realistic effect.
 
-![cloth6](./_sources/cloth6.png) ![cloth7](./_sources/cloth7.png)
+![cloth6](./_sources/cloth6.png) 
+This is how it looks like in `Edit mode`:
+![cloth7](./_sources/cloth7.png)
 
 ## Export mesh and conversion to rdm
 
@@ -42,9 +44,9 @@ In this case, import via option 2 is faster, so I used that one here.
 - If imported via cfg: Click on the model --> `Ctrl A` --> `All Transforms`. Alternatively set all Location, Rotation values to 0 (except Rotation W = 1) and Scale to 1. Which option you choose, determines if you have to adjust the
 Orientation_Transform in the cfg afterwards or not. If you decided to use `Ctrl A` and to export the whole cfg as well, which is probably the way most people here do it, then you have no locations, rotations, scales to adjust afterwards.
 However there might be cases, where you don't want to export the cfg, but just the model. In such cases: If you chose `Ctrl A`, you have to manually set all Location, Rotation, Scale values to their default values in the cfg. But if you
-set all Location, Rotation, Scale values to their default values in Blender before export, you don't have to touch the original Orientation_Transform in the cfg (this is, because we export the model via .gltf/.glb not via Addon).
+set all Location, Rotation, Scale values to their default values in Blender before export, you don't have to touch the original Orientation_Transform in the cfg (this is, because we export the model via glTF 2.0 not via Addon).
 
-- In any case: Choose glTF 2.0 as export option with the settings below:
+- In any case: Choose `glTF 2.0` as export option with the settings below:
 
 ![cloth8](./_sources/cloth8.png)
 
