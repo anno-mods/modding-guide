@@ -167,14 +167,14 @@ We start again by creating our opening and closing ModOps tags.
 ```
 
 Next we create our ModOp with our Type. In this case we will again be adding a new asset, but in this case we will do it after a specific already existing item.
-The last item in the list of Trade Union items is the item with the GUID 191431. I know this because I went to the main assets.xml of the last data.rda file and searched for it. We will add our item right after this item in the code structure.
+Some of the items are already wrapped around a group which would result in the new item also being added to that group. We need to add the item after a neutral item. Take GUID 112574. I know this because I went to the main assets.xml searched for it. We will add our item right after this item in the code structure.
 
-We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our mod as the next sibling of the GUID 191431 (Louis Comfort Tiffany - The Experimental Window Maker).
+We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our mod as the next sibling of the GUID 112574 (Louis Comfort Tiffany - The Experimental Window Maker).
 
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
 
    </ModOp>
    <!-- END SPECIALIST - Maria Lopez -->
@@ -186,7 +186,7 @@ First let's add the &lt;Asset> tag to wrap our new specialist in.
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
       <Asset>
 
       </Asset>
@@ -217,7 +217,7 @@ Now that we know it is for the Trade Union we know which &lt;Template> we will b
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
 
@@ -236,7 +236,7 @@ We first have another container inside the &lt;Asset>, titled &lt;Values>.
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
@@ -263,7 +263,7 @@ Last is the **InfoDescription**. This is the reference to the description GUID w
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
@@ -287,7 +287,7 @@ Next is a part we can just copy paste and that we do not have to understand comp
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
@@ -335,7 +335,8 @@ The item we will be creating is a legendary item. Which you want to take depends
 
 ### ItemType
 
-The itemtype we are using for this specialist is **"Specialist"**. But there are also "Normal" used for Cultural items.
+The itemtype we are using for this specialist is **"Specialist"**. But there are also "Normal" used for Cultural items.  
+(One different behaviour that was already found is, that "Normal" ItemType can not use passive buffs (by socketing like VehicleUpgrade) + an ItemAction (effect when you click the socketed item) at the same time. While ItemType=Specialist can have these both working together.)
 
 ### Allocation
 
@@ -365,7 +366,7 @@ Defines what it will cost to buy and sell the item. Legendary items should cost 
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="191431" Type="addNextSibling">
+   <ModOp GUID="112574" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
@@ -885,7 +886,7 @@ For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
 
 ```XML
 <ModOps>
-    <ModOp GUID="191431" Type="addNextSibling">
+    <ModOp GUID="112574" Type="addNextSibling">
         <Asset>
             <Template>GuildhouseItem</Template>
             <Values>
@@ -1126,7 +1127,7 @@ Now we put this underneath our first ModOp and in our main ModOps, so before the
 
 ```XML
 <ModOps>
-    <ModOp GUID="191431" Type="addNextSibling">
+    <ModOp GUID="112574" Type="addNextSibling">
         <Asset>
             <Template>GuildhouseItem</Template>
             <Values>
@@ -1341,7 +1342,7 @@ We should now have the fantastic assets.xml like this:
 
 ```XML
 <ModOps>
-    <ModOp GUID="191431" Type="addNextSibling">
+    <ModOp GUID="112574" Type="addNextSibling">
         <Asset>
             <Template>GuildhouseItem</Template>
             <Values>

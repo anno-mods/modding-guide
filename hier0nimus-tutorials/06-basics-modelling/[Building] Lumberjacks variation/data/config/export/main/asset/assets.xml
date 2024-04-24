@@ -1,0 +1,16 @@
+<!-- 
+
+  [Building] Lumberjacks variation
+
+  Created by Hier0nimus
+  Enjoy!
+
+-->
+
+<ModOps>
+  <ModOp GUID='1010266' Type="add" Path="/Values/Object/Variations/">
+    <Item>
+      <Filename>data/graphics/buildings/production/agriculture_05_variations/agriculture_05_variation_01.cfg</Filename>
+    </Item>
+  </ModOp>
+</ModOps>

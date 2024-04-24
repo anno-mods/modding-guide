@@ -54,3 +54,5 @@ You can:
 - [AnnoFCConverter](https://github.com/jakobharder/AnnoFCConverter) (out of support, use FileDBReader instead; Still needed for the Blender CFG Import/Export plugin)
 - [Map Editor](https://github.com/anno-mods/AnnoMapEditor)
 - [iModYourAnno](https://github.com/anno-mods/iModYourAnno) (mod manager)
+- [Anno Building-menu Customizer](https://github.com/AsciiBunny/AnnoBuildingmenuCustomizer) (freely customize your building menu; includes vanilla and all mods)
+- [Anno goats](https://github.com/sqwishy/anno_goats) (visualize contents of reward pools)

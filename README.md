@@ -14,8 +14,15 @@ Detailed walkthrough the creation of mods.
 2. [Tutorial 2 - Making new specialists](./hier0nimus-tutorials/02-making-new-specialists/readme.md)
 3. [Tutorial 3 - Making a new production chain](./hier0nimus-tutorials/03-making-new-production-chain/readme.md)
 4. [Tutorial 4 - Making a new ship](./hier0nimus-tutorials/04-making-new-ship/readme.md)
-5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session//readme.md)
-- [Documentation](./hier0nimus-tutorials/00-documentation/readme.md)
+- [Map Fertilities (Overview)](https://github.com/Pnski/Anno1800ModDoku/blob/main/Tutorials%2FMapFertilities.md)
+- [Documentation](./documentation/README.md)  
+- [Guide to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
+
+### Advanced Tutorials/Guides
+5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session/readme.md)
+5. [Tutorial 6 - Basics Modelling](./hier0nimus-tutorials/06-basics-modelling/readme.md)
+- [Lua Scripting](./Scripting)
+- [Tutorial Making Quests](./hier0nimus-tutorials/Quests-Tutorial)
 
 ## Handbooks
 
@@ -34,13 +41,16 @@ Detailed walkthrough the creation of mods.
 - [GU 17 update guide](./guides/gu17-update-guide.md)
 - [GU 16 update guide](./guides/gu16-update-guide.md)
 - [Object Variations and Skins](./guides/variations.md) (for Buildings, including automatic neighbors)
-- [Create .RDM Animations with Blender](./guides/rdm_animations.md) 
+- [Create .RDM Animations with Blender](./guides/rdm_animations.md)
+- [Editing .RDM models with Animations (with solving the problem of disappearing objects)](./guides/rdm_animations_edit.md)
 - [RDP Particle Files](./guides/particles.md)
 - [Mesh Height Maps](./guides/Mesh-Height-Maps.md) 
 - [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
+- [Edit-Island-Meshes.md](./guides/Edit-Island-Meshes.md) 
 
 ## More
 
 - [Tools Overview](./getting-started/tools-you-need.md#anno-tools-overview)
 - [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php)
 - [Asset and Text Browser: a1800.net](https://a1800.net/)
+- [Anno Building-menu Customizer (ABC)](https://github.com/AsciiBunny/AnnoBuildingmenuCustomizer)

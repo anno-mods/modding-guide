@@ -51,7 +51,7 @@ This folder should already exist and contains all the mods you want to be loaded
 
 The maindata folder contains a list of .rda files. Those files are packages of all the gamefiles. Those contain graphics, buildings, files that describe logic in the game, goods, ect.
 
-We have data0.rda > data22.rda. Every data file is a reference to the basegame or a specific DLC or big game update. In the future more files will be added when more updates will be released. The data22.rda is the last one at the moment which contains all the files for “Seeds of Change” DLC and the last game update.
+We have data0.rda > data28.rda. Every data file is a reference to the basegame or a specific DLC or big game update. In the future more files will be added when more updates will be released. The data28.rda is the last one at the moment which contains all the files for “Fiesta Pack” CDLC and the last game update.
 
 - data0: General game files
 - data1: Shaders used in the basegame
@@ -76,6 +76,12 @@ We have data0.rda > data22.rda. Every data file is a reference to the basegame o
 - data20: Pedestrian Zone Pack
 - data21: Eden Burning Scenario
 - data22: Seeds of Change DLC
+- data23: Industrial Zone Pack CDLC
+- data24: Empire of the Skies DLC
+- data25: New World Rising DLC
+- data26: Dragon Garden Pack
+- data27: Old Town Pack
+- data28: Fiesta Pack
 
 ### Why do we need to know this?
 
@@ -213,7 +219,7 @@ This mod is from the Type=”replace”. We will be replacing an existing value 
 
 Everything in the game has a GUID, it is a unique identifier that represents an asset. This can be a building, a trade union item, a fertility, ect. In our case we need the GUID of Feras, because we want to change something about him. Above you can see “192450”, but how did I know that? How can we search for this?
 
-Say hello to schwubbe.de! Go to [https://schwubbe.de/modding_blog.php](https://schwubbe.de/modding_blog.php), and scroll down until you see “Search for locas”.
+Say hello to schwubbe.de! Go to [https://schwubbe.de/modding_blog.php](https://schwubbe.de/modding_blog.php), and scroll down until you see “Search the locas”.
 
 In this field you can type whatever asset you want to know the GUID for. So, in our case we searched for “Feras Alsarami, the Persuader” and got the GUID “192450”. \
 Big thank you to this amazing tool! It makes our work a lot easier.
