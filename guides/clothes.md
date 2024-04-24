@@ -1,6 +1,6 @@
 # Create custom cloth .rdms 
 
-Taubenangriff made a new version of the rdm4-bin.exe which now supports the vertex format `P3f_N3f_G3f_B3f_T2f_C4b` when converting from `.gltf/.glb to .rdm` (atm not from `.rdm to .gltf/.glb`). 
+Taubenangriff made [a new version of the rdm4-bin.exe](https://discord.com/channels/578443209940926465/976856421536768050/1232382355520356364) which now supports the vertex format `P3f_N3f_G3f_B3f_T2f_C4b` when converting from `.gltf/.glb to .rdm` (atm not from `.rdm to .gltf/.glb`). 
 This format is required for `Clothes`, which are usually used for flags, sails and all other models which are supposed to not to be stiff.
 
 In comparison to the simple `Wind_Ripples` effect which is available for the common assets (`T2h` and `I4b`), `Clothes` allow much bigger meshes and targeted deflections for each vertice. If you just need a small awning which should fake
