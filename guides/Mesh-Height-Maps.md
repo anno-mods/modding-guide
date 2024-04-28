@@ -15,7 +15,7 @@ Basically there are four steps to create such a map:
 <details>
   <summary><b>* Dynamic Feedbach Units</b></summary>
 <br />
-Dynamic feedback describes residents or workers who are spawned "randomly" in or around your asset and do actions according to their name. This makes your assets more lively, less static. Since their naming convetion already determines their action they do not need a feedback_config in your .fc or s.a.f.e file, only a `DummyGroup` with dummies. These DummyGroups are named with a preceding `feedback_` + the name of the action. Most common one is probably `feedback_door`, where dummies walk into or out of your building. But there are lot of other hardcoded sequences available. E.g.: 
+Dynamic feedback describes residents or workers who are spawned "randomly" in or around your asset and do actions according to their name. This makes your assets more lively, less static. Since their naming convention already determines their action, they do not need a feedback_config in your .fc or s.a.f.e file, only a `DummyGroup` with dummies. These DummyGroups are named with a preceding `feedback_` + the name of the action. Most common one is probably `feedback_door`, where dummies walk into or out of your building. But there are lot of other hardcoded sequences available. E.g.: 
 <br />
 <br />
 
