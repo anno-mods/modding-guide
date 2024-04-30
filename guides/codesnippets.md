@@ -1,6 +1,6 @@
 # Codesnippets (xml)
 
-(see here for lua: [codesnippets](././Scripting/CodeSnippets.md))
+(see here for lua: [codesnippets](../Scripting/CodeSnippets.md))
 
 
 - [ModOp examples](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modop-examples.md)
