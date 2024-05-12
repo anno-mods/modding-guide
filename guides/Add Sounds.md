@@ -4,8 +4,9 @@ work in progress, currently only german and mostly personal notes and for sure n
 
 Eigene Sounds zuzufügen ist leider ziemlich kompliziert und geht nur über das Programm Wwise.
 
+
 wwise installieren:
-AudiokineticLauncher exe starten und Wwise_v2019.2.15_Build7667 installieren, erfordert kostenlosen Account erstellen.
+AudiokineticLauncher exe (https://www.audiokinetic.com/en/download/) starten und Wwise_v2019.2.15_Build7667 installieren, erfordert kostenlosen Account erstellen.
 
 man kann nur .wav dateien nutzen.
 Dazu zb. "Audacity" Programm nutzen. https://www.youtube.com/watch?v=HVOjueiEBzc
