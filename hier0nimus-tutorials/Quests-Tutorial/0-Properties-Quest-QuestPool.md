@@ -410,7 +410,7 @@ The both most used `StarterObjectObject` in vanilla are:
   </ConditionStarterObject>
   ```
   </details>
-- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship from the QuestGiver as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests.  
+- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests. **Note:** Although you can define "ObjectOwner" in "ConditionObjectSpawnedObject", it has no effect as StarterObject here, the StarterObject will always belong to "Neutral", you can only adjust the VisibleOwner if you want.  
   <details>
   <summary>(CLICK) example CODE</summary>  
   
