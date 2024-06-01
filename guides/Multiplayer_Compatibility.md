@@ -2,7 +2,7 @@
 
 There are a few things that do not properly work in Multiplayer, especially in Triggers and Quests (~1%), while 99.9% of other xml stuff works fine in Multiplayer.  
 Feel free to add more problems related to xml and Multiplayer if you know some.  
-(For **lua** and MP see [here](./././Scripting/basics.md#multiplayer-sync))
+(For **lua** and MP see [here](../Scripting/basics.md#multiplayer-sync))
 
 ## Conditions
 - Conditions related to the **UI** from a player, like ConditionEvent + **MovieFinished/NotificationRemoved/EnterUIState/LeaveUIState** and similar or ConditionGUIEvent are only checked locally for the client and therefore will cause desync in multiplayer.  
@@ -20,7 +20,7 @@ Feel free to add more problems related to xml and Multiplayer if you know some.
 - **Decision Quests**  
 in general are not multiplayer compatible if several players have the same Quest GUID active at the same time! The option chose by one player will also be chosen for other players.  
 Luckily the Actions resulting from a decision seems to be only executed for the correct player.  
-**Workaround**: Either make sure this Quest can only be active for one player at a time ([CanBeActiveForMultipleParticipants=0](https://github.com/anno-mods/modding-guide/blob/main/hier0nimus-tutorials/Quests-Tutorial/0-Properties-Quest-QuestPool.md#canbeactiveformultipleparticipants)). Or make 4 Quest Assets each with its own GUIDs (you can use BaseAssetGUID to not need to copy the whole code several times) and start the first only for Human0, second only for Human1 and so on (eg with help of this shared mod [shared_WhichPlayer_Condition](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/blob/main/shared_WhichPlayer_Condition/modinfo.json) )  
+**Workaround**: Either make sure this Quest can only be active for one player at a time ([CanBeActiveForMultipleParticipants=0](../hier0nimus-tutorials/Quests-Tutorial/0-Properties-Quest-QuestPool.md#canbeactiveformultipleparticipants)). Or make 4 Quest Assets each with its own GUIDs (you can use BaseAssetGUID to not need to copy the whole code several times) and start the first only for Human0, second only for Human1 and so on (eg with help of this shared mod [shared_WhichPlayer_Condition](https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/blob/main/shared_WhichPlayer_Condition/modinfo.json) )  
 - - **AutoShowDecisionScreen**: It opens the Decision for every human player and accepts decisions made by players who should not be able to choose. So don't use this for a mod that should work in Multiplayer (you could have in total 5 copies of the same Quest, 4 for each Human in case the game is multiplayer and one with AutoShowDecisionScreen=1 if the game is singleplayer (use conditions to check))  
 - **General_Enemy** is the owner of enemy ships in most Quests. There is only one General_Enemy which is at war with all human players, so keep in mind that human players may attack the enemies belonging to Quests active for another player.  
 
