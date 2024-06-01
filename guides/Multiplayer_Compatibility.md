@@ -2,7 +2,7 @@
 
 There are a few things that do not properly work in Multiplayer, especially in Triggers and Quests (~1%), while 99.9% of other xml stuff works fine in Multiplayer.  
 Feel free to add more problems related to xml and Multiplayer if you know some.  
-(For **lua** and MP see [here](././Scripting/basics.md#multiplayer-sync))
+(For **lua** and MP see [here](./././Scripting/basics.md#multiplayer-sync))
 
 ## Conditions
 - Conditions related to the **UI** from a player, like ConditionEvent + **MovieFinished/NotificationRemoved/EnterUIState/LeaveUIState** and similar or ConditionGUIEvent are only checked locally for the client and therefore will cause desync in multiplayer.  
