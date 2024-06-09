@@ -17,7 +17,7 @@ Es gibt keine direkten lua Funktionen um rauszufinden ob man selbst der Host ist
 
 ***Sync:***  
 In Multiplayer verhalten sich nicht alle lua befehle gleich:  
-- Automatisch ***gesynce Befehle***: Macht kein Desync, aber hat den Haken, dass die Aktion für jeden lokalen Spieler einmal ausgeführt wird, auch für Coop Peers.  
+- Automatisch ***gesyncer Befehle***: Macht kein Desync, aber hat den Haken, dass die Aktion für jeden lokalen Spieler einmal ausgeführt wird, auch für Coop Peers.  
 &nbsp;Beispiel: mit ActionExecuteScript wird ein Skript mit Gutschrift von 100 Münzen ausgeführt: In einem Spiel mit 2 CoopSpieler für Human0 werden Human0 dann 200 Münzen gutgeschrieben. Dh. entweder teilt man den Betrag durch die Anzahl der Coop-Spieler (Anzahl bekommt man über genau diesem Umstand raus), oder man darf den Befehl nur für einen der Peers ausführen, doch dazu muss man wissen, welcher Peer man selbst ist (was nicht so einfach ist).
 - ***Nicht gesynced***: Diese Befehle lösen Desync aus, AUßER jeder lokale Spieler führt sie im exakt selben Tick aus, mit demselben Ergebnis. Hier ist es von Vorteil, dass ActionExecuteScript ein Skript für alle lokalen Spieler ausführt. Aber das mit dem exakt selben Tick und vorallem mit demselben Ergebnis, ist oft leider schwieriger als man denkt, zb auch weil viele Befehle nur auf den lokalen Spieler wirken, nicht auf einen Beliebigen.  
 Welche Befehle gesynced sind und welche nicht, lässt sich an sich nur durch ausprobieren rausfinden, konnte da kein Muster erkennen.
@@ -27,14 +27,13 @@ Welche Befehle gesynced sind und welche nicht, lässt sich an sich nur durch aus
 Nicht alle Daten sind ***von überall zugänglich***:  
 - userdata (also das was man zb bei session.getSelectedFactory() returned bekommt), ist nur für einen lokalen Spieler zugänglich, wenn er in derselben Session wie dieses Objekt ist. Es lässt sich auch nicht zwischenspeichern, da es lediglich ein Zeiger-Objekt ist.
 - Für GameObjects (zb das was man bei ts.Selection.Object erhält) haben wir einen Weg gefunden, auf Objekte in anderen Sessions zuzugreifen:  
-&nbsp;ts.GetGameObject(OID), dies funktioniert für die meisten Dinge, ABER nicht alles. Am besten immer ausführlich den Anwendungsfall testen, obs klappt oder nicht!  
-&nbsp;&nbsp;Zusätzlich gibt es damit im MP Probleme, wenn man Werte ändert, zb. den Namen eines Objekts ändert. Dies wird nur korrekt gesynced, wenn die anderen Spieler in derselben Session sind!  
-&nbsp;Alternative die zuverlässiger ist: "MetaObjects SessionGameObject", doch dies ist nicht in lua direkt zugänglich, siehe nächsten Punkt.  
+- - ts.GetGameObject(OID), dies funktioniert für die meisten Dinge, ABER nicht alles. Am besten immer ausführlich den Anwendungsfall testen, obs klappt oder nicht! Zusätzlich gibt es damit im MP Probleme, wenn man Werte ändert, zb. den Namen eines Objekts ändert. Dies wird nur korrekt gesynced, wenn die anderen Spieler in derselben Session sind!  
+- - Alternative die zuverlässiger ist: "MetaObjects SessionGameObject", doch dies ist nicht in lua direkt zugänglich, siehe nächsten Punkt.  
 
 &nbsp;  
 
-Nicht alle ***textsourcelist*** Funktionen sind ***in lua zugänglich***, vorallem Funktionen die Listen returnen wie "ItemContainer Sockets" usw. oder auch das wichtige "MetaObjects SessionGameObject":  
-&nbsp;Lösung: hiermit "game.TextSourceManager.setDebugTextSource(ts_embed_string)" führen wir textsource-code aus, bekommen aber leider nichts returned. Workaround ist, dem ts_embed_string zuzufügen, dass er das ergebnis in ein Nameable Hilfsobjekt schreiben soll, was wir dann in lua auslesen können.
+Nicht alle ***textsourcelist*** Funktionen sind ***in lua zugänglich***, vorallem Funktionen welche die Listen returnen wie "ItemContainer Sockets" usw. oder auch das wichtige ***"MetaObjects SessionGameObject"***:  
+&nbsp;Lösung: mit "game.TextSourceManager.setDebugTextSource(ts_embed_string)" führen wir textsource-code aus, bekommen aber leider nichts returned. Workaround ist, dem ts_embed_string zuzufügen, dass er das ergebnis in ein Nameable Hilfsobjekt schreiben soll, was wir dann in lua auslesen können.
 
 &nbsp;  
 
@@ -47,9 +46,8 @@ Wenn man via skript eine ressource gutschreibt und direkt danach abfragt, wievie
 ***Inaktive Spieler***: Spieler die im Multiplayer Spiel mal dabei waren, aber es jetzt nicht mehr sind, belegen weiterhin ihren Peer Slot!  
 &nbsp;Auch returned GetActiveSessionGUIDOfPeerInt weiterhin die zuletzt aktive Session für diese inaktiven Peers.  
 &nbsp;Bei GetCoopPeersAtMarker (auch nicht direkt in lua verfügbar) tauchen sie nicht auf, doch auch der lokale Spieler taucht da nicht auf, sodass dies alleine nicht reicht um sicher festzustellen, wer inaktiv und wer man selbst ist.  
-&nbsp;Aktueller workaround: eine neue Session laden und alle Spieler da hinein zwingen. Inaktive Spieler wechseln ihre Session bei so einem Zwang dennoch nicht.  
-&nbsp;&nbsp;Zusammen mit GetCoopPeersAtMarker (alle Spieler in ein UI, zb Statistikmenü zwingen) weiß man dann endlich wer inaktiv ist und wer man selbst ist.  
-&nbsp;Eine andere Methode habe ich noch nicht finden können, obwohl ich sehr sehr viele Stunden damit verbracht habe.  
+Aktueller workaround: eine neue Session laden und alle Spieler da hinein zwingen. Inaktive Spieler wechseln ihre Session bei so einem Zwang dennoch nicht und können damit erkannt werden. Zusammen mit GetCoopPeersAtMarker (alle Spieler in ein UI, zb Statistikmenü zwingen) weiß man dann endlich wer inaktiv ist und wer man selbst ist.  
+Eine andere Methode habe ich noch nicht finden können, obwohl ich sehr sehr viele Stunden damit verbracht habe.  
 
 &nbsp;  
 
@@ -73,11 +71,11 @@ Das bedeudet, dass ShareLuaInfo mindestens 2-4 Sekunden pro Verwendung geblockt 
 &nbsp;  
 
 ***Beispiel***   
-Im Multiplayer stellen diese Faktoren nun ernste Probleme da, besonders die Kombination aus:
- Nicht gesynceter Befehl, der nur mit userdata geht und abhängig von einer Verzögerung ist (kommt häufiger vor als man denkt.. Praktisches Beispiel: Wechsel den Besitzer von einem Schiff (beliebiger neuer owner) in lua):
-  Hier muss der Befehl für alle lokalen Spieler exakt imselben Tick mit demselben Ergebnis ausgeführt werden, damit es keinen Desync gibt.
-   Durch userdata haben wir das Problem, dass dazu alle Peer in derselben Session sein müssen. Die einzige bisher bekannte Lösung ist also, dass wir sie durch einen lua Befehl alle in dieselbe Session zwingen.
-    Doch der Sessionwechsel dauert eine zeit lang, eventuell bei jedem Peer einen Tick anders (bin nicht sicher obs die untersch. Dauer je nach Hardware auch in diesem Fall gibt, ist aber möglich). Dh. wir brauchen eine Methode, wie jeder lokale Spieler sicher gehen kann, dass jeder andere Spieler erfolgreich in der Session ist. In diesem Fall gibt es dazu glücklicherweise eine Funktion, bei vielen anderen Dingen gibt es keine Möglichkeit Infos über andere Peers zu erlangen!
+Im Multiplayer stellen diese Faktoren nun ernste Probleme da, besonders die Kombination aus:  
+ Nicht gesynceter Befehl, der nur mit userdata geht und abhängig von einer Verzögerung ist (kommt häufiger vor als man denkt.. Praktisches Beispiel: Wechsel den Besitzer von einem Schiff (beliebiger neuer owner) in lua):  
+  Hier muss der Befehl für alle lokalen Spieler exakt imselben Tick mit demselben Ergebnis ausgeführt werden, damit es keinen Desync gibt.  
+  Durch userdata haben wir das Problem, dass dazu alle Peer in derselben Session sein müssen. Die einzige bisher bekannte Lösung ist also, dass wir sie durch einen lua Befehl alle in dieselbe Session zwingen.  
+  Doch der Sessionwechsel dauert eine zeit lang, eventuell bei jedem Peer einen Tick anders (bin nicht sicher obs die untersch. Dauer je nach Hardware auch in diesem Fall gibt, ist aber möglich).  Dh. wir brauchen eine Methode, wie jeder lokale Spieler sicher gehen kann, dass jeder andere Spieler erfolgreich in der Session ist. In diesem Fall gibt es dazu glücklicherweise eine Funktion, bei vielen anderen Dingen gibt es keine Möglichkeit Infos über andere Peers zu erlangen!  
    Nur wenn man weiß, welche Peers inaktiv sind, kann man darauf warten, dass alle aktiven Peers die Session erfolgreich gewechselt haben.  
 
 &nbsp;  
