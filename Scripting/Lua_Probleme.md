@@ -6,7 +6,7 @@ Möglichkeit ***lua auszuführen***:
 - erstmaliges starten geht nur über xml (danach können sie sich auch gegenseitig aufrufen)
 - ActionExecuteScript startet das lua Skript für alle lokalen Spieler (sowohl alle Humans, als auch alle Coop-Peers), egal wer diese Action ausgeführt hat.
 - Commands die über Keybinds ausgelöst werden, werden nur für den lokalen Spieler ausgeführt, der die Taste gedrückt hat.  
-- ThirdpartyNotificationButtons in CharacterNotification können auch einen Command ausführen, wenn man den Button drückt (nur für den der den Button drückt), allerdings nur textsource textembeds, keinen lua code und können daher auch kein lua script starten ... aber zb. Trigger registern.  
+- ThirdpartyNotificationButtons in CharacterNotification können auch einen Command ausführen, wenn man den Button drückt (nur für den der den Button drückt), allerdings nur textsource textembeds, keinen lua code und können daher auch kein lua script starten ... aber zb. Trigger registern. Ist aber auch limitiert was hier geht, zb "Selection" scheint hier garnicht anwendbar zu sein!   
 - PopUps können auch Commands ausführen, sogar richtigen lua code, für denjenigen der den button drückt. Aber wir können keine Eigenen erstellen, nur vorhandene/ungenutzte Überschreiben. Ein Maximum von 3 Buttons kann die UI anzeigen (hier hatte ich bereits einen Entwurf, der die Spieler fragt ob sie Coop-Leader sind, oder welcher Peer ist, aber mit 3 Buttons ist das nicht so einfach und auch nervig und es können falsche Antworten gegeben werden)  
 
 &nbsp;  
