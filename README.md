@@ -1,5 +1,7 @@
 # Modding Guide for Anno 1800
 
+You want to add something? Check the [contribution guide](./contribution.md).
+
 ## Getting Started
 
 - [Tools you need](./getting-started/tools-you-need.md)
@@ -15,7 +17,7 @@ Detailed walkthrough the creation of mods.
 3. [Tutorial 3 - Making a new production chain](./hier0nimus-tutorials/03-making-new-production-chain/readme.md)
 4. [Tutorial 4 - Making a new ship](./hier0nimus-tutorials/04-making-new-ship/readme.md)
 - [Map Fertilities (Overview)](https://github.com/Pnski/Anno1800ModDoku/blob/main/Tutorials%2FMapFertilities.md)
-- [Documentation](./documentation/README.md)  
+- [Documentation](./documentation/README.md)
 - [Guide to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
 
 ### Advanced Tutorials/Guides

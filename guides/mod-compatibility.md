@@ -1,12 +1,21 @@
 # Mod Compatibility Guide
 
-General Hints:
+- [General Best Practices](#general-best-practices)
+- [Construction Menu](#construction-menu)
+- [Shared Product Mods](#shared-product-mods)
+- [Shared Production Mods](#shared-production-mods)
+- [Shared Item Effect Pools](#shared-item-effect-pools)
+- [Shared Assets between Mods](#shared-assets-between-mods)
+- [Hotel Needs](#hotel-needs)
+
+## General Best Practices
 
 - Make changes to existing assets as small as possible.
   Don't `replace` the whole thing.
 - Avoid removing stuff. You never know who used that as an anker to insert new stuff.
 - DO NOT remove entries from `Template`s. You may crash other mods with that.
 - Use unique names for new `Template`s. Best use your name or the mod name as a prefix.
+- Use `Text/TextOverride` to rename vanilla text with new assets. You don't know who is using the original text in another context.
 
 ## Construction Menu
 
@@ -16,27 +25,116 @@ Your entry won't show as a result.
 
 ### Best Practices
 
-1. Avoid removing/replacing construction menu entries
-2. Insert into production chains instead of replacing the whole chain
-3. Add fallback code if you insert before or after a construction entry
+1. Don't replace/remove menus. Hide them instead
+2. Insert with `shared-pools-and-definitions`
+3. Add `compact-menu` group tag
+4. Insert into production chains instead of replacing the whole chain
 
-### Fallback if addNextSibling/addPrevSibling entry is missing
+### Hide a menus
 
-The following code adds `1500010050` after the Town Hall `100415` in both City `500092` and Artisan `25000191` menus - or at the end if the Town Hall entry is missing.
+Hide entries by adding `PlatformVisibility` like this:
 
 ```xml
-<ModOp Type="addNextSibling" GUID='500092,25000191' Path="/Values/ConstructionCategory/BuildingList/Item[Building='100415' or (not(../Item/Building='100415'))][last()]">
-    <Item>
-      <Building>1500010050</Building>
-    </Item>
-  </ModOp>
+<ModOp Type="merge" GUID="500094"
+  Path="/Values/ConstructionCategory/BuildingList/Item[Building='1010372']">
+  <Item>
+    <PlatformVisibility>Console</PlatformVisibility>
+  </Item>
+</ModOp>
 ```
 
-The fallback has two parts.
-First you select any `Item` of lists that don't include `100415` with `not(../Item/Building='100415')`.
-But since that will select all menu entries, you need to reduce the selection to the last one with `[last()]`.
+Reason: other mods may use those entries to insert their building.
 
-You can skip this fallback if you're inserting after a production chain or category. Usually GUIDs only change when single entries are converted into chains or categories.
+### Insert with `shared-pools-and-definitions`
+
+Insert into progression menus by unlock condition instead of GUID.
+
+```xml
+<ModOp Type="addNextSibling" GUID="25000190"
+  Path="/Values/ConstructionCategory/BuildingList/Item[Worker&lt;=400][last()]">
+  <Item>
+    <Building>1500010111</Building>
+    <Worker>400</Worker>
+  </Item>
+</ModOp>
+```
+
+The mod `shared-pools-and-definitions` adds unlock conditions for all vanilla buildings. You need to load after it.
+
+Check [shared-pools-and-definitions guide](https://github.com/anno-mods/shared-resources/tree/main/%5BShared%5D%20Pools%20and%20Definitions#insert-into-progression-menus-by-unlock) for details.
+
+### Add `compact-menu` group tag
+
+Add tags to ensure your mod buildings are inserted into the correct groups up by the Compact Menu mod.
+
+The following for example makes the building show up as part of the administration group (town hall, guild house and harbor master).
+
+```xml
+<Item>
+  <Building>123</Building>
+  <CompactAdministration />
+</Item>
+```
+
+Check [compact-menu guide](https://github.com/jakobharder/anno1800-jakobs-mods/blob/main/mods/ui-compact-menu/README.md#modders) for details.
+
+## Shared Product Mods
+
+A good way to share products between sevaral mods is to use a shared product mod.
+
+A shared product mod should contain:
+- a single complete `Product` template asset
+- an icon and all translations
+- storage `120055` listing
+- expedition values, if applicable
+- ideally, a hidden fake factory with `IsMainFactory=1`. Users must use `0`.
+- Docklands entries, if applicable
+
+A shared product mod **SHOULD NOT** contain:
+- a production building
+- fertility entries
+- anything that is not explicitely mentioned above
+
+Use the product name as the `ModID` (`product-author`), e.g. `product-author`.
+
+See [tea-jakob](https://github.com/jakobharder/anno1800-shared-mods/tree/main/mods/tea-jakob) for an example / template.
+
+## Shared Production Mods
+
+Especially raw material production is also good to share between mods.
+
+A shared production mod should contain:
+- a single production or production chain
+- icons, all translations
+- product listings and unlocks
+- a production chain menu and construction menu entry, if it produces an product
+- fertility entries, if applicable
+- it may or may not include the product. Be clear about it, and don't remove it in future versions.
+
+Use the product name plus producing region as the `ModID` (`region-product-author`), e.g. `ow-hemp-jakob`.
+
+The reason for unlocks is to keep product listings and unlock aligned.
+Also balancing is easier if everyone has the same base.
+
+You may unlock a shared production earlier, if you really have to.
+
+See [ow-hemp-jakob](https://github.com/jakobharder/anno1800-shared-mods/tree/main/mods/ow-hemp-jakob) for an example / template.
+
+## Shared Item Effect Pools
+
+Use `ItemEffectTargetPool`s from `shared-pools-and-definitions` to avoid many, very similar building names in buff InfoTips.
+
+```xml
+<!-- add to pools having sand mine -->
+<ModOp Type="add"
+  Path="//ItemEffectTargetPool/EffectTargetGUIDs[Item/GUID='1010560']">
+  <Item>
+    <GUID>1500010708</GUID> <!-- NW Sand Pit -->
+  </Item>
+</ModOp>
+```
+
+Check [shared-pools-and-definitions guide](https://github.com/anno-mods/shared-resources/tree/main/%5BShared%5D%20Pools%20and%20Definitions) for details and a list of all new available pools.
 
 ## Shared Assets between Mods
 
