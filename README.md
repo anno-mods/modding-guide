@@ -32,7 +32,7 @@ Detailed walkthrough the creation of mods.
 ### Scripts, ToolTips, Modinfo
 
 - [Lua Scripting](./Scripting)
-- [Tooltips (infotip)](./infotips.md)
+- [Tooltips (infotip)](./documentation/infotips.md)
 - [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, dependencies
 - [iModYourAnno Tweaks](https://github.com/anno-mods/iModYourAnno/wiki/Setting-up-your-Mod-for-tweaking)
 
