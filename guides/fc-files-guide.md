@@ -125,7 +125,8 @@ The main `DummyGroup` for the entire object. Every `Dummy` that the Object can u
 ### Special Dummies
 
 - A DummyGroup named `FireDummy` with Dummies `FireDummy_0`, `FireDummy_1` and so on is used for applying Flames when an Object is burning. This is also used to add Riot and Festival banners, as well as Illness Smog. 
-- A DummyGroup named `feedback_door` with Dummies `feedback_door_0`, `feedback_door_1` and so on is used for telling Dynamic Feedback (different type of feedback) where to the doors are on this building. 
+- A DummyGroup named `feedback_door` with Dummies `feedback_door_0`, `feedback_door_1` and so on is used for telling Dynamic Feedback (different type of feedback) where to the doors are on this building.
+- A DummyGroup named `bird_land` with Dummies `bird_land_0`, `bird_land_1` is used for telling birds where to land.   
 > Dynamic Feedback does pathfinding between different buildings and travels from one building to another. For that, they need to know where the doors are. 
 
 ## Actor aka Feedback Definition 
