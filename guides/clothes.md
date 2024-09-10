@@ -56,7 +56,77 @@ set all Location, Rotation, Scale values to their default values in Blender befo
 
 > and if you imported via .cfg add: `--negative-x-and-v0v2v1` to mirror the model correctly again.
 
-- You may notice that in the .cfg file the vertex format for Clothes is displayed as `<VertexFormat>P3f_N3b,T2f</VertexFormat>`. Nothing to worry about.
+- You may notice that in the .cfg file the vertex format for CLOTH elements is displayed as `<VertexFormat>P3f_N3b,T2f</VertexFormat>`. Nothing to worry about. Example: 
+
+```xml 
+<Clothes>
+    <Config>
+        <ConfigType>CLOTH</ConfigType>
+        <Transformer>
+            <Config>
+                <ConfigType>ORIENTATION_TRANSFORM</ConfigType>
+                <Conditions>0</Conditions>
+                <Position.x>0.073091</Position.x>
+                <Position.y>1.488325</Position.y>
+                <Position.z>0.002520</Position.z>
+                <Rotation.x>0.000000</Rotation.x>
+                <Rotation.y>0.000000</Rotation.y>
+                <Rotation.z>0.000000</Rotation.z>
+                <Rotation.w>1.000000</Rotation.w>
+                <Scale>0.900000</Scale>
+            </Config>
+        </Transformer>
+        <Materials>
+            <Config>
+                <ConfigType>MATERIAL</ConfigType>
+                <Name>flag_cloth</Name>
+                <ShaderID>0</ShaderID>
+                <VertexFormat>P3f_N3b,T2f</VertexFormat>
+                <NumBonesPerVertex>0</NumBonesPerVertex>
+                <DIFFUSE_ENABLED>1</DIFFUSE_ENABLED>
+                <cClothDiffuseTex>data/dlc11/graphics/buildings/ornaments/airport/maps/dlc11_airport_ornaments_flags_diff.psd</cClothDiffuseTex>
+                <NORMAL_ENABLED>1</NORMAL_ENABLED>
+                <cClothNormalTex>data/graphics/props/flags/ornamental_flags/maps/ornamental_banners_norm.psd</cClothNormalTex>
+                <cDiffuseColor.r>1.000000</cDiffuseColor.r>
+                <cDiffuseColor.g>1.000000</cDiffuseColor.g>
+                <cDiffuseColor.b>1.000000</cDiffuseColor.b>
+                <cSpecularColor.r>0.200000</cSpecularColor.r>
+                <cSpecularColor.g>0.200000</cSpecularColor.g>
+                <cSpecularColor.b>0.200000</cSpecularColor.b>
+                <cGlossinessFactor>0.500000</cGlossinessFactor>
+                <cAlphaRef>0.100000</cAlphaRef>
+                <DYE_MASK_ENABLED>0</DYE_MASK_ENABLED>
+                <Atlas>Atlas</Atlas>
+                <LOGO_ATLAS_ENABLED>0</LOGO_ATLAS_ENABLED>
+                <INVERSE_LOGO_COLORING>0</INVERSE_LOGO_COLORING>
+                <RimEffect>RimEffect</RimEffect>
+                <cRimColor.r>1.000000</cRimColor.r>
+                <cRimColor.g>1.000000</cRimColor.g>
+                <cRimColor.b>1.000000</cRimColor.b>
+                <cRimIntensity>1.000000</cRimIntensity>
+                <Ripples>Ripples</Ripples>
+                <RIPPLES_ENABLED>0</RIPPLES_ENABLED>
+                <cRippleTiling>0.500000</cRippleTiling>
+                <cRippleSpeed>1.000000</cRippleSpeed>
+                <cRippleNormalIntensity>0.200000</cRippleNormalIntensity>
+                <TerrainAdaption>TerrainAdaption</TerrainAdaption>
+                <ADJUST_TO_TERRAIN_HEIGHT>1</ADJUST_TO_TERRAIN_HEIGHT>
+                <DisableReviveDistance>0</DisableReviveDistance>
+            </Config>
+        </Materials>
+        <Name></Name>
+        <FileName>data\dlc11\graphics\buildings\ornaments\airport\rdm\airport_ornaments_flag_01.rdm</FileName>
+        <AdaptTerrainHeight>0</AdaptTerrainHeight>
+        <UniqueSimulation>0</UniqueSimulation>
+        <AllowLocalWind>1</AllowLocalWind>
+        <LocalWindDirection>0.000000</LocalWindDirection>
+        <WindStrength>0.500000</WindStrength>
+        <Gravity>0.010000</Gravity>
+        <LineSize>1.000000</LineSize>
+        <CollisionIndex>0</CollisionIndex>
+    </Config>
+</Clothes>
+```
 
 Result ingame: 
 
