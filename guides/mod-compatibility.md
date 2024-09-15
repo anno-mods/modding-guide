@@ -30,16 +30,14 @@ Your entry won't show as a result.
 3. Add `compact-menu` group tag
 4. Insert into production chains instead of replacing the whole chain
 
-### Hide a menus
+### Hide a menu
 
 Hide entries by adding `PlatformVisibility` like this:
 
 ```xml
 <ModOp Type="merge" GUID="500094"
-  Path="/Values/ConstructionCategory/BuildingList/Item[Building='1010372']">
-  <Item>
-    <PlatformVisibility>Console</PlatformVisibility>
-  </Item>
+  Path="/Values/ConstructionCategory/BuildingList/Item[Building='1010372']">  
+    <PlatformVisibility>Console</PlatformVisibility>  
 </ModOp>
 ```
 
