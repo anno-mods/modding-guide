@@ -10,7 +10,7 @@ You want to add something? Check the [contribution guide](./contribution.md).
 
 ## Tutorials
 
-Detailed walkthrough the creation of mods.
+Detailed walkthrough the creation of mods:
 
 1. [Tutorial 1 - Get started](./hier0nimus-tutorials/01-my-first-mod/readme.md)
 2. [Tutorial 2 - Making new specialists](./hier0nimus-tutorials/02-making-new-specialists/readme.md)
@@ -20,7 +20,7 @@ Detailed walkthrough the creation of mods.
 5. [Tutorial 6 - Basics Modelling](./hier0nimus-tutorials/06-basics-modelling/readme.md)
 - [Tutorial Making Quests](./hier0nimus-tutorials/Quests-Tutorial)
 
-## Guides and Documentation
+## Dedicated Guides and Documentations
 
 ### ModOps
 
@@ -29,41 +29,44 @@ Detailed walkthrough the creation of mods.
 - [New modloader features with GU17](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modloader10.md#modloader-10-changes) - more powerful ModOps, dependencies/loading order and sub-mods
 - [XPath Cheat Sheet](https://devhints.io/xpath) - needed for advanced ModOps
 
-### Scripts, ToolTips, Modinfo
+### Modinfo and ToolOne
 
+- [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, LoadAfter, dependencies
+- [Official Property-Documentation (properties-toolone.xml)](./properties-toolone.xml)
+
+### ToolTips and Scripting
+
+- [Tooltip modding (infotips)](./documentation/infotips.md)
 - [Lua Scripting](./Scripting)
-- [Tooltips (infotip)](./documentation/infotips.md)
-- [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, dependencies
-- [iModYourAnno Tweaks](https://github.com/anno-mods/iModYourAnno/wiki/Setting-up-your-Mod-for-tweaking)
 
-### Game Guides
+### Guides (for assets.xml modding)
 
-- [Map Fertilities (Overview)](https://github.com/Pnski/Anno1800ModDoku/blob/main/Tutorials%2FMapFertilities.md)
-- [Guide to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
+- [Map Fertilities](https://github.com/Pnski/Anno1800ModDoku/blob/main/Tutorials%2FMapFertilities.md)
 - [Object Variations and Skins](./guides/variations.md) - for Buildings, including automatic neighbors
-
-### Game Documentation
-
-- [Official Documentation (properties-toolone.xml)](./properties-toolone.xml)
+- [How to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
 - [Explanation of inheritance](https://maug-projekt.com/forum/index.php?thread/715-vererbung-von-vectorelements/) (unfortunately German only)
-- [Quests/QuestPools](../hier0nimus-tutorials/Quests-Tutorial/0-Properties-Quest-QuestPool.md)
-- [Hier0nimus Documentation](../hier0nimus-tutorials/00-documentation/readme.md)
+
+### Guides (for modding graphic files)
+
+- [Create .RDM Animations with Blender](./guides/rdm_animations.md)
+- [Editing .RDM models with Animations (with solving the problem of disappearing objects)](./guides/rdm_animations_edit.md)
+- [Create Cloth .RDM](./guides/clothes.md)
+- [RDP Particle Files](./guides/particles.md)
+- [Mesh Height Maps](./guides/Mesh-Height-Maps.md)
+- [Edit-Island-Meshes.md](./guides/Edit-Island-Meshes.md)
+
+### iModYourAnno (IMYA)
+
+- [Set up your mod for tweaking](https://github.com/anno-mods/iModYourAnno/wiki/Setting-up-your-Mod-for-tweaking)
 
 ### Further Topics
 
+- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
 - [GU 17 update guide](./guides/gu17-update-guide.md)
 - [GU 16 update guide](./guides/gu16-update-guide.md)
-- [Create .RDM Animations with Blender](./guides/rdm_animations.md)
-- [Editing .RDM models with Animations (with solving the problem of disappearing objects)](./guides/rdm_animations_edit.md)
-- [Create Cloth .RDMs](./guides/clothes.md)
-- [RDP Particle Files](./guides/particles.md)
-- [Mesh Height Maps](./guides/Mesh-Height-Maps.md)
-- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
-- [Edit-Island-Meshes.md](./guides/Edit-Island-Meshes.md)
 
 ## More
 
-- [Tools Overview](./getting-started/tools-you-need.md#anno-tools-overview)
 - [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php)
 - [Asset and Text Browser: a1800.net](https://a1800.net/)
 - [Anno Building-menu Customizer (ABC)](https://github.com/AsciiBunny/AnnoBuildingmenuCustomizer)
