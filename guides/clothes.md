@@ -1,6 +1,6 @@
 # Create custom cloth .rdms 
 
-Taubenangriff made [a new version of the rdm4-bin.exe](https://discord.com/channels/578443209940926465/976856421536768050/1232382355520356364) which now supports the vertex format `P3f_N3f_G3f_B3f_T2f_C4b` when converting from `.gltf/.glb to .rdm` (atm not from `.rdm to .gltf/.glb`). 
+Taubenangriff made [a new version of the rdm4-bin.exe]([https://discord.com/channels/578443209940926465/976856421536768050/1232382355520356364](https://github.com/lukts30/rdm4/releases/tag/v0.11.0-alpha.1)) which now supports the vertex format `P3f_N3f_G3f_B3f_T2f_C4b` when converting from `.gltf/.glb to .rdm` (atm not from `.rdm to .gltf/.glb`). 
 This format is required for `Clothes`, which are usually used for flags, sails and all other models which are supposed to not to be stiff.
 
 In comparison to the simple `Wind_Ripples` effect which is available for the common assets (`T2h` and `I4b`), `Clothes` allow much bigger meshes and targeted deflections for each vertice. If you just need a small awning which should fake
@@ -37,6 +37,14 @@ In this case, import via option 2 is faster, so I used that one here.
 ![cloth6](./_sources/cloth6.png) 
 This is how it looks like in `Edit mode`:
 ![cloth7](./_sources/cloth7.png)
+
+Before export, make sure your face normals are continuous for all areas which should behave as a single piece of cloth ingame. Otherwise each discontinuous area will be affected by the cloth dynamics (set in your cfg) individually and you won't get a continuous deflection across your cloth surface. 
+In this example this is already the case, so nothing more to do here. 
+However for other (custom) meshes this could not be the case. Therefore: 
+
+- Select your mesh, go into EDIT mode and **Vertex Selection Mode**, press `A` to select all vertices of your mesh (or choose all vertices which should belong to one cloth section)
+- Press `M`, choose `By Distance`
+- Switch to **Face Selection Mode**, right click and select `Shade Smooth`
 
 ## Export mesh and conversion to rdm
 
