@@ -32,7 +32,7 @@ Detailed walkthrough the creation of mods:
 ### Modinfo and ToolOne
 
 - [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, LoadAfter, dependencies
-- [Official Property-Documentation (properties-toolone.xml)](./properties-toolone.xml)
+- [Official Property-Documentation (properties-toolone.xml)](./documentation/properties-toolone.xml)
 
 ### ToolTips and Scripting
 
