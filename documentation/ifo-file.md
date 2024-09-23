@@ -63,7 +63,7 @@ Cuboids mostly appear as `<Dummy>` which only distinguish by their `<Name>` (see
 | warflag                  |      Dummy            | a war flag is spawned at this position when island is at war   | 
 | hpbar                    |      Dummy            | when being attacked: position of current hitpoints bar | 
 | FireDummy                |      Dummy            | position of fire (if no .fc file) | 
-| railroad01               |      Dummy            | connection to rails; use `railroad02` for another one | `HasBuildingBaseTiles=1` to remove them after asset was destroyed; `AllowCodeToControlRotation=0` if they are not centered relative to the building
+| railroad01               |      Dummy            | connection to rails; use `railroad02` for another one | `HasBuildingBaseTiles=1` to remove them after asset was destroyed / moved; `AllowCodeToControlRotation=0` if they are not centered relative to the building
 | railroadbase01           |      Dummy            | spawn / despawn position for trains | 
 | mining_ground            |      Dummy            | WorkAreaPath starts here   | `<WorkAreaPathSnapDummy>`
 | mining_mountain          |      Dummy            | WorkAreaPath ends here   | `<WorkAreaPathSnapDummy>`
@@ -128,7 +128,7 @@ Therefore `Ctrl A` `All Transforms` on all planes is highly recommended if you w
 </details>
 
 - For most entries you can have as many as you want, their names stay the same, no consecutive digits. 
-- UnevenBlocker and MeshHeightmap can be used only once per .ifo file.
+- UnevenBlocker can be used only once per .ifo file.
 
 | Tag                      | Usage                                                                | assets.xml             |
 | :--------------          | :-------------------------------------------------------------       | :---------------       | 
