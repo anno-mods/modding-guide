@@ -40,7 +40,7 @@ Cuboids mostly appear as `<Dummy>` which only distinguish by their `<Name>` (see
 
 - All names with an appended `_` usually have consecutive digits starting at 0
 - All names with an appended `_01` continue with `02`, `03` and so on
-- Names with 01, 02 but without `_` could be fixed names, so not sure if sth like `railroad03` would work
+- Names with 01, 02 but without `_` are fixed names, so sth like `railroad03` would not work
 
 | Name                  |   Tag                 | Usage                                                                | assets.xml                   |
 | :--------------       | :------------------   | :-------------------------------------------------------------       | :---------------------       | 
@@ -55,16 +55,16 @@ Cuboids mostly appear as `<Dummy>` which only distinguish by their `<Name>` (see
 | docklandsmodule01        |      Dummy            | blocks harbour area infront of buildings; minimum size is 3x3 tiles x/z axis => 0 to 0.49 == 3 tiles; 0.5 to 0.99 == 4 tiles etc. | 
 | loadingpier01            |      Dummy            | docking position for ships; use `loadingpier02` for a 2nd pier  | configure in `<LoadingPier>`
 | loadingpier_air          |      Dummy            | docking position for airships   | configure in `<LoadingPier>`
-| hit_metal_               |      Dummy            | when hit by weapons: trigger metal sound / visuals     | 
-| hit_wood_                |      Dummy            | when hit by weapons: trigger wooden sound / visuals   | 
-| hit_bricks_              |      Dummy            | when hit by weapons: trigger brick sound / visuals    | 
-| hit_concrete_            |      Dummy            | when hit by weapons: trigger concrete sound / visuals  | 
+| hit_metal_               |      Dummy            | when hit by weapons: trigger metal sound / visuals     | linked in projectile assets <EffectSequences>
+| hit_wood_                |      Dummy            | when hit by weapons: trigger wooden sound / visuals   | linked in projectile assets <EffectSequences>
+| hit_bricks_              |      Dummy            | when hit by weapons: trigger brick sound / visuals    | linked in projectile assets <EffectSequences>
+| hit_concrete_            |      Dummy            | when hit by weapons: trigger concrete sound / visuals  | linked in projectile assets <EffectSequences>
 | expl_01                  |      Dummy            | when hit by weapons: area with explosion effects | can be defined in `<ExplosionEffects>`
 | warflag                  |      Dummy            | a war flag is spawned at this position when island is at war   | 
 | hpbar                    |      Dummy            | when being attacked: position of current hitpoints bar | 
 | FireDummy                |      Dummy            | position of fire (if no .fc file) | 
 | railroad01               |      Dummy            | connection to rails; use `railroad02` for another one | `HasBuildingBaseTiles=1` to remove them after asset was destroyed / moved; `AllowCodeToControlRotation=0` if they are not centered relative to the building
-| railroadbase01           |      Dummy            | spawn / despawn position for trains | 
+| railroadbase01           |      Dummy            | mandatory use with railroad01 / railroad02 | 
 | mining_ground            |      Dummy            | WorkAreaPath starts here   | `<WorkAreaPathSnapDummy>`
 | mining_mountain          |      Dummy            | WorkAreaPath ends here   | `<WorkAreaPathSnapDummy>`
 | irrigation_connector     |      Dummy            | for water source: connection to irrigation canals   |
