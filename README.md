@@ -49,6 +49,7 @@ Detailed walkthrough the creation of mods:
 ### Guides (for modding graphic files)
 
 - [Ifo-File Documentation](./documentation/ifo-file.md)
+- [FC-Files](./guides/fc-files-guide.md)
 - [Create .RDM Animations with Blender](./guides/rdm_animations.md)
 - [Editing .RDM models with Animations (with solving the problem of disappearing objects)](./guides/rdm_animations_edit.md)
 - [Create Cloth .RDM](./guides/clothes.md)
