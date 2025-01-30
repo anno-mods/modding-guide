@@ -13,56 +13,56 @@ Infotips are called **InfoTipData** in the code and are adressed as usual by Gui
 We have to test and find out the meaning ourself. Here what we already found out (no guarantee that it is correct):
 
 - **InfoElement**
-- - Each InfoTip is made of any number of InfoElements. Their order in the code corresponds to the display in the game: The first InfoElement (if visible, see below) represents the top of the Infotip and vice versa.
+  - Each InfoTip is made of any number of InfoElements. Their order in the code corresponds to the display in the game: The first InfoElement (if visible, see below) represents the top of the Infotip and vice versa.
 
 - **VisibilityElement**:
-- - They usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
+  - They usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
 
 - **CompareOperator**:
-- - 0 (or not defined) Equals
-- - 1 Unequals
-- - 2 smaller than
-- - 3 smaller than or equal
-- - 4 bigger than or equal
-- - 5 bigger than
+  - 0 (or not defined) Equals
+  - 1 Unequals
+  - 2 smaller than
+  - 3 smaller than or equal
+  - 4 bigger than or equal
+  - 5 bigger than
 
 
 - **ResultType**:
-- - 0 (or not defined) boolean (if ExpectedValueBool is not defined, it is "True")
-- - 1 integer (if ExpectedValueInt is not defined, it is 0)
-- - 2 float (if ExpectedValueFloat is not defined, it is 0)
-- - Unfortunately it seems eg. ExpectedValueInt can really only deal with Int, **not** with constructs like this, which evaluate to an int: ```[ItemAssetData([RefGuid]) InputAmountUpgradeProduct(#index0#)]```
+  - 0 (or not defined) boolean (if ExpectedValueBool is not defined, it is "True")
+  - 1 integer (if ExpectedValueInt is not defined, it is 0)
+  - 2 float (if ExpectedValueFloat is not defined, it is 0). Use numbers seperated by "dot" here, like "1.2", not "1,2".
+  - Unfortunately it seems eg. ExpectedValueInt can really only deal with Int, **not** with constructs like this, which evaluate to an int: ```[ItemAssetData([RefGuid]) InputAmountUpgradeProduct(#index0#)]```
 
 
 - **OperatorType** (is used after VisibilityElement to define the logic for the conditions contained in them):
-- - 0 all VisibilityElement listed on the same level are chained with "and" (so all of them must be true at the same time)
-- - 1 all VisibilityElement listed on the same level are chained with "or" (so one of the conditions must be true)
+  - 0 all VisibilityElement listed on the same level are chained with "and" (so all of them must be true at the same time)
+  - 1 all VisibilityElement listed on the same level are chained with "or" (so one of the conditions must be true)
 
 - **Condition**:
-- - [RefGuid] Most basic condition which checks for the Guid of a selected asset or an asset where the mouse hovers over at the moment. 
-- - [Selection ... ] These conditions only work for selected assets, mouse-over is not recognized. This way, infotips change their information depending on which building was selected last (unwanted behaviour). "Selection Picked" seems to catch the object your are currently hovering (or last hovered over), while "Selection Object" is the one currently selected.
-- - [StaticData ... ] These conditions work for mouse-over too, e.g. when hovering over construction menu icons. However, valid arguments are very limited. 
+  - [RefGuid] Most basic condition which checks for the Guid of a selected asset or an asset where the mouse hovers over at the moment. 
+  - [Selection ... ] These conditions only work for selected assets, mouse-over is not recognized. This way, infotips change their information depending on which building was selected last (unwanted behaviour). "Selection Picked" seems to catch the object your are currently hovering (or last hovered over), while "Selection Object" is the one currently selected.
+  - [StaticData ... ] These conditions work for mouse-over too, e.g. when hovering over construction menu icons. However, valid arguments are very limited. 
 
 - **ElementType** (they define the kind of tooltip/box/structure):
-- - 1  header: `Text` is bold and uses bright color, uses wordwraps; `Icon` is centered along the y axis
-- - 2  header: `Text` is bold and uses bright color,  uses wordwraps; `Icon` is centered along the y axis; in addition to `1` there´s some empty space added below the text
-- - 3  plain text: `Text` + (if needed) `Value` both in bright color; uses wordwraps; does not display icons
-- - 4  attributes (from buffs etc): `Icon`, `Text` and `Value`; both in bright color; writes text in one line only, no matter how long it is. --> most universal type to use
-- - 5  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`)
-- - 6  separator line
-- - 7  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` on same level
-- - 8  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` only on sub-levels
-- - 9  InfoLayer-hints: `Text` is bold and written in one line only (no wordwraps); used for UI-buttons e.g. in the construction menu and within buildings. Can't display icons.
-- - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Column>` on same level. 
-- - 11  ... seems to have sth to do with asset costs (materials, permits, godlikes, blueprints, upgradability)
-- - 12  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
-- - 13  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
-- - 14  plain text: `Text` in medium-grey color (can´t display `Icon` and `Value`); used for action-descriptions (e.g. click on ... to jump to ...); does not adapt infotip size to text length!
-- - 15  does nothing?
-- - 16  used for main category infotips, e.g. MonumentEventCategories. Needs at least `<Headline>` to show text.
-- - 17  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`); does not adapt infotip size to text length!
-- - 18  used for text in italics like fluff-texts of buffs / items
-- - 19  seems to be used for listing attributes, eg. all effects from a buff (needs `TemplateGUID` to display sth)
+  - 1  header: `Text` is bold and uses bright color, uses wordwraps; `Icon` is centered along the y axis
+  - 2  header: `Text` is bold and uses bright color,  uses wordwraps; `Icon` is centered along the y axis; in addition to `1` there´s some empty space added below the text
+  - 3  plain text: `Text` + (if needed) `Value` both in bright color; uses wordwraps; does not display icons
+  - 4  attributes (from buffs etc): `Icon`, `Text` and `Value`; both in bright color; writes text in one line only, no matter how long it is. --> most universal type to use
+  - 5  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`)
+  - 6  plain text (if specified) + a separator line below
+  - 7  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` on same level
+  - 8  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` only on sub-levels
+  - 9  InfoLayer-hints: `Text` is bold and written in one line only (no wordwraps); used for UI-buttons e.g. in the construction menu and within buildings. Can't display icons.
+  - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Column>` on same level. 
+  - 11  ... seems to have sth to do with asset costs (materials, permits, godlikes, blueprints, upgradability)
+  - 12  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
+  - 13  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
+  - 14  plain text: `Text` in medium-grey color (can´t display `Icon` and `Value`); used for action-descriptions (e.g. click on ... to jump to ...); does not adapt infotip size to text length!
+  - 15  does nothing?
+  - 16  used for main category infotips, e.g. MonumentEventCategories. Needs at least `<Headline>` to show text.
+  - 17  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`); does not adapt infotip size to text length!
+  - 18  used for text in italics like fluff-texts of buffs / items
+  - 19  seems to be used for listing attributes, eg. all effects from a buff (needs `TemplateGUID` to display sth)
 
 ### Code Snippets
 To add a separator line (but they are as buggy as the vanilla lines below headers. Sometimes they are visible, sometimes not..)
