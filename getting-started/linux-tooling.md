@@ -1,6 +1,6 @@
 # Linux tooling
 
-## Installingµ wine
+## Installing wine
 
 Use your distribution package manager to install [Wine](https://www.winehq.org/).
 
