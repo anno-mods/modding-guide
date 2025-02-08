@@ -56,3 +56,7 @@ You can:
 - [iModYourAnno](https://github.com/anno-mods/iModYourAnno) (mod manager)
 - [Anno Building-menu Customizer](https://github.com/AsciiBunny/AnnoBuildingmenuCustomizer) (freely customize your building menu; includes vanilla and all mods)
 - [Anno goats](https://github.com/sqwishy/anno_goats) (visualize contents of reward pools)
+
+### Linux
+
+If you are playing or working on Linux, check out the dedicated [linux tooling](./linux-tooling.md) page.
