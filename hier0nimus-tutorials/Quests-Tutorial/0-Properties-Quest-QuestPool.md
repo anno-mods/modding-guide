@@ -132,7 +132,8 @@ Both also accept Regions.
 #### `KeepCheckingPreconditionsWhenRunning`:
 *"If true, the quest keeps checking the preconditions and will abort automatically if they are not met any longer"*. Defaults to 0. This is eg. especially helpful for Quests involving QuestGivers you can have different treaties with. Eg. you can add a PreCondition that the player must at least have TradeRights with the QuestGiver and set KeepCheckingPreconditionsWhenRunning=1 to automatically abort the active Quest if this is no longer the case.  
 **Note**: `KeepCheckingPreconditionsWhenRunning` does only check the PreConditions of the Quest itself, not the ones from the executing QuestPool.  
-The game does already cancels Quests to players you declare war to, but this is bugged since it only cancels one Quest. If there are multiple they are not all cancelled, so it is better to also include this as PreCondition if practicable.
+The game does already cancels Quests to players you declare war to, but this is bugged since it only cancels one Quest. If there are multiple they are not all cancelled, so it is better to also include this as PreCondition if practicable.  
+Good to know: When KeepCheckingPreconditionsWhenRunning is true, also Quests started via ActionStartQuest care for the PreConditions (not when started, but on the first tick it notices if PreConditons are not fullfilled and cancels the Quest again.
 
 #### `ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation`:
 Adding a list here with `ReputationParticipant` (*"The participant that rewards reputation"*) and `ReputationAmount` (*"The amount of reputation that is rewarded. This number can be negative to create a reputation loss"*). So you can make the player loose reputation when a quest fails, but also gain reputation with other AIs (not only QuestGiver).  
