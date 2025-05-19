@@ -63,9 +63,11 @@ Detailed walkthrough the creation of mods:
 
 ### Further Topics
 
-- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
-- [GU 17 update guide](./guides/gu17-update-guide.md)
+- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)  
+- [GU 17 update guide](./guides/gu17-update-guide.md)  
 - [GU 16 update guide](./guides/gu16-update-guide.md)
+- [**GuidRanges**](https://github.com/anno-mods/GuidRanges)
+- [**Shared Mods**](https://github.com/anno-mods/shared-resources/tree/main)
 
 ## More
 
