@@ -91,11 +91,11 @@ Using BaseAssetGUID instead of Template basically does the same like using a tem
   </ModOp>
   ```
   </details>
-In this example we are using 11092 as BaseAssetGUID. We did not define the SkinDescription, that means it will be inherited from the BaseAssetGUID, so it will have a value of 5247. But SkinName/SkinCategoryDescription we defined at 54321 so this will be used instead. Also IconFilename and DLCDependency will be inherited from the BaseAssetGUID.  
-It does not matter if you write `<Locked />` in your Asset or leave it out completely (same for Text which we just removed). Also for entries which directly have a value assigned instead of more entries, like `<SkinCategoryDescription />`, it does not matter if you write it that way or leave it out, it will inherit from the BaseAsset (at least according to my tests. Back in 2020 Taube wrote that they behave different, but I can not confirm this, maybe sth. internally changed meanwhile)  
+In this example we are using 5244 as BaseAssetGUID. We did not define the SkinDescription, that means it will be inherited from the BaseAssetGUID, so it will have a value of 5247. But SkinName we defined as 54321, so this will be used instead. Also IconFilename and DLCDependency will be inherited from the BaseAssetGUID.  
+It does not matter if you write `<Locked />` in your Asset or leave it out completely (same for Text which we just removed). Also for entries which directly have a value assigned instead of more entries, like `<SkinCategoryDescription />` it does not matter if you write it that way or leave it out, it will inherit from the BaseAsset (at least according to my tests. Back in 2020 Taube wrote that they behave different, but I can not confirm this, maybe sth. internally changed meanwhile)  
   
 SkinVariations is a "list", called "Vector" in properties-toolone.xml. It can contain multiple entries, usually seperated with `<Item>` entries. Inheritance of these lists works a little bit different. Lists are only fully inherited if you do not fill it with any entry in your Asset. In our example above we filled this list with 1 new entry. That means the the complete list got overwritten by our asset and not a single Item/FileName entry from anything else (neither BaseAssetGUID nor template nor properties.xml) will be used. If you would leave it out instead, then it will inherit. If you write <SkinVariations /> instead, you will again overwrite the complete list in this case with an empty list.  
-What to do now if we want to inherit eg. the first and 3rd entry from the list from the BaseAsset ?   
+What to do now if we want to inherit eg. the first and 3rd entry from the list from the BaseAsset?   
 - This is done by using VectorElement/InheritedIndex like this:
   <details>
   <summary>(CLICK) CODE</summary>  
@@ -133,7 +133,8 @@ What to do now if we want to inherit eg. the first and 3rd entry from the list f
   </ModOp>
   ```
   </details>
-Here we use the structure called "VectorElement" which contains InheritedIndex. The index starts with 0, while this 0 will tell the game to use the first list entry of the first inheritance found, in this case from BaseAsset. In this Skin example a SkinVariations list entry only accept one entry itself, which is called FileName. But lets assume it would also support sth called `<TestValue></TestValue>` which is eg. set to value of 5 in your BaseAsset. Then you can inherit a list entry and inheriting TestValue with the same value, while still being able to change the FileName:
+Here we use the structure called "VectorElement" which contains InheritedIndex. The index starts with 0, while this 0 will tell the game to use the first list entry of the first inheritance found, in this case from BaseAsset. All other enties from this list are not inherited.  
+In this Skin example a SkinVariations list entry only accept one entry itself, which is called FileName. But lets assume it would also support sth called `<TestValue></TestValue>` which is eg. set to value of 5 in your BaseAsset. Then you can inherit a list entry and inheriting TestValue with the same value, while still being able to change the FileName:
   ```xml
   <Item>
     <VectorElement>							 
