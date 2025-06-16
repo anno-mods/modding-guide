@@ -44,7 +44,7 @@ Detailed walkthrough the creation of mods:
 - [Map Fertilities](https://github.com/Pnski/Anno1800ModDoku/blob/main/Tutorials%2FMapFertilities.md)
 - [Object Variations and Skins](./guides/variations.md) - for Buildings, including automatic neighbors
 - [How to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
-- [Explanation of inheritance](https://maug-projekt.com/forum/index.php?thread/715-vererbung-von-vectorelements/) (unfortunately German only)
+- [Explanation of inheritance (Template/BaseAssetGUID)](./guides/Inheritance.md)
 
 ### Guides (for modding graphic files)
 
