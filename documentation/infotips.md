@@ -8,6 +8,13 @@ Alternatively I attached the extracted file in the modding discord channel here:
 For valid text-embed commands (I mean these [Selection Object ...] things you find in the file and texts), see the textsourcelist.json file from the game (unfortunately a bit outdated though..) or this huge list of textsource commands [lua ENUMs](https://github.com/anno-mods/modding-guide/blob/main/Scripting/ENUMs.md) while you can not directly use the wording from the link since it is lua form, see also  [textembeds](https://github.com/anno-mods/modding-guide/blob/main/Scripting/textembeds.md) )  
  
 
+## Compatibility with other mods (please read if you mod infotips!)  
+Because of the structure of infotips code the ModOp Path we use to change something at a specific location needs to contain huge parts of the content of the InfoElement we want to mod. If another mod now changes the content (eg. Condition or Text) from an InfoElement, our ModOp may fail. It is still better to **not** use Conditions/AllowNoMatch to prevent the error in the logfile, because we want to get notified of incompatibilities this way in the logfile!  
+Using "add/AddNextSibling/AddPreSibling" is usually not a compatibility problem, since the Path to vanilla code is not changed this way. But when you use merge/replace/remove for vanilla code, it is extremly likely to cause incompatibility with mods changing the same infotip (even if the change is for a different part of the infotip).  
+Most of the time infotip adjustments are made to support new mod-objects to be displayed in infotips. It is recommended to find a general solution for this, instead of hardcoding your own GUIDs into the infotips. For such general adjustments you should create a shared mod, so also other modders can use it. And to keep an overview about all existing general infotip adjustments, please also add your shared mod to the Community Patch mod: https://github.com/anno-mods/BugFixes/tree/main .   
+If your change is very specific to your mod and no other mod could need such a change or a general solution is not possible, then still do your infotip change in a seperate folder with its on modinfo.json. This way other modders can more easily disable your change later in case they do find a general solution for the problem.  
+
+
 ### Enums
 Infotips are called **InfoTipData** in the code and are adressed as usual by Guids. Infotips use a lot of numbers to express operations. By default all non-defined integer values are 0. 
 We have to test and find out the meaning ourself. Here what we already found out (no guarantee that it is correct):
