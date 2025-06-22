@@ -10,9 +10,10 @@ For valid text-embed commands (I mean these [Selection Object ...] things you fi
 
 ## Compatibility with other mods (please read if you mod infotips!)  
 Because of the structure of infotips code the ModOp Path we use to change something at a specific location needs to contain huge parts of the content of the InfoElement we want to mod. If another mod now changes the content (eg. Condition or Text) from an InfoElement, our ModOp may fail. It is still better to **not** use Conditions/AllowNoMatch to prevent the error in the logfile, because we want to get notified of incompatibilities this way in the logfile!  
-Using "add/AddNextSibling/AddPreSibling" is usually not a compatibility problem, since the Path to vanilla code is not changed this way. But when you use merge/replace/remove for vanilla code, it is extremly likely to cause incompatibility with mods changing the same infotip (even if the change is for a different part of the infotip).  
+Using "add/AddNextSibling/AddPrevSibling" is usually not a compatibility problem, since the Path to vanilla code is not changed this way. But when you use merge/replace/remove for vanilla code, it is extremly likely to cause incompatibility with mods changing the same infotip (even if the change is for a different part of the infotip).  
 Most of the time infotip adjustments are made to support new mod-objects to be displayed in infotips. It is recommended to find a general solution for this, instead of hardcoding your own GUIDs into the infotips. For such general adjustments you should create a shared mod, so also other modders can use it. And to keep an overview about all existing general infotip adjustments, please also add your shared mod to the Community Patch mod: https://github.com/anno-mods/BugFixes/tree/main .   
 If your change is very specific to your mod and no other mod could need such a change or a general solution is not possible, then still do your infotip change in a seperate folder with its on modinfo.json. This way other modders can more easily disable your change later in case they do find a general solution for the problem.  
+Example for general solution: https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/blob/main/shared_TT_ModPalaceMinistryHacienda/data/infotips/export.bin.xml  
 
 
 ### Enums
