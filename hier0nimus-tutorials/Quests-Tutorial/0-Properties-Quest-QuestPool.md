@@ -411,7 +411,7 @@ The both most used `StarterObjectObject` in vanilla are:
   </ConditionStarterObject>
   ```
   </details>
-- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests. **Note:** Although you can define "ObjectOwner" in "ConditionObjectSpawnedObject", it has no effect as StarterObject here, the StarterObject will always belong to "Neutral", you can only adjust the VisibleOwner if you want.  
+- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests. **Note:** Although you can define "ObjectOwner" in "ConditionObjectSpawnedObject", it has no effect as StarterObject here, the StarterObject will always belong to "Neutral", you can only adjust the VisibleOwner if you want. You don't have to handle the removal of this starter ship anywhere, it will leave the map when the Quest ends in any way.  
   <details>
   <summary>(CLICK) example CODE</summary>  
   
@@ -632,7 +632,7 @@ Maybe I made sth wrong or it simply does not work. One can also find a typo in p
 
 
 #### `QuestPoolActionCallbacks`:
-Here you can define Actions eg. on success or on discard and so on of Quests started via this Pool. You can also define these actions within the Quests itself, but if you want them to be the same for all quests of this pool, define it here. In vanilla there is eg. often code to remove the Quest-Offer-Ship (the one with a star above) if the Quest is discarded (rejected from the user before it really starts).  
+Here you can define Actions eg. on success or on discard and so on of Quests started via this Pool. You can also define these actions within the Quests itself, but if you want them to be the same for all quests of this pool, define it here.  
 
 #### `PreConditionList`:
 Here you can define Conditions that must be true for the Pool to start Quests. As long as they are not true, the pool does not start Quests. You can also define PreConditions for individual Quests in the Quests themself. Take a look at vanilla PreConditionList, eg. also with `<SubConditions>` to see how to use it.  
