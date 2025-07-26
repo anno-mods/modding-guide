@@ -4210,7 +4210,7 @@ As already mentioned, many ts commands can be found in the bit outdated testsour
 Besides the textsrouce commands, there are also a few others (visible when you hit Tab==autocomplete on an empty console. Here the most relevant ones.
 
 
-session.
+#### session.
 -  'spawnDebugGameObject' = function: 000001F05D4746B8
 -  'toggleResidentView' = function: 000001F05D468AD8
 -  'getObjectByID' = function: 000001F05D4755B8
@@ -4304,7 +4304,7 @@ session.
 -  'openSelectedObjectInT9' = function: 000001F05D4756D8
 
 
-userdata: funktionen (debug.getmetatable(session.getSelectedFactory()) bei schiff, sieht bei gebäude genauso aus)
+#### userdata: funktionen (debug.getmetatable(session.getSelectedFactory()) bei schiff, sieht bei gebäude genauso aus)
 table (
 -  'startTimedEffect' = function: 000001D9910C79E8
 -  'isMoving' = function: 000001D9910C6428
@@ -4362,7 +4362,7 @@ table (
 )
 
 
-condition.
+#### condition.
 -  showConditionTree : function: 000001D9910C8BE8 C
 -  __eq : function: 00007FF7D28DF640 C
 -  class_cast : userdata: 00007FF7D28D7C30 
@@ -4383,7 +4383,7 @@ condition.
 -  __type : table: 000001F03839CA58 
 
 
-game.
+#### game.
 -  -  setNewSampling : function: 000001D9A244AD08 C
 -  getCorporationTime : function: 000001D9A244B4E8 C
 -  startBuildCheat : function: 000001D9A24455A8 C
