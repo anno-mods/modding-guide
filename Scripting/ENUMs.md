@@ -1,3 +1,10 @@
+easier to read:
+- [textsource commands](././ts_commands.txt)
+- [other commands](././other_commands.txt)
+- [PropertyIDs](././PropertyIDs.txt)
+
+-----------------------------------------
+old version:
 
 - [Console Textsource Commands](ENUMs.md#console-textsource-commands)
 - [Other Console Commands](ENUMs.md#other-console-commands)
