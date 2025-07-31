@@ -9,5 +9,7 @@ Anno 1800 has an internal lua API that it uses to communicate between UI and Gam
 - [Read After Write](./ReadAfterWrite.md)
 - [Embedding Text](./textembeds.md)
 - [CodeSnippets](./CodeSnippets.md)
-- [ENUMs](./ENUMs.md)
+- [textsource commands](./ts_commands.txt)
+- [other commands](./other_commands.txt)
+- [PropertyIDs](./PropertyIDs.txt)
 - [Documentation of some lua commands](./documentation.md)
