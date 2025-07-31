@@ -26,6 +26,11 @@ We have to test and find out the meaning ourself. Here what we already found out
 - **VisibilityElement**:
   - They usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
 
+- **ChildCount**:
+  - Is the number of InfoElements within this InfoElement or number of VisibilityElement within this VisibilityElement.  
+The modloader automatically adjust the value to the correct number, so you dont have to change it yourself.  
+BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require a ChildCount value! If its missing, the InfoElement will not be displayed! (most other ElementType do not require ChildCount, compare with vanilla code to be sure)
+
 - **CompareOperator**:
   - 0 (or not defined) Equals
   - 1 Unequals
