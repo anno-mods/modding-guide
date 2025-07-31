@@ -1,3 +1,7 @@
+# Console Textsource Commands
+As already mentioned, many ts commands can be found in the bit outdated testsourcelist.json file of the game. There you can also see what arguments for a function are expected and what it will return. But still not everything listed there can be used in the console and the console also might have a few things not listed there. So I use debug.getmetatable(ts) and our custom modlog function to dump all the content that can be used within the console. Since I did this within lua and all functions are in fact C functions, we can not get information about the arguments this way unfortunately.You can find the same also with help of the autocomplete feature of the console ingame.
+
+
 nicht 100% vollständig! zb dinge die man direkt bekommen muss, wie CQuestInstance (nachgeholt mit g_LTL_Serp.modlog(g_LTL_Serp.TableToFormattedString(debug.getmetatable(ts.Quests.GetQuest(150893)))) obwohl das vermutlich keine guid will)
 
 - CQuestInstance
