@@ -58,7 +58,7 @@ BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require
 
 - **ElementType** (they define the kind of tooltip/box/structure):
   - 1  header: `Text` is bold and uses bright color, uses wordwraps; `Icon` is centered along the y axis
-  - 2  header: `Text` is bold and uses bright color,  uses wordwraps; `Icon` is centered along the y axis; in addition to `1` there´s some empty space added below the text
+  - 2  header: `Text` is bold and uses bright color,  uses wordwraps; `Icon` is centered along the y axis; in addition to `1` there´s some empty space added below the text. Can use SubText, which can result in a bigger icon on the left and two lines of different text next to it.
   - 3  plain text: `Text` + (if needed) `Value` both in bright color; uses wordwraps; does not display icons
   - 4  attributes (from buffs etc): `Icon`, `Text` and `Value`; both in bright color; writes text in one line only, no matter how long it is. --> most universal type to use
   - 5  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`)
