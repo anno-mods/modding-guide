@@ -81,6 +81,11 @@ BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require
   - 18  used for text in italics like fluff-texts of buffs / items
   - 19  seems to be used for listing attributes, eg. all effects from a buff (needs `TemplateGUID` to display sth)
 
+- **AssetForValue / ValueAssetMap**:
+  - can be used to translate one value into another, eg. a Participant ID to an GUID and so on (search vanilla examples to see usage).
+  - The order of entries in the ValueAssetMap asset does matter! Sorted from low to high value.
+  - Unfortunately there seems to be a maximum value for "ValidFrom" which is roughly 7 digits (tested without decimal places). Higher numbers will result in inaccuracy of 10th or 100th steps (depending on the number of digits). 
+
 ### Code Snippets
 To add a separator line (but they are as buggy as the vanilla lines below headers. Sometimes they are visible, sometimes not..)
 ```xml
