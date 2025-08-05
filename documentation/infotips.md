@@ -56,6 +56,7 @@ BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require
   - 1 all VisibilityElement listed on the same level are chained with "or" (so one of the conditions must be true)
 
 - **Condition**:
+  - textsource/textembed lua code is used here, see [textembeds](https://github.com/anno-mods/modding-guide/blob/main/Scripting/textembeds.md) or [scripting](https://github.com/anno-mods/modding-guide/blob/main/Scripting/README.md) for general information.
   - [RefGuid] Most basic condition which checks for the Guid of a selected asset or an asset where the mouse hovers over at the moment. 
   - [Selection ... ] These conditions only work for selected assets, mouse-over is not recognized. This way, infotips change their information depending on which building was selected last (unwanted behaviour). "Selection Picked" seems to catch the object your are currently hovering (or last hovered over), while "Selection Object" is the one currently selected.
   - [StaticData ... ] These conditions work for mouse-over too, e.g. when hovering over construction menu icons. However, valid arguments are very limited. 
