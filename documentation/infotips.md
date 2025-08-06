@@ -34,6 +34,9 @@ BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require
 - **TextGUID / Text**:
   - TextGUID: The Text from that GUID will be used. It seems this also forwards more information like Variables (eg. {ItemGuid}).
   - Text: Uses the text here directly. Beware when eg. using `<Text>[AssetData(12345) Text]</Text>` the text from GUID 12345 can NOT use the Variables (eg. {ItemGuid}).
+
+- **WarningType**:
+  - Only used with value 2 in vanilla, which makes the entry highlighted in red
   
 - **CompareOperator**:
   - 0 (or not defined) Equals
