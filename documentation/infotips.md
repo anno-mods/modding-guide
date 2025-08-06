@@ -71,7 +71,7 @@ BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require
   - 7  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` on same level
   - 8  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` only on sub-levels
   - 9  InfoLayer-hints: `Text` is bold and written in one line only (no wordwraps); used for UI-buttons e.g. in the construction menu and within buildings. Can't display icons.
-  - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Column>` on same level. 
+  - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Columns>` on same level (Columns seems to be bugged, it always shows 2). 
   - 11  ... seems to have sth to do with asset costs (materials, permits, godlikes, blueprints, upgradability)
   - 12  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
   - 13  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
