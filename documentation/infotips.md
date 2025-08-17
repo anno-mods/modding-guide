@@ -23,8 +23,8 @@ Unfortunately it is not that easy, because:
 - objects without that property will ALWAYS be false, regardless what ResultType or CompareOperator you use.  
 
 So that makes it quite difficult to create a condition "show X if it has the property and show Y if it does not have the property".  
-Only **workaround** to this is to check for more information from that property, if possible. Everything which does not have the poperty will **return 0** for everything.   So if you want to know if an object has the "Walking" property or not, its best to check instead the value of `Walking BaseSpeedWithUpgrades` bigger or equal to 0.
-**Beware**: For things like `Selection` this works fine. But it does not work for `<Condition>[MetaObjects SessionGameObject([RefOid]) Walking BaseSpeedWithUpgrades]</Condition>` unfortunately. This check will ALWAYS fail for objects which not have the Walking property, so not possible to check if it returned 0.
+Only **workaround** to this is to find other things to check. Eg. if you want to know if sth. is a ship you can check for Walking property. And an alternative to the check "has not Walking" might be "has Building property".
+**Beware**: For things like `Selection` this works fine. But it does not work for `<Condition>[MetaObjects SessionGameObject([RefOid]) Walking]</Condition>` unfortunately. This check will ALWAYS fail for objects which not have the Walking property, so not possible to check if it returned 0.
 
 
 ### Enums
