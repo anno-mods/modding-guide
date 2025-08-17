@@ -23,7 +23,7 @@ Unfortunately it is not that easy, because:
 - objects without that property will ALWAYS be false, regardless what ResultType or CompareOperator you use.  
 
 So that makes it quite difficult to create a condition "show X if it has the property and show Y if it does not have the property".  
-Only **workaround** to this is to find other things to check. Eg. if you want to know if sth. is a ship you can check for Walking property. And an alternative to the check "has not Walking" might be "has Building property".  
+Only **workaround** to this is to find other things to check. Eg. if you want to know if sth. is a ship you can check for Walking property. And an alternative to the check "has not Walking" might be "has `Culture` property" (unfortunately we can not check for Building property, see textsourcelist.xml in CAsset what is available).  
 **Beware**: For things like `Selection` this `<Condition>[Selection Object Walking]</Condition>` works fine. But it does not work for `<Condition>[MetaObjects SessionGameObject([RefOid]) Walking]</Condition>` unfortunately! This check will ALWAYS fail for ALL objects even if they have the Walking property! A solution for this is to check deeper values like `BaseSpeedWithUpgrades` :`<Condition>[MetaObjects SessionGameObject([RefOid]) Walking BaseSpeedWithUpgrades]</Condition>` which will properly work for objects which have the Walking property.
 
 
