@@ -15,6 +15,17 @@ Most of the time infotip adjustments are made to support new mod-objects to be d
 If your change is very specific to your mod and no other mod could need such a change or a general solution is not possible, then still do your infotip change in a seperate folder with its on modinfo.json. This way other modders can more easily disable your change later in case they do find a general solution for the problem.  
 Example for general solution: https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/blob/main/shared_TT_ModPalaceMinistryHacienda/data/infotips/export.bin.xml  
 
+### "Does (not) have property"-Check
+To write more general tooltips, you sometimes have to check if the object has a specific property or not.  
+The game itself indeed uses sth. like `<Condition>[Selection Object Shipyard]</Condition>` to check if the object is a shipyard.  
+Unfortunately it is not that easy, because:  
+- objects with the Shipyard property will have this condition ALWAYS be true, regardless what ResultType or CompareOperator you use.  
+- objects without that property will ALWAYS be false, regardless what ResultType or CompareOperator you use.  
+
+So that makes it quite difficult to create a condition "show X if it has the property and show Y if it does not have the property".  
+Only **workaround** to this is to check for more information from that property, if possible. Everything which does not have the poperty will **return 0** for everything.   So if you want to know if an object has the "Walking" property or not, its best to check instead the value of `Walking BaseSpeedWithUpgrades` bigger or equal to 0.
+**Beware**: For things like `Selection` this works fine. But it does not work for `<Condition>[MetaObjects SessionGameObject([RefOid]) Walking BaseSpeedWithUpgrades]</Condition>` unfortunately. This check will ALWAYS fail for objects which not have the Walking property, so not possible to check if it returned 0.
+
 
 ### Enums
 Infotips are called **InfoTipData** in the code and are adressed as usual by Guids. Infotips use a lot of numbers to express operations. By default all non-defined integer values are 0. 
