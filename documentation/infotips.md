@@ -2,7 +2,7 @@
 
 You can mod the infotips this way:
 https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modloader11.md#patching-infotip-exportbin
-You can extract the vanilla "data\infotips\export.bin" file with the FileDBReader (https://github.com/anno-mods/FileDBReader/releases) and the FileFormat "infotip.xml".
+You can extract the vanilla "data\infotips\export.bin" file with the FileDBReader (https://github.com/anno-mods/FileDBReader/releases) and the FileFormat "infotip.xml": `.\FileDBReader.exe decompress -i "FileFormats/infotip.xml" -f "tounpack/export.bin" -y`  
 Alternatively I attached the extracted file in the modding discord channel here: https://discord.com/channels/578443209940926465/1146098268850376816/1149910673678159964  
 
 For valid text-embed commands (I mean these [Selection Object ...] things you find in the file and texts), see the textsourcelist.json file from the game (unfortunately a bit outdated though..) or this huge list of textsource commands [lua ENUMs](https://github.com/anno-mods/modding-guide/blob/main/Scripting/ENUMs.md) while you can not directly use the wording from the link since it is lua form, see also  [textembeds](https://github.com/anno-mods/modding-guide/blob/main/Scripting/textembeds.md) )  
