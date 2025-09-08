@@ -14,7 +14,7 @@ If you have never made a mod before, this section contains tutorials to make ver
 
 
 
-## [Guides and Documentation](./03-guides-and-documentation)
+## [Guides and Documentation](./03-guides-and-docs)
 This sections contains everything you need to know to make specific mods. You can find specific tutorials and general documentations as well as examples here.
 
 - [Animations](./03-guides-and-docs/animations)
