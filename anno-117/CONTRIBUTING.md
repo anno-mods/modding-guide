@@ -7,14 +7,14 @@ To contribute to the modding guide you should first create your own fork that yo
 If you want to contribute your own tutorial/guide you should follow these guidelines:
 - Try not to make duplicate tutorials/guides. If you think a tutorial/guide is incomplete or faulty, you can always raise an issue or mark from where to branch from another tutorial/guide. If there is an empty file for your tutorial/guide, just use that.
 - Choose an appropriate subfolder for your tutorial. If the topic of your tutorial is not a good fit for any of the existing topics, make a new folder that has the same file structure and a similar README.md like the other topics.
-- Write your tutorial/guide in markdown. Name your tutorial/guide in a descriptive manner with the prefix `tut_`.
+- Write your tutorial/guide in markdown. Name your tutorial/guide in a descriptive manner with the prefix `tut-`.
 - Save your images and other sources (except for code snippets) in the `_source` folder of your topic. If a source is already in that folder you can use it as well. Name your sources in a descriptive manner.
 
 ## Documentation
 
 If you want to contribute to the documentation of a topic or a new topic you should follow these guidelines:
 - Keep it consistent to already existing documentation. This makes it easier for everyone to read.
-- Keep the documentation to one file, unless you have a **really** good reason not to. in that case, make a new file with the prefix `doc_` and a descriptive name.
+- Keep the documentation to one file, unless you have a **really** good reason not to. in that case, make a new file with the prefix `doc-` and a descriptive name.
 - Only expand or rephrase documentation. If you think something should shortened or removed or contains faulty information, please raise an issue.
 - If your contribution requires images or other sources, handle it the same way resources are handled for tutorials/guides.
 
