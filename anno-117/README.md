@@ -23,7 +23,7 @@ This sections contains everything you need to know to make specific mods. You ca
     - [Ships](./03-guides-and-docs/game-objects/ships)
     - [Units](./03-guides-and-docs/game-objects/units)
 - [Icons](./03-guides-and-docs/icons)
-- [Islands](./03-guides-and-documentation/islands)
+- [Islands](./03-guides-and-docs/islands)
 - [Models](./03-guides-and-docs/models)
 - [Production Chains](./03-guides-and-docs/productions-chains)
 - [Scripts](./03-guides-and-docs/scripts)
