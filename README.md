@@ -24,14 +24,13 @@ Detailed walkthrough the creation of mods:
 
 ### ModOps
 
-- [ModOps Guide](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modop-guide.md#modop-guide) - basic ModOp explanations
+- [Modloader Reference Documentatino](https://jakobharder.github.io/anno-mod-loader) - basic ModOp explanations
 - [Mod Compatiblity Guide](./guides/mod-compatibility.md) - learn how to make mods compatible with others
-- [New modloader features with GU17](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modloader10.md#modloader-10-changes) - more powerful ModOps, dependencies/loading order and sub-mods
 - [XPath Cheat Sheet](https://devhints.io/xpath) - needed for advanced ModOps
 
 ### Modinfo and ToolOne
 
-- [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, LoadAfter, dependencies
+- [Modinfo Specification](https://jakobharder.github.io/anno-mod-loader/modinfo/) - mod meta information, LoadAfter, dependencies
 - [Official Property-Documentation (properties-toolone.xml)](./documentation/properties-toolone.xml)
 
 ### ToolTips and Scripting
