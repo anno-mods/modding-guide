@@ -151,6 +151,6 @@ In this Skin example a SkinVariations list entry only accepts one entry itself, 
   ```
 (remember it does not matter if you mention `<TestValue />` here or not, it will be inherited anyway, I just mentioned it for more clarity)
 
-
+According to Taube, the `InheritanceMapV2` structure often used by the game, does nothing, so it can be ignored.
 See also the german explanation from Taube back in 2020 here if you want:
 https://maug-projekt.com/forum/index.php?thread/715-vererbung-von-vectorelements/
