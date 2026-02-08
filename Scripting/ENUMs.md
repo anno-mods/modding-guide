@@ -1,3 +1,10 @@
+easier to read:
+- [textsource commands](././ts_commands.txt)
+- [other commands](././other_commands.txt)
+- [PropertyIDs](././PropertyIDs.txt)
+
+-----------------------------------------
+old version:
 
 - [Console Textsource Commands](ENUMs.md#console-textsource-commands)
 - [Other Console Commands](ENUMs.md#other-console-commands)
@@ -4108,11 +4115,109 @@ As already mentioned, many ts commands can be found in the bit outdated testsour
 -  GetMetaObjects : function: 00007FF7D313CD90
 
 
+- CQuestInstance
+- 	'HasEnded' = 'property bool'
+- 	'GetQuestStoryText' = function: 00007FF623FC52E0
+- 	'SetAbortedNet' = function: 00007FF623FC4FF0
+- 	'TimeLeft' = 'property rdtime'
+- 	'QuestObjectives' = 'property CQuestObjectiveList'
+- 	'QuestDescriptionText' = 'property int'
+- 	'SetTriggerAbortPopupNet' = function: 00007FF623FC50A0
+- 	'SetActiveNet' = function: 00007FF623FC4EA0
+- 	'ToggleForceQuestTrackerVisibility' = function: 00007FF623FC5240
+- 	'GetStateReachable' = function: 00007FF623FC4EF0
+- 	'GetHasEnded' = function: 00007FF623FC5110
+- 	'name' = 'CQuestInstanceTextSource*MT'
+- 	'GetQuestDescriptionText' = function: 00007FF623FC5340
+- 	'IsActive' = 'property bool'
+- 	'QuestStoryText' = 'property int'
+- 	'GetTimeLeft' = function: 00007FF623FC51E0
+- 	'ToggleQuestConditionTreeVisibility' = function: 00007FF623FC5290
+- 	'SetFailedNet' = function: 00007FF623FC4FA0
+- 	'SetReachedNet' = function: 00007FF623FC4F50
+- 	'classtable' = 'this'
+- 	'StateReachable' = 'property bool'
+- 	'GetIsActive' = function: 00007FF623A21640
+- 	'GetQuestObjectives' = function: 00007FF623FC5170
+  
+
+- ts.TradeRoute.GetRoute(0)
+- UIEditRoute : property CSessionTradeRoute
+-     ActiveErrorCount : property int
+-     name : CSessionTradeRouteTextSource*MT
+-     GetMismatchingGoodActiveForGood : function: 00007FF7D346F6E0
+-     GetStation : function: 00007FF7D346EA60
+-     GetNotEnoughSlotsErrorActive : function: 00007FF7D346EC30
+-     GetLostShipName : function: 00007FF7D346EB00
+-     GetGoodsDontMatchActive : function: 00007FF7D346F200
+-     GetNoGoodsActive : function: 00007FF7D346F4A0
+-     NoGoodsActive : property bool
+-     GetIslandUnderSiegeActive : function: 00007FF7D346EDB0
+-     AllShipsPausedActive : property bool
+-     GetStorageEmptyActive : function: 00007FF7D346F3C0
+-     GetActiveErrorCount : function: 00007FF7D346F7D0
+-     GetIsErrorActive : function: 00007FF7D346EBA0
+-     NoShipsActive : property bool
+-     GetNoTradeRightsActive : function: 00007FF7D346EED0
+-     GetLoadedGoodNeverUnloadedActive : function: 00007FF7D346F040
+-     GetLongWaitingTimeActive : function: 00007FF7D346F5C0
+-     GetStorageFullActive : function: 00007FF7D346F2E0
+-     GetUnloadedGoodNeverLoadedActive : function: 00007FF7D346F120
+-     GetAllShipsPausedActive : function: 00007FF7D346F560
+-     GetNoShipsActive : function: 00007FF7D346F500
+-     NotEnoughStationsActive : property bool
+-     GetNotEnoughStationsActive : function: 00007FF7D346ED50
+-     GetConfiguredGoodNotTradedActive : function: 00007FF7D346EF60
+-     GetNoValidPierActive : function: 00007FF7D346EE40
+-     classtable : this
+-     GetMismatchingGoodActive : function: 00007FF7D346F650
+-     GetNotEnoughSlotsForShipsErrorActive : function: 00007FF7D346ECC0
+-   SetShowRouteUI : function: 00007FF7D30AE5B0
+-   GetRoute : function: 00007FF7D30AE510
+-   classtable : this
+  
+- ts.TradeRoute.GetRoute(0).GetStation(0)
+- CSessionTradeRouteStationInfo
+-   GetIsCliffIsland : function: 00007FF799012530 C
+-   GetStationBelongsToCurrentParticipant : function: 00007FF799012590 C
+-   name : CSessionTradeRouteStationInfoTextSource*MT 
+-   CurrentParticipantHasTradeRights : property bool 
+-   GetCurrentParticipantHasTradeRights : function: 00007FF7990125F0 C
+-   classtable : this 
+-   IsCliffIsland : property bool 
+-   StationBelongsToCurrentParticipant : property bool 
+-   GetHasGood : function: 00007FF7990124A0 C
+-   GetGood : function: 00007FF799012400 C
+  
+- ts.TradeRoute.GetRoute(0).GetStation(0).GetGood(0)
+- ts.TradeRoute.GetRoute(ID).GetStation(SID).GetGood(GID).Guid
+- obwohl es laut textsourcelist.json auch SetAmount geben soll, gibts das leider nicht.. auch nicht via setDebugTextSource =/ (GID ist auch ne niedrige zahl, keine GUID)
+- GetGoodData : function: 00007FF7990112F0 C
+- Amount : property int 
+- Guid : property int 
+- name : CSessionTradeRouteGoodInfoTextSource*MT
+- GoodData : property CAsset 
+- 	GetIcon : function: 00007FF798A42D70 C
+- 	Guid : property int 
+- 	name : CAssetTextSource*MT 
+- 	classtable : this 
+- 	GetText : function: 00007FF798A42DE0 C
+- 	Text : property rdsdk::CRDStringW 
+- 	Icon : property rdsdk::CRDStringW 
+- 	GetGuid : function: 00007FF798A42D10 C
+- GetLoading : function: 00007FF799011290 C
+- GetAmount : function: 00007FF798A46E90 C
+- Loading : property bool 
+- classtable : this 
+- GetGuid : function: 00007FF798A42D10 C
+
+
+
 # Other console commands
 Besides the textsrouce commands, there are also a few others (visible when you hit Tab==autocomplete on an empty console. Here the most relevant ones.
 
 
-session.
+#### session.
 -  'spawnDebugGameObject' = function: 000001F05D4746B8
 -  'toggleResidentView' = function: 000001F05D468AD8
 -  'getObjectByID' = function: 000001F05D4755B8
@@ -4206,7 +4311,7 @@ session.
 -  'openSelectedObjectInT9' = function: 000001F05D4756D8
 
 
-userdata: funktionen (debug.getmetatable(session.getSelectedFactory()) bei schiff, sieht bei gebäude genauso aus)
+#### userdata: funktionen (debug.getmetatable(session.getSelectedFactory()) bei schiff, sieht bei gebäude genauso aus)
 table (
 -  'startTimedEffect' = function: 000001D9910C79E8
 -  'isMoving' = function: 000001D9910C6428
@@ -4264,7 +4369,7 @@ table (
 )
 
 
-condition.
+#### condition.
 -  showConditionTree : function: 000001D9910C8BE8 C
 -  __eq : function: 00007FF7D28DF640 C
 -  class_cast : userdata: 00007FF7D28D7C30 
@@ -4285,7 +4390,7 @@ condition.
 -  __type : table: 000001F03839CA58 
 
 
-game.
+#### game.
 -  -  setNewSampling : function: 000001D9A244AD08 C
 -  getCorporationTime : function: 000001D9A244B4E8 C
 -  startBuildCheat : function: 000001D9A24455A8 C

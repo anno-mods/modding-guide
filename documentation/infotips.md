@@ -2,11 +2,30 @@
 
 You can mod the infotips this way:
 https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modloader11.md#patching-infotip-exportbin
-You can extract the vanilla "data\infotips\export.bin" file with the FileDBReader (https://github.com/anno-mods/FileDBReader/releases) and the FileFormat "infotip.xml".
+You can extract the vanilla "data\infotips\export.bin" file with the FileDBReader (https://github.com/anno-mods/FileDBReader/releases) and the FileFormat "infotip.xml": `.\FileDBReader.exe decompress -i "FileFormats/infotip.xml" -f "tounpack/export.bin" -y`  
 Alternatively I attached the extracted file in the modding discord channel here: https://discord.com/channels/578443209940926465/1146098268850376816/1149910673678159964  
 
 For valid text-embed commands (I mean these [Selection Object ...] things you find in the file and texts), see the textsourcelist.json file from the game (unfortunately a bit outdated though..) or this huge list of textsource commands [lua ENUMs](https://github.com/anno-mods/modding-guide/blob/main/Scripting/ENUMs.md) while you can not directly use the wording from the link since it is lua form, see also  [textembeds](https://github.com/anno-mods/modding-guide/blob/main/Scripting/textembeds.md) )  
  
+
+## Compatibility with other mods (please read if you mod infotips!)  
+Because of the structure of infotips code the ModOp Path we use to change something at a specific location needs to contain huge parts of the content of the InfoElement we want to mod. If another mod now changes the content (eg. Condition or Text) from an InfoElement, our ModOp may fail. It is still better to **not** use Conditions/AllowNoMatch to prevent the error in the logfile, because we want to get notified of incompatibilities this way in the logfile!  
+Using "add/AddNextSibling/AddPrevSibling" is usually not a compatibility problem, since the Path to vanilla code is not changed this way. But when you use merge/replace/remove for vanilla code, it is extremly likely to cause incompatibility with mods changing the same infotip (even if the change is for a different part of the infotip).  
+Most of the time infotip adjustments are made to support new mod-objects to be displayed in infotips. It is recommended to find a general solution for this, instead of hardcoding your own GUIDs into the infotips. For such general adjustments you should create a shared mod, so also other modders can use it. And to keep an overview about all existing general infotip adjustments, please also add your shared mod to the Community Patch mod: https://github.com/anno-mods/BugFixes/tree/main .   
+If your change is very specific to your mod and no other mod could need such a change or a general solution is not possible, then still do your infotip change in a seperate folder with its on modinfo.json. This way other modders can more easily disable your change later in case they do find a general solution for the problem.  
+Example for general solution: https://github.com/Serpens66/Anno-1800-SharedMods-for-Modders-/blob/main/shared_TT_ModPalaceMinistryHacienda/data/infotips/export.bin.xml  
+
+### "Does (not) have property"-Check
+To write more general tooltips, you sometimes have to check if the object has a specific property or not.  
+The game itself indeed uses sth. like `<Condition>[Selection Object Shipyard]</Condition>` to check if the object is a shipyard.  
+Unfortunately it is not that easy, because:  
+- objects with the Shipyard property will have this condition ALWAYS be true, regardless what ResultType or CompareOperator you use.  
+- objects without that property will ALWAYS be false, regardless what ResultType or CompareOperator you use.  
+
+So that makes it quite difficult to create a condition "show X if it has the property and show Y if it does not have the property".  
+Only **workaround** to this is to find other things to check. Eg. if you want to know if sth. is a ship you can check for Walking property. And an alternative to the check "has not Walking" might be "has `Culture` property" (unfortunately we can not check for Building property, see textsourcelist.xml in CAsset what is available).  
+**Beware**: For things like `Selection` this `<Condition>[Selection Object Walking]</Condition>` works fine. But it does not work for `<Condition>[MetaObjects SessionGameObject([RefOid]) Walking]</Condition>` unfortunately! This check will ALWAYS fail for ALL objects even if they have the Walking property! A solution for this is to check deeper values like `BaseSpeedWithUpgrades` :`<Condition>[MetaObjects SessionGameObject([RefOid]) Walking BaseSpeedWithUpgrades]</Condition>` which will properly work for objects which have the Walking property.
+
 
 ### Enums
 Infotips are called **InfoTipData** in the code and are adressed as usual by Guids. Infotips use a lot of numbers to express operations. By default all non-defined integer values are 0. 
@@ -18,6 +37,18 @@ We have to test and find out the meaning ourself. Here what we already found out
 - **VisibilityElement**:
   - They usually contain conditions. And if the conditions are true, the content and InfoElements below the VisibilityElement will be shown. Otherwise they will be hidden. VisibilityElements are often nested to further filter the visibility of elements top down.
 
+- **ChildCount**:
+  - Is the number of InfoElements within this InfoElement or number of VisibilityElement within this VisibilityElement.  
+The modloader automatically adjust the value to the correct number, so you dont have to change it yourself.  
+BUT: It does not add missing ChildCount entries! Eg. ElementType 7 and 8 require a ChildCount value! If its missing, the InfoElement will not be displayed! (most other ElementType do not require ChildCount, compare with vanilla code to be sure)
+  
+- **TextGUID / Text**:
+  - TextGUID: The Text from that GUID will be used. It seems this also forwards more information like Variables (eg. {ItemGuid}).
+  - Text: Uses the text here directly. Beware when eg. using `<Text>[AssetData(12345) Text]</Text>` the text from GUID 12345 can NOT use the Variables (eg. {ItemGuid}).
+
+- **WarningType**:
+  - Only used with value 2 in vanilla, which makes the entry highlighted in red
+  
 - **CompareOperator**:
   - 0 (or not defined) Equals
   - 1 Unequals
@@ -39,13 +70,14 @@ We have to test and find out the meaning ourself. Here what we already found out
   - 1 all VisibilityElement listed on the same level are chained with "or" (so one of the conditions must be true)
 
 - **Condition**:
+  - textsource/textembed lua code is used here, see [textembeds](https://github.com/anno-mods/modding-guide/blob/main/Scripting/textembeds.md) or [scripting](https://github.com/anno-mods/modding-guide/blob/main/Scripting/README.md) for general information.
   - [RefGuid] Most basic condition which checks for the Guid of a selected asset or an asset where the mouse hovers over at the moment. 
   - [Selection ... ] These conditions only work for selected assets, mouse-over is not recognized. This way, infotips change their information depending on which building was selected last (unwanted behaviour). "Selection Picked" seems to catch the object your are currently hovering (or last hovered over), while "Selection Object" is the one currently selected.
   - [StaticData ... ] These conditions work for mouse-over too, e.g. when hovering over construction menu icons. However, valid arguments are very limited. 
 
 - **ElementType** (they define the kind of tooltip/box/structure):
   - 1  header: `Text` is bold and uses bright color, uses wordwraps; `Icon` is centered along the y axis
-  - 2  header: `Text` is bold and uses bright color,  uses wordwraps; `Icon` is centered along the y axis; in addition to `1` there´s some empty space added below the text
+  - 2  header: `Text` is bold and uses bright color,  uses wordwraps; `Icon` is centered along the y axis; in addition to `1` there´s some empty space added below the text. Can use SubText, which can result in a bigger icon on the left and two lines of different text next to it.
   - 3  plain text: `Text` + (if needed) `Value` both in bright color; uses wordwraps; does not display icons
   - 4  attributes (from buffs etc): `Icon`, `Text` and `Value`; both in bright color; writes text in one line only, no matter how long it is. --> most universal type to use
   - 5  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`)
@@ -53,7 +85,7 @@ We have to test and find out the meaning ourself. Here what we already found out
   - 7  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` on same level
   - 8  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self). Has `<Source>` only on sub-levels
   - 9  InfoLayer-hints: `Text` is bold and written in one line only (no wordwraps); used for UI-buttons e.g. in the construction menu and within buildings. Can't display icons.
-  - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Column>` on same level. 
+  - 10  used as a container for (multiple) sub-VisibilityElements and InfoElements with `<ElementType>11</>` only (does not show anything on it self). Has `<Source>` and `<Columns>` on same level (Columns seems to be bugged, it always shows 2). 
   - 11  ... seems to have sth to do with asset costs (materials, permits, godlikes, blueprints, upgradability)
   - 12  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
   - 13  ... seems to be used as a container for (multiple) sub-VisibilityElements and InfoElements (does not show anything on it self)
@@ -63,6 +95,11 @@ We have to test and find out the meaning ourself. Here what we already found out
   - 17  plain text: `Text` in dark-grey "background" text (can´t display `Icon` and `Value`); does not adapt infotip size to text length!
   - 18  used for text in italics like fluff-texts of buffs / items
   - 19  seems to be used for listing attributes, eg. all effects from a buff (needs `TemplateGUID` to display sth)
+
+- **AssetForValue / ValueAssetMap**:
+  - can be used to translate one value into another, eg. a Participant ID to an GUID and so on (search vanilla examples to see usage).
+  - The order of entries in the ValueAssetMap asset does matter! Sorted from low to high value.
+  - Unfortunately there seems to be a maximum value for "ValidFrom" which is roughly 7 digits (tested without decimal places). Higher numbers will result in inaccuracy of 10th or 100th steps (depending on the number of digits). 
 
 ### Code Snippets
 To add a separator line (but they are as buggy as the vanilla lines below headers. Sometimes they are visible, sometimes not..)

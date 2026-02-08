@@ -132,7 +132,8 @@ Both also accept Regions.
 #### `KeepCheckingPreconditionsWhenRunning`:
 *"If true, the quest keeps checking the preconditions and will abort automatically if they are not met any longer"*. Defaults to 0. This is eg. especially helpful for Quests involving QuestGivers you can have different treaties with. Eg. you can add a PreCondition that the player must at least have TradeRights with the QuestGiver and set KeepCheckingPreconditionsWhenRunning=1 to automatically abort the active Quest if this is no longer the case.  
 **Note**: `KeepCheckingPreconditionsWhenRunning` does only check the PreConditions of the Quest itself, not the ones from the executing QuestPool.  
-The game does already cancels Quests to players you declare war to, but this is bugged since it only cancels one Quest. If there are multiple they are not all cancelled, so it is better to also include this as PreCondition if practicable.
+The game does already cancels Quests to players you declare war to, but this is bugged since it only cancels one Quest. If there are multiple they are not all cancelled, so it is better to also include this as PreCondition if practicable.  
+Good to know: When KeepCheckingPreconditionsWhenRunning is true, also Quests started via ActionStartQuest care for the PreConditions (not when started, but on the first tick it notices if PreConditons are not fullfilled and cancels the Quest again.
 
 #### `ReputationQuestFail/ReputationQuestDeclined/Reward-RewardReputation`:
 Adding a list here with `ReputationParticipant` (*"The participant that rewards reputation"*) and `ReputationAmount` (*"The amount of reputation that is rewarded. This number can be negative to create a reputation loss"*). So you can make the player loose reputation when a quest fails, but also gain reputation with other AIs (not only QuestGiver).  
@@ -410,7 +411,7 @@ The both most used `StarterObjectObject` in vanilla are:
   </ConditionStarterObject>
   ```
   </details>
-- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests. **Note:** Although you can define "ObjectOwner" in "ConditionObjectSpawnedObject", it has no effect as StarterObject here, the StarterObject will always belong to "Neutral", you can only adjust the VisibleOwner if you want.  
+- `ConditionObjectSpawnedObject` to spawn a new object, eg. a Ship as starter object. If you use this you should add a new ship-asset with your unique GUID as starter to prevent interference with other Quests. **Note:** Although you can define "ObjectOwner" in "ConditionObjectSpawnedObject", it has no effect as StarterObject here, the StarterObject will always belong to "Neutral", you can only adjust the VisibleOwner if you want. You don't have to handle the removal of this starter ship anywhere, it will leave the map when the Quest ends in any way.  
   <details>
   <summary>(CLICK) example CODE</summary>  
   
@@ -461,6 +462,7 @@ The both most used `StarterObjectObject` in vanilla are:
 ### `WinConditions`:
 You can set up as many WinConditions to any quest as you like. 
 - With `WinConditionCompletionOrder`, which defaults to `Parallel` you can define if all you WinConditions should be displayed at once anc can be done in any order. Or with `Linear` you force them to be completed one after the other (only showing a single one at a time), or with `MutuallyExclusive` you want the player to complete one of the tasks to complete the Quest.  
+If you want to mix different CompletionOrders in one shwon Quest, you can create a new "Quest" with `<Template>A7_QuestSubQuest</Template>`. This only contains Objectives, nothing more. Here you can use a different WinConditionCompletionOrder than in your main Quest. To use this SubQuest in your Main Quest Objectives you add the Objective via `<ConditionQuestSubQuest>` (`<Template>SubQuestObjective</Template>` see vanilla for example. ConditionQuestSubQuest also works for normal Quests, it autostarts the Quest and checks for completion of the Quest ). In the end you can eg. Put 2 parallel tasks in your main Quest, while one of them is a subquest of linear objectives.  
 
 There are several WinCondition `Objectives` to choose from, see templates.xml and search for `<Name>QuestObjectives</Name>` to see them all. I will not go into detail with all of them, study the templates, vanilla assets.xml and properties-toolone.xml to find out how they work and what they do. Also see my [Tutorial Creating a Quest](./Creating%20a%20Quest.md#winconditions) for a few examples.
 #### `ConditionQuestObjective`:
@@ -586,6 +588,7 @@ Defaults to 0. Not really sure what this does, but I assume it should only be us
  
 #### `PoolCooldown/CooldownOnQuestStart/CooldownOnQuestEnd/QuestCooldown/AffectedByCooldownFactor`:
 - `PoolCooldown`: *"Defines the time the pool is blocked after calling a quest"*. Defaults to 120000 ms. Eg. if you want to trigger any quest of the pool once every 30 minutes or so, enter a time in ms here. Use a cooldown of 0 if you want all quests to directly be triggered as soon as all PreConditions are met.  
+Note: It seems although if set to 0,one pool can only start one quest per 1 second. Use multiple pools with the same Quest if you need it faster (but even then the game can globally only start one Quest per 100ms :D).
 - `CooldownOnQuestStart`: *"Starts the pool cooldown if no pool cooldown is running and a quest started"*. "Quest started" in this case is already true as soon as the Quest is triggered by the Pool, even if it is only currently offered on the map and the player still has to click and activate the Quest! This means if you use only this and put Cooldown eg. to 10 minutes, while the user discards/abort a Quest 11 minutes after it appeared on the map, the pool can immediately start another Quest.   
 - `CooldownOnQuestEnd`: *"Starts the pool cooldown if no pool cooldown is running and a quest ended"*. "OnQuestEnd", so it does not matter if it succeeded, failed or aborted/discarded.   
 Keep in mind that this could have weird side effects, since the Cooldown is only started if cooldown is not already running. Eg. if you set it to 30 minutes and the user finishes the Quest in 29 minutes, 1 minute later the Pool can start another Quest. But if the user needs 31 minutes instead, there will be another Cooldown of 30 minutes. Setting both CooldownOnQuestStart and CooldownOnQuestStart to 0 disables to PoolCooldown, so it will start all available Quests immediately without Cooldown.   
@@ -629,7 +632,7 @@ Maybe I made sth wrong or it simply does not work. One can also find a typo in p
 
 
 #### `QuestPoolActionCallbacks`:
-Here you can define Actions eg. on success or on discard and so on of Quests started via this Pool. You can also define these actions within the Quests itself, but if you want them to be the same for all quests of this pool, define it here. In vanilla there is eg. often code to remove the Quest-Offer-Ship (the one with a star above) if the Quest is discarded (rejected from the user before it really starts).  
+Here you can define Actions eg. on success or on discard and so on of Quests started via this Pool. You can also define these actions within the Quests itself, but if you want them to be the same for all quests of this pool, define it here.  
 
 #### `PreConditionList`:
 Here you can define Conditions that must be true for the Pool to start Quests. As long as they are not true, the pool does not start Quests. You can also define PreConditions for individual Quests in the Quests themself. Take a look at vanilla PreConditionList, eg. also with `<SubConditions>` to see how to use it.  

@@ -24,14 +24,13 @@ Detailed walkthrough the creation of mods:
 
 ### ModOps
 
-- [ModOps Guide](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modop-guide.md#modop-guide) - basic ModOp explanations
+- [Modloader Reference Documentatino](https://jakobharder.github.io/anno-mod-loader) - basic ModOp explanations
 - [Mod Compatiblity Guide](./guides/mod-compatibility.md) - learn how to make mods compatible with others
-- [New modloader features with GU17](https://github.com/jakobharder/anno1800-mod-loader/blob/main/doc/modloader10.md#modloader-10-changes) - more powerful ModOps, dependencies/loading order and sub-mods
 - [XPath Cheat Sheet](https://devhints.io/xpath) - needed for advanced ModOps
 
 ### Modinfo and ToolOne
 
-- [Modinfo.json manual](https://github.com/anno-mods/Modinfo) - mod meta information, LoadAfter, dependencies
+- [Modinfo Specification](https://jakobharder.github.io/anno-mod-loader/modinfo/) - mod meta information, LoadAfter, dependencies
 - [Official Property-Documentation (properties-toolone.xml)](./documentation/properties-toolone.xml)
 
 ### ToolTips and Scripting
@@ -44,7 +43,7 @@ Detailed walkthrough the creation of mods:
 - [Map Fertilities](https://github.com/Pnski/Anno1800ModDoku/blob/main/Tutorials%2FMapFertilities.md)
 - [Object Variations and Skins](./guides/variations.md) - for Buildings, including automatic neighbors
 - [How to make AI use new buildings](./guides/AI%20using%20new%20buildings.md)
-- [Explanation of inheritance](https://maug-projekt.com/forum/index.php?thread/715-vererbung-von-vectorelements/) (unfortunately German only)
+- [Explanation of inheritance (Template/BaseAssetGUID)](./guides/Inheritance.md)
 
 ### Guides (for modding graphic files)
 
@@ -63,12 +62,15 @@ Detailed walkthrough the creation of mods:
 
 ### Further Topics
 
-- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)
-- [GU 17 update guide](./guides/gu17-update-guide.md)
+- [Build and deploy mods in VSCode](https://github.com/anno-mods/vscode-anno-modding-tools/blob/main/doc/annomod.md)  
+- [GU 17 update guide](./guides/gu17-update-guide.md)  
 - [GU 16 update guide](./guides/gu16-update-guide.md)
+- [**GuidRanges**](https://github.com/anno-mods/GuidRanges)
+- [**Shared Mods**](https://github.com/anno-mods/shared-resources/tree/main)
 
 ## More
 
 - [Schwubbe's modding blog](https://schwubbe.de/modding_blog.php)
 - [Asset and Text Browser: a1800.net](https://a1800.net/)
 - [Anno Building-menu Customizer (ABC)](https://github.com/AsciiBunny/AnnoBuildingmenuCustomizer)
+- Map Editor: [Stable](https://github.com/anno-mods/AnnoMapEditor/releases) / Experimental: [Code](https://github.com/Ixam97/AnnoMapEditor) [Download](https://github.com/Ixam97/AnnoMapEditor/actions/runs/15663865466/artifacts/3331029826)

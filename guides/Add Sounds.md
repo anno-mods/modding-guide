@@ -1,5 +1,16 @@
 # WIP: Add Sounds
 
+See here:  
+https://github.com/Serpens66/Anno1404SoundsTo1800/tree/main  
+https://github.com/Serpens66/Anno1404SoundsTo1800/blob/main/Anno1800_wwise_Project/HowToUse.txt  
+And use the Anno1800_wwise_Project from there, even if you want to add other sounds than from Anno 1404.  
+
+  
+  -
+
+  -
+
+
 work in progress, currently only german and mostly personal notes and for sure not complete  
 
 Eigene Sounds zuzufügen ist leider ziemlich kompliziert und geht nur über das Programm Wwise.
