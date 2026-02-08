@@ -198,7 +198,7 @@ The first code we need to write are the tags that make it clear everything in th
 
 We have the opening tag &lt;ModOps> and immediately also create the closing tag &lt;/ModOps>. It is a good practice to immediately create the closing tag. That way you will not forget. A lot of the time errors are triggered because of tags that are not closed. Everything we now put inside those tags is included in the mod.
 
-`ModOps` stands for **Mod Operations**. It includes all mod operations inside this parent node.
+**`ModOps`** stands for **Mod Operations**. It includes all mod operations inside this parent node.
 
 ```XML
 <ModOps>
@@ -448,4 +448,4 @@ Start the game and load one of your savegames. Look at Feras and see the 420% pr
 
 Congratulations! You have succesfully created your first mod!
 
-Ready for the next one? For now you can have a look at [https://github.com/anno-mods/modding-guide](https://github.com/anno-mods/modding-guide) where you can find the next tutorials. I'm currently reworking all the tutorials and transferring them also here on the mod.io platform. Have fun and enjoy your Anno modding journey!
+Ready for the next one?
