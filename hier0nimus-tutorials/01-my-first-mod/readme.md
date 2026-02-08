@@ -1,4 +1,6 @@
-# Get started with modding in Anno 1800
+# Tutorial 1 - My First Mod
+
+## Get started with modding in Anno 1800
 
 Great! You decided to get into modding for Anno 1800 or thinking about it. Welcome and most importantly, have fun doing it!
 
@@ -448,4 +450,4 @@ Start the game and load one of your savegames. Look at Feras and see the 420% pr
 
 Congratulations! You have succesfully created your first mod!
 
-Ready for the next one?
+Ready for the next one? Have fun and enjoy your Anno modding journey! Go check out the next tutorial where we make a new specialist.

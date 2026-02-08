@@ -1,18 +1,17 @@
 # Tutorial 2 - Making new specialists
 
 ## The better way
-
-With Feras, we have changed an existing item, but that is not the best practice. Changing existing items increases potential problems. With every official update Ubisoft rolls out they can potentially change logic and items in the game. When we modify items they also use, this can increase the amount of conflicts. A better way is to create our own items.
+With Feras, we have changed an existing item, but that is not the best practice. Changing existing items increases potential problems. If other mods change the same item this could result in one of the two mods not working. A better way is to create our own items.
 
 ## Our imagination
 
-When modding it is up to you what kind of modder you want to be. Do you want to make things that make your game experience easier and “cheat” or do you want to keep the balance and enrich the experience. Personally I do not like the mods that give a feeling of cheating. I always go for balance and love the fact we can add stuff to the game to enrich the experience.
+When modding it is up to you what kind of modder you want to be. Do you want to make things that make your game experience easier and “cheat” or do you want to keep the balance and enrich the experience. Personally I do not like the mods that give a feeling of cheating. I always go for balance and love the fact we can add stuff to the game to enrich the experience. But everything is up to you what you want to make. There are so many different people and we all play and love the game in a different way. Do not let that stop you from making amazing things the way you want.
 
 ## A new specialist for gold mines
 
 For our second mod we are going to make a new specialist. Our imagination is limitless! Maybe you always thought about a specialist missing from the game. Now is the time we are going to realise this!
 
-We are going to create an specialist for the gold mines in the New World. This mine has a high production time of 2min30s. With an item we could boost this production without touching the mine itself and give the player the opportunity to boost the production with an trade union item and keep the game balanced.
+We are going to create a specialist for the gold mines in the New World. This mine has a high production time of 2min30s. With an item we could boost this production without touching the mine itself and give the player the opportunity to boost the production with an trade union item and keep the game balanced.
 
 ## Our mod structure
 
@@ -37,13 +36,13 @@ Compared to the previous mod we will now have some more folders and files we nee
 
 ## What icon do we use?
 
-For this mod we will start with creating the graphic we need. The icon that will be used for the specialist. The game already has a lot of icons and all those icons are in the gamefiles. We need to extract those icons from the data.rda files.
+For this mod we will start with creating the graphic we need. The icon that will be used for the specialist. The game already has a lot of icons and all those icons are in the gamefiles. We need to extract those icons from the data.rda files.The icons can be found in all data.rda files.
 
-The icons can be found in all data.rda files. Depending on which DLC the icons will be from that specific DLC/theme. For example the Arctic icons will be available in the data.rda from the Arctic, data13: The Passage DLC.
+Depending on which DLC the icons will be from that specific DLC/theme. For example the Arctic icons will be available in the data.rda from the Arctic, data13: The Passage DLC.
 
 The location of the icons we are going to use is data2.rda/data/ui/2kimages/main/3dicons/specialists/systemic. We will be using "icon_worker_602_0.dds". We convert this icon to a png file. We could just use the path of this icon but for best practice we use our own icon to make sure if the default icon is changed by Ubisoft, our mod will still work.
 
-![icon_maria_lopez.png](./_sources/icon_maria_lopez.png)
+![icon_maria_lopez.png](https://image.modcdn.io/members/315f/23806477/profile/icon_maria_lopez.png)
 
 **Info:** See the previous tutorial (Tutorial 1 - My first mod) if you do not know how to open rda files.
 
@@ -58,7 +57,7 @@ To convert the dds file we can use different tools:
 
 We could change the icon in a image editor. For example we make her clothes black because she is working in a mine. The name of our specialist will be **"Maria Lopez"**.
 
-![icon_maria_lopez_v2.png](./_sources/icon_maria_lopez_v2.png)
+![icon_maria_lopez_v2.png](https://image.modcdn.io/members/315f/23806477/profile/icon_maria_lopez_v2.png)
 
 ## Location of the icon
 
@@ -67,10 +66,10 @@ Put the icon on in the map we already created in our mod structure.
 
 ## Time to code! Translations
 
-First we will be creating our translations for this mod. We do this in the translationfiles that can be found on a specific location.  
+Now we will be creating our translations for this mod. We do this in the translationfiles that can be found on a specific location: 
 [Gameplay] Tutorial Specialists/data/config/gui
 
-The translationfiles are created for different languages. The fallback language is English. If you only created the English translation all other languages will see the text also in English.
+The translationfiles are created for different languages.
 
 ### Supported languages
 
@@ -90,8 +89,7 @@ There are a lot of languages supported within Anno 1800. Every language file is 
 
 ### Structure of the file
 
-Let's start with the texts_english.xml and create this file in the right folder.  
-[Gameplay] Tutorial Specialists/data/config/gui
+Let's start with the texts_english.xml and create this file in the right folder: [Gameplay] Tutorial Specialists/data/config/gui
 
 The structure of a translationfile starts like most modding files:
 
@@ -102,7 +100,7 @@ The structure of a translationfile starts like most modding files:
 </ModOps>
 ```
 
-After that we have again a specific ModOp with a type and path. In this case we will be adding new text exports to the text files. So we have the Type="add" and we will be adding this to the Path="/TextExport/Texts".
+After that we have again a specific ModOp with a type and path. In this case we will be adding new text exports to the text files. So we have the Type="add" and we will be adding this to the **Path="/TextExport/Texts"**.
 
 ```XML
 <ModOps>
@@ -116,11 +114,25 @@ We will be adding text for 2 things in this mod. The **name of the specialist wi
 
 For this first part of this mod we will be using GUID's 1742008800 (name) and 1742008801 (description). Choose your own GUID's to make sure you do not get conflicts with other mods.
 
-**Info:** See the previous tutorial (Tutorial 1 - My first mod) if you want to know more about GUID's and why you should take your own GUID's.
+### Choosing the right GUIDs
 
-Now that we know which GUID's we are going to use and we already know the name of our specialist (Maria Lopez), the only thing we need is the tagline and the description. You do not need to go fancy but it is a nice touch to put some extra effort in some nice tagline and backgroundstory for the specialist you are creating. Let's give Maria some nice story and put that in the game as a description.
+For this tutorial, we can use the above GUIDs, but a GUID needs to be unique. You can not combine assets that have the same GUID. A GUID can only be in the game one time for an asset.
 
-The structure to put those languages in there goes as following:
+If you create a mod and want to share the mod with more people, then you need to choose GUIDs that nobody else uses. That way you can be sure that the assets you created will work with their unique GUID.
+
+You can check more info about GUID on the Anno modding Github: https://github.com/anno-mods/GuidRanges
+
+If you want to make mods only for your personal use, you can use the range reserved for personal use.
+
+|               | Start ID          |  End ID          |
+|---            |---                |---               |
+| Personal use  | 2.001.000.000     | 2.001.009.999    |
+
+If you are planning to make mods and publish them, you can have a look at the list of GUIDs that is already reserved by other people and choose your own range.
+
+You can pick from the following safe GUID range: 1.337.471.142 - 2.147.483.647, choosing a range that is not reserved by someone else. See the list on the github page. Make a pull request to the repository or go to the [Anno modding discord] (https://discord.gg/VdGbJWdXKn) and ask if one of the admins want to reserve your range for you.
+
+Now that we know which GUID's we are going to use and we already know the name of our specialist (Maria Lopez), the only thing we need is the tagline and the description. You do not need to go fancy but it is a nice touch to put some extra effort in some nice tagline and backgroundstory for the specialist you are creating. Let's give Maria some nice story and put that in the game as a description.The structure to put those languages in there goes as following:
 
 ```XML
 <ModOps>
@@ -132,14 +144,14 @@ The structure to put those languages in there goes as following:
     </Text>
     <Text>
       <GUID>1742008801</GUID>
-      <Text>Maria is one of the few woman in the mining business. She loves working in the mines and she is really good at it. In the beginning men made fun of her. But it did not take long before they had to admit she was doing amazing work. She perfected the mining in the New World so the gold can even be extracted in easier ways. She is now honored for her hard work and inventions.</Text>
+      <Text>Maria is one of the few woman in the mining business. She loves working in the mines and she is really good at it. In the beginning men made fun of her. But it did not take long before they had to admit she was doing amazing work. She perfected the mining in the New World so the gold can be extracted in easier ways. She is now honored for her hard work and inventions.</Text>
     </Text>
     <!-- END SPECIALIST - Maria Lopez -->
   </ModOp>
 </ModOps>
 ```
 
-We now have our main English text. We can copy paste those texts to the other translationfiles we can create in the same folder or only use the English translation file.
+We now have our main English text. We can copy paste those texts to the other translationfiles we can create in the same folder or only use the English translation file.texts_chinese.xml
 
 - texts_chinese.xml
 - texts_french.xml
@@ -166,20 +178,23 @@ We start again by creating our opening and closing ModOps tags.
 </ModOps>
 ```
 
-Next we create our ModOp with our Type. In this case we will again be adding a new asset, but in this case we will do it after a specific already existing item.
-Some of the items are already wrapped around a group which would result in the new item also being added to that group. We need to add the item after a neutral item. Take GUID 112574. I know this because I went to the main assets.xml searched for it. We will add our item right after this item in the code structure.
+Next we create our ModOp with our Type. In this case we will be adding a new asset. Because it is a complete new asset and we are not adding something to an existing asset, adding this is done a bit different.
 
-We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our mod as the next sibling of the GUID 112574 (Louis Comfort Tiffany - The Experimental Window Maker).
+The assets.xml is a list of all the assets. Asset after asset after asset,... If we add a new asset we just add it in that long list. To make sure it is added on the correct level, we add it right after an similar asset. In our case, another item asset. Take for example GUID 191431. I know this because I went to the main assets.xml searched for it. We will add our item right after this item in the code structure.
+
+We declare the GUID where we want to perform the action to in the ModOp and then which action. In this case add our asset as the next sibling of the GUID 191431 (Louis Comfort Tiffany - The Experimental Window Maker).
 
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="112574" Type="addNextSibling">
+   <ModOp GUID="191431" Type="addNextSibling">
 
    </ModOp>
    <!-- END SPECIALIST - Maria Lopez -->
 </ModOps>
 ```
+
+Now that we have declared based on which GUID we do the action, and which action we want to do, we declare what we want to add.
 
 First let's add the &lt;Asset> tag to wrap our new specialist in.
 
@@ -197,9 +212,9 @@ First let's add the &lt;Asset> tag to wrap our new specialist in.
 
 ## For which building?
 
-With creating a new specialist item we can create this for every building and ships in the game. Every building and ship can be boosted or changed based on what the specialist does. A house can be boosted so it consumes for example less goods, a production building can be boosted so it produces at a higher rate, a coastal defense building can be boosted so it does more damage, a ship can also be boosted so it has a higher movement speed. All those boosts mentioned are just a fraction of what is possible. The game already has a lot of specialists with a lot of specialities. We can use those as an inspiration to create our own boosts.
+With creating a new specialist item we can create this for every building and ship in the game. Every building and ship can be boosted or changed based on what the specialist does. A house can be boosted so it consumes for example less goods, a production building can be boosted so it produces at a higher rate, a coastal defense building can be boosted so it does more damage, a ship can also be boosted so it has a higher movement speed. All those boosts mentioned are just a fraction of what is possible. The game already has a lot of specialists with a lot of specialities. We can use those as an inspiration to create our own boosts. 
 
-Specialists can be used inside Trade Union, Town Hall, Harbourmaster's Office, Arctic Lodge and also in ships. We have to decide for which building we want to make the specialist. In this case for our first specialist we will be creating one for the Trade Union. The specialists for Trade Unions are the ones that boost factories and mines, so in this case the logical choice for our gold mine specialist.
+Specialists can be used inside a Trade Union, Town Hall, Harbourmaster's Office, Arctic Lodge and also in ships. We have to decide for which building we want to make the specialist. In this case for our first specialist we will be creating one for the Trade Union. The specialists for Trade Unions are the ones that boost factories and mines, so in this case the logical choice for our gold mine specialist.
 
 ## &lt;Template>
 
@@ -217,7 +232,7 @@ Now that we know it is for the Trade Union we know which &lt;Template> we will b
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="112574" Type="addNextSibling">
+   <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
 
@@ -227,16 +242,147 @@ Now that we know it is for the Trade Union we know which &lt;Template> we will b
 </ModOps>
 ```
 
-Go to the main assets.xml you extracted from the latest data.rda and search for **"&lt;Template>GuildhouseItem&lt;/Template>"**. You will get over 500 references in this file, which means there are already over 500 items that can be put inside the Trade Union. Take a moment to let that sink in... We did not even talk about the items for the Town Hall or other buildings. So, let's appreciate the hard effort the development team and graphic team already put into creating so many content.
+Go to [a1800.net](https://www.a1800.net) and search for **"GuildhouseItem"** in the left search field. You will find **1 result** for the template "GuildhouseItem" which contains **574 assets**.
 
-Take a random &lt;Template>GuildhouseItem&lt;/Template> and have a look at what you can see in the &lt;Asset> structure.
+![a1800.net guildhouse](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-02222247.png)
 
-We first have another container inside the &lt;Asset>, titled &lt;Values>.
+You can click on the template name to see a complete list of all the assets that use this template.
+
+![a1800.net guildhouse](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-02222525.png)
+
+Take a moment to let that sink in... We did not even talk about the items for the Town Hall or other buildings. So, let's appreciate the hard effort the development team and graphic team already put into creating so much content.
+
+Take a random item and have a look at what you can see in the &lt;Asset> structure. For example, "190690 - Arborist ". Try to go through it step by step, node after node, property after property.
+
+```XML
+<Asset>
+	<Template>GuildhouseItem</Template>
+	<Values>
+		<Standard>
+			<GUID>190690</GUID>
+			<Name>Arborist</Name>
+			<IconFilename>data/ui/2kimages/main/3dicons/specialists/systemic/icon_farmer_403.png</IconFilename>
+			<InfoDescription>12572</InfoDescription>
+			<!--item fluff Arborist-->
+		</Standard>
+		<Text>
+			<LocaText>
+				<English>
+					<Text>Arborist</Text>
+					<Status>Exported</Status>
+				</English>
+			</LocaText>
+			<LineID>22048</LineID>
+		</Text>
+		<Item>
+			<MaxStackSize>1</MaxStackSize>
+			<Rarity>Rare</Rarity>
+			<ItemType>Specialist</ItemType>
+			<TradePrice>117000</TradePrice>
+		</Item>
+		<FactoryUpgrade>
+			<ProductivityUpgrade>
+				<Value>15</Value>
+				<Percental>1</Percental>
+			</ProductivityUpgrade>
+			<AdditionalOutput>
+				<Item>
+					<Product>1010252</Product>
+					<!--tobacco-->
+					<AdditionalOutputCycle>5</AdditionalOutputCycle>
+					<Amount>1</Amount>
+				</Item>
+			</AdditionalOutput>
+		</FactoryUpgrade>
+		<ItemEffect>
+			<EffectTargets>
+				<Item>
+					<GUID>1010332</GUID>
+					<!--agriculture_colony01_04 (Cocoa Farm)-->
+				</Item>
+				<Item>
+					<GUID>1010333</GUID>
+					<!--agriculture_colony01_05 (Caoutchouc Farm)-->
+				</Item>
+				<Item>
+					<GUID>1010331</GUID>
+					<!--agriculture_colony01_03 (Cotton Farm)-->
+				</Item>
+				<Item>
+					<GUID>101251</GUID>
+					<!--agriculture_colony01_07 (Coffee Beans Farm)-->
+				</Item>
+				<Item>
+					<GUID>101263</GUID>
+					<!--agriculture_colony01_08 (Banana Farm)-->
+				</Item>
+				<Item>
+					<GUID>25009</GUID>
+					<!--Hacienda universal farm Cocoa-->
+				</Item>
+				<Item>
+					<GUID>25006</GUID>
+					<!--Hacienda universal farm Caoutchouc-->
+				</Item>
+				<Item>
+					<GUID>25005</GUID>
+					<!--Hacienda universal farm Coffee-->
+				</Item>
+			</EffectTargets>
+		</ItemEffect>
+		<ItemAction/>
+		<ExpeditionAttribute>
+			<BaseMorale>0</BaseMorale>
+			<ExpeditionAttributes>
+				<Item>
+					<Attribute>PerkFemale</Attribute>
+					<Amount>1</Amount>
+				</Item>
+				<Item>
+					<Attribute>Crafting</Attribute>
+					<Amount>30</Amount>
+				</Item>
+				<Item>
+				</Item>
+				<Item>
+				</Item>
+				<Item>
+				</Item>
+			</ExpeditionAttributes>
+			<ItemDifficulties>Easy;Average</ItemDifficulties>
+			<FluffText>12572</FluffText>
+			<!--item fluff Arborist-->
+		</ExpeditionAttribute>
+		<CultureUpgrade/>
+		<BuildingUpgrade/>
+		<ModuleOwnerUpgrade>
+			<ModuleLimitPercent>-10</ModuleLimitPercent>
+		</ModuleOwnerUpgrade>
+		<IncidentInfluencerUpgrade/>
+		<IncidentInfectableUpgrade/>
+		<ResidenceUpgrade/>
+		<PopulationUpgrade/>
+		<IndustrializableUpgrade/>
+		<Locked/>
+		<Buff/>
+		<CraftableItem/>
+		<HeaterUpgrade/>
+		<PowerplantUpgrade/>
+		<IrrigationUpgrade/>
+		<EcoSystemProviderUpgrade/>
+	</Values>
+</Asset>
+```
+
+We will try to build up our own asset step by step like this example asset. All assets from the same template are structured the same way with the same properties (up to some point).
+
+## &lt;Values>
+We first have another container inside the &lt;Asset>, titled &lt;Values>. This will contain all the values of our new asset.
 
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="112574" Type="addNextSibling">
+   <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
@@ -250,7 +396,7 @@ We first have another container inside the &lt;Asset>, titled &lt;Values>.
 
 ## &lt;Standard>
 
-The next part of the asset is the standard part. This contains our main GUID for this specialist, the name, the icon and the description.
+The next part of the asset is the standard part. This contains our main **GUID** for this specialist, the **name**, the **icon** and the **description**.
 
 For the **GUID** we take the main GUID we allocated for this specialist. In our case 1742008800.
 
@@ -263,14 +409,14 @@ Last is the **InfoDescription**. This is the reference to the description GUID w
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="112574" Type="addNextSibling">
+   <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
             <Standard>
                 <GUID>1742008800</GUID>
                 <Name>Maria Lopez, Mining yellow stones</Name>
-                <IconFilename>data/graphics/icons/icon_maria_lopez_v2.png</IconFilename>
+                <IconFilename>data/graphics/icons/icon_maria_lopez.png</IconFilename>
                 <InfoDescription>1742008801</InfoDescription>
             </Standard>
          </Values>
@@ -282,25 +428,25 @@ Last is the **InfoDescription**. This is the reference to the description GUID w
 
 ## &lt;Text>
 
-Next is a part we can just copy paste and that we do not have to understand completly. Just make sure it is there.
+Next is a part that does not have to be there, but is good to include. It is a fallback in case you do not have all translationfiles included for all languages. Then the text inserted there, will be used for the asset as a fallback. We can just reuse the existing label we used for the name.
 
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="112574" Type="addNextSibling">
+   <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
             <Standard>
                 <GUID>1742008800</GUID>
                 <Name>Maria Lopez, Mining yellow stones</Name>
-                <IconFilename>data/graphics/icons/icon_maria_lopez_v2.png</IconFilename>
+                <IconFilename>data/graphics/icons/icon_maria_lopez.png</IconFilename>
                 <InfoDescription>1742008801</InfoDescription>
             </Standard>
             <Text>
                <LocaText>
                   <English>
-                     <Text>Item Template</Text>
+                     <Text>Maria Lopez, Mining yellow stones</Text>
                      <Status>Exported</Status>
                      <ExportCount>1</ExportCount>
                   </English>
@@ -319,7 +465,7 @@ The **Item** part is the next part and we are going to talk some more about this
 
 ### MaxStackSize
 
-Defines how many items you could stack together in 1 slot on a ship. Standard is 1. If you want you could change that.
+Defines how many items you could stack together in 1 slot on a ship. Standard is 1. If you want you could change that. The standard for normal items is 1.
 
 ### Rarity
 
@@ -331,16 +477,15 @@ We have different rarities in the game.
 - Epic
 - Legendary
 
-The item we will be creating is a legendary item. Which you want to take depends on how strong the specialist/item you are creating is.
+The item we will be creating is a legendary item. Which you want to take depends on how strong the specialist/item you are creating is. Choosing a specific rarity does not make the items stronger. The strength of the item is determined by what properties you are adding and which values you add to those properties. Adding the rarity will make the items background show visually as that rarity. Like epic has purple, legendary has orange for example.
 
 ### ItemType
 
-The itemtype we are using for this specialist is **"Specialist"**. But there are also "Normal" used for Cultural items.  
-(One different behaviour that was already found is, that "Normal" ItemType can not use passive buffs (by socketing like VehicleUpgrade) + an ItemAction (effect when you click the socketed item) at the same time. While ItemType=Specialist can have these both working together.)
+The itemtype we are using for this specialist is "Specialist". But there are also "Normal" used for Cultural items.
 
 ### Allocation
 
-With the Allocation we define where this item fits in to. This is in some way linked to the &lt;Template> we have choosen.
+With the Allocation we define where this item fits into. This is in some way linked to the &lt;Template> we have choosen.
 
 Allocation can be:
 
@@ -361,19 +506,21 @@ This specialist will fit into the **"GuildHouse"**.
 
 ### TradePrice & TradePriceOnlineCurrency
 
-Defines what it will cost to buy and sell the item. Legendary items should cost more then common items.
+Defines what it will cost to buy and sell the item. Legendary items should cost more then common items. You can have a look at other items to compare prices in the same rarity range.
+
+So, the result for &lt;Item> will be:
 
 ```XML
 <ModOps>
    <!-- START SPECIALIST - Maria Lopez -->
-   <ModOp GUID="112574" Type="addNextSibling">
+   <ModOp GUID="191431" Type="addNextSibling">
       <Asset>
          <Template>GuildhouseItem</Template>
          <Values>
             <Standard>
                 <GUID>1742008800</GUID>
                 <Name>Maria Lopez, Mining yellow stones</Name>
-                <IconFilename>data/graphics/icons/icon_maria_lopez_v2.png</IconFilename>
+                <IconFilename>data/graphics/icons/icon_maria_lopez.png</IconFilename>
                 <InfoDescription>1742008801</InfoDescription>
             </Standard>
             <Text>
@@ -402,9 +549,9 @@ Defines what it will cost to buy and sell the item. Legendary items should cost 
 
 ## The main modding part for specialists
 
-The next tags are the tags that will define the specialist the most. Those tags will add production boosts, replace inputs, will define to which buildings the specialist will have effect to, ect. We will go over a lot of them but not all. If you want to know what all the tags do check the main assets.xml and where it is used and compare what is does with the corresponding specialist.
+The next properties are the properties that will define the specialist the most. Those properties will add production boosts, replace inputs, will define to which buildings the specialist will have effect to, ect. We will go over a lot of them but not all. If you want to know what all the properties do check more specialists on a1800.net amd have a look at their properties.
 
-A lot of the tags do not have an opening and closing tag, but just have 1 tag with the / at the end. Those do not do anything and they there purely as reference. If we actually want to use this we need to follow the right structure depending on the tag.
+A lot of the properties do not have an opening and closing tag, but just have 1 tag with the / at the end. Those do not do anything and they are there purely as reference.
 
 ### IndustrializableUpgrade
 
@@ -416,17 +563,15 @@ For this &lt;IndustrializableUpgrade> we need the following structure:
 </IndustrializableUpgrade>
 ```
 
-It contains the opening and closing tag, and within another tag that is set to "1". With putting the value "1" there with the other tag we define that this value is set to "true". If we change this to "0" we would define it as false.
+It contains the opening and closing tag, and within another property that is set to "1". With putting the value "1" there with the other property, we define that this value is set to "**true**". If we change this to "0" we would define it as "**false**".
 
-In this case this tag means that the specialist will **provide electricity within the range of the trade union**.
+In this case this property means that the specialist will provide electricity within the range of the trade union.
 
-If you want to see an example of this for an already existing item check GUID 191355 - "Prof. Ram Devi, The Bundle of Energy". If you check the name of this GUID, you see the working title for this specialist was "Nikola Tesla - The Great Inventor". They probably changed this because using real life historic people was not ok to do.
+If you do not want this, you can just not use it and remove it. You can also only use a selfclosing tag that will be ignored like **&lt;IndustrializableUpgrade/>**.
 
 ### FactoryUpgrade
 
 This is a really important one that can contain multiple things.
-
-Example:
 
 ```XML
 <FactoryUpgrade>
@@ -450,27 +595,25 @@ Example:
 </FactoryUpgrade>
 ```
 
-In this example of Gerhard Fuchs, of the Patent Eyeglass we have 3 different parts who can be used apart from eachoter and do not have to be there together like in this example. If you only want to use one of the 3 it is perfectly possible.
+In the above example (Gerhard Fuchs, of the Patent Eyeglass) we have 3 different parts who can be used apart from eachoter and do not have to be there together like in this example. If you only want to use one of the 3 it is perfectly possible.
 
-#### ProductivityUpgrade
+### ProductivityUpgrade
 
-With the **ProductivityUpgrade** we can define a % productionboost. We put a **% value** inbetween the value tags. So in this example we have a productionboost of 50%. So the factory will be boosted to a production of 150%.
+With the **ProductivityUpgrade** we can define a % productionboost. We put a % value inbetween the value tags. So in this example we have a productionboost of 50%. So the factory will be boosted to a production of 150%.
 
-Good to know, this value can also be negative, for example -50%. In some cases we want to decrease the productivity. A case where it could have a benefit is for example heaters or power plants. Those buildings consume a good every cycle to give a buff in return. A longer cycle with 1 input good is positive in this case. So the negative production boost is in this case better then a positive.
+**Good to know:** This value can also be negative, for example -50%. In some cases we want to decrease the productivity. A case where it could have a benefit is for example heaters or power plants. Those buildings consume a good every cycle to give a buff in return. A longer cycle with 1 input good is positive in this case. So the negative production boost is in this case better then a positive. 
 
-#### AdditionalOutput
+### AdditionalOutput
 
-With the **AdditionalOutput** we can define a product that is produced extra every couple of productioncycles. We define which product with the corresponding GUID for that product. If you want to search for a product use the fantastic search function on the website https://schwubbe.de/modding_blog.php#beitrag15. In this example we have the GUID 1010246 which is pocket watches.
+With the AdditionalOutput we can define a product that is produced extra every couple of productioncycles. We define which product with the corresponding GUID for that product. If you want to search for a product use [a1800.net](https://www.a1800.net) again, and use the right search field to search based on text. In this example we have the GUID 1010246 which is pocket watches.
 
-We define also the number of cycles it needs to produce this good. In this case every 3 cycles a pocket wwatch will be produced as an extra product.
+We define also the number of cycles it needs to produce this good. In this case every 3 cycles a pocket watch will be produced as an extra product.
 
-#### ReplaceInputs
+### ReplaceInputs
 
-The last part is **ReplaceInputs** where we replace one of the input products with another product. We do this by defining the 2 GUID's for both products and put those in the corrects tags. In this case brass is replaced by wood.
+The last part is ReplaceInputs where we replace one of the input products with another product. We do this by defining the 2 GUID's for both products and put those in the corrects properties. In this case brass is replaced by wood.
 
 ### ItemEffect
-
-Example:
 
 ```XML
 <ItemEffect>
@@ -488,11 +631,11 @@ Example:
 </ItemEffect>
 ```
 
-The **ItemEffect** defines to which building the specialist will have an effect. In this case multiple buildings. Good to know, this does not have to be a building. It can also be a GUID of a group of buildings. For example **GUID 25599** is **All Production Buildings**.
+The **ItemEffect** defines to which building the specialist will have an effect on. 
+
+**Good to know:** This does not have to be a building. It can also be a GUID of a group of buildings. For example GUID 25599 is All Production Buildings. All Production Buildings is a group of buildings rom the template "**ItemEffectTargetPool**".  If you search for "25599" on a1800.net, you will see this is an asset from the template "**ItemEffectTargetPool**" and it has a specific structure, containing a list of different buildings. We will go over lists more in depth in this and later tutorials.
 
 ### BuildingUpgrade
-
-Example:
 
 ```XML
 <BuildingUpgrade>
@@ -519,8 +662,6 @@ We also have workforce that is needed to let a building produce goods. With **Wo
 
 ### ResidenceUpgrade
 
-Examples:
-
 ```XML
 <ResidenceUpgrade>
     <AdditionalHappiness>30</AdditionalHappiness>
@@ -541,9 +682,7 @@ Examples:
     <TaxModifierInPercent>-25</TaxModifierInPercent>
     <WorkforceModifierInPercent>30</WorkforceModifierInPercent>
 </ResidenceUpgrade>
-```
 
-```XML
 <ResidenceUpgrade>
     <NeedProvideNeedUpgrade>
         <Item>
@@ -591,12 +730,10 @@ Examples:
 ```XML
 <CultureUpgrade>
     <AttractivenessUpgrade>
-        <Value>40</Value>
+        <Value>10</Value>
     </AttractivenessUpgrade>
 </CultureUpgrade>
-```
 
-```XML
 <CultureUpgrade>
     <AttractivenessUpgrade>
         <Value>-20</Value>
@@ -693,28 +830,50 @@ This can be:
 </Locked>
 ```
 
-You can lock a specialist for a obvious reason. For example if it can only be used if a specific DLC is available. You use the GUID of the DLC to define it. The example above is for the Land of Lions DLC.
+Using the &lt;Locked> property can have different reasons.
+
+#### DefaultLockedState
+
+The first and most obvious reason is to lock the asset until it is the correct time in the game progression to make the item available for the user. For example, a lategame legendary item should only be available when reaching a certain stage in the game. We can then lock the item and make it not available until a certain point. Later in this tutorial we will see how we actually perform some additional actions to make this possible. But to lock the item, we set the **&lt;DefaultLockedState>** property to "1". If we want to make the item or asset available right from the start of the game, we can set this value to "0".
+
+#### DLCDependency
+
+Another option here is to lock certain content, assets, items behind a certain content DLC. In case the player does not have purchased a certain DLC we can then make the content not available for them. Why would we do that? Well, if the user for example does not have certain DLC's they would not have certain mechanics/buildings/goods which those assets need to actually work. An example of that is a specialists that changes the output of the post office, for example increasing the productivity of the post office. But, the post office is a building only available in the Empire of the Skies DLC. If the user does not have that DLC, there is no reason why this specialists should be availble for them.
+
+You use the GUID of the DLC to define it. The example above is for the Botanica DLC.
 
 List of Dependencies:
 
-- 410003 (Imperial Pack)
-- 410021 (Season Pass Player Assets)
-- 410069 (Season 2 Pass Reward)
-- 305 (Season 3 Pass Reward)
-- 25945 (Season 4 Bonus Content)
-- 410079 (Amusements Pack)
-- 116630 (Holiday Ornament Pack)
-- 4100010 (The Anarchist)
-- 410040 (Sunken Treasures)
-- 410041 (Botanica)
-- 410042 (The Passage)
-- 410059 (Seat Of Power)
-- 410070 (Bright Harvest)
-- 410071 (Land of Lions)
-- 410083 (Docklands)
-- 410084 (Tourist Season)
-- 410085 (The High Life)
-- 24961 (Seeds Of Change)
+- 116630 - CDLC 01 - Holiday
+- 410079 - CDLC 02 - Amusement Park
+- 410081 - CDLC 03 - City Lights
+- 319 - CDLC 04 - Vehicle Liveries
+- 410100 - CDLC 05 - Pedestrian Zone
+- 522 - CDLC 06 - Vibrant City
+- 25149 - CDLC 07 - Seasonal Decorations
+- 24964 - CDLC 08 - Industrial Zone
+- 24965 - CDLC 09 - Old Town
+- 10114 - CDLC 10 - Dragon Garden
+- 21049 - CDLC 11 - Fiesta Time
+- 23718 - CDLC 12 - National Park
+- 23719 - CDLC 13 - Eldritch
+- 33032 - CDLC 14 - Steampunk
+- 41533 - CDLC 15 - Pirate
+- 51147 - CDLC 16 - Celebration
+- 410041 - DLC - Botanica
+- 410070 - DLC - Bright Harvest
+- 24331 - DLC - Charity Tree
+- 410083 - DLC - Docklands
+- 24962 - DLC - Empire of the Skies
+- 410085 - DLC - HighLife
+- 410071 - DLC - Land of Lions
+- 24963 - DLC - New World Rising
+- 24961 - DLC - Seeds of Change
+- 410040 - DLC - Sunken Treasure
+- 4100010 - DLC - The Anarchist
+- 410059 - DLC - The Palace
+- 410042 - DLC - The Passage
+- 410084 - DLC - Tourism
 
 ### ModuleOwnerUpgrade
 
@@ -724,7 +883,7 @@ List of Dependencies:
 </ModuleOwnerUpgrade>
 ```
 
-Some buildings have modules. For example farms. You can reduce or increase the mount of modules needed for the buildings in range of the trade union where this item is used. You use a positive or negative % amount.
+Some buildings have fields. For example farms. You can reduce or increase the mount of fields needed for the buildings in range of the trade union where this item is used. You use a positive or negative % amount.
 
 ### IncidentInfectableUpgrade
 
@@ -835,7 +994,7 @@ Locks the shares of your island, preventing another party from purchasing them w
 
 Every time passive trade happens at the trading post, there is a chance of gaining the amount of goods you defined.
 
-### HeaterUpgrade
+### HeaterUpgrade (The Passage DLC)
 
 ```XML
 <HeaterUpgrade>
@@ -860,7 +1019,7 @@ Increase the range of heating provided by the heating building by % amount.
 
 Increase the range of electricity provided by the power plant by % amount.
 
-### IrrigationUpgrade
+### IrrigationUpgrade (Land Of Lions DLC)
 
 ```XML
 <IrrigationUpgrade>
@@ -874,32 +1033,34 @@ Increase the amount of canal tiles you can use for a water pump.
 
 ## Let's choose what we need
 
-The only thing left for our mod is now to choose from all the possibilities mentioned above.
+The only thing left for our mod is now to choose from all the possibilities mentioned above. If you went over all of them, you would realize that not all of those are actually meant for a GuildHouseItem. It is a wider overview of all the possible specialists which could also be specialists for the Town Hall or other buildings where we slot in specialists.
+
+Maria will have an effect on the Gold Mine in the New World. To define this, we use the GUID of the Gold Mine which we can look for on [a1800.net](https://www.a1800.net). This GUID is "**101311**".
 
 We wil choose a **FactoryUpgrade** with a **ProductivityUpgrade** of 200% and an **AdditionalOutput** of **Iron every 4 cycles**.
 
-This specialist will have effect on the **Gold mine** so we choose that in the **ItemEffect**.
+For **ExpeditionAttribute** we use the **PerkFemale**, with **Crafting** of **40** and **Diplomacy** of **10**. With a **ItemDifficulties** of **Hard**.
 
-For **ExpeditionAttribute** we use the **PerkFemale**, with **Crafting of 40** and **Diplomacy of 10**. With a **ItemDifficulties of Hard**.
+For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade** of **+50%**.
 
-For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
+We will **Lock** this item and only make it available once we hit **1000 Obreros**. How we make it available at that stage we will see later in this tutorial. But we have to lock it.
 
 ```XML
 <ModOps>
-    <ModOp GUID="112574" Type="addNextSibling">
+    <ModOp GUID="191431" Type="addNextSibling">
         <Asset>
             <Template>GuildhouseItem</Template>
             <Values>
                 <Standard>
                     <GUID>1742008800</GUID>
                     <Name>Maria Lopez, Mining yellow stones</Name>
-                    <IconFilename>data/graphics/icons/icon_maria_lopez_v2.png</IconFilename>
+                    <IconFilename>data/graphics/icons/icon_maria_lopez.png</IconFilename>
                     <InfoDescription>1742008801</InfoDescription>
                 </Standard>
                 <Text>
                     <LocaText>
                         <English>
-                            <Text>Item Template</Text>
+                            <Text>Maria Lopez, Mining yellow stones</Text>
                             <Status>Exported</Status>
                             <ExportCount>1</ExportCount>
                         </English>
@@ -913,6 +1074,13 @@ For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
                     <TradePrice>1250000</TradePrice>
                     <TradePriceOnlineCurrency>1250000</TradePriceOnlineCurrency>
                 </Item>
+				<ItemEffect>
+                    <EffectTargets>
+                        <Item>
+                            <GUID>101311</GUID> <!-- Gold Mine -->
+                        </Item>
+                    </EffectTargets>
+                </ItemEffect>
                 <FactoryUpgrade>
                     <ProductivityUpgrade>
                         <Value>200</Value>
@@ -926,13 +1094,6 @@ For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
                         </Item>
                     </AdditionalOutput>
                 </FactoryUpgrade>
-                <ItemEffect>
-                    <EffectTargets>
-                        <Item>
-                            <GUID>101311</GUID> <!-- Gold Mine -->
-                        </Item>
-                    </EffectTargets>
-                </ItemEffect>
                 <ExpeditionAttribute>
                     <BaseMorale>0</BaseMorale>
                     <ExpeditionAttributes>
@@ -953,7 +1114,7 @@ For **BuildingUpgrade** we choose a **WorkforceAmountUpgrade of +50%**.
                 </ExpeditionAttribute>
                 <BuildingUpgrade>
                     <WorkforceAmountUpgrade>
-                        <Value>+50</Value>
+                        <Value>50</Value>
                         <Percental>1</Percental>
                     </WorkforceAmountUpgrade>
                 </BuildingUpgrade>
@@ -983,72 +1144,145 @@ Some other possibilities:
 - AttackerUpgrade
 - VisitorHarborUpgrade
 - ItemAction
+- ...
 
-Maybe I'll expand in the future and provide extra info on those and more items/specialists for other templates.
+We have created our specialist, but we are not done yet with the mod.
 
 ## Rewardpool/Itempool
 
-We have created our specialist, but we are not done yet with the mod. To use the specialist ingame we need to add that specialist to an **Itempool**. There are a lot of Itempools in the game. Every pool is a group of items with specific properties.
+A specialist or item can be received in a lot of different ways in the game. You can receive it as a quest reward, or can buy them at one of the traders. Some of them can be obtained via an expedition, or developed via the research institute. There are many ways of getting those items. But we all know not every item or specialists can be obtained in the same way. Some can only be bought at Eli, others can only be obtained with quests or from a specific AI, ect.
 
-Example 192975 - Rewardpool: Specialists - Legendary
+To get a specialist ingame we need to add that specialist to a Rewardpool or RewardItemPool. There are a lot of pools in the game. Every pool is a group of items with specific properties and purpose. For example, Eli has his own pools which determines which items he sells. Other pools of him determine which items you can get for completing quests of him, ect. That way, every AI, trader and type of mechanic has their own pools.  
+
+To give you an idea how much of a rabbithole Rewardpools are, there are 1185(!) rewardpools and 591(!) RewardItemPools at the moment. All with a specific reason. One of the hard things is that some pools contain other pools, which results in if you add your item to 2 pools but if one of the two actually contains the other pool, you get some side effects by giving that item a higher rate of appearing because it is in multiple places. What is the difference between the two types of pools?
+
+Making a complete overview in this tutorial of all those pools would not be beneficial. Better is to go to [a1800.net](https://www.a1800.net) and have a look yourself.
+
+### RewardPool
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03180243.png)
+
+If we take a quick look at the complete list of Rewardpools, we can see a general overview of all types of different pools. Stretching from region related pools, to citizen related pools, type of item related pools, type of building related pools, type of DLC related pools, ect. For example, pools of all machines or consumable items. Or all cultural items, ect.
+
+All of those pools are not related to a specific AI but more general.
+
+### RewardItemPool
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03180324.png)
+
+Compared to the RewardPool, the RewardItemPool is in almost all cases related to AI and NPC's. This stretches from what they sell, what they drop when you destroy one of their ships, what you get for completing their quests, ect.
+
+### Which pools to choose?
+
+To make a decision which pools you want to add your items to, you need to decide what type of specialist you want to make, and what kind of mod you want to make. For example, legendary specialists are not sold by traders in the game (some exceptions). Maybe you want to follow that logic, or maybe you do want to be able to buy that new item at Kahina or Archie. What you want decides in which pools you will be adding your item. I personally like to follow the logic of the game, so no legendary specialists to buy at traders for me. 
+
+What pools do we take then? The item we create is for the New World, so we could for example make it available to get from Isabel Sarmento when completing a quest for her. We could maybe also get it as a visitor on our island. Also, we want to make it available later in the game to research the item with the research institute. 
+
+### Finding the right pool
+
+Let's start with the pool for Isabel Sarmento when completing a quest. We know from the previous part that pools for NPC's traders and AI are located in the RewardItemPools. Let's go to [a1800.net](https://www.a1800.net) and search for all RewardItemPools so we have the complete overview.
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03180324.png)
+
+If we scroll down we do not see all the pools. Only a selection is show. At the bottom we can expand the list by clicking on "show more (541)".
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03190013.png)
+
+We now see the complete list of all 541 RewardItemPools where we can choose which ones we want.
+
+If we do CTRL+F (Windows) / CMD+F (OSX) to search on the page and search for "Sarmento" we find 31 pools. If we have a look at those, we see a variety of types of pools of Isabel Sarmento.
+
+Consumables, Machines, Specialists, Cultural, Common, Rare, Legendary, MidGame, LateGame, Endgame,... All those different types are referring to a different way of using the pools. If we make an item that is a specialist, it would be logical to add it in the "specialist" pool. Because it is a legendary specialists, then the logical place would be the "192904 - Sarmento Legendary Specialists". We can open this pool to have a look what items are already in there. 
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03203917.png)
+
+We see this pool actually does not contain items, but it actually contains 2 other pools. A pool that contains the pool "Specialists - South American Goods - Legendary" and "Specialists - Europe and SA Goods - Legendary".
+
+Again, we can open one of the two pools to see what is in that pool by clicking on the GUID of that pool. Open "Specialists - South American Goods - Legendary"
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03204211.png)
+
+Here we actually do see a list of items which are indeed New World oriented like the title of this pool suggests.
+
+This is the place we could actually add our new item to. If we add our item here it will be loaded via this child pool into the "Sarmento Legendary Specialists" pool. 
+
+Let's look for one of the items that are already in this pool and see where this item is available. Take "Vicente Martinez Ybor - The Cigar Daddy" as an example and open the item by clicking on his GUID in the pool.
+
+If we stay in the DATA view, we can see the different references where this item is used/referenced.
+
+We have an AssetPool (which we can ignore in this case), but also 3 rewardpools. Vicente is added to those 3 rewardpools which result in him being available in different locations. The 3th pool is maybe also not relevant in this case, because it is focused on cultural things. We will be focusing on the first 2 pools. 
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03204746.png)
+
+If you want to have an easier look and see how you can get this item, you can also have a look ingame in the item statistics screen and look for the item and select Item source.
+
+![a1800.net rewardpool](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03205139.png)
+
+We see apart from quests from Isabel, he is also available via other quest givers, the research institure, expeditions,...
+
+All the ways that we decided upfront are actually also included for this item. So, we could actually take over all the pools where this item is included in. We will take the risk of only using the first 2 pools, leaving out the cultural pool, but can always add it if we realise it is needed.
+
+**GOOD TO KNOW!** A big tip I want to give you when making mods is that you do not always have to reinvent the wheel. Look for examples as inspiration. See how things are done in the game, have a look at how other people did things. We are an open and friendly modding community and we all want to help eachother so everyone can make amazing mods!
+
+## Adding our item to pools
+
+Let's first have another look at one of the 3 pools where we will be adding our item to.
 
 ```XML
 <Asset>
-    <Template>RewardPool</Template>
-    <Values>
-        <Standard>
-            <GUID>192975</GUID>
-            <Name>Specialists - Legendary</Name>
-        </Standard>
-        <RewardPool>
-            <ItemsPool>
-                <Item>
-                    <ItemLink>192732</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192737</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192840</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192742</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192850</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192747</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192752</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192757</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192762</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192767</ItemLink>
-                </Item>
-            </ItemsPool>
-        </RewardPool>
-        <Locked />
-        <Text />
-    </Values>
+	<Template>RewardPool</Template>
+	<Values>
+		<Standard>
+			<GUID>192737</GUID>
+			<Name>Specialists - South American Goods - Legendary</Name>
+		</Standard>
+		<RewardPool>
+			<ItemsPool>
+				<Item>
+					<ItemLink>190643</ItemLink>
+					<!--Vicente Martinez Ybor - The Cigar Daddy-->
+				</Item>
+				<Item>
+					<ItemLink>191347</ItemLink>
+					<!--Cristobal Balenciaga Eizaguirre - The Trend Inventor-->
+				</Item>
+				<Item>
+					<ItemLink>191334</ItemLink>
+					<!--Rodolphe Lindt - The Swiss Chocolate Inventor-->
+				</Item>
+				<Item>
+					<ItemLink>191371</ItemLink>
+					<!--Ernest Illy - The Inventor of the Expresso Machine-->
+				</Item>
+				<Item>
+					<ItemLink>191402</ItemLink>
+					<!--Pablo Savor - The Tortilla King-->
+				</Item>
+				<Item>
+					<ItemLink>190693</ItemLink>
+					<!--August Grisebach - The Plants Geographer-->
+				</Item>
+			</ItemsPool>
+		</RewardPool>
+		<Locked/>
+		<Text/>
+	</Values>
 </Asset>
 ```
 
-We see in this rewardpool an itempool of different items. The rewardpool is the way of making the item available ingame. Some rewardpools make items available by quests, others to be able to get by expeditions, others to be able to be bought at certain neutral traders, ect. The list of rewardpools is HUGE. Maybe I;ll add a complete list of rewardpools later to this tutorial, but for now we will just take a couple for this specific mod and then it is up to you to dive into the main assets.xml and search for **&lt;Template>RewardPool&lt;/Template>** and choose the ones you want. You can check the statitics screen ingame with the item tab to check how to get the item to be sure it is still balanced, but that is up to you.
+The pool is wrapped with an &lt;Asset> and the &lt;Template> is from the RewardPool. 
 
-### Adding our rewardpools in our ModOp
+The GUID of this RewardPool is "192737". We will need this GUID when we will add our new item to this pool.
 
-To add our specialist to a rewardpool we need to create a new **&lt;ModOp>**. We will be adding our item to the &lt;ItemsPool> in those rewardpools.
+The other important part is &lt;RewardPool> which then contains the &lt;ItemsPool> which contains the different &lt;Item> elements of all the different specialists in this pool.
 
-Remember the previous tutorial where we looked at the path of Feras to understand where we needed to replace a specific value? This time it is somwhat the same.
+To add our specialist to this pool we need to create a new mod operation (&lt;ModOp>) where we add our new item to the &lt;ItemsPool>.
 
-Instead of the **Type="replace"**, we will now use the **Type="add"**.
+Remember the previous tutorial where we looked at the path of Feras to understand where we needed to replace a specific value? This time it is somewhat the same.
+
+### Step by step
+
+Let's build the Mod operation together. We can create a new &lt;ModOp> underneath the other &lt;ModOp> we already created where we created our new specialist. Make sure it is still in the &lt;ModOps> so it is not outside the container that wraps all our &lt;ModOp> items, so before the &lt;/ModOps> closing tag. The type of operation we now will do is again, "add".
 
 ```XML
 <ModOp Type="add">
@@ -1056,59 +1290,49 @@ Instead of the **Type="replace"**, we will now use the **Type="add"**.
 </ModOp>
 ```
 
-We will add this new item to specific Rewardpools. We need to know the ID's from those rewardpools. The item we are creating is an item for Gold mines and the trade union. So, actually for the New World. So we could take rewardpools that are specificly for the New world.
+The next step is the GUID we want to do this operation to. This was the GUID of the pool we previously looked at, "192737". But apart from that pool, we also had the 2nd pool with the GUID "193089". We can add both GUIDs in the same ModOp but only if those have the same structure. Because we will be defining a Path in our ModOp, those 2 pools need to have the same structure which corresponds with that path. If we look at a1800.net and compare the structure of those pools we see those are actually the same so this is all fine.
 
-- 192975 - Specialists - Legendary
-- 192737 - Specialists - South American Goods - Legendary
-- 192840 - Specialists - Europe and SA Goods - Legendary
-- 193963 - Specialists - Europe and SA Goods - Legendary - Guild
-- 192904 - Sarmento Legendary Specialists
-- 192909 - Eli Legendary Specialists
-
-We also choose some global rewardpools.
+We can add multiple GUIDs in the same ModOp when we seperate them with a comma.
 
 ```XML
-<ModOp Type="add" GUID="192975,192737,192840,193963,192904,192909">
+<ModOp Type="add" GUID="192737,193089">
 
 </ModOp>
 ```
 
-The next thing we need to do is define where we want to add our item in the rewardpool. If we do not define a path it will just be added in the root of the rewardpool and that is not the right location.
-
-If we look at the rewardpool we can see the same structure for every rewardpool. We have the GUID and name in the beginning in a Standard tag and underneath that we have the Rewardpool tag and in that the ItemsPool tag where all the items are in.
+Now the next step is adding the Path to where we want to do the "add" operation. We look at one of the two pools and go down the structure until we are at the level where we will be including our new item.
 
 ```XML
 <Asset>
-    <Template>RewardPool</Template>
-    <Values>
-        <Standard>
-            <GUID>192975</GUID>
-            <Name>Specialists - Legendary</Name>
-        </Standard>
-        <RewardPool>
-            <ItemsPool>
-                <Item>
-                    <ItemLink>192732</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192737</ItemLink>
-                </Item>
-                <Item>
-                    <ItemLink>192840</ItemLink>
-                </Item>
-                ...
-            </ItemsPool>
-        </RewardPool>
-        <Locked />
-        <Text />
-    </Values>
+	<Template>RewardPool</Template>
+	<Values>
+		<Standard>
+			<GUID>192737</GUID>
+			<Name>Specialists - South American Goods - Legendary</Name>
+		</Standard>
+		<RewardPool>
+			<ItemsPool>
+				<Item>
+					<ItemLink>190643</ItemLink>
+					<!--Vicente Martinez Ybor - The Cigar Daddy-->
+				</Item>
+				<Item>
+					<ItemLink>191347</ItemLink>
+					<!--Cristobal Balenciaga Eizaguirre - The Trend Inventor-->
+				</Item>
+				...
+			</ItemsPool>
+		</RewardPool>
+		<Locked/>
+		<Text/>
+	</Values>
 </Asset>
 ```
 
-We want to add our item in the **ItemsPool**. So we look at the path we need to take from the start of the Asset. to get to the ItemsPool. This is Values > RewardPool > ItemsPool.
+We see `/Values/RewardPool/ItemsPool` and then we have the level of the Item where we will be adding our new item. So we get:
 
 ```XML
-<ModOp  Type="add" GUID="192975,192737,192840,193963,192904,192909" Path="/Values/RewardPool/ItemsPool">
+<ModOp Type="add" GUID="192737,193089" Path="/Values/RewardPool/ItemsPool">
 
 </ModOp>
 ```
@@ -1123,24 +1347,27 @@ Now we put what we want to add in the structure inside.
 </ModOp>
 ```
 
-Now we put this underneath our first ModOp and in our main ModOps, so before the ModOps closing tag.
+We took another important step in making our new specialist!
+
+Now you should have the following structure:
 
 ```XML
 <ModOps>
-    <ModOp GUID="112574" Type="addNextSibling">
+
+    <ModOp GUID="191431" Type="addNextSibling">
         <Asset>
             <Template>GuildhouseItem</Template>
             <Values>
                 <Standard>
                     <GUID>1742008800</GUID>
                     <Name>Maria Lopez, Mining yellow stones</Name>
-                    <IconFilename>data/graphics/icons/icon_maria_lopez_v2.png</IconFilename>
+                    <IconFilename>data/graphics/icons/icon_maria_lopez.png</IconFilename>
                     <InfoDescription>1742008801</InfoDescription>
                 </Standard>
                 <Text>
                     <LocaText>
                         <English>
-                            <Text>Item Template</Text>
+                            <Text>Maria Lopez, Mining yellow stones</Text>
                             <Status>Exported</Status>
                             <ExportCount>1</ExportCount>
                         </English>
@@ -1154,6 +1381,13 @@ Now we put this underneath our first ModOp and in our main ModOps, so before the
                     <TradePrice>1250000</TradePrice>
                     <TradePriceOnlineCurrency>1250000</TradePriceOnlineCurrency>
                 </Item>
+				<ItemEffect>
+                    <EffectTargets>
+                        <Item>
+                            <GUID>101311</GUID> <!-- Gold Mine -->
+                        </Item>
+                    </EffectTargets>
+                </ItemEffect>
                 <FactoryUpgrade>
                     <ProductivityUpgrade>
                         <Value>200</Value>
@@ -1167,13 +1401,6 @@ Now we put this underneath our first ModOp and in our main ModOps, so before the
                         </Item>
                     </AdditionalOutput>
                 </FactoryUpgrade>
-                <ItemEffect>
-                    <EffectTargets>
-                        <Item>
-                            <GUID>101311</GUID> <!-- Gold Mine -->
-                        </Item>
-                    </EffectTargets>
-                </ItemEffect>
                 <ExpeditionAttribute>
                     <BaseMorale>0</BaseMorale>
                     <ExpeditionAttributes>
@@ -1194,7 +1421,7 @@ Now we put this underneath our first ModOp and in our main ModOps, so before the
                 </ExpeditionAttribute>
                 <BuildingUpgrade>
                     <WorkforceAmountUpgrade>
-                        <Value>+50</Value>
+                        <Value>50</Value>
                         <Percental>1</Percental>
                     </WorkforceAmountUpgrade>
                 </BuildingUpgrade>
@@ -1202,11 +1429,12 @@ Now we put this underneath our first ModOp and in our main ModOps, so before the
         </Asset>
     </ModOp>
 
-    <ModOp Type="add" GUID="192975,192737,192840,193963,192904,192909" Path="/Values/RewardPool/ItemsPool">
+    <ModOp Type="add" GUID="192737,193089" Path="/Values/RewardPool/ItemsPool">
         <Item>
             <ItemLink>1742008800</ItemLink> <!-- Maria Lopez -->
         </Item>
     </ModOp>
+
 </ModOps>
 ```
 
@@ -1216,15 +1444,25 @@ We are almost there! One last step.
 
 Some items, buildings or other things in the game are not available from the start. You have to unlock those by progressing in the game. For example, you have to start with farmers and work your way up to investors. To do that you have to unlock everything step by step.
 
-Unlocking those possibilities is done with **Triggers**. A lot of the things in the game have triggers, and we also need those triggers to make our specialiast actually available in the game.
+Unlocking those possibilities is done with Triggers. A lot of the things in the game have triggers, and we also need those triggers to make our specialist available in the game at a certain stage.
 
-There are 2 parts of a trigger. First you need to **Unhide** the asset, then you need to **Unlock** the asset.
+### More then just unlocking assets
 
-Those triggers also have their own GUID. We need 1 trigger for our specialist mod, se we will be creating GUID 1742008802. We will combine the Unhide and the Unlock in 1 trigger. In other cases this can be done separatly because the Unhide and the Unlock not always have the same conditions.
+A trigger is a action that is executed based on a certain condition. In this case, the trigger we will be using, is unlocking our item. But a trigger can do so much more. It is a really powerful tool where you can dive in so much deeper! But that is for another time.
 
-### Unhide & Unlock
+### Only 1 time executed
+
+Those triggers also have their own GUID which needs to be unique.
+
+It is important to know that triggers only execute 1 time. (There are exceptions, but the general rule is 1 time). If the trigger was executed and you save your game. That trigger can never be used again anymore because that GUID is now saved within the savegame. If for example you would make changes to your mod and add new things to that trigger, savegames where that trigger was already executed will not execute again and will not have those changes you added to that trigger. A solution could be renewing the GUID of that trigger, which will trigger a new execution of the trigger.
+
+We have 1 trigger for our specialist mod which will use GUID 1742008802 for the trigger. 
 
 We will be adding our trigger after an already existing trigger as the next sibling. So, we choose Type="addnextSibling" and then the GUID of that trigger. In this case "130248".
+
+Adding this trigger is again a new mod operation. Like the other mod operations we make sure this has their own opening and closing tag and it is inside the &lt;ModOps> tags and before the &lt;/ModOps> closing tag.
+
+The start of this trigger looks like this:
 
 ```XML
 <ModOp Type="addnextSibling" GUID="130248">
@@ -1232,7 +1470,7 @@ We will be adding our trigger after an already existing trigger as the next sibl
 </ModOp>
 ```
 
-This template we are going to use now is a **Trigger**. As you can see, templates are powerful things.
+This template we are going to use now is a **Trigger**.
 
 ```XML
 <ModOp Type="addnextSibling" GUID="130248">
@@ -1242,13 +1480,83 @@ This template we are going to use now is a **Trigger**. As you can see, template
 </ModOp>
 ```
 
-To see an example of a trigger template search for &lt;Template>Trigger&lt;/Template> in the main assets.xml.
+To see an example of a trigger template search for the GUID "130249" on https://a1800.net/ and have a look at the structure of that trigger asset.
+
+```XML
+<Asset>
+	<Template>Trigger</Template>
+	<Values>
+		<Standard>
+			<GUID>130249</GUID>
+			<Name>intermediate moderate 1.1</Name>
+			<IconFilename>data/ui/2kimages/main/profiles/resident_tier01.png</IconFilename>
+		</Standard>
+		<Trigger>
+			<TriggerCondition>
+				<Template>ConditionPlayerCounter</Template>
+				<Values>
+					<Condition/>
+					<ConditionPlayerCounter>
+						<PlayerCounter>PopulationByLevel</PlayerCounter>
+						<Context>15000000</Context>
+						<!--Moderate Population 1-->
+						<CounterAmount>50</CounterAmount>
+					</ConditionPlayerCounter>
+				</Values>
+			</TriggerCondition>
+			<TriggerActions>
+				<Item>
+					<TriggerAction>
+						<Template>ActionUnlockAsset</Template>
+						<Values>
+							<Action/>
+							<ActionUnlockAsset>
+								<UnlockAssets>
+									<Item>
+										<Asset>130056</Asset>
+										<!--asset pool fish-->
+									</Item>
+									<Item>
+										<Asset>130162</Asset>
+										<!--Items Farmers 1.1-->
+									</Item>
+								</UnlockAssets>
+								<UnhideAssets>
+									<Item>
+										<Asset>140028</Asset>
+										<!--asset pool schnapps-->
+									</Item>
+									<Item>
+										<Asset>130060</Asset>
+										<!--asset pool basic clothes-->
+									</Item>
+									<Item>
+										<Asset>1010344</Asset>
+										<!--residence_tier02-->
+									</Item>
+								</UnhideAssets>
+							</ActionUnlockAsset>
+						</Values>
+					</TriggerAction>
+				</Item>
+			</TriggerActions>
+			<ResetTrigger>
+				<IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+				<Values>
+					<EmptyAutoCreateValue/>
+				</Values>
+			</ResetTrigger>
+		</Trigger>
+		<TriggerSetup/>
+	</Values>
+</Asset>
+```
 
 Let's take over the parts we need.
 
 ## Standard
 
-We have our **Standard** part which do not need to much explanation. We use our new GUID here to give this trigger a unique identifier and give our trigger a name.
+We have our Standard part which do not need to much explanation. We use our new GUID here to give this trigger a unique identifier and give our trigger a name.
 
 ## Trigger
 
@@ -1256,7 +1564,11 @@ We have our **Standard** part which do not need to much explanation. We use our 
 
 As the name states, here we define what the condition will be for our trigger to go off, and make our item available in the game.
 
-The **ConditionPlayerCounter** is a base template we always add. The values that it contains can change. In this case we will use **PopulationByLevel** which states that the trigger will go off when we hit a certain population. In the &lt;Context> we put a GUID of a population tier which threshold we want to hit. Underneath we put the &lt;CounterAmount> of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this with the tool on https://schwubbe.de/modding_blog.php#beitrag15.
+The ConditionPlayerCounter is a part we always will be using. It states that those triggers are specificly for the player. The values that it contains can change.
+
+In this case we will use PopulationByLevel which states that the trigger will go off when we hit a certain population.
+
+In the &lt;Context> we put a GUID of a population tier which threshold we want to hit. Underneath we put the &lt;CounterAmount> of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this on https://a1800.net/.
 
 ```XML
 <ModOp Type="addnextSibling" GUID="130248">
@@ -1286,7 +1598,7 @@ The **ConditionPlayerCounter** is a base template we always add. The values that
 </ModOp>
 ```
 
-Now the last step of our tutorial, adding the specialist to the trigger. Unhide and Unlock it.
+Almost the last step of our tutorial, adding the specialist to the trigger. Unlock it!
 
 ```XML
 <ModOp Type="addnextSibling" GUID="130248">
@@ -1316,11 +1628,6 @@ Now the last step of our tutorial, adding the specialist to the trigger. Unhide 
                             <Values>
                                 <Action />
                                 <ActionUnlockAsset>
-                                    <UnhideAssets>
-                                        <Item>
-                                            <Asset>1742008800</Asset> <!-- Maria Lopez -->
-                                        </Item>
-                                    </UnhideAssets>
                                     <UnlockAssets>
                                         <Item>
                                             <Asset>1742008800</Asset> <!-- Maria Lopez -->
@@ -1342,20 +1649,21 @@ We should now have the fantastic assets.xml like this:
 
 ```XML
 <ModOps>
-    <ModOp GUID="112574" Type="addNextSibling">
+
+    <ModOp GUID="191431" Type="addNextSibling">
         <Asset>
             <Template>GuildhouseItem</Template>
             <Values>
                 <Standard>
                     <GUID>1742008800</GUID>
                     <Name>Maria Lopez, Mining yellow stones</Name>
-                    <IconFilename>data/graphics/icons/icon_maria_lopez_v2.png</IconFilename>
+                    <IconFilename>data/graphics/icons/icon_maria_lopez.png</IconFilename>
                     <InfoDescription>1742008801</InfoDescription>
                 </Standard>
                 <Text>
                     <LocaText>
                         <English>
-                            <Text>Item Template</Text>
+                            <Text>Maria Lopez, Mining yellow stones</Text>
                             <Status>Exported</Status>
                             <ExportCount>1</ExportCount>
                         </English>
@@ -1369,6 +1677,13 @@ We should now have the fantastic assets.xml like this:
                     <TradePrice>1250000</TradePrice>
                     <TradePriceOnlineCurrency>1250000</TradePriceOnlineCurrency>
                 </Item>
+				<ItemEffect>
+                    <EffectTargets>
+                        <Item>
+                            <GUID>101311</GUID> <!-- Gold Mine -->
+                        </Item>
+                    </EffectTargets>
+                </ItemEffect>
                 <FactoryUpgrade>
                     <ProductivityUpgrade>
                         <Value>200</Value>
@@ -1382,13 +1697,6 @@ We should now have the fantastic assets.xml like this:
                         </Item>
                     </AdditionalOutput>
                 </FactoryUpgrade>
-                <ItemEffect>
-                    <EffectTargets>
-                        <Item>
-                            <GUID>101311</GUID> <!-- Gold Mine -->
-                        </Item>
-                    </EffectTargets>
-                </ItemEffect>
                 <ExpeditionAttribute>
                     <BaseMorale>0</BaseMorale>
                     <ExpeditionAttributes>
@@ -1409,7 +1717,7 @@ We should now have the fantastic assets.xml like this:
                 </ExpeditionAttribute>
                 <BuildingUpgrade>
                     <WorkforceAmountUpgrade>
-                        <Value>+50</Value>
+                        <Value>50</Value>
                         <Percental>1</Percental>
                     </WorkforceAmountUpgrade>
                 </BuildingUpgrade>
@@ -1417,7 +1725,7 @@ We should now have the fantastic assets.xml like this:
         </Asset>
     </ModOp>
 
-    <ModOp Type="add" GUID="192975,192737,192840,193963,192904,192909" Path="/Values/RewardPool/ItemsPool">
+    <ModOp Type="add" GUID="192737,193089" Path="/Values/RewardPool/ItemsPool">
         <Item>
             <ItemLink>1742008800</ItemLink> <!-- Maria Lopez -->
         </Item>
@@ -1450,11 +1758,6 @@ We should now have the fantastic assets.xml like this:
                                 <Values>
                                     <Action />
                                     <ActionUnlockAsset>
-                                        <UnhideAssets>
-                                            <Item>
-                                                <Asset>1742008800</Asset> <!-- Maria Lopez -->
-                                            </Item>
-                                        </UnhideAssets>
                                         <UnlockAssets>
                                             <Item>
                                                 <Asset>1742008800</Asset> <!-- Maria Lopez -->
@@ -1470,27 +1773,51 @@ We should now have the fantastic assets.xml like this:
             </Values>
         </Asset>
     </ModOp>
+	
 </ModOps>
 ```
 
-Save all the files, make sure everything looks ok and you can copy your mod to the modfolder and start the game. You should be able to see this item in the statistics screen in the item menu when you search for it. Check the possibilities how you can get the item.
+## Modinfo.json
 
-![maria_lopez-overview.jpg](./_sources/maria_lopez-overview.jpg)
+Just like our first mod, we again need to create a modinfo.json file in the root of our mod folder. We can again keep this simple and make a barebone file with limited information.
 
-If you are far enough in the game and have the research institute you should be able to research the item and then develop the item!
+```XML
+{
+    "Version": "1.0",
+    "ModID": "tutorial_specialists",
+    "Category": {
+        "English": "Gameplay"
+    },
+    "ModName": {
+        "English": "Tutorial Specialists"
+    },
+    "Description": {
+        "English": "Create a new specialist and learn more about modding."
+    },
+    "CreatorName": "My name"
+}
+```
 
-![maria_lopez-research-2.jpg](./_sources/maria_lopez-research-2.jpg)
+## Check the mod ingame
 
-![maria_lopez-research-4.jpg](./_sources/maria_lopez-research-4.jpg)
+Save all the files, make sure everything looks ok and the icon is in the right location.
 
-Then put a Trade Union next to a gold mine and put the specialist in the Trade Union.
+Copy your mod to the modfolder and start the game.
 
-![maria_lopez-ingame-1.jpg](./_sources/maria_lopez-ingame-1.jpg)
+You should be able to see this item in the statistics screen in the item menu when you search for it. Check the possibilities how you can get the item.
 
-![maria_lopez-ingame-2.jpg](./_sources/maria_lopez-ingame-2.jpg)
+![maria_lopez-overview](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03224927.png)
 
-Congratulations! You have your first specialist!
+This looks good already! Now you can play to get the item to see if it works. If you are progressed enough, you should be able to identify the item in the research institute as an Industrial Expert.
 
-![maria_lopez-card.jpg](./_sources/maria_lopez-card.jpg)
+![maria_lopez-overview](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03225029.png)
+
+After identifying you will be able to develop the item. Or you can use one of the other ways to get the item.
+
+Once you have the item, put it inside the trade union next to a gold mine and see your newly created item in action!
+
+![maria_lopez-overview](https://image.modcdn.io/members/315f/23806477/profile/screenshot2025-02-03225615.png)
 
 Have fun! And now you can make as many items, specialists if you want!
+
+Ready for the next one? Have fun and enjoy your Anno modding journey! Go check out the next tutorial where we make a new product and production chain.
