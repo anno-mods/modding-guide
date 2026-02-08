@@ -126,7 +126,7 @@ For people without coding experience this will be harder to understand. You can 
 
 Everything on one of the levels we just mentioned also has its own properties. For example, the closet in the living room is not the same closet as the one from the bedroom. The one in the living room is made out of steel, the one in the bedroom is made out of wood. Those are different properties and must be described in text. Also, the one in the bedroom contains clothes, the one in the living room contains books. In coding we call this structure “nesting”.
 
-When creating a new object/thing, whatever it is, we start with an “opening tag”. For example &lt;Asset>. Tags are wrapped inside “&lt;>” Everything from this point is nested inside this “&lt;Asset>”, until we say we want to end this object/thing. We end this by closing this with the “closing tag”, in this case ”&lt;/Asset>”. The same name but before the name we put a “/”.
+When creating a new object/thing, whatever it is, we start with an “opening tag”. For example `<Asset>`. Tags are wrapped inside “`<>`” Everything from this point is nested inside this “`<Asset>`”, until we say we want to end this object/thing. We end this by closing this with the “closing tag”, in this case ”`</Asset>`”. The same name but before the name we put a “/”.
 
 As you can see in the file the whole structure is created like this. The most important thing to know is that every aspect in the game is in some way structured like this and described in text. A lot can be found in this assets.xml. Feel free to scroll through it and try to understand what some things maybe could do.
 
@@ -198,7 +198,7 @@ The first code we need to write are the tags that make it clear everything in th
 </ModOps>
 ```
 
-We have the opening tag &lt;ModOps> and immediately also create the closing tag &lt;/ModOps>. It is a good practice to immediately create the closing tag. That way you will not forget. A lot of the time errors are triggered because of tags that are not closed. Everything we now put inside those tags is included in the mod.
+We have the opening tag `<ModOps>` and immediately also create the closing tag `</ModOps>`. It is a good practice to immediately create the closing tag. That way you will not forget. A lot of the time errors are triggered because of tags that are not closed. Everything we now put inside those tags is included in the mod.
 
 **`ModOps`** stands for **Mod Operations**. It includes all mod operations inside this parent node.
 
@@ -210,7 +210,7 @@ We have the opening tag &lt;ModOps> and immediately also create the closing tag 
 </ModOps>
 ```
 
-We first create a &lt;ModOp> within the &lt;ModOps>. This is the wrapper for our first mod operation. Now we need to make it clear what we want to do in this mod.
+We first create a `<ModOp>` within the `<ModOps>`. This is the wrapper for our first mod operation. Now we need to make it clear what we want to do in this mod.
 
 ```XML
 <ModOps>
@@ -317,9 +317,9 @@ I personally like the XML view because I like that nested structure and it shows
 </Asset>
 ```
 
-We see the corresponding GUID at almost the top of the &lt;Asset> opening tag in the &lt;Standard> tag. This is another check to see if we are at the right location and we check this GUID with our ModOp that we created.
+We see the corresponding GUID at almost the top of the `<Asset>` opening tag in the `<Standard>` tag. This is another check to see if we are at the right location and we check this GUID with our ModOp that we created.
 
-Now how do we know where the production boost is coded? This is a matter of knowledge and understanding the code. If we go through the code within this &lt;Asset> we can see a lot of different tags which all have their own function. At some point you will see <FactoryUpgrade>, and nested in this &lt;ProductivityUpgrade> and nested in that the &lt;Value> of 50.
+Now how do we know where the production boost is coded? This is a matter of knowledge and understanding the code. If we go through the code within this `<Asset>` we can see a lot of different tags which all have their own function. At some point you will see `<FactoryUpgrade>`, and nested in this `<ProductivityUpgrade>` and nested in that the `<Value>` of 50.
 
 Why do we not just change the value in the extracted assets.xml and save this file you say? Well, because the main assets.xml we extracted is not part of the code that is loaded. The game loads all the .rda files not the things we have extracted from it. We can not update code in those .rda files, so we need to manipulate those files in a different way, by creating our own assets.xml file and merge those at the start of the game. This is what the modloader does.
 
@@ -342,7 +342,7 @@ If we go over the code we have now, we have the following:
 - We added the "Type" where we say what type of action this mod operation is. In our case we are going to replace a value, so it is from the type replace.
 - We added the GUID of the asset where we want want to do the replace action, being the GUID of Feras, `192450`
 - Because the productivity value that we want to change is in a specific location in this asset, we need to define the path to this location. We did this by going from the top of our asset down to the specific location of the productivity value, creating the path.
-- Once we all had done this, we add the piece of code that we want to use for the action. In our case, we replace the <Value> node with the new node.
+- Once we all had done this, we add the piece of code that we want to use for the action. In our case, we replace the `<Value>` node with the new node.
 
 ### Comments
 

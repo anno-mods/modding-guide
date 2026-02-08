@@ -196,7 +196,7 @@ We declare the GUID where we want to perform the action to in the ModOp and then
 
 Now that we have declared based on which GUID we do the action, and which action we want to do, we declare what we want to add.
 
-First let's add the &lt;Asset> tag to wrap our new specialist in.
+First let's add the `<Asset>` tag to wrap our new specialist in.
 
 ```XML
 <ModOps>
@@ -216,11 +216,11 @@ With creating a new specialist item we can create this for every building and sh
 
 Specialists can be used inside a Trade Union, Town Hall, Harbourmaster's Office, Arctic Lodge and also in ships. We have to decide for which building we want to make the specialist. In this case for our first specialist we will be creating one for the Trade Union. The specialists for Trade Unions are the ones that boost factories and mines, so in this case the logical choice for our gold mine specialist.
 
-## &lt;Template>
+## `<Template>`
 
-We are creating a new &lt;Asset> that has a specific structure. A lot of the assets that are used in Anno 1800 can be categorized. This is done to make it easier to create multiple assets with the same proporties. For example all items that can be used inside the Trade Union work the same way and have the same function. So, it is good to put that logic inside a **"template"** we can then use again and again to save a lot of work in the end.
+We are creating a new `<Asset>` that has a specific structure. A lot of the assets that are used in Anno 1800 can be categorized. This is done to make it easier to create multiple assets with the same proporties. For example all items that can be used inside the Trade Union work the same way and have the same function. So, it is good to put that logic inside a **"template"** we can then use again and again to save a lot of work in the end.
 
-Now that we know it is for the Trade Union we know which &lt;Template> we will be creating. There is a specific template for Trade Union items. This is the template **"GuildhouseItem"**.
+Now that we know it is for the Trade Union we know which `<Template>` we will be creating. There is a specific template for Trade Union items. This is the template **"GuildhouseItem"**.
 
 ### Templates
 
@@ -252,7 +252,7 @@ You can click on the template name to see a complete list of all the assets that
 
 Take a moment to let that sink in... We did not even talk about the items for the Town Hall or other buildings. So, let's appreciate the hard effort the development team and graphic team already put into creating so much content.
 
-Take a random item and have a look at what you can see in the &lt;Asset> structure. For example, "190690 - Arborist ". Try to go through it step by step, node after node, property after property.
+Take a random item and have a look at what you can see in the `<Asset>` structure. For example, "190690 - Arborist ". Try to go through it step by step, node after node, property after property.
 
 ```XML
 <Asset>
@@ -376,8 +376,8 @@ Take a random item and have a look at what you can see in the &lt;Asset> structu
 
 We will try to build up our own asset step by step like this example asset. All assets from the same template are structured the same way with the same properties (up to some point).
 
-## &lt;Values>
-We first have another container inside the &lt;Asset>, titled &lt;Values>. This will contain all the values of our new asset.
+## `<Values>`
+We first have another container inside the `<Asset>`, titled `<Values>`. This will contain all the values of our new asset.
 
 ```XML
 <ModOps>
@@ -394,7 +394,7 @@ We first have another container inside the &lt;Asset>, titled &lt;Values>. This 
 </ModOps>
 ```
 
-## &lt;Standard>
+## `<Standard>`
 
 The next part of the asset is the standard part. This contains our main **GUID** for this specialist, the **name**, the **icon** and the **description**.
 
@@ -426,7 +426,7 @@ Last is the **InfoDescription**. This is the reference to the description GUID w
 </ModOps>
 ```
 
-## &lt;Text>
+## `<Text>`
 
 Next is a part that does not have to be there, but is good to include. It is a fallback in case you do not have all translationfiles included for all languages. Then the text inserted there, will be used for the asset as a fallback. We can just reuse the existing label we used for the name.
 
@@ -459,7 +459,7 @@ Next is a part that does not have to be there, but is good to include. It is a f
 </ModOps>
 ```
 
-## &lt;Item>
+## `<Item>`
 
 The **Item** part is the next part and we are going to talk some more about this part. It contains global item settings.
 
@@ -485,7 +485,7 @@ The itemtype we are using for this specialist is "Specialist". But there are als
 
 ### Allocation
 
-With the Allocation we define where this item fits into. This is in some way linked to the &lt;Template> we have choosen.
+With the Allocation we define where this item fits into. This is in some way linked to the `<Template>` we have choosen.
 
 Allocation can be:
 
@@ -508,7 +508,7 @@ This specialist will fit into the **"GuildHouse"**.
 
 Defines what it will cost to buy and sell the item. Legendary items should cost more then common items. You can have a look at other items to compare prices in the same rarity range.
 
-So, the result for &lt;Item> will be:
+So, the result for `<Item>` will be:
 
 ```XML
 <ModOps>
@@ -555,7 +555,7 @@ A lot of the properties do not have an opening and closing tag, but just have 1 
 
 ### IndustrializableUpgrade
 
-For this &lt;IndustrializableUpgrade> we need the following structure:
+For this `<IndustrializableUpgrade>` we need the following structure:
 
 ```XML
 <IndustrializableUpgrade>
@@ -567,7 +567,7 @@ It contains the opening and closing tag, and within another property that is set
 
 In this case this property means that the specialist will provide electricity within the range of the trade union.
 
-If you do not want this, you can just not use it and remove it. You can also only use a selfclosing tag that will be ignored like **&lt;IndustrializableUpgrade/>**.
+If you do not want this, you can just not use it and remove it. You can also only use a selfclosing tag that will be ignored like `<IndustrializableUpgrade/>`.
 
 ### FactoryUpgrade
 
@@ -830,11 +830,11 @@ This can be:
 </Locked>
 ```
 
-Using the &lt;Locked> property can have different reasons.
+Using the `<Locked>` property can have different reasons.
 
 #### DefaultLockedState
 
-The first and most obvious reason is to lock the asset until it is the correct time in the game progression to make the item available for the user. For example, a lategame legendary item should only be available when reaching a certain stage in the game. We can then lock the item and make it not available until a certain point. Later in this tutorial we will see how we actually perform some additional actions to make this possible. But to lock the item, we set the **&lt;DefaultLockedState>** property to "1". If we want to make the item or asset available right from the start of the game, we can set this value to "0".
+The first and most obvious reason is to lock the asset until it is the correct time in the game progression to make the item available for the user. For example, a lategame legendary item should only be available when reaching a certain stage in the game. We can then lock the item and make it not available until a certain point. Later in this tutorial we will see how we actually perform some additional actions to make this possible. But to lock the item, we set the `<DefaultLockedState>` property to "1". If we want to make the item or asset available right from the start of the game, we can set this value to "0".
 
 #### DLCDependency
 
@@ -1270,19 +1270,19 @@ Let's first have another look at one of the 3 pools where we will be adding our 
 </Asset>
 ```
 
-The pool is wrapped with an &lt;Asset> and the &lt;Template> is from the RewardPool. 
+The pool is wrapped with an `<Asset>` and the `<Template>` is from the RewardPool. 
 
 The GUID of this RewardPool is "192737". We will need this GUID when we will add our new item to this pool.
 
-The other important part is &lt;RewardPool> which then contains the &lt;ItemsPool> which contains the different &lt;Item> elements of all the different specialists in this pool.
+The other important part is `<RewardPool>` which then contains the `<ItemsPool>` which contains the different `<Item>` elements of all the different specialists in this pool.
 
-To add our specialist to this pool we need to create a new mod operation (&lt;ModOp>) where we add our new item to the &lt;ItemsPool>.
+To add our specialist to this pool we need to create a new mod operation (`<ModOp>`) where we add our new item to the `<ItemsPool>`.
 
 Remember the previous tutorial where we looked at the path of Feras to understand where we needed to replace a specific value? This time it is somewhat the same.
 
 ### Step by step
 
-Let's build the Mod operation together. We can create a new &lt;ModOp> underneath the other &lt;ModOp> we already created where we created our new specialist. Make sure it is still in the &lt;ModOps> so it is not outside the container that wraps all our &lt;ModOp> items, so before the &lt;/ModOps> closing tag. The type of operation we now will do is again, "add".
+Let's build the Mod operation together. We can create a new `<ModOp>` underneath the other `<ModOp>` we already created where we created our new specialist. Make sure it is still in the `<ModOps>` so it is not outside the container that wraps all our `<ModOp`> items, so before the `</ModOps>` closing tag. The type of operation we now will do is again, "add".
 
 ```XML
 <ModOp Type="add">
@@ -1460,7 +1460,7 @@ We have 1 trigger for our specialist mod which will use GUID 1742008802 for the 
 
 We will be adding our trigger after an already existing trigger as the next sibling. So, we choose Type="addnextSibling" and then the GUID of that trigger. In this case "130248".
 
-Adding this trigger is again a new mod operation. Like the other mod operations we make sure this has their own opening and closing tag and it is inside the &lt;ModOps> tags and before the &lt;/ModOps> closing tag.
+Adding this trigger is again a new mod operation. Like the other mod operations we make sure this has their own opening and closing tag and it is inside the `<ModOps>` tags and before the `</ModOps>` closing tag.
 
 The start of this trigger looks like this:
 
@@ -1568,7 +1568,7 @@ The ConditionPlayerCounter is a part we always will be using. It states that tho
 
 In this case we will use PopulationByLevel which states that the trigger will go off when we hit a certain population.
 
-In the &lt;Context> we put a GUID of a population tier which threshold we want to hit. Underneath we put the &lt;CounterAmount> of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this on https://a1800.net/.
+In the `<Context>` we put a GUID of a population tier which threshold we want to hit. Underneath we put the `<CounterAmount>` of that population. For this mod we will make our specialist available when hitting 500 Obrero citizen. So we need the GUID of the Obrero population. This is GUID 15000006. I searched for this on https://a1800.net/.
 
 ```XML
 <ModOp Type="addnextSibling" GUID="130248">
