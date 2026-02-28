@@ -18,6 +18,7 @@ Detailed walkthrough the creation of mods:
 4. [Tutorial 4 - Making a new ship](./hier0nimus-tutorials/04-making-new-ship/readme.md)
 5. [Tutorial 5 - Making a new session](./hier0nimus-tutorials/05-making-a-new-session/readme.md)
 5. [Tutorial 6 - Basics Modelling](./hier0nimus-tutorials/06-basics-modelling/readme.md)
+5. [Tutorial 7 - Skinning Island (WIP)](./hier0nimus-tutorials/07-skinning-island/readme.md)
 - [Tutorial Making Quests](./hier0nimus-tutorials/Quests-Tutorial)
 
 ## Dedicated Guides and Documentations
