@@ -1,0 +1,15 @@
+<Converts>
+    <Default Type ="Int32" />
+    <Converts>
+     
+      <Convert Path ="//GUID" Type="Int32" />
+      <Convert Path ="//IconGUID" Type="Int32" />
+      <Convert Path="//Dir" Type="Single" Structure="List"/>
+      <Convert Path="//Pos" Type="Single" Structure="List"/>
+      <Convert Path ="//Variation" Type="Int32" />
+      <Convert Path ="//IsBluePrint" Type="Boolean" />
+      <Convert Path ="//ComplexOwnerID" Type="Int64" />
+      <Convert Path ="//StreetInfo/None[position() mod 2 = 0]/None/None" Type="Single"/>
+      <Convert Path ="//RailwayInfos/None/None" Type="Int32" Structure="List" />
+    </Converts>
+  </Converts>

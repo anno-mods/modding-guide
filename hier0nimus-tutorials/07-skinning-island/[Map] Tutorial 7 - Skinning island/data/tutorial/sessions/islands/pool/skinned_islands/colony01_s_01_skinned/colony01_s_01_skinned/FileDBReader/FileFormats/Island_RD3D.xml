@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Converts>
+  <Default Type="Int32" />
+  <InternalCompression>
+    <Element Path="//AreaManagerData/None/Data" CompressionVersion ="1"/>
+  </InternalCompression>
+  <Converts>
+    <Convert Path ="//*[not(self::Flags)]/map" Type ="Int16" Structure ="List"/>
+    <Convert Path ="//FileNames/None" Type="String" Encoding="UTF-16" />
+    <Convert Path ="//Position" Type ="Single" Structure="List" />
+    <Convert Path ="//Rotation" Type ="Single" Structure="List" />
+    <Convert Path ="//Color" Type ="Single" Structure="List" />
+    <Convert Path ="//Scale" Type ="Single" Structure="List" />
+    <!-- Bits is a speciality in that it's a map of booleans that is stored in bits. -->
+    <Convert Path ="//bits" Type ="Byte" Structure="List" />
+    <Convert Path ="//MaterialSetFileName" Type ="String" Encoding="UTF-16" />
+    <Convert Path ="//MaterialIDs2" Type ="Int32" Structure="List" />
+    <Convert Path ="//MaterialAlphas2" Type ="Int32" Structure="List" />
+    <Convert Path ="//UnitScale" Type ="Single" />
+    <Convert Path ="//UsingSplitImageHeightMaps" Type ="Boolean" />
+    <Convert Path ="//AllNormalMapLevels/Levels/None/Flags/map" Type ="Byte" Structure ="List"/>
+    <Convert Path ="//TintMapLevels/Levels/None/Flags/map" Type ="Byte" Structure ="List"/>
+    <Convert Path ="//AdaptTerrainHeight" Type="Boolean" />
+  </Converts>
+</Converts>

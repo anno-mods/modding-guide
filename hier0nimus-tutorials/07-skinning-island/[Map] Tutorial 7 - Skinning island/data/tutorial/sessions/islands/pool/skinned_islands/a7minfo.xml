@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Converts>
+  <Default Type ="Int32" />
+  <Converts>
+    <Convert Path="//MapSize" Structure = "List" Type="Int32"/>
+    <Convert Path="//ActiveMapGrid/bits" Structure = "List" Type = "Int32"/>
+    <Convert Path="//ActiveMapRect" Structure ="List" Type="Int32"/>
+    <Convert Path = "//None/value/id" Type = "Int16"/>
+    <Convert Path = "//None/ObjectId" Type = "Int64"/> 
+    <Convert Path = "//None/Position" Type = "Single" Structure="List"/>
+    <Convert Path = "//FileTypeName" Type = "String" Encoding="UTF-8"/>
+    <Convert Path = "//SourceMap" Type = "String" Encoding="UTF-16"/>
+    <Convert Path = "//SourceLayerGridUUID" Type = "String" Encoding="UTF-8"/>
+    <Convert Path = "//SourceLayerGridName" Type = "String" Encoding="UTF-8"/>
+  </Converts>
+</Converts>

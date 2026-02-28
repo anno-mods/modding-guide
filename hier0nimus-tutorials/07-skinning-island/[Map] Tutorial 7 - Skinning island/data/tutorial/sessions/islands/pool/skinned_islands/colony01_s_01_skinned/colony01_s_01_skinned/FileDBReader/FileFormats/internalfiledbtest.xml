@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Converts>
+  <InternalCompression>
+    <Element Path="//AreaManagerData/None/Data" CompressionVersion ="1" />
+  </InternalCompression>
+  <Converts>
+  </Converts>
+</Converts>

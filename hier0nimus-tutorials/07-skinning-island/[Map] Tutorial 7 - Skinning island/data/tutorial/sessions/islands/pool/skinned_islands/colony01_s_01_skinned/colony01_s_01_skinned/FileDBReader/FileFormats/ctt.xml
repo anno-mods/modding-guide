@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+  Interpreter for CTT Files
+-->
+<Converts>
+  <Default Type ="Int32" />
+  <InternalCompression />
+  <Converts>
+    <Convert Path ="//Downsampled/map" Type ="UInt16" Structure ="List"/>
+    <Convert Path ="//Data/map" Type ="Byte" Structure ="List"/>
+	  <Convert Path ="//ScaleFactor" Type ="Single" />
+  </Converts>
+</Converts>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Converts>
+  <Default Type ="Int32" />
+  <InternalCompression>
+    <Element Path="//AreaManagerData/None/Data" CompressionVersion ="1">
+      <ReplaceTagNames>
+        <Entry Original="Delayed Construction" Replacement="DelayedConstruction"/>
+      </ReplaceTagNames>
+    </Element>
+  </InternalCompression>
+  <Converts>
+    <Convert Path ="//VegetationPropSetName" Type="String" Encoding="UTF-8" />
+    <Convert Path ="//GlobalAmbientName" Type="String" />
+    <Convert Path ="//HeightMap/HeightMap" Type="UInt16" Structure ="List" />
+    <Convert Path ="//StreetID/val" Type="Byte" Structure ="List" />
+    <Convert Path ="//AreaIDs/val" Type="Byte" Structure ="List" />
+    <Convert Path ="//EnvironmentGRid/val" Type="Byte" Structure ="List" />
+    <Convert Path ="//bits" Type="Byte" Structure ="List" />
+    <Convert Path ="//PlayableArea" Type="Int32" Structure ="List" />
+    <Convert Path ="//WorldSize" Type="Int32" Structure ="List" />
+    <Convert Path ="//m_AreaRect/None" Type="Int32" Structure ="List" />
+    <Convert Path ="//m_AreaPointGrid/None" Type="Int32" Structure ="List" />
+    <Convert Path ="//None[guid]/ID" Type="Int64" />
+    <Convert Path ="//Position" Type="Single" Structure="List" />
+    <Convert Path ="//Orientation" Type="Single" Structure="List" />
+    <Convert Path ="//TangentScale" Type="Single" />
+    <Convert Path ="//BezierPath/Path/Minimum" Type="Single" Structure="List"/>
+    <Convert Path ="//BezierPath/Path/Maximum" Type="Single" Structure="List"/>
+    <Convert Path ="//BezierPath/Path/BezierCurve/None/*" Type="Single" Structure="List"/>
+    <Convert Path ="//None[guid]/Direction" Type="Single"/>
+    <Convert Path ="//None[guid]/Mesh/Scale" Type="Single"/>
+    <Convert Path ="//Sequence/Name" Type="String" Encoding ="UTF-8"/>
+    <Convert Path ="//AllKeyframes/None/None/Value" Type="Single"/>
+    <Convert Path ="//View/*" Type="Single" Structure="List"/>
+    <Convert Path ="//Projection/NearClip" Type="Single"/>
+    <Convert Path ="//BreakableFirstLastTangents" Type="Byte" Structure="List"/>
+    <Convert Path ="//SameWeightFirstLastTangents" Type="Byte" Structure="List"/>
+    <Convert Path ="//HerdAreas/None/RandomPoint" Type="Int32" Structure="List"/>
+    <Convert Path ="//HerdAreas/None/DangerPoints/None" Type="Int32" Structure="List"/>
+    <Convert Path ="//BBox" Type="Int32" Structure="List"/>
+    <Convert Path ="//ObjectGroups/None[not(GameObjects)]" Type="String" Encoding="UTF-8"/>
+    <Convert Path ="//GameObjects/None" Type="Int64"/>
+
+    <Convert Path ="//DatasetCountGrid/val/None/counts/None/None" Type="Byte"/>
+    <Convert Path ="//ParticipantID/id" Type="Int16"/>
+    <Convert Path ="//DyeColorDetail" Type="Byte" Structure="List"/>
+    <Convert Path ="//Selection/Detected" Type="Int16" Structure="List"/>
+    <Convert Path ="//SequenceStartTime" Type="Int64"/>
+    <Convert Path ="//CurrentSequence" Type="Int32"/>
+    <Convert Path ="//ConfigFilename" Type="String" Encoding="UTF-8"/>
+    <Convert Path ="//RectSize" Type="Int32" Structure="List"/>
+    <Convert Path ="//LastWaystepPos" Type="Int32" Structure="List"/>
+    <Convert Path ="//LastPos" Type="Int32" Structure="List"/>
+    <Convert Path ="//LastTickPos" Type="Int32" Structure="List"/>
+    <Convert Path ="//AreaExtents" Type="Single" Structure="List"/>
+    <Convert Path ="//BasePosition" Type="Single" Structure="List"/>
+    <Convert Path ="//BaseRotation" Type="Single"/>
+    <Convert Path ="//HasElectricity" Type="Boolean"/>
+  
+    <Convert Path ="//VarMapData/SparseEnabled" Type="Boolean"/>
+    <Convert Path ="//VarMapData/block/mode" Type="Boolean"/>
+    <Convert Path ="//VarMapData/block/x" Type="Int16"/>
+    <Convert Path ="//VarMapData/block/y" Type="Int16"/>
+  
+    <Convert Path ="//ConstructionArea" Type="Boolean"/>
+    <Convert Path ="//SpawnAreaPoints/None[not(m_XSize)]" Type="Byte"/>
+    
+    <Convert Path ="//AreaManagerData/None[not(ByteCount)]" Type="Int16"/>
+    <Convert Path ="//ObjectWasVisible/None" Type="Boolean"/>
+    <Convert Path ="//Mesh/SequenceData/CurrentSequenceStartTime" Type="Int64"/>
+    <Convert Path ="//GameObjectIDCounter" Type="Int64"/>
+    <Convert Path ="//NonGameObjectIDCounter" Type="Int64"/>
+    <Convert Path ="//ObjectID" Type="Int64"/>
+    <Convert Path ="//LoadingHarbourID" Type="Int64"/>
+    <Convert Path ="//OldUnitID" Type="Int64"/>
+    <Convert Path ="//PreventDriftBack" Type="Boolean"/>
+    <Convert Path ="//OptimalAngleWS" Type="Single"/>
+    <Convert Path ="//OptimalDistanceWS" Type="Single"/>
+
+    <Convert Path ="//GameObjectLabelMap/None[position() mod 2 = 1]" Type="String" Encoding="UTF-8"/>
+    <Convert Path ="//GameObjectLabelMap/None[position() mod 2 = 0]" Type="String"/>
+
+
+    <Convert Path ="//ManualTangentMode" Type="Boolean"/>
+    <Convert Path ="//Interpolation" Type="Byte"/>
+    <Convert Path ="//StoredSelections/None/value/id" Type="Int16"/>
+
+    <Convert Path ="//AllKeyframes/None/None/TangentIn" Type="Single" Structure ="List"/>
+    <Convert Path ="//AllKeyframes/None/None/TangentOut" Type="Single" Structure ="List"/>
+    <Convert Path ="//Cam/KeyframeTypeVisibility/None" Type="Boolean"/>
+
+    <Convert Path ="//m_StaticTileGrid/SparseEnabled" Type="Boolean"/>
+    <Convert Path ="//m_StaticTileGrid/block/mode" Type="Boolean"/>
+    <Convert Path ="//m_StaticTileGrid/block/x" Type="Int16"/>
+    <Convert Path ="//m_StaticTileGrid/block/y" Type="Int16"/>
+    <Convert Path ="//m_StaticTileGrid/block/default" Type="Boolean"/>
+    <Convert Path ="//m_StaticTileGrid/block/values" Type="Single" Structure ="List"/>
+    <Convert Path ="//IrrigationManager/IsInitialized" Type="Boolean"/>
+
+    <Convert Path ="//None[guid]/Prop/Rotation" Type ="Single" Structure="List" />
+    <Convert Path ="//None[guid]/Prop/Scale" Type ="Single" Structure="List" />
+    <Convert Path ="//None[guid]/Prop/Color" Type ="Single" Structure="List" />
+    <Convert Path ="//None[guid]/Prop/DisablePropGridHandling" Type ="Boolean" />
+
+  </Converts>
+</Converts>

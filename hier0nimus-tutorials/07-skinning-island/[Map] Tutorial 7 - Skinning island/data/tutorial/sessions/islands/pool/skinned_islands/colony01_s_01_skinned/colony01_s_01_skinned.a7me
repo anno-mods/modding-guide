@@ -1,0 +1,28 @@
+<AnnoEditorLevel>
+  <FileVersion>3</FileVersion>
+  <Dimensions>
+    <X>192</X>
+    <Z>192</Z>
+  </Dimensions>
+  <ChunkSize>
+    <X>64</X>
+    <Z>64</Z>
+  </ChunkSize>
+  <Chunks>
+    <Column>
+      <Chunk>0x0</Chunk>
+      <Chunk>0x1</Chunk>
+      <Chunk>0x2</Chunk>
+    </Column>
+    <Column>
+      <Chunk>1x0</Chunk>
+      <Chunk>1x1</Chunk>
+      <Chunk>1x2</Chunk>
+    </Column>
+    <Column>
+      <Chunk>2x0</Chunk>
+      <Chunk>2x1</Chunk>
+      <Chunk>2x2</Chunk>
+    </Column>
+  </Chunks>
+</AnnoEditorLevel>

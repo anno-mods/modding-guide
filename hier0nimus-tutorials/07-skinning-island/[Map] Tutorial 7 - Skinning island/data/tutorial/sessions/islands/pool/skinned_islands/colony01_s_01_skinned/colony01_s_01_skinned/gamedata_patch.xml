@@ -1,0 +1,8 @@
+<ModOps>
+    <ModOp Type="replace" Path="//GlobalAmbientName">
+        <GlobalAmbientName>DLC03_01</GlobalAmbientName>
+    </ModOp>
+    <ModOp Type="replace" Path="//VegetationPropSetName">
+        <VegetationPropSetName>Arctic</VegetationPropSetName>
+    </ModOp>
+</ModOps>

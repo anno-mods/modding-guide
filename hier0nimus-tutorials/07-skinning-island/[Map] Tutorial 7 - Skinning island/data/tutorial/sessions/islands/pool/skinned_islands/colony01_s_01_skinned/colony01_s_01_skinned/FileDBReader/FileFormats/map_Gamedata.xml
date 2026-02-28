@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Converts>
+  <Default Type ="Int32" />
+  <InternalCompression>
+    <Element Path="//AreaManagerData/None/Data" CompressionVersion ="1" />
+  </InternalCompression>
+  <Converts>
+    <Convert Path ="//AreaManagerData/None[text()]" Type="Int16" />
+    <Convert Path ="//GlobalAmbientName" Type ="String"/>
+    <Convert Path ="//PlayableArea" Type ="Int32" Structure="List"/>
+    <Convert Path ="//WorldSize" Type ="Int32" Structure="List"/>
+    <Convert Path ="//HeightMap/HeightMap" Type ="Int16" Structure="List"/>
+    <Convert Path ="//View/*" Type ="Single" Structure="List"/>
+    <Convert Path ="//val" Type ="Byte" Structure="List"/>
+    <Convert Path ="//block/mode" Type ="Boolean"/>
+    <Convert Path ="//bits" Type ="Byte" Structure="List"/>
+    <Convert Path ="//GameObjectIDCounter" Type ="Int64"/>
+    <Convert Path ="//NonGameObjectIDCounter" Type ="Int64"/>
+    <Convert Path ="//NearClip" Type ="Single"/>
+    
+
+    <Convert Path ="//GameObjectLabelMap/None[position() mod 2 = 1]" Type="String" Encoding="UTF-8"/>
+    <Convert Path ="//GameObjectLabelMap/None[position() mod 2 = 0]" Type="Int64"/><!-- maybe -->
+
+    <Convert Path ="//SparseEnabled" Type ="Boolean" />
+    <Convert Path ="//StreetMap/VarMapData/block/*[self::x or self::y]" Type ="Int16" />
+    <Convert Path ="//id" Type ="Int16" />
+    <Convert Path ="//ID" Type ="Int64" />
+
+    <Convert Path ="//SpawnAreaPoints/None[position() mod 2 = 1]" Type="Byte"/>
+    <!-- maybe -->
+    
+    <!-- Positons and stuff-->
+    <Convert Path ="//*[not(self::View)]/Direction" Type ="Single" Structure ="List" />
+    <Convert Path ="//Position" Type ="Single" Structure ="List" />
+    <Convert Path ="//Orientation" Type ="Single" Structure ="List" />
+    <Convert Path ="//BasePosition" Type ="Int32" Structure="List" />
+
+    
+    <!-- Game Object Properties-->
+    <Convert Path ="//SonarEnd" Type ="Int64"/>
+    <Convert Path ="//CommandQueue/StateParams/*[self::Object or self::AttachObject]/ObjectID" Type ="Int64" />
+    <Convert Path ="//Draggable/Dragger" Type="Int64" />
+    <Convert Path ="//Mesh/SequenceData/CurrentSequenceStartTime" Type ="Int64" />
+    <Convert Path ="//FeedbackController/SequenceStartTime" Type ="Int64" />
+    <Convert Path ="//MetaPersistent/MetaID" Type ="Int64" />
+    <Convert Path ="//Selection/Detected" Type ="Int16" Structure="List" />
+    <Convert Path ="//Sellable/allowedBuyers" Type ="Int16" Structure="List" />
+
+    <Convert Path ="//PropertyTradeRouteVehicle/TargetBuildingID" Type ="Int64" />
+    <Convert Path ="//PropertyTradeRouteVehicle/TargetLoadingHarbour" Type ="Int64" />
+    
+    <Convert Path ="//Walking/Reservation/RectSize" Type ="Int64" Structure="List"/>
+    <Convert Path ="//Walking/LastPos" Type ="Int32" Structure="List"/>
+    <Convert Path ="//Walking/LastWaystepPos" Type ="Int32" Structure="List"/>
+    <Convert Path ="//Walking/LastTickPos" Type ="Int32" Structure="List"/>
+    <Convert Path ="//Walking/LastDirView" Type ="Single"/>
+    <Convert Path ="//Walking/LastDirLogic" Type ="Single"/>
+    <Convert Path ="//Walking/LastDeltaDirDelta" Type ="Single"/>
+    <Convert Path ="//Walking/PreventDriftBack" Type ="Boolean"/>
+    <Convert Path ="//Walking/OldUnitID" Type ="Int64"/>
+
+    <Convert Path ="//ItemContainer/KamikazeDecal" Type ="Int64" />
+    <Convert Path ="//UpgradeList/HasElectricity" Type="Boolean"/>
+
+    <Convert Path ="//QuestObject/ObjectWasVisible/None" Type="Boolean" />
+  </Converts>
+</Converts>

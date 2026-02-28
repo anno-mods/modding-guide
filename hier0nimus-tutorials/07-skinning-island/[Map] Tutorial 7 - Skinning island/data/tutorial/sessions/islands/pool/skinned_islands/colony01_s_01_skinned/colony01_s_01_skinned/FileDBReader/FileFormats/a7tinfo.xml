@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Converts>
+  <Converts>
+    <!-- The size of the map in some units, the largest I found is 2560x2560. You can't just change this. -->
+    <Convert Path="//MapTemplate/Size" Type="Int32" Structure="List"/>
+    <!-- The playable area of the map indicated in "x y x1 y1" format. Note that the north would be in the "y" direction. -->
+    <Convert Path="//MapTemplate/PlayableArea" Type="Int32" Structure="List"/>
+    <!-- The amount of TemplateElements -->
+    <Convert Path="//MapTemplate/ElementCount" Type="Int32"/>
+    <!-- Some maps also include a RandomlyPlacedThirdParties property, but I found them empty -->
+
+    <!--
+            Type 0 - Load the specified island
+            Type 1 - Randomize the island
+            Type 2 - Ship position
+        -->
+    <Convert Path="//MapTemplate/TemplateElement/ElementType" Type="Int32"/>
+
+    <!--
+            Type 1 - Found in Old World, New World, Cape, Arctic, Enbesa
+            Type 3 - Found in Old World, New World
+            Type 4 - Found in Old World, New World
+
+            Still a mistery...
+        -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/Config/Type/id" Type="Int16" >
+      <Enum>
+        <Entry Value ="0" Name ="Normal"/>
+        <Entry Value ="1" Name ="Starter" />
+        <Entry Value ="2" Name ="Decoration" />
+        <Entry Value ="3" Name ="ThirdParty" />
+        <Entry Value ="4" Name ="Pirate" />
+      </Enum>
+    </Convert>
+    <!-- A list, separated by a space, of GUIDs of fertilities -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/FertilityGuids" Type="Int32" Structure="List"/>
+    <!-- A nice label, useful for us (: -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/IslandLabel" Type="String" Encoding="UTF-8"/>
+    <!-- The path of the "a7e" file of the island in the RDA files -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/MapFilePath" Type="String" Encoding="UTF-16"/>
+    <!-- Mine Object ID -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/MineSlotMapping/None[position() mod 2 = 1]" Type="Int64"/>
+    <!--  GUID of the resource of the mine. Sometimes it is 0 - this equals to no mine on that deposit. -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/MineSlotMapping/None[position() mod 2 = 0]" Type="Int32"/>
+    <!-- The position of the island in "x y" format. The position indicates the lower-left corner of the island, being this a square. -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/Position" Type="Int32" Structure="List"/>
+    <!--
+            ID 0 - Normal islands
+            ID 1 - Starter islands
+            ID 2 - Decoration islands
+            ID 3 - NPC islands (opponent or neutral)
+            ID 4 - Pirate islands
+            ID 5 - Glacier islands
+        -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/RandomIslandConfig/value/Type/id" Type="Int16" UseEnum="True">
+      <Enum>
+        <Entry Value ="0" Name ="Normal" />
+        <Entry Value ="1" Name ="Starter" />
+        <Entry Value ="2" Name ="Decoration" />
+        <Entry Value ="3" Name ="ThirdParty" />
+        <Entry Value ="4" Name ="PirateIsland" />
+        <Entry Value ="5" Name ="Cliff" />
+      </Enum>
+    </Convert>
+    <!--
+            ID 0 - Normal
+            ID 1 - Hard
+        -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/RandomIslandConfig/value/Difficulty/id" Type="Int16" >
+      <Enum>
+        <Entry Value ="0" Name ="Normal" />
+        <Entry Value ="1" Name ="Hard" />
+      </Enum>
+    </Convert>
+    <Convert Path="//MapTemplate/TemplateElement/Element/RandomizeFertilities" Type="Byte"/>
+    <!--
+            0 - 0 degrees rotation
+            1 - 90 degrees rotation
+            2 - 180 degrees rotation
+            3 - 270 degrees rotation
+        -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/Rotation90" Type="Byte"/>
+    <!--
+            Size 0 - Small
+            Size 1 - Medium
+            Size 2 - Large
+        -->
+    <Convert Path="//MapTemplate/TemplateElement/Element/Size" Type="Int16" >
+      <Enum>
+        <Entry Value ="0" Name ="Small" />
+        <Entry Value ="1" Name ="Medium" />
+        <Entry Value ="2" Name ="Large" />
+      </Enum>
+    </Convert>
+  </Converts>
+</Converts>

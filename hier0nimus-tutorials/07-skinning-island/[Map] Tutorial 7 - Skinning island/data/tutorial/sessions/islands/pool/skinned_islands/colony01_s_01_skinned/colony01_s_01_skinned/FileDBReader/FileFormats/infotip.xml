@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+  Simple example of a conversion file for infotips. 
+
+  How to use: 
+  Path = xPath
+  Type = Type as it occurs in .Net System - int -> Int32, float = Single, bool = Boolean etc..
+  Encoding = Encoding as it occurs in .Net Encodings
+-->
+<Converts>
+  <Default Type = "Int32"/>
+  <InternalCompression />
+  <Converts>
+    <Convert Path = "//*[not(self::InfoElement)]/Text" Type = "String" />
+    <Convert Path ="//Condition" Type ="String" Encoding = "UTF-8"/>
+    <Convert Path ="//ValueText" Type ="String" />
+    <Convert Path ="//IconText" Type ="String" />
+    <Convert Path="//ExpectedValueFloat" Type ="Single" />
+    <Convert Path="//ExpectedValueBool" Type ="Boolean" />
+    <Convert Path="//HeadlineText" Type ="String" />
+    <Convert Path="//SublineText" Type ="String" />
+    <Convert Path="//ColorText" Type ="String" />
+    <Convert Path="//Source" Type ="String" />
+    <Convert Path="//Variables/None/Name" Type ="String" />
+    <Convert Path ="//IsTemplate" Type ="Boolean" />
+  </Converts>
+</Converts>
