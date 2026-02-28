@@ -1,0 +1,20 @@
+{
+  "Version": "1.0",
+  "ModID": "tutorial7_skinning_island",
+  "IncompatibleIds": [],
+  "ModDependencies": [],
+  "Category": {
+    "English": "Map"
+  },
+  "ModName": {
+    "English": "Tutorial 7 - Skinning Island"
+  },
+  "Description": {
+    "English": "The tutorial where we learn to skin an island."
+  },
+  "KnownIssues": null,
+  "DLCDependencies": [],
+  "LoadAfterIds": [],
+  "CreatorName": "Hier0nimus",
+  "CreatorContact": "https://github.com/Hier0nimus/anno-mods-hier0nimus"
+}

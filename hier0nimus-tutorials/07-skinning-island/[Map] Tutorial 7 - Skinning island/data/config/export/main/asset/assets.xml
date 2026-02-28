@@ -1,0 +1,15 @@
+<!-- 
+
+[Map] Tutorial 7 - Skinning Island - v1.0
+  
+Created by Hier0nimus
+
+Enjoy!
+
+-->
+
+<ModOps>
+  <ModOp Type="merge" GUID="116682,116681,116680,116679" Path="/Values/RandomIsland/">
+    <FilePath>data\sessions\islands\pool\colony01\colony01_s_01\colony01_s_01.a7m</FilePath>
+  </ModOp>
+</ModOps>
