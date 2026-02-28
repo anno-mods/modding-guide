@@ -137,7 +137,7 @@ If you open the folder, you should have 4 files:
 - `rd3d.data`
 - `rd3d_patch.xml`
 
-### Gamedata.data
+## Gamedata.data
 The `gamedata.data` contains all the island logic in terms of meshes, big elements, mineslots and much more on the island. We can not open this file with a code editor to manipulate or change things. Because we want to manipulate the file in a structured non destructive way, we will be patching the file instead if directly editing the file. With patching the file, we will have a good overview of our changes and have an easier time to go back if something is not correct. The original file is also really big and long which would make manipulating it a big challenge to keep the overview.
 
 To open the file, we need a command and one of the tools we used before. This is a `.data` file. To open those files we need the `FileDBReader` with the fileformat file for islands. 
@@ -161,7 +161,7 @@ You can open this .xml file with the code editor to have a peek inside. You will
 
 As you can see, this file is packed with information about the island and a lot of logic. Reading the names of the nodes gives an idea what is defined here and how much information is stored on this level, what can be manipulated, but also, what could potentially break if we do something wrong. 99.99% of this information is tricky to change and I do not even know how I would change it without breaking things or without actually knowing what I'm doing. We as modders do not have the accessable tools to change all those parameters so we do what we can with the tools we have. 
 
-### rd3d.data
+## rd3d.data
 This `rd3d.data` file contains a couple of different things about island compared to the `gamedata.data` file. Two important parts in this file are all the props on the islands and the materialset that we will use to give the island its visual look and feel.
 
 Let's open this file to also have a peek inside. Again with the `FileDBReader` and this time with the fileformat file for rd3d conversion. 
@@ -184,7 +184,7 @@ This files contains less different nodes and also is more straight forward then 
 
 Time to roll up our sleeves and manipulate the files. 
 
-### Manipulating Gamedata.data
+## Manipulating Gamedata.data
 Open the `gamedata_original.xml` and the `gamedata_patch.xml` in a code editor and place them side by side. That way we see what we want to patch and what we do for the patching.
 
 The first step of manipulation of the `gamedata.data` file will be changing 2 properties. `GlobalAmbientName` and `VegetationPropSetName`. In this exampe we will be changing a New World Island to an Arctic island. If we look at the top of the `gamedata_original.xml` we see `<GlobalAmbientName>south_america_caribic_01</GlobalAmbientName>`. This defines the "feeling" the island will have with certain elements like snow, sun, weather, basic ground materials,... Offcourse because we want an Arctic island we do not want the `south_america_caribic_01` which would give a jungle feeling. To know what the Arctic value for this is we can do the previous steps of extracting an island and looking at the gamedata.data from an Arctic island. There we will find the value `<GlobalAmbientName>DLC03_01</GlobalAmbientName>`. 
@@ -207,3 +207,45 @@ We will be writing our patch in the `gamedata_patch.xml` file.
     </ModOp>
 </ModOps>
 ```
+
+Those operations will look at the complete file and search for corresponding node with that name. In theory, we could also use `//GameSessionManager/SessionSettings/GlobalAmbientName` and do the replace. That would give the same result. But because both values are unique in this file, just declaring only that value in the path is ok.
+
+We can save the file and close both files for now. We now have done the first step of our patch for our gamedata.data file. 
+
+## Manipulating Gamedata.rd3d
+Time now for the next more tricky one, the rd3d file. Open both `rd3d_original.xml` and the `rd3d_patch.xml` side by side. The first change we will be making is a big one already and which costed me some time to wrap my head around and got it working.
+
+### MaterialSetFileName
+
+In the original file, search for `<MaterialSetFileName>`. You will find `<MaterialSetFileName>data/config/engine/material_sets/south_america_01.xml</MaterialSetFileName>`.  
+
+The `MaterialSetFileName` is an really important file which defines a lot of the look and feel of your island. In this case, this island file offcourse links to a material file for the New World. We can follow the path we see there and open this file from the exported rda files. 
+
+If we open the `south_america_01.xml` file with a code editor, it is actually not that hard to understand what we see there. Before we dive deeper into this file, let's actually find a similar file, but the one for the Arctic. Every region has it's own materialset file. If we look at an extracted Arctic island, and we open the rd3d.data file and search for the `<MaterialSetFileName>` we find `<MaterialSetFileName>data/dlc03/config/engine/material_sets/arctic_01.xml</MaterialSetFileName>`. We can again follow that path to open this file and compare it with our New World one. Put those again side by side.
+  
+This materialset defines the materials on the mesh of the island. If we look at the different `<Material>` nodes in those files we see beach, mountain, grass, mud, snow, rock,... The island is build as a mesh, a big piece of cloth wrapped in a certain shape. This big sheet is divided in all smaller different parts. This materialset defines which part has which material. For example the piece of the wrapped mesh on the coast needs to have a beach material. But there are a couple of different beach materials to give it an even better look instead of having the same material everywhere. The same goes for the mountains and all other parts. We have a lot of materials that define what part of the mesh is looking a certain way. 
+
+The first part of this file has some more general materials defined. If we compare `<GritDiffuseTexture>`. `<CliffDiffuseTexture>`, `CliffNormalTexture` and `SubSurfaceTexture` we could easily swap the ones from the New World for the ones for the Arctic. It is more tricky for the other materials. If we check the order of the list and the `<ID>` of the different elements, we can not just swap the one for the New World with the one from the Arctic. First the New World one contains more Material nodes compared to the Arctic materialset. Secondly, the order is not the same and the ID's are not the same. Because in the process of creating the island, a mesh is linked to a certain material with a certain ID we have to be careful what ID to give to what material. If an ID is for a beach and we give it a mountain texture that could look really weird. 
+
+We have to go manually through every `<Material>` node from the New World materialset and find a corresponding Arctic material. We will have the same material multiple times and that is totally fine. More important is that we find a fitting corresponding material for the original material. Also, do not feel bad because the first conversion will probably not be what you expected and you will manipulate the file a couple of times before you have a result you will feel good about. The most time consuming part here is repacking the files and restarting the game every time to see the result of the change.
+
+Now that we know what the goal is, we can actually start creating our materialset file. Because the structure of the file is bound to the island, we need a new materialset file with the structure of a New World island but the content of an Arctic island. We do this in our mod structure on the same location as the normal materialsets would be. `data\config\engine\material_sets`. This structure is not there in your mod, so create it and place a duplicate of the `south_america_01.xml` file in this folder. Rename this file to a unique name so it does not conflict with one of the other materialsets. In this case we call it `south_america_arctic.xml`.
+
+A tricky part here is that the materialset is not always correctly picked up. We have to do some trick (Thank you Taube for the big help here!) to be able to use our custom materialset. We will change our `south_america_arctic.xml`to `south_america_arctic.materialset` (yes, change extension). 
+Then we create an empty `south_america_arctic.xml.lnk` file that is actually a shortcut. The `.lnk` is not going to show but make sure it is a shortcut file.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_12.png)
+
+Open both files. The `south_america_arctic.materialset` contains our materialset with all the materials we still need to swap out. In the `south_america_arctic.xml.lnk` file we add the path to the materialset file. Just add `data/config/engine/material_sets/south_america_arctic.materialset` without anything else and save the file. We will reference to this shortcut and this then will pick up our materialset file.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_13.png)
+
+Now, time to swap out all the material values in our new materialset file. First we swap out the `<GritDiffuseTexture>`. `<CliffDiffuseTexture>`, `CliffNormalTexture` and `SubSurfaceTexture`. See the value in the original Arctic materialset and swap the value in our materialset with this value.
+
+So, `<GritDiffuseTexture>data\graphics\landscape\terrain\texture_pool\d_grass_07_diff.psd</>` becomes `<GritDiffuseTexture>data\dlc03\graphics\landscape\terrain\arctic\p_grit_01_diff.psd</>`. 
+Do the same for `<CliffDiffuseTexture>`, `CliffNormalTexture` and `SubSurfaceTexture`.
+
+Double check all the values above the `<Material>` node, but as far as I know apart from the ones we changed, the others ones are all the same. There can probably also be done some tweaking in regards of those values maybe, but that is out of my knowledge and scope of this guide.
+
+Now the trickiest part can start about this file, finding a corresponding material for the original material. I can only advice to just follow your guts and see in the original arctic file which corresponding files you have for beach, mountain, mud or other materials. Grass in this case could be swapped out for snow or something else depending on what you want to achieve. If you want to see the full list of available materials you can follow the path of the materials and open that location in the extracted rda folders. `data/dlc03/graphics/landscape/terrain/arctic/` and `data\dlc03\graphics\props\terrain_props\vegetation\`. You can also get some inspiration there for matching materials.
+
