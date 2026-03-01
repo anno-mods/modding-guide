@@ -45,7 +45,7 @@ Just for testing and the first step in the process, we change the `<FilePath>` f
 
 ```XML
     <ModOp Type="merge" GUID="116682,116681,116680,116679" Path="/Values/RandomIsland/">
-        <FilePath>data\sessions\islands\pool\colony01\colony01_s_01\colony01_s_01.a7m</FilePath>
+        <FilePath>data\dlc12\sessions\islands\pool\colony01\colony01_s_05\colony01_s_05.a7m</FilePath>
     </ModOp>
 ```
 
@@ -63,6 +63,7 @@ We do already see some more general settings being applied to the island. We see
 
 You can find the original island folders on the following locations for every region in the extracted rda files:
 - For Old World and New World islands: `data\sessions\islands\pool`
+- For New World DLC12 islands: `data\dlc12\sessions\islands\pool\colony01`
 - For Arctic islands: `data\dlc03\sessions\islands\pool`
 - For Enbesan islands: `data\dlc06\sessions\islands\pool`
 
@@ -72,7 +73,7 @@ Setup your mod structure and create the structure for custom islands under the s
 
 Copy the original island folder to the mod folder on location `data\tutorial\sessions\islands\pool\skinned_islands\`
 
-We choose `colony01_s_01` as the example to start with a simple small island. Rename the folder to `colony01_s_01_skinned` to make it unique.
+We choose `colony01_s_05` as the example to start with a simple small island. This is one of the small New World islands from the DLC12. Rename the folder to `colony01_s_05_skinned` to make it unique.
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_2.png)
 
@@ -82,11 +83,11 @@ Make sure inside this folder we have the following files and folder:
 - `a7me` islandfile we are not going to change
 - `a7minfo` islandfile which provides additional island information we will be adapting
 
-Change the names of those files to the same name as your island folder. `colony01_s_01_skinned.a7m`, `colony01_s_01_skinned.a7me`, `colony01_s_01_skinned.a7minfo`.
+Change the names of those files to the same name as your island folder. `colony01_s_05_skinned.a7m`, `colony01_s_05_skinned.a7me`, `colony01_s_05_skinned.a7minfo`.
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_3.png)
 
-Open the _gamedata folder and change the name of the island folder in this folder to the same name as the changed island name folder `colony01_s_01_skinned`.
+Open the _gamedata folder and change the name of the island folder in this folder to the same name as the changed island name folder `colony01_s_05_skinned`.
 
 ### Check changes
 
@@ -96,7 +97,7 @@ Change the path of the island we changed before to our new custom island.
 
 ```XML
     <ModOp Type="merge" GUID="116682,116681,116680,116679" Path="/Values/RandomIsland/">
-        <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned\colony01_s_01_skinned.a7m</FilePath>
+        <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_05_skinned\colony01_s_05_skinned.a7m</FilePath>
     </ModOp>
 ```
 
@@ -120,7 +121,7 @@ The following files from the zip should be placed in this directory:
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_4.png)
 
-Go back to the root of your island folder `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned`, copy the file `unpack_island.bat` in there and execute the file to unpack the island files. 
+Go back to the root of your island folder `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_05_skinned`, copy the file `unpack_island.bat` in there and execute the file to unpack the island files. 
 
 1 folder with the name of your island and one file with the `.xml` extension will be created.
 
@@ -129,7 +130,7 @@ Go back to the root of your island folder `data\tutorial\sessions\islands\pool\s
 ### Unpacking does not work?
 In case this does not work, make sure you have set up the `FileDBReader`, `xmltest` and `rdaconsole` environment variables correctly. Open the `unpack_island.bat` with a code editor to see which actions are executed. Examples: `RdaConsole ^extract -f %island_name%.a7m -o %island_name% -y`. If you can not setup the environement files correctly, you can always add the `FileDBReader`, `xmltest` and `rdaconsole` references in every folder where you need them. Make sure to check the commands to see what directory you need.
 
-If this is executed correctly, you should have a new folder and a new file inside the root with the same name as the parent folder, with the name of the island. `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned`. The file should be a patch file for the `.a7minfo` file.
+If this is executed correctly, you should have a new folder and a new file inside the root with the same name as the parent folder, with the name of the island. `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_05_skinned`. The file should be a patch file for the `.a7minfo` file.
 
 If you open the folder, you should have 4 files:
 - `gamedata.data`
@@ -212,7 +213,7 @@ Those operations will look at the complete file and search for corresponding nod
 
 We can save the file and close both files for now. We now have done the first step of our patch for our gamedata.data file. 
 
-## Manipulating Gamedata.rd3d
+## Manipulating rd3d.data
 Time now for the next more tricky one, the rd3d file. Open both `rd3d_original.xml` and the `rd3d_patch.xml` side by side. The first change we will be making is a big one already and which costed me some time to wrap my head around and got it working.
 
 ### MaterialSetFileName
@@ -876,13 +877,13 @@ Now that we have our materialset set up and in the correct location, it is time 
 ## Checking the progression ingame, packing gamedata and rd3d files again
 
 ### Compressing island files
-Now that we have done the basic manipulations and have our patches ready it is time to compress our files again so we end up again with our updated `colony01_s_01_skinned.a7m` file.
+Now that we have done the basic manipulations and have our patches ready it is time to compress our files again so we end up again with our updated `colony01_s_05_skinned.a7m` file.
 
 We unpacked our `.a7m` file which gave us the `gamedata.data` and the `rd3d.data`. We then decpompressed those files from the `.data` format to the `.xml` format so we could actually open them and manipulate them. We now have to do the same actions but the other way around. So, packing the `.xml` files to `.data` files and then package the `.data` files back into the `.a7m` file.
 
 To do this we will need our tools again which will be executed with the commandline. Like we have the `unpack_island.bat`, which was provided by Taludas and Taube, there is also a `pack_island.bat`. But for some reason, I can not seem to get that one working. So, I manually do those actions what the `.bat` file otherwise does automaticly.
 
-Go to `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned\colony01_s_01_skinned` and open a commandline in this directory.
+Go to `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_05_skinned\colony01_s_05_skinned` and open a commandline in this directory.
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_17.png)
 
@@ -932,11 +933,11 @@ You should have the following files:
 Amazing work! Now go up one folder to the root of the island file. 
 
 We will now compress our `data` files back into the `a7m` file with the following command (open a new commandline console or go up one folder with using `cd ..` in the commandline you have still open):
-`RdaConsole pack -f colony01_s_01_skinned/gamedata.data colony01_s_01_skinned/rd3d.data -o colony01_s_01_skinned.a7m -y -v 2`
+`RdaConsole pack -f colony01_s_05_skinned/gamedata.data colony01_s_05_skinned/rd3d.data -o colony01_s_05_skinned.a7m -y -v 2`
 
 For some weird reason this only works with the original .data file names. I tried it also with _patched.data versions but this did not work for some reason and the game kept loading in the loading screen having an infinte loading screen.
 
-Your `colony01_s_01_skinned.a7m` file should be updated. It could be that the filesize did not change compared to the previous version, but you should see the Date modified being different.
+Your `colony01_s_05_skinned.a7m` file should be updated. It could be that the filesize did not change compared to the previous version, but you should see the Date modified being different.
 
 Congratulations! You have now converted the basics of an island from a New World island to an Arctic islands. We are not ready yet offcourse, but we should update the files in the mods folder and start to game to see if everything still works and our changes are visible. We now have some not needed files into our folders, but we will clean those up later.
 
@@ -944,7 +945,7 @@ If we look ingame, all looks good! The ground is now snowy compared to the grass
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_22.png)
 
-We do still see the New World trees and some other wrong vegetation, but that will be the next step we will take! THe important thing is that we now confirmed our materialset is loading correctle and other patches we did in the gamedata and rd3d file are working correctly.
+We do still see the New World trees and some other wrong vegetation, but that will be the next step we will take! The important thing is that we now confirmed our materialset is loading correctle and other patches we did in the gamedata and rd3d file are working correctly.
 
 ## Props and vegetation
 
@@ -990,67 +991,94 @@ We should add the original New World prop list in there and swap them all. That 
     </ModOp>
     <ModOp Type="replace" Path="//PropGrid/FileNames">
         <FileNames>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_01.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_02.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_03.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_06.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_09.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_12.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_13.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_14.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_15.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_16.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_17.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_18.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_19.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_20.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_23.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_01.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_02.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_03.prp</None>
-      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_04.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_large.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_medium.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_small.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_large.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_medium.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_small.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_large.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_large_mountain.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_medium.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_medium_mountain.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_small.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_04_small.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_high_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_high_01_var2.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_03.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_palm_stump_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_palm_stump_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01_03.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_03.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05_03.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06_03.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_special_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_special_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/trees/jungle_mountain/mountain_jungle_tree_04.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_01.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_02.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_03.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_04.prp</None>
-      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_08.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_01.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_02.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_04.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_05.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_11.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_12.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_14.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_15.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_16.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_17.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_19.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_20.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_23.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_01.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_02.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_03.prp</None>
+            <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_large.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_medium.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_small.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_large.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_medium.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_small.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_large.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_large_mountain.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_medium.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_medium_mountain.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_high_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_high_01_var2.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_06.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_stump_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_stump_b_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_stump_b_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_stump_b_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_palm_stump_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_palm_stump_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_01_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_01_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_02_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_02_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_03_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_03_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_04_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_04_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_05.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_05_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_large_05_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_special_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_special_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_very_large_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_very_large_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_very_large_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_very_large_03_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle_mountain/mountain_jungle_tree_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle_mountain/mountain_jungle_tree_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle_mountain/mountain_jungle_tree_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/trees/jungle_mountain/mountain_jungle_tree_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_05.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_08.prp</None>
         </FileNames>
     </ModOp>
-</ModOps>  
+</ModOps>   
 ```
 
  For full transparancy, Taludas has created some nice automated files to swap out the lists, but I think it is important to understand the logic here and do it by hand at least one time.
@@ -1065,6 +1093,223 @@ We should add the original New World prop list in there and swap them all. That 
 What you end up with can be different from what I have now. Maybe you swapped our trees or brushes differently, that is totally fine. I have the following result of my `rd3d_patch.xml` file:
 
 ```XML
+<ModOps>
+    <ModOp Type="replace" Path="//MaterialSetFileName">
+        <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
+    </ModOp>
+    <ModOp Type="replace" Path="//PropGrid/FileNames">
+        <FileNames>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_11.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_12.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_14.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_15.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_16.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_17.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_19.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_20.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_23.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_large.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_large.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_large.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_large.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_ground_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_ground_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_ground_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_05.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_08.prp</None>
+        </FileNames>
+    </ModOp>
+</ModOps>   
+```
+
+We could now patch our files again and compress them again to a `.a7m` file and have a look ingame. 
+Do take into account the renaming and overwriting of the files in the patching and compressing process.
+
+After patching, compressing again and overwriting the files. we should see all the props being replaced.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_24.png)
+
+And just like that, we have taken a HUGE step in the process of converting islands. As you can see, th atmosphere of the islands is completely different now and it is all coming together step by step.
+
+### Tweaks
+
+If we take a closer look at the island, we do see some things that can use some optimazations. For example, if we compare our island with a normal Arctic island, there are way to many trees on the island. You can choose to keep it that way or we can remove trees in the rd3d file to keep it more in lign with vanilla arctic islands.
+
+Another thing that stands out in a bad way (depending on what you prefer) is that big parts of the ground are muddy and not snowy. If you remember from our materialset, we had a lot of mud materials. We could optimize our materialset and maybe swap out some of those mud materials for snow materials to remove those muddy patches and make it more snowy.
+
+Another thing is that there are still some green brushes. Even though we replaced all the props. This is because there is another location where some props can also be defined, within the meshfiles. We will have a look at those also.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_25.png)
+
+Those are only 3 of many tweaks that we could to to take the island skinning to the next level. The more time you want to invest into this process, the better the result will be.
+
+#### Less trees
+
+If we take a look at our `rd3d_original.xml`, and go to the list of props and take the a random tree, we count INDEX `45` for this tree.
+If we then go down or search for `<Index>45</Index>` in the file, we find 159 instances for this. Which means, there are 159 trees for this tree variation alone. Adding all those other tree variations on top of that and it is clear we can clean this up and there are to many trees for an arctic island.
+
+Now, how can we easily clean up certain props from this really long list without doing this all manually. I had asked myself this question in the past also when I was skinning islands for White and Cold. I'm not a huge fan of using AI in creative processes because I want to keep the feeling of creating, but in this case for such manual repetitive work, I think we can sprinkle in some AI assistance here. 
+
+I went to an AI assitance and asked to write me a powershell script I could execute to remove props from a certain index when provided with a list. After some back and forth and some changes, I got a script that does exactly that and helps a lot!
+
+I decided to remove 50% of the props with a certain index. So, every time I ran the script, 50% of the props would be removed. I could even run the script multiple times to reduce even more trees.
+
+##### Powershell Script
+
+Create a new file with the name `modify_xml.ps1` on your desktop. In this file, add the following content:
+
+```
+# Define an array of target indices to be removed
+$targetIndexes = @(17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87)  # Add any indices you want to remove
+
+# Initialize a counter
+$indexCounter = 0
+
+# Load the XML file
+try {
+    [xml]$xml = Get-Content -Path "prop-list.xml"
+    Write-Host "XML loaded successfully."
+}
+catch {
+    Write-Host "Error loading XML: $_"
+    exit
+}
+
+# Loop through each target index and remove every second occurrence
+foreach ($targetIndex in $targetIndexes) {
+    Write-Host "Processing target index: $targetIndex"
+
+    # Find all <None> nodes
+    $instances = $xml.SelectNodes("//Instances/None")
+
+    # Loop through the instances and remove every second occurrence with the target index
+    $indexCounter = 0  # Reset the counter for each target index
+    foreach ($node in $instances) {
+        if ($node.Index -eq $targetIndex) {
+            $indexCounter++
+            if ($indexCounter % 2 -eq 0) {
+                # Remove every second occurrence of the target index
+                $node.ParentNode.RemoveChild($node)
+            }
+        }
+    }
+}
+
+# Define output file name with target index
+$outputFile = "PATH TO YOUR DESKTOP\prop-list-removed.xml"
+Write-Host "Saving result to: $outputFile"
+
+# Save the modified XML
+try {
+    $xml.Save($outputFile)
+
+    # Check if the file was saved successfully
+    if (Test-Path $outputFile) {
+        Write-Host "File saved successfully at $outputFile"
+    }
+    else {
+        Write-Host "Failed to save the file."
+    }
+}
+catch {
+    Write-Host "Error saving the XML: $_"
+}
+
+```
+
+At the second line we added `$targetIndexes`. This is a list of all indexes we want to reduce. I started from index 17 (bushes) up to 87 (trees including also the underwater props). Good to know, the Index starts at 0.
+
+At the line where we have `$outputFile` add the path to your desktop and where you added the script.
+
+Now create a `prop-list.xml` file in the same location next to the powershell script `modify_xml.ps1`. In this file, add the complete `<Instances>` content. Save the file and close it.
+
+Last, create an empty `prop-list-removed.xml` file on the same location.
+
+We will now execute the script by right clicking on the script and choose "Run with PowerShell". 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_26.png)
+
+A commandline will open, you will see fastly moving by text in the commandline and shortly after it will automaticly close. If everything went well, the `prop-list.xml` should now not be empty anymore and be roughly half the size of the original `prop-list.xml`.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_27.png)
+
+If we open `prop-list-removed.xml` and search again for `<Index>45</Index>` we will now not find 159 instances but only 80. We went from 159 to 80. 
+
+##### Replace instances in rd3d file
+
+Now that we have our trimmed list, we should patch our original rd3d instances list with the new one. For this we can write a Mod operation just like we do with all our changes.
+
+Although, this can be tricky. If in the future we want to add additional props manually we will have to make sure to add them after this general replacemenet of all instances to make sure they are now overwritten.
+
+```XML
+
 <ModOps>
     <ModOp Type="replace" Path="//MaterialSetFileName">
         <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
@@ -1131,26 +1376,582 @@ What you end up with can be different from what I have now. Maybe you swapped ou
             <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_08.prp</None>
         </FileNames>
     </ModOp>
-</ModOps>  
+    <ModOp Type="replace" Path="//PropGrid/Instances">
+        <Instances>
+            <None>
+                <Index>80</Index>
+                <Position>49.21689 -4.3230915 71.91329</Position>
+                <Rotation>0 -0.99030554 -0 0.13890606</Rotation>
+                <Scale>0.76596254 0.76596254 0.76596254</Scale>
+                <Color>1 1 1 1</Color>
+                <AdaptTerrainHeight>True</AdaptTerrainHeight>
+            </None>
+            <None>
+                <Index>82</Index>
+                <Position>49.750694 -4.45026 71.89124</Position>
+                <Rotation>0 -0.9924732 -0 -0.12246206</Rotation>
+                <Scale>0.8822843 0.8822843 0.8822843</Scale>
+                <Color>1 1 1 1</Color>
+            </None>
+            <None>
+                <Index>79</Index>
+                <Position>61.35524 -4.908747 71.87924</Position>
+                <Rotation>0 -0.9988944 -0 -0.0470103</Rotation>
+                <Scale>0.81014436 0.81014436 0.81014436</Scale>
+                <Color>1 1 1 1</Color>
+            </None>
+            <None>
+                <Index>79</Index>
+                <Position>60.23398 -5.0006495 71.763</Position>
+                <Rotation>0 -0.92834145 -0 -0.37172863</Rotation>
+                <Scale>1.260382 1.260382 1.260382</Scale>
+                <Color>1 1 1 1</Color>
+            </None>
+            ... and more
+        </Instances>
+    </ModOp>
+</ModOps>   
+
 ```
 
-We could now patch our files again and compress them again to a `.a7m` file and have a look ingame. 
-Do take into account the renaming and overwriting of the files in the patching and compressing process.
+If we would now again compress our gamedata and rd3d patch files into our `.a7m` file, we should see the islands with less vegetation props. 
 
-After patching, compressing again and overwriting the files. we should see all the props being replaced.
+So first `xmltest rd3d_original.xml rd3d_patch.xml` and then `FileDBReader\Filedbreader.exe compress -f rd3d_patched.xml -o .data -c 2 -i ..\..\Island_RD3D.xml`. Go back one up in the directory and execute `RdaConsole pack -f colony01_s_05_skinned/gamedata.data colony01_s_05_skinned/rd3d.data -o colony01_s_05_skinned.a7m -y -v 2` to get our compressed, updated `.a7m` file. Update the files of the mod and start the game again with a new creative mode game.
 
-![Skinning island screenshot](./_sources/screenshots/skinning_island_24.png)
+![Skinning island screenshot](./_sources/screenshots/skinning_island_28.png)
 
-And just like that, we have taken a HUGE step in the process of converting islands. As you can see, th atmosphere of the islands is completely different now and it is all coming together step by step.
+This is already looking a lot more in lign with vanilla islands. Although vanilla islands have more grouped trees, this would be more advanced to do with more advanced logic to automaticly place trees. Manually doing that would be madness. For now, I think the amount of trees is totally ok! 
 
-### Tweaks
+##### Optimazations in the materialset 
 
-If we take a closer look at the island, we do see some things that can use some optimazations. For example, if we compare our island with a normal Arctic island, there are way to many trees on the island. You can choose to keep it that way or we can remove trees in the rd3d file to keep it more in lign with vanilla arctic islands.
+Now with the less trees, the muddy patches are more visible and we should do something about it. Not only that but if we compare our materialset with the standard materialset, there are some more arctic specific things that we could improve. Let's go back to our materialset file and do some additional improvements.
 
-Another thing that stands out in a bad way (depending on what you prefer) is that big parts of the ground are muddy and not snowy. If you remember from our materialset, we had a lot of mud materials. We could optimize our materialset and maybe swap out some of those mud materials for snow materials to remove those muddy patches and make it more snowy.
+First, we replace the mud materials with some snow, ice or snowdune materials to cover the muddy parts. It is a bit trial and error and we should not replace all of them because some are needed for the shores and cliffs. Replace some, start the game, see which ones should stay muddy and which ones can be replaced on the ground of the island.
 
-![Skinning island screenshot](./_sources/screenshots/skinning_island_25.png)
+Next, we have some values at the top we can change. Go to the original Arctic materialset file located `data\dlc03\config\engine\material_sets\arctic_01.xml`.
 
-Those are only 2 of many tweaks that we could to to take the island skinning to the next level. The more time you want to invest into this process, the better the result will be.
+Change `<ShaderType>1</>`, `<GritTiling>4.000000</>`, `<GritAlphaSharpness>5.000000</>`, `<GritSlope>0.200000</>`, `<SubSurfaceTiling>6.000000</>`, `<SubSurfaceDistortion>0.800000</>` and `<SubSurfaceDepth>0.200000</>`.
 
+Then every materialset in our conversion file has `<GroundType></>`. The ones in the original Arctic materialset file have `<GroundType>None</>`. This is maybe the same but we could change all of those just to be sure.
 
+Our new final materialset file is now looking like this:
+
+```XML
+<MaterialSet>
+    <ShaderType>1</>
+    <GritDiffuseTexture>data\dlc03\graphics\landscape\terrain\arctic\p_grit_01_diff.psd</>
+    <GritTiling>4.000000</>
+    <GritAlphaSharpness>5.000000</>
+    <GritSlope>0.200000</>
+    <CliffDiffuseTexture>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01_diff.png</>
+    <CliffNormalTexture>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01_norm.psd</>
+    <CliffTiling>4.000000</>
+    <CliffAlphaSharpness>5.000000</>
+    <CliffSlope>0.200000</>
+    <SlushDiffuseTexture></>
+    <SlushNormalTexture></>
+    <SlushHeightTexture></>
+    <SlushTiling>4.000000</>
+    <SlushAlphaSharpness>5.000000</>
+    <SlushSlope>0.200000</>
+    <SubSurfaceTexture>data\dlc03\graphics\landscape\terrain\arctic\p_refraction_01.psd</>
+    <SubSurfaceTiling>6.000000</>
+    <SubSurfaceDistortion>0.800000</>
+    <SubSurfaceDepth>0.200000</>
+    <Material>
+        <ID>31</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>1</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>13</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>26</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>24</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>10.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>28</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>3.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>17</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>8</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>30</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>0.400000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>16</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>9</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.500000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>2</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_cracks_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>7</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>20</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>3</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>2.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>11</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>8.000000</>
+        <AlphaSharpness>8.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>29</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>8.000000</>
+        <AlphaSharpness>3.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>23</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>8.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>14</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>5</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>3.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>19</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>12.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>4</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>0</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
+        <Repetition>2.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>18</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>6</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>0.400000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>21</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>10</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>1.200000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>12</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>25</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>22</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>27</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>15</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>32</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>33</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.300000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>34</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>2.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>35</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>36</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+</>
+```
+
+Overwrite the modfiles again and restart the game to see the result. 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_29.png)
+
+This already looks a lot better. It is still not perfect, and some of the cliffs still have some snowy ground instead of muddy, but we leave it for now. The idea behind it is clear now.
+
+## Mesh Files
+
+It could be that you still see some props or plants that are not supposed to be there. In the case of our island, we still see some green grass. This is mostly the case when converting to Arctic islands because that is the easiest to spot green grass on white snow.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_29-2.png)
+![Skinning island screenshot](./_sources/screenshots/skinning_island_29-3.png)
+
+There are still some grass or floral props or textures that are defined in the mesh files and not in the rd3d file. To remove or change those, we need to adapt the mesh files.
+
+Go into the `_gamedata\colony01_s_05_skinned` folder. In this folder you will see a couple of files and folders including a `meshes` folder.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_30.png)
+
+In the root of the `_gamedata\colony01_s_05_skinned` folder, add the `tmc.xml` file you can find in the previously downloaded `.zip` file.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_31.png)
+
+Open the `meshes` folder. In the root of this folder, add the `tmc_converter.bat` file and the FileDBReader and other tools if needed.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_32.png)
+
+Open the `tmc_converter.bat` file and look at the replace commands that are visible there. Depending on the destination region you will need to adapt those replacement props. In our case we replace the New World jungle flowers with Arctic bushes.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_33.png)
+
+Before executing the .bat file, we first need to prepare all the mesh folders. Open every numbered folder and add the `tmc_compressor.bat` file into this folder together with the FileDBReader files and other tools if needed. 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_34.png)
+
+Once this is done, execute the `tmc_converter.bat`in the parent folder, this will create all xml patch files for the tmc files in every numbered mesh folder.
+
+After this, execute the `tmc_compressor.bat` in every numbered folder. No worries if there are warnings, it goes over every possibility and not every option is available for every mesh. Make sure to wait untill all processes are done for every folder before going to the next step. This will finilise the process of swapping out the leftover props in the mesh if they can be found. Maybe for this specific island they are not there or maybe there are other ones that we did not include.
+
+Make sure your modfolder has the last version of every file and restart the game. If there were still flowers they should be swapped out.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_35.png)
+
+## Cleanup
+
+Offcourse our meshes folder and other folders now contains a lot of not needed files. You can clean up all the xml files, FileDBReader files.
+
+Load the game again with the cleaned up folders to make sure you did not break anything. So we are then ready for the next step!
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_36.png)
