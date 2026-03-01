@@ -1,3 +1,5 @@
 <ModOps>  
- 
+    <ModOp Type="replace" Path="//MaterialSetFileName">
+        <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
+    </ModOp>
 </ModOps>  

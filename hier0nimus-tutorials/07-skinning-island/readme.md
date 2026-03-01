@@ -120,14 +120,14 @@ The following files from the zip should be placed in this directory:
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_4.png)
 
-Go back to the root of your island folder `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned`, copy the file `unpack.bat` in there and execute the file to unpack the island files. 
+Go back to the root of your island folder `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned`, copy the file `unpack_island.bat` in there and execute the file to unpack the island files. 
 
 1 folder with the name of your island and one file with the `.xml` extension will be created.
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_5.png)
 
 ### Unpacking does not work?
-In case this does not work, make sure you have set up the `FileDBReader`, `xmltest` and `rdaconsole` environment variables correctly. Open the `unpack.bat` with a code editor to see which actions are executed. Examples: `RdaConsole ^extract -f %island_name%.a7m -o %island_name% -y`. If you can not setup the environement files correctly, you can always add the `FileDBReader`, `xmltest` and `rdaconsole` references in every folder where you need them. Make sure to check the commands to see what directory you need.
+In case this does not work, make sure you have set up the `FileDBReader`, `xmltest` and `rdaconsole` environment variables correctly. Open the `unpack_island.bat` with a code editor to see which actions are executed. Examples: `RdaConsole ^extract -f %island_name%.a7m -o %island_name% -y`. If you can not setup the environement files correctly, you can always add the `FileDBReader`, `xmltest` and `rdaconsole` references in every folder where you need them. Make sure to check the commands to see what directory you need.
 
 If this is executed correctly, you should have a new folder and a new file inside the root with the same name as the parent folder, with the name of the island. `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned`. The file should be a patch file for the `.a7minfo` file.
 
@@ -371,7 +371,7 @@ This process took me a long time to get right when I was making White and Cold i
 
 Next are the bushes and flowers. To make sure there is at least some vegetation, we swap out the colorful new world flowers with snowy low arctic bushes and grass.
 
-You should now the drill by now. Search for them in the destination materialset file and swap them out with corresponding similar `grass_arctic` materials. 
+You should know the drill by now. Search for them in the destination materialset file and swap them out with corresponding similar `grass_arctic` materials. 
 
 BUT! Something that catches your eye? ... Indeed. We do not replace `<FileName>` with an `.xml` file, but we replace `<ObjectFileName>` with a `.prp` file. Those are actual prop files and not material textures. So actual 3 dimentional things like actual bushes.
 
@@ -859,7 +859,93 @@ We can choose here to keep the original underwater material an have some colorfu
 
 This is it! Our materialset to convert an New World island to an Arctic island is now ready to use! With every conversion from one type of an island to another one, we need such a materialset file. 
 
-Yes, I could have given you a ready to use materialset file you could use, but it is good to understand the process of swapping the materials and how it works. Now you could even tweak your own more or even create other ones for other regions!
+Yes, I could have given you a ready to use materialset file, but it is good to understand the process of swapping the materials and how it works. Now you could even tweak it or even create other ones for other regions!
 
-I also received a version from VALiiiUM a long time ago that helped me a lot in understanding and making my own version of this file. I wanted to mention his hard work here again.
+### Linking materialset file
 
+Now that we have our materialset set up and in the correct location, it is time to link this new materialset in our `rd3d` file. If we look in the `rd3d_original.xml` and search for `MaterialSetFileName` again, we find `<MaterialSetFileName>data/config/engine/material_sets/south_america_01.xml</MaterialSetFileName>`. `MaterialSetFileName` is unique in this file, like we did with the `gamedata_patch.xml` we can do a `<ModOp>` where we replace this value but now in the `rd3d_patch.xml`. 
+
+```XML
+<ModOps>
+    <ModOp Type="replace" Path="//MaterialSetFileName">
+        <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
+    </ModOp>
+</ModOps>
+```
+
+## Checking the progression ingame, packing gamedata and rd3d files again
+
+### Compressing island files
+Now that we have done the basic manipulations and have our patches ready it is time to compress our files again so we end up again with our updated `colony01_s_01_skinned.a7m` file.
+
+We unpacked our `.a7m` file which gave us the `gamedata.data` and the `rd3d.data`. We then decpompressed those files from the `.data` format to the `.xml` format so we could actually open them and manipulate them. We now have to do the same actions but the other way around. So, packing the `.xml` files to `.data` files and then package the `.data` files back into the `.a7m` file.
+
+To do this we will need our tools again which will be executed with the commandline. Like we have the `unpack_island.bat`, which was provided by Taludas and Taube, there is also a `pack_island.bat`. But for some reason, I can not seem to get that one working. So, I manually do those actions what the `.bat` file otherwise does automaticly.
+
+Go to `data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_01_skinned\colony01_s_01_skinned` and open a commandline in this directory.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_17.png)
+
+The first step we will be taking is executing the patch files we prepared. We will merge the original xml file with the patch xml file. That way we end up with an xml file which has our mod operations included. So, in our case, a patched file which includes the new GlobalAmbientName, materialset, the new props, ect. Executing / merging 2 xml files is done with `xmltest`. 
+
+We execute the following command to first do it for the gamedata file:
+`xmltest gamedata_original.xml gamedata_patch.xml`
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_18.png)
+
+We will get a `patched.xml` file in the directory now. Rename this file to `gamedata_patched.xml`. You can open this file and you should see the changed `GlobalAmbientName` and `VegetationPropSetName` at the top.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_19.png)
+
+Now that we have our patched gamedata file, we can compress this .xml file back to a .data file. To do this we need the Filedbreader. This one handles compressing and decompressing from `.xml` to `.data` or the other way around. For this we do the following command:
+
+`Filedbreader.exe compress -f gamedata_patched.xml -o .data -c 2 -i ..\..\Island_Gamedata_v3.xml`
+
+In case your environment variables are not correctly set up and you placed the FileDBReader folder in there, you can also use
+`FileDBReader\Filedbreader.exe compress -f gamedata_patched.xml -o .data -c 2 -i ..\..\Island_Gamedata_v3.xml`
+
+The result will be a `gamedata_patched.data` file which we will be compressing into the `.a7m` file after we also did the same for the `rd3d` file.
+
+To compress the `rd3d` file back to its data format with the patches included, we first merge our patch with the orginial file like we did for the gamedata file. We do this also with the `xmltest` tool and the following command:
+
+`xmltest rd3d_original.xml rd3d_patch.xml`
+
+We again get a `patched.xml` file which we rename to `rd3d_patched.xml`. If we open this file, we should also see our changes we did in the patch in this file.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_20.png)
+
+The next step is again like we did with the gamedata file, compressing the patched xml to the data format. We do this with the following command:
+`Filedbreader.exe compress -f rd3d_patched.xml -o .data -c 2 -i ..\..\Island_RD3D.xml`
+
+In case your environment variables are not correctly set up and you placed the FileDBReader folder in there, you can also use
+`FileDBReader\Filedbreader.exe compress -f rd3d_patched.xml -o .data -c 2 -i ..\..\Island_RD3D.xml`
+
+You will get a `rd3d_patched.data` file.
+
+To be able to do the next step, first rename the original `gamedata.data` and `rd3d.data` to `gamedata_original.data` and `rd3d_original.data` to keep them as backup.
+Then, rename both the `gamedata_patched.data` and the `rd3d_patched.data` to `gamedata.data` and `rd3d.data`. For some weird reason the next step only works when using the original name.
+
+You should have the following files:
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_21.png)
+
+Amazing work! Now go up one folder to the root of the island file. 
+
+We will now compress our `data` files back into the `a7m` file with the following command (open a new commandline console or go up one folder with using `cd ..` in the commandline you have still open):
+`RdaConsole pack -f colony01_s_01_skinned/gamedata.data colony01_s_01_skinned/rd3d.data -o colony01_s_01_skinned.a7m -y -v 2`
+
+For some weird reason this only works with the original .data file names. I tried it also with _patched.data versions but this did not work for some reason and the game kept loading in the loading screen having an infinte loading screen.
+
+Your `colony01_s_01_skinned.a7m` file should be updated. It could be that the filesize did not change compared to the previous version, but you should see the Date modified being different.
+
+Congratulations! You have now converted the basics of an island from a New World island to an Arctic islands. We are not ready yet offcourse, but we should update the files in the mods folder and start to game to see if everything still works and our changes are visible. We now have some not needed files into our folders, but we will clean those up later.
+
+If we look ingame, all looks good! The ground is now snowy compared to the grass before.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_22.png)
+
+We do still see the New World trees and some other wrong vegetation, but that will be the next step we will take! THe important thing is that we now confirmed our materialset is loading correctle and other patches we did in the gamedata and rd3d file are working correctly.
+
+## Props and vegetation
+
+The next thing we will be changing are the trees, bushes and other props we can find on the island. Now we see palm trees and green bushes but those are offcourse not the ones we want to see in the Arctic.
