@@ -9,7 +9,10 @@ Enjoy!
 -->
 
 <ModOps>
-  <ModOp Type="merge" GUID="116682,116681,116680,116679" Path="/Values/RandomIsland/">
+  <ModOp Type="merge" GUID="116682,116679" Path="/Values/RandomIsland/">
     <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_05_skinned\colony01_s_05_skinned.a7m</FilePath>
+  </ModOp>
+  <ModOp Type="merge" GUID="116680,116681" Path="/Values/RandomIsland/">
+    <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_07_skinned\colony01_s_07_skinned.a7m</FilePath>
   </ModOp>
 </ModOps>

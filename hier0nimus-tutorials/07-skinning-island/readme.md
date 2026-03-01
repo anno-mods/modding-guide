@@ -1952,6 +1952,37 @@ Make sure your modfolder has the last version of every file and restart the game
 
 Offcourse our meshes folder and other folders now contains a lot of not needed files. You can clean up all the xml files, FileDBReader files.
 
-Load the game again with the cleaned up folders to make sure you did not break anything. So we are then ready for the next step!
+Load the game again with the cleaned up folders to make sure you did not break anything. So we are then ready for the next step, a more advanced island with mountains and mines!
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_36.png)
+
+## More complex island
+
+Now that we have created a basic island and we know the basics, we can advance to the next step, a more complex island with mines and other deposits.
+
+We can choose another island with some mountains and mines to convert by copying one of the other DLC12 small island folders to our custom island directory. Go to `data\dlc12\sessions\islands\pool\colony01`, take for example `colony01_s_07` and copy it into `data\tutorial\sessions\islands\pool\skinned_islands` and rename it.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_37.png)
+
+Follow all the previous steps again as a test to see if you understand the process. Once we have going through all the same previous steps, we can dive into adding the mines and other deposits into the mix. 
+
+The second island should go a lot quicker because we already know the process and we can reuse some of the logic and files already. We also for example do not have to redo the materialset because we can just reuse it.
+
+We could change 2/4 island references we had before into our `assets.xml` that change the original small islands and see if our new island is also visible in the game. Just to be sure. 
+
+```XML
+<ModOps>
+  <ModOp Type="merge" GUID="116682,116681" Path="/Values/RandomIsland/">
+    <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_05_skinned\colony01_s_05_skinned.a7m</FilePath>
+  </ModOp>
+  <ModOp Type="merge" GUID="116680,116679" Path="/Values/RandomIsland/">
+    <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_07_skinned\colony01_s_07_skinned.a7m</FilePath>
+  </ModOp>
+</ModOps>
+```
+
+Remember, test regularly after every step to see if everything works with every step. It will benefit you and mistakes will be quickly spotted!
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_38.png)
+
+We have our second island ingame, and can go through everything again to skin it with the arctic flavour.
