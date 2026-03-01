@@ -104,7 +104,7 @@ You should again see the same island ingame but now it loads our own custom isla
 
 ## Preparations of files
 
-To be able to convert/skin islands, like with the modelling process and opening map template files we need some files to convert island specific files. I did not create those files myself and got huge help from Taube and Taludas in this process. They did all the groundwork for this and I just make use of their hard work. A big thank you to them! Without them, this would not have been possible and I would not have been able to write down this process and share it with all of you.
+To be able to convert/skin islands, like with the modelling process and opening map template files we need some files to convert island specific files. I did not create those files myself and got huge help from **Taube**, **Taludas** and **VALiiiUM** in this process. They did all the groundwork for this and I just make use of their hard work. A big thank you to them! Without them, this would not have been possible and I would not have been able to write down this process and share it with all of you.
 
 ### Which files?
 
@@ -247,5 +247,619 @@ Do the same for `<CliffDiffuseTexture>`, `CliffNormalTexture` and `SubSurfaceTex
 
 Double check all the values above the `<Material>` node, but as far as I know apart from the ones we changed, the others ones are all the same. There can probably also be done some tweaking in regards of those values maybe, but that is out of my knowledge and scope of this guide.
 
-Now the trickiest part can start about this file, finding a corresponding material for the original material. I can only advice to just follow your guts and see in the original arctic file which corresponding files you have for beach, mountain, mud or other materials. Grass in this case could be swapped out for snow or something else depending on what you want to achieve. If you want to see the full list of available materials you can follow the path of the materials and open that location in the extracted rda folders. `data/dlc03/graphics/landscape/terrain/arctic/` and `data\dlc03\graphics\props\terrain_props\vegetation\`. You can also get some inspiration there for matching materials.
+Now the trickiest part can start about this file, finding a corresponding material for the original material. I can only advice to just follow your guts and see in the original arctic file which corresponding files you have for beach, mountain, mud or other materials. Grass in this case could be swapped out for snow or something else depending on what you want to achieve. 
+
+If you want to see the full list of available materials you can follow the path of the materials and open that location in the extracted rda folders. `data/dlc03/graphics/landscape/terrain/arctic/` and `data\dlc03\graphics\props\terrain_props\vegetation\`. You can also get some inspiration there for matching materials.
+
+#### Change the Materials
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_14.png)
+
+On the left we see the materialset where we want to copy everything to, on the right our example arctic materialset we take as a source to copy the arctic materials from.
+
+It is important to keep the same `<ID>`'s and the order of the different materials in the destination materialset. The way those materialsets work is that the island is created based on this. It looks up the mapped materials so if we would change the order for one material it will be mapped with the wrong part of the island.
+
+Let's do a couple of materials together and after that you can do the rest yourself.
+
+##### Beach
+
+The first material we encounter is for a part that is mapped for the beach:
+
+```XML
+    <Material>
+        <ID>31</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_06.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+```
+
+We have to look into the arctic materialset and see if we find a similar beach material.
+If we scroll through the complete arctic materialset file, we encounter 2 beach materials. 
+
+```XML
+    <Material>
+        <ID>15</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>3.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>7</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>3.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+```
+
+The same if we would look into the directory mentioned earlier:
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_15.png)
+
+We now choose one of those arctic beach materials so swap out the new world beach material.
+
+So, for example, swap `<FileName>data/graphics/landscape/terrain/texture_pool/s_beach_06.xml</>` with `<FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>`.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_16.png)
+
+If we scroll down more, we find more beach materials. `s_beach_05.xml`, `s_beach_12.xml`, `s_beach_07.xml`, `s_beach_02.xml`.
+As you can see, the New World has more variation in the beach materials compared to the Arctic. For the Arctic we only have 2 of them.
+We replace all of them with the ones we have available for the Arctic. Do not worry, we can always come back to this process to experiment if we want to change this.
+
+So, replace `05` with `03`, `12` with `02`, `07` with `03`, ect... Offcourse with the correct path to the arctic files.
+
+##### Mountain
+
+Next after the beach is the Mountain. If we scroll down we see we have different mountain materials. Again, look to the Arctic materialset or folder and see from which mountain materials we can choose from.
+
+Replace `<FileName>data/graphics/landscape/terrain/terra/tropical_mountain_04.xml</>` and the other mountain materials from the original new world materialset with `<FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_02.xml</>` or `<FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>`.
+
+##### Mud
+
+Next in the list is Mud. We only find one mud material for the Arctic. So we can swap out all of them with this one. 
+Good to know, we can come back to this materialset to change certain materials and experiment more by maybe swapping one of the mud ones for a snowy one. But that is all depending on the amount of time you want to invest into perfecting this. 
+
+So, swap out `<FileName>data/graphics/landscape/terrain/texture_pool/b_mud_09.xml</>` and the other ones with `<FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>`
+
+##### Grass
+
+Grass in the New World is common and we want grass on multiple places on the ground. Grass in the Arctic is a different story. We do not have much grass on the ground in the arctic, mostly some bushes. 
+
+If we look at other options for the Arctic to swap out the grass with something else, we have some grass materials but I think swapping those out would be not correct. This would result in the Arctic being covered with grass all over the island. And most of the ground is actually snow. We will reserve the grass materials for replacing bushes.
+
+If we then look at other suitable materials for the general grass materials we have the `snow`, `cracks`, `ice`, `snowdune`.
+
+- a_snow_01
+- a_snow_02
+- a_snow_03
+- a_snow_04
+- a_snow_05
+- a_snow_06
+- a_snow_07
+- a_snow_08
+- a_snow_09
+- p_cracks_03
+- p_ice_01
+- p_snow_01
+- p_snowdune_01
+- p_snowdune_02
+- p_snowdune_04
+
+We could use all of those to create some variation for all the grass and flower materials we find. Swap them out and remember, we can always come back to tweak this (and we probably will).
+
+This process took me a long time to get right when I was making White and Cold islands. A lot of trial and error and even then sometimes it is still not perfect because the way the mapping is done and the available materials we have are just limited.
+
+##### Bushes and flowers
+
+Next are the bushes and flowers. To make sure there is at least some vegetation, we swap out the colorful new world flowers with snowy low arctic bushes and grass.
+
+You should now the drill by now. Search for them in the destination materialset file and swap them out with corresponding similar `grass_arctic` materials. 
+
+BUT! Something that catches your eye? ... Indeed. We do not replace `<FileName>` with an `.xml` file, but we replace `<ObjectFileName>` with a `.prp` file. Those are actual prop files and not material textures. So actual 3 dimentional things like actual bushes.
+
+As mentioned above, those are in a different location `data\dlc03\graphics\props\terrain_props\vegetation\`.
+There is only 1 grass prop available. You could also include some bushes if you want some higher vegetation. But, there will be another layer of adaptations where we will be adding some props to the island including bushes so do not worry at this point if you do not add them (yet).
+
+##### Underwater plant
+
+We find two underwater prop materials for the Arctic in the original new world materialset file. But, if we look at Arctic alternatives, we actually do not have any. The only underwater material we find is a texture material but not a prop material. 
+
+We can choose here to keep the original underwater material an have some colorful corals in the Arctic or swap them out for generic bush or grass prop materials which will also look okish underwater.
+
+#### Materialset New World to Arctic result
+
+```XML
+<MaterialSet>
+    <ShaderType>0</>
+    <GritDiffuseTexture>data\dlc03\graphics\landscape\terrain\arctic\p_grit_01_diff.psd</>
+    <GritTiling>8.000000</>
+    <GritAlphaSharpness>10.000000</>
+    <GritSlope>0.100000</>
+    <CliffDiffuseTexture>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01_diff.png</>
+    <CliffNormalTexture>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01_norm.psd</>
+    <CliffTiling>4.000000</>
+    <CliffAlphaSharpness>5.000000</>
+    <CliffSlope>0.200000</>
+    <SlushDiffuseTexture></>
+    <SlushNormalTexture></>
+    <SlushHeightTexture></>
+    <SlushTiling>4.000000</>
+    <SlushAlphaSharpness>5.000000</>
+    <SlushSlope>0.200000</>
+    <SubSurfaceTexture>data\dlc03\graphics\landscape\terrain\arctic\p_refraction_01.psd</>
+    <SubSurfaceTiling>16.000000</>
+    <SubSurfaceDistortion>1.000000</>
+    <SubSurfaceDepth>0.300000</>
+    <Material>
+        <ID>31</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>1</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>13</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>26</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>24</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>10.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>28</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>17</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>8.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>8</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
+        <Repetition>5.000000</>
+        <AlphaSharpness>10.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>30</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>16</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>9</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>3.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>2</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>7</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>20</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>3</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>2.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>11</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>8.000000</>
+        <AlphaSharpness>8.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>29</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>8.000000</>
+        <AlphaSharpness>3.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>23</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>8.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>14</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>5</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>3.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>19</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>12.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>4</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>0</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
+        <Repetition>2.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>18</>
+        <Type>0</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>6</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>0.400000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>21</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>10</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>1.200000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>12</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>25</>
+        <Type>0</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>4.000000</>
+        <GroundType>None</>
+        <ObjectFileName></>
+        <GritEnabled>1</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>22</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>27</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>15</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>32</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>33</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.300000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>34</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>2.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>35</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+    <Material>
+        <ID>36</>
+        <Type>1</>
+        <FileName></>
+        <Repetition>1.000000</>
+        <AlphaSharpness>5.000000</>
+        <GroundType></>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
+        <GritEnabled>0</>
+        <GritDirection>1.000000</>
+        <GritSlopeThreshold>0.200000</>
+    </>
+</>
+```
+
+#### Materialset conclusion
+
+This is it! Our materialset to convert an New World island to an Arctic island is now ready to use! With every conversion from one type of an island to another one, we need such a materialset file. 
+
+Yes, I could have given you a ready to use materialset file you could use, but it is good to understand the process of swapping the materials and how it works. Now you could even tweak your own more or even create other ones for other regions!
+
+I also received a version from VALiiiUM a long time ago that helped me a lot in understanding and making my own version of this file. I wanted to mention his hard work here again.
 

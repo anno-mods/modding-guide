@@ -22,7 +22,7 @@
     <Material>
         <ID>31</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_06.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
@@ -34,7 +34,7 @@
     <Material>
         <ID>1</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_05.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
@@ -46,7 +46,7 @@
     <Material>
         <ID>13</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/south_america/s_beach_12.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
@@ -58,7 +58,7 @@
     <Material>
         <ID>26</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_07.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>4.000000</>
         <GroundType></>
@@ -70,7 +70,7 @@
     <Material>
         <ID>24</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_07.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>10.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
@@ -82,7 +82,7 @@
     <Material>
         <ID>28</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/south_america/s_beach_02.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
@@ -94,7 +94,7 @@
     <Material>
         <ID>17</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/terra/tropical_mountain_04.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>8.000000</>
         <GroundType></>
@@ -106,7 +106,7 @@
     <Material>
         <ID>8</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/terra/tropical_mountain_02.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
         <Repetition>5.000000</>
         <AlphaSharpness>10.000000</>
         <GroundType></>
@@ -118,7 +118,7 @@
     <Material>
         <ID>30</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/terra/tropical_mountain_03.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>4.000000</>
         <GroundType></>
@@ -130,7 +130,7 @@
     <Material>
         <ID>16</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_09.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
@@ -142,7 +142,7 @@
     <Material>
         <ID>9</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_07.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>3.000000</>
         <GroundType>None</>
@@ -154,7 +154,7 @@
     <Material>
         <ID>2</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_05.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType>None</>
@@ -166,7 +166,7 @@
     <Material>
         <ID>7</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_06.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>4.000000</>
         <GroundType>None</>
@@ -178,7 +178,7 @@
     <Material>
         <ID>20</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_04.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType>None</>
@@ -190,7 +190,7 @@
     <Material>
         <ID>3</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_02.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>2.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType>None</>
@@ -202,10 +202,10 @@
     <Material>
         <ID>11</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/d_grass_07.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
         <Repetition>8.000000</>
-        <AlphaSharpness>3.000000</>
-        <GroundType>Bushes</>
+        <AlphaSharpness>8.000000</>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -214,10 +214,10 @@
     <Material>
         <ID>29</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/d_grass_07.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
         <Repetition>8.000000</>
         <AlphaSharpness>3.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -226,10 +226,10 @@
     <Material>
         <ID>23</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_10.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>8.000000</>
         <AlphaSharpness>5.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -238,10 +238,10 @@
     <Material>
         <ID>14</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/b_mud_08.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_mud_03.xml</>
         <Repetition>4.000000</>
-        <AlphaSharpness>20.000000</>
-        <GroundType></>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -250,10 +250,10 @@
     <Material>
         <ID>5</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_09.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>3.000000</>
-        <AlphaSharpness>1.000000</>
-        <GroundType></>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -262,10 +262,10 @@
     <Material>
         <ID>19</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/d_grass_08.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
         <Repetition>12.000000</>
         <AlphaSharpness>2.000000</>
-        <GroundType>Bigbushes</>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -274,10 +274,10 @@
     <Material>
         <ID>4</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/e_coral_01.xml</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>2.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -286,10 +286,10 @@
     <Material>
         <ID>0</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/south_america/s_roots_01.xml</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
         <Repetition>2.000000</>
-        <AlphaSharpness>15.000000</>
-        <GroundType></>
+        <AlphaSharpness>5.000000</>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -298,10 +298,10 @@
     <Material>
         <ID>18</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/tropical_stone_01.xml</>
+        <FileName>data/graphics/landscape/terrain/texture_pool/p_snowdune_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -310,22 +310,22 @@
     <Material>
         <ID>6</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/south_america/s_rock_01.xml</>
-        <Repetition>12.000000</>
-        <AlphaSharpness>20.000000</>
-        <GroundType></>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_mountain_01.xml</>
+        <Repetition>4.000000</>
+        <AlphaSharpness>2.000000</>
+        <GroundType>None</>
         <ObjectFileName></>
-        <GritEnabled>0</>
-        <GritDirection>1.000000</>
+        <GritEnabled>1</>
+        <GritDirection>0.400000</>
         <GritSlopeThreshold>0.200000</>
     </>
     <Material>
         <ID>21</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/south_america/s_beach_02.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -334,10 +334,10 @@
     <Material>
         <ID>10</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/d_grass_06.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/p_snowdune_01.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>1.200000</>
-        <GroundType>Grass</>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
@@ -346,10 +346,10 @@
     <Material>
         <ID>12</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_06.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_02.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>5.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>1</>
         <GritDirection>1.000000</>
@@ -358,10 +358,10 @@
     <Material>
         <ID>25</>
         <Type>0</>
-        <FileName>data/graphics/landscape/terrain/texture_pool/s_beach_07.xml</>
+        <FileName>data/dlc03/graphics/landscape/terrain/arctic/a_beach_03.xml</>
         <Repetition>4.000000</>
         <AlphaSharpness>4.000000</>
-        <GroundType></>
+        <GroundType>None</>
         <ObjectFileName></>
         <GritEnabled>1</>
         <GritDirection>1.000000</>
@@ -374,7 +374,7 @@
         <Repetition>1.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\grass\flowers_jungle_01.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -386,7 +386,7 @@
         <Repetition>1.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\grass\flowers_jungle_02.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -398,7 +398,7 @@
         <Repetition>1.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\grass\flowers_jungle_03.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -410,7 +410,7 @@
         <Repetition>1.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\grass\flowers_jungle_04.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -422,7 +422,7 @@
         <Repetition>1.300000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\grass\grass_jungle_01.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -434,7 +434,7 @@
         <Repetition>2.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\bushes\bush_jungle_03_large.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -446,7 +446,7 @@
         <Repetition>1.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\water\underwater_plant_06.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
@@ -458,7 +458,7 @@
         <Repetition>1.000000</>
         <AlphaSharpness>5.000000</>
         <GroundType></>
-        <ObjectFileName>data\graphics\props\terrain_props\vegetation\water\underwater_plant_07.prp</>
+        <ObjectFileName>data\dlc03\graphics\props\terrain_props\vegetation\grass\grass_arctic_01.prp</>
         <GritEnabled>0</>
         <GritDirection>1.000000</>
         <GritSlopeThreshold>0.200000</>
