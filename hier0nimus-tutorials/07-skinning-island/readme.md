@@ -949,3 +949,208 @@ We do still see the New World trees and some other wrong vegetation, but that wi
 ## Props and vegetation
 
 The next thing we will be changing are the trees, bushes and other props we can find on the island. Now we see palm trees and green bushes but those are offcourse not the ones we want to see in the Arctic.
+
+### PropGrid
+If we go back to our original rd3d file, the next part we will be adapting is the `<PropGrid.`. This is the largest part of this file and contains all the different props on the island. Trees, bushes, rocks and other props are defined here. 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_23.png)
+
+#### FileNames and Instances
+The first part of this `<PropGrid>` is the `<FileNames>` node. This contains all the different props that are used on this island. You can see different trees, brushes, rocks,... This is a list that has a fixed (!) order and amount of props. We can expand this list but it is important to know that the next part, the `<Instances>` uses this list in their specific order as reference.
+
+If we have a look at the `<Instances>` list, we see all `<None>` nodes which contain and `<Index>`, `<Position>`, `<Rotation>`, `<Scale>`, `<AdaptTerrainHeight>`. This `<Index>` references to the prop in the above list in `<FileNames>`. If we would insert another props on the 10th place of the list, all the following props would all of a sudden have a different index and all the props referenced in the `<Instances>` would reference to the wrong prop. This could result in a rock all of a sudden being a tree for example. In some cases that would probably be fine, but it is more safe to stick with the same order and do a first conversion with the existing similar props. Swapping a tree for a tree, a rock for a rock, ect. The other nodes are straight forward and tell us more about the specific prop. The size, the position,... Depending on the island there are thousands and thousands of props. Manually checking and changing those would be almost impossible. So, we stick to swapping based on similar props and will actually get a really good result already with minimal effort.
+
+Now that we went over it, we know that we should stick to the amount of props in that list (for now). We should not add new props (for now) and just swap the `<FileNames>` - `<None>` paths with corresponding paths of props from the region we want the island to swap to, in our case Arctic props. You could again open an `rd3d` file from an existing Arctic island to see the props used on those original Arctic islands, or you could also go to the extracted rda files folder and check the props there. `data/dlc03/graphics/props/terrain_props/`.
+
+Just like the materials in the materialset file, it is now important to swap out the props for similar props. In case you want a more visual approach, you could create a blender file and import all the props and place them in an overview next to eachother to more easily compare the different props and find a matching prop from the other region. It would take some time to set up an overview but can help a lot in terms of finding similar trees or rocks in size.
+
+Something that is good to know is that the developers actually made it also more easy for themselves. There are around 23 rocks which all have their own New World and Arctic variation compared to the base Old World version. Those are easily swappable. `data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_01.prp` would then become `data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_01.prp` and so on.
+
+Let's start with swapping the first props. Again, we do not change the original file, but will be patching the file. In the `rd3d_patch.xml` file we create a new `<ModOp>` which we will use to swap out the `PropGrid/FileNames`.
+
+```XML
+<ModOps>
+    <ModOp Type="replace" Path="//MaterialSetFileName">
+        <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
+    </ModOp>
+    <ModOp Type="replace" Path="//PropGrid/FileNames">
+        <FileNames>
+
+        </FileNames>
+    </ModOp>
+</ModOps>
+```
+
+We should add the original New World prop list in there and swap them all. That way we are sure we have the same amount of props and our list is still the same.
+
+```XML
+<ModOps>
+    <ModOp Type="replace" Path="//MaterialSetFileName">
+        <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
+    </ModOp>
+    <ModOp Type="replace" Path="//PropGrid/FileNames">
+        <FileNames>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_01.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_02.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_03.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_06.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_09.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_12.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_13.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_14.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_15.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_16.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_17.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_18.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_19.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_20.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_23.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_01.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_02.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_03.prp</None>
+      <None>data/graphics/props/terrain_props/rocks/rocks_pebbles_jungle/pebbles_jungle_04.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_large.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_medium.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_01_small.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_large.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_medium.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_02_small.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_large.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_large_mountain.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_medium.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_medium_mountain.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_03_small.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_04_small.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_high_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/bushes/bush_jungle_high_01_var2.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_jungle_palm_03.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_palm_stump_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/dead/tree_dead_palm_stump_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_01_03.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_04_03.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_05_03.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_06_03.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_special_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle/tree_jungle_palm_special_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/trees/jungle_mountain/mountain_jungle_tree_04.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_01.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_02.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_03.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_04.prp</None>
+      <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_08.prp</None>
+        </FileNames>
+    </ModOp>
+</ModOps>  
+```
+
+ For full transparancy, Taludas has created some nice automated files to swap out the lists, but I think it is important to understand the logic here and do it by hand at least one time.
+ 
+ Now go over the full list and swap out the New World props for corresponding Arctic props. This list is unique for every island because every island is different. Most of the props are similar, but if you open multiple island you will see that there are at least some small differences. If we have done one island, we will have an easier time doing it for the next one, but still, you will have to do this process for every island you want to convert.
+ 
+ For certain props that have a similar version you can do a find and replace. For example, for the rocks I can do:
+ `<None>data/graphics/props/terrain_props/rocks/rocks_jungle/rock_jungle_` and swap it with `<None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_`.
+ 
+ Same for the pebbles and some other props. Go over them carefully. You will get the hang out of it quickly. I group them by type. First the rocks, then the pebbles, then the bushes, then trees, then dead trees, ect. In some cases you will not have enough corresponding props because there are just not that much corresponding different props for the Arctic. Then you can just use the same prop for a second or even more times. Be sure to swap the different lines, so the amount of lines keeps the same in the same order.
+
+What you end up with can be different from what I have now. Maybe you swapped our trees or brushes differently, that is totally fine. I have the following result of my `rd3d_patch.xml` file:
+
+```XML
+<ModOps>
+    <ModOp Type="replace" Path="//MaterialSetFileName">
+        <MaterialSetFileName>data/config/engine/material_sets/south_america_arctic.xml</MaterialSetFileName>
+    </ModOp>
+    <ModOp Type="replace" Path="//PropGrid/FileNames">
+        <FileNames>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_09.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_12.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_13.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_14.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_15.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_16.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_17.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_18.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_19.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_20.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/rocks_snow/rock_snow_23.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/rocks/pebbles_snow/pebbles_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_large.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_large.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_medium.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_03_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_02_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/bushes/bush_arctic_01_small.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_ground_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_dead_snow_stump_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_03.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_04.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_05.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_06.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_01.prp</None>
+            <None>data/dlc03/graphics/props/terrain_props/vegetation/trees/tree_fir_snow_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_01.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_02.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_03.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_04.prp</None>
+            <None>data/graphics/props/terrain_props/vegetation/water/underwater_plant_08.prp</None>
+        </FileNames>
+    </ModOp>
+</ModOps>  
+```
+
+We could now patch our files again and compress them again to a `.a7m` file and have a look ingame. 
+Do take into account the renaming and overwriting of the files in the patching and compressing process.
+
+After patching, compressing again and overwriting the files. we should see all the props being replaced.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_24.png)
+
+And just like that, we have taken a HUGE step in the process of converting islands. As you can see, th atmosphere of the islands is completely different now and it is all coming together step by step.
+
+### Tweaks
+
+If we take a closer look at the island, we do see some things that can use some optimazations. For example, if we compare our island with a normal Arctic island, there are way to many trees on the island. You can choose to keep it that way or we can remove trees in the rd3d file to keep it more in lign with vanilla arctic islands.
+
+Another thing that stands out in a bad way (depending on what you prefer) is that big parts of the ground are muddy and not snowy. If you remember from our materialset, we had a lot of mud materials. We could optimize our materialset and maybe swap out some of those mud materials for snow materials to remove those muddy patches and make it more snowy.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_25.png)
+
+Those are only 2 of many tweaks that we could to to take the island skinning to the next level. The more time you want to invest into this process, the better the result will be.
+
+
