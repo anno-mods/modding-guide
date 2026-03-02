@@ -2001,5 +2001,78 @@ We have our second island ingame, and can go through everything again to skin it
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_39.png)
 
+### Mines
+
+If we look back to the original island, it has mines but we do not see those on our Arctic file. 
+
+Go back to the `gamedata_original.xml` and search for `AreaManagerData`. If we scroll down a bit in this node, we find `ObjectGroupCollection` and `GameObject`.
+
+#### ObjectGroupCollection
+
+```XML
+<ObjectGroupCollection>
+    <ObjectGroups>
+        <None>New Group 4</None>
+        <None>
+            <GameObjects>
+                <None>-9218868432932438015</None>
+                <None>-9218868432932438014</None>
+                <None>-9218868432932438013</None>
+            </GameObjects>
+        </None>
+        <None>New Group 5</None>
+        <None>
+            <GameObjects>
+                <None>-9218868432932438012</None>
+                <None>-9218868432932438011</None>
+                <None>-9218868432932438010</None>
+            </GameObjects>
+        </None>
+    </ObjectGroups>
+</ObjectGroupCollection>
+```
+
+Inside this node, we see 2 groups of `GameObjects`. Those contain different nodes with a long ID.
+
+If we would search for one of those ID's, we would find another reference. 
+For example, if we would search for `9218868432932438015` we find another node which also contains `<guid>1000029</guid>`, `<Position>86.5 1.8203125 114.5</Position>`,...
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_40.png)
+
+If we would look for this GUID `1000029` on a1800.net, we will discover this is an asset from the template `Slot`, and this is the `random slot mining`. 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_41.png)
+
+This is a mineslot, why does it not appear on our island?
+
+If we look at all the slot assets, we see the Arctic has a different slot asset with GUID `116037`, random slot mining arctic.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_42.png)
+
+#### GameObject
+
+If we go back to our `ObjectGroupCollection`, and right after this node we have the `GameObject` node. This contains `objects` and this contains all different `None` nodes. They have a similar structure as the one we found for our `random slot mining`.
+
+The first one we have there has a GUID `100849`. If we go back to a1800.net and search for this GUID we find out this is a `andom slot oil pump`.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_43.png)
+
+Because we took a New World island, we offcourse have different types of mines and deposits. Because the Arctic does not support those types of mines, they are not shown and removed.
+
+We can go through the complete list and make an overview of all the different deposits, mines and other objects we can find for this island.
+
+- random slot oil pump [GUID: 100849]
+- slot mining workarea cave [GUID: 100419]
+- slot mining workarea mountain [GUID: 1000253]
+- random slot mining [GUID: 1000029]
+- random slot clay [GUID: 100417]
+
+After the `GameObject` we can also have `NaturePreset` and `EditorObject`.
+
+#### Swapping mines and deposits
+
+Because we make an Arctic island, we are limited in what we have available in terms of deposits. In vanilla we only have Deep Gold Mines and Gas deposits. We do not have clay or oil deposits or production buildings available so we will ignore those for this guide. Do know that it is possible to make new deposit types just like I did in White and Cold by making Oil deposits in the harbour area, diamond deposits on land, hot spring deposits on land, ect. That is more advanced and we will start with just swapping out the existing ones for existing ones for the Arctic region. 
+
+We will replace the oil ones with gas deposits, remove the clay ones and swapt the random mountain mines with the corresponding arctic ones.
 
 
