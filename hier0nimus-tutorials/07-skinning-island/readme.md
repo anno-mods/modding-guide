@@ -1986,3 +1986,20 @@ Remember, test regularly after every step to see if everything works with every 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_38.png)
 
 We have our second island ingame, and can go through everything again to skin it with the arctic flavour.
+- We copied the folder of the island and renamed the folder, the files and the subfolder to `colony01_s_07_skinned`.
+- We added all the needed files into the directories (`a7minfo.xml`, `Island_Gamedata_v3.xml`, `Island_RD3D.xml`, `unpack_island.bat`)
+- We unpacked the island file into the gamedata and rd3d files into the separate folder.
+- We decompressed the gamedata and rd3d data file into the original xml files.
+- We copy over the content of the gamedata patch file from our previous island into the patch file of our new island. Those can be exactly the same. We will add more later.
+- We copy the first ModOp with the materialset from our previous rd3d patch file in our new rd3d patch file.
+- We replace the corresponding PropGrid FileNames in with a new patch ModOp for our new island in the rd3d patch file.
+- We remove 50% of the trees and bushes props in the PropGrid Instances with the powershell script and add the trimmed list as a ModOp to the rd3d patch file.
+- We recompress our files again into the updated island file.
+- We add the files into the meshes folders
+- We patch our meshes files to make sure the New World leftover props are replaced.
+- We start the game and just like that see our new skinned island!
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_39.png)
+
+
+
