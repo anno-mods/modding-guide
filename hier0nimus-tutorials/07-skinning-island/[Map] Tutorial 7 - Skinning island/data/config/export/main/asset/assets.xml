@@ -15,4 +15,11 @@ Enjoy!
   <ModOp Type="merge" GUID="116680,116681" Path="/Values/RandomIsland/">
     <FilePath>data\tutorial\sessions\islands\pool\skinned_islands\colony01_s_07_skinned\colony01_s_07_skinned.a7m</FilePath>
   </ModOp>
+
+  <!-- NEW SLOTTYPES TO SET -->
+  <ModOp Type="add" GUID="116032" Path="/Values/MineSlotResourceSet/MineSlots">
+    <Item>
+      <MineSlot>112691</MineSlot>      <!-- Arctic Gas Deposit Slot -->
+    </Item>
+  </ModOp>
 </ModOps>

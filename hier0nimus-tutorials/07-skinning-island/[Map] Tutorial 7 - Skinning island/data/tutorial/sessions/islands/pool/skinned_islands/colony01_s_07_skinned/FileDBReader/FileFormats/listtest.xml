@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Converts>
+  <InternalCompression>
+    <Element Path="//AreaManagerData/None/Data" CompressionVersion ="1"/>
+  </InternalCompression>
+  <Converts>
+    <Convert Path ="//StreetID/val" Type="Byte" Structure ="List" />
+    <Convert Path ="//AreaIDs/val" Type="Byte" Structure ="List" />
+    <Convert Path ="//EnvironmentGRid/val" Type="Byte" Structure ="List" />
+  </Converts>
+</Converts>

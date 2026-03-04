@@ -1,0 +1,167 @@
+<Content>
+	<MapSize>192 192</MapSize>
+	<ActiveMapGrid>
+		<x>24</x>
+		<y>24</y>
+		<bits>2095104 2096128 2096640 4194048 4194176 4194240 8388592 16777200 16777200 16777200 16777200 16777200 16777200 16777200 16777200 16777200 16777200 16777200 4194288 2097136 1048560 524272 131056 131056</bits>
+	</ActiveMapGrid>
+	<ActiveMapRect>32 0 192 192</ActiveMapRect>
+	<ObjectMetaInfo>
+		<SlotObjects>
+			<None>
+				<value>
+					<id>1</id>
+				</value>
+			</None>
+			<None>
+				<None>
+					<ObjectId>-9222246132652965883</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>120.5 2.359375 37.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9222246132652965880</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>107.5 1.4765625 44.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9222246132652965882</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>114.5 2.1015625 42.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9222246132652965885</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>124.5 2.5859375 44.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9222246132652965881</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>110.5 1.9921875 49.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9222246132652965884</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>122.5 3.1640625 53.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9218868432932438012</ObjectId>
+					<ObjectGuid>116037</ObjectGuid>
+					<Position>116.5 1.546875 108.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9218868432932438015</ObjectId>
+					<ObjectGuid>116037</ObjectGuid>
+					<Position>86.5 1.8203125 114.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9215490733211910140</ObjectId>
+					<ObjectGuid>100417</ObjectGuid>
+					<Position>76.5 1.7563133 117.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9215490733211910143</ObjectId>
+					<ObjectGuid>100417</ObjectGuid>
+					<Position>75.5 3.8199434 145.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9221120232746123262</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>132.5 2.7109375 44.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9221120232746123261</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>128.5 2.7734375 52.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9221120232746123263</ObjectId>
+					<ObjectGuid>113750</ObjectGuid>
+					<Position>136.5 2.359375 58.5</Position>
+				</None>
+				<None>
+					<ObjectId>-9218868432932438009</ObjectId>
+					<ObjectGuid>100417</ObjectGuid>
+					<Position>144.5 2.3754804 66.5</Position>
+				</None>
+			</None>
+			<None>
+				<value>
+					<id>15</id>
+				</value>
+			</None>
+			<None>
+				<None>
+					<ObjectId>-9218868432932438014</ObjectId>
+					<ObjectGuid>100419</ObjectGuid>
+					<Position>87.469925 1.9375832 108.96338</Position>
+				</None>
+				<None>
+					<ObjectId>-9218868432932438011</ObjectId>
+					<ObjectGuid>100419</ObjectGuid>
+					<Position>116 1.7017956 102</Position>
+				</None>
+			</None>
+			<None>
+				<value>
+					<id>3</id>
+				</value>
+			</None>
+			<None>
+				<None>
+					<ObjectId>-9218868432932438010</ObjectId>
+					<ObjectGuid>1000253</ObjectGuid>
+					<Position>114.77877 6.804864 96.950745</Position>
+				</None>
+				<None>
+					<ObjectId>-9218868432932438013</ObjectId>
+					<ObjectGuid>1000253</ObjectGuid>
+					<Position>91.557625 4.4330196 106.801605</Position>
+				</None>
+			</None>
+		</SlotObjects>
+	</ObjectMetaInfo>
+	<Version>
+		<VersionList>
+			<None>
+				<FileTypeName>EditorFile</FileTypeName>
+				<FileVersion>4</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>SessionSettings</FileTypeName>
+				<FileVersion>2</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>CameraSequences</FileTypeName>
+				<FileVersion>2</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>ObjectLabels</FileTypeName>
+				<FileVersion>2</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>TerrainSettings</FileTypeName>
+				<FileVersion>2</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>ObjectGroups</FileTypeName>
+				<FileVersion>3</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>NuggetsMasks</FileTypeName>
+				<FileVersion>2</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>Regions</FileTypeName>
+				<FileVersion>2</FileVersion>
+			</None>
+			<None>
+				<FileTypeName>Nuggets</FileTypeName>
+				<FileVersion>8</FileVersion>
+			</None>
+		</VersionList>
+	</Version>
+	<MapSource>
+		<SourceMap>data\dlc12\sessions\islands\pool\colony01\colony01_s_07\colony01_s_07.a7me</SourceMap>
+	</MapSource>
+</Content>

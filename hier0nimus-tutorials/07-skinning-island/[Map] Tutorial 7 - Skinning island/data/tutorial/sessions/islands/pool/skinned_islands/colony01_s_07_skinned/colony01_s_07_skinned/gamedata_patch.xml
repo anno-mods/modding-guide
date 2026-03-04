@@ -5,4 +5,25 @@
     <ModOp Type="replace" Path="//VegetationPropSetName">
         <VegetationPropSetName>Arctic</VegetationPropSetName>
     </ModOp>
+    <!-- Oil to gas -->
+    <ModOp Type="merge" Path="//GameObject/objects/None[guid='100849']">
+        <guid>113750</guid>
+    </ModOp>
+    <!-- All Random slot mining -->
+    <ModOp Type="merge" Path="//GameObject/objects/None[guid='1000029']">
+        <guid>116037</guid>
+    </ModOp>
+    <!-- Fix invalid conversions -->
+    <ModOp Type="replace" Path="//IrrigationManager/m_StaticTileGrid/block/default">
+        <default>false</default>
+    </ModOp>
+    <ModOp Type="replace" Path="//GameSessionManager/SessionSettings/HasAirGrid">
+        <HasAirGrid>1</HasAirGrid>
+    </ModOp>
+    <ModOp Type="replace" Path="//SeasonManager/CurrentSeason/AddedTime">
+        <AddedTime>0</AddedTime>
+    </ModOp>
+    <ModOp Type="replace" Path="//SeasonManager/NextSeason/AddedTime">
+        <AddedTime>0</AddedTime>
+    </ModOp>
 </ModOps>

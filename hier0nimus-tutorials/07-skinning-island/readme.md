@@ -2053,7 +2053,7 @@ If we look at all the slot assets, we see the Arctic has a different slot asset 
 
 If we go back to our `ObjectGroupCollection`, and right after this node we have the `GameObject` node. This contains `objects` and this contains all different `None` nodes. They have a similar structure as the one we found for our `random slot mining`.
 
-The first one we have there has a GUID `100849`. If we go back to a1800.net and search for this GUID we find out this is a `andom slot oil pump`.
+The first one we have there has a GUID `100849`. If we go back to a1800.net and search for this GUID we find out this is a `random slot oil pump`.
 
 ![Skinning island screenshot](./_sources/screenshots/skinning_island_43.png)
 
@@ -2073,6 +2073,308 @@ After the `GameObject` we can also have `NaturePreset` and `EditorObject`.
 
 Because we make an Arctic island, we are limited in what we have available in terms of deposits. In vanilla we only have Deep Gold Mines and Gas deposits. We do not have clay or oil deposits or production buildings available so we will ignore those for this guide. Do know that it is possible to make new deposit types just like I did in White and Cold by making Oil deposits in the harbour area, diamond deposits on land, hot spring deposits on land, ect. That is more advanced and we will start with just swapping out the existing ones for existing ones for the Arctic region. 
 
-We will replace the oil ones with gas deposits, remove the clay ones and swapt the random mountain mines with the corresponding arctic ones.
+We will replace the oil ones with gas deposits, remove the clay ones and swapt the random mountain mines with the corresponding arctic ones. 
+
+How do we do this? Well, the same way as we swapped other things with the patch file, with the right mod operations. We will keep the positions of the deposits and mines but will swap out the GUID of which slot it is. 
+
+##### Swapping oil to gas
+
+To swap out the oil fields we replace the GUID `100849` that we found earlier with the GUID of the gas slot. We found the overview of all the slots before. The one for the gas deposits is `113750`, `random slot gas arctic`.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_42.png)
+
+To write our ModOp we need to know the path to the node we want to replace/merge with the new GUID. If we look at a unique parent node, we find `GameObject`. From that point we can go down the tree to define the exact node(s) we want to swap out.
+
+```XML
+<ModOp Type="merge" Path="//GameObject/objects/None[guid='100849']">
+    <guid>113750</guid>
+</ModOp>
+```
+
+This ModOp will look into the file and search for `GameObject` then go down to `objects` and look for `None` node that has a child node with the `guid` `100849`. It will merge the `guid` node with the value `113750`. 
+
+This will replace all the oil fields with gas deposits.
+
+Let's add this into our `gamedata_patch.xml`.
+
+```XML
+<ModOps>
+    <ModOp Type="replace" Path="//GlobalAmbientName">
+        <GlobalAmbientName>DLC03_01</GlobalAmbientName>
+    </ModOp>
+    <ModOp Type="replace" Path="//VegetationPropSetName">
+        <VegetationPropSetName>Arctic</VegetationPropSetName>
+    </ModOp>
+    <!-- Oil to gas -->
+    <ModOp Type="merge" Path="//GameObject/objects/None[guid='100849']">
+        <guid>113750</guid>
+    </ModOp>
+</ModOps>
+```
+
+##### Swapping mine slots
+
+Next are the mine slots we have in the New World. If we look at a1800.net and look for the corresponding `1000029` GUID, in this asset we find the list of all mines that are possible withing this random mine slot. 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_44.png)
+
+Those are offcourse all the New World mine slots. We should replace this New World random mine slot with the corresponding Arctic one. If we look again at the list of all slots be had a look at before, we see the corresponding Arctic one, `116037`, random slot mining arctic`. 
+
+If we take a closer look at this slot asset, the possible mines for this random Arctic slot only have the arctic gold mine. This is logical, there are not any other vanilla arctic mines available. With mods we expanded this with silver and other mines. But vanilla only has the gold mine.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_45.png)
+
+ This is also the reason why we would use `116037`, random slot mining arctic` instead of the gold slot directly, this way we can randomize which slot gets what more easily.
+
+To swap the New World GUID with the Arctic GUID, we can do a similar thing as with the oil and gas deposits.
+
+```XML
+    <!-- All Random slot mining -->
+    <ModOp Type="merge" Path="//GameObject/objects/None[guid='1000029']">
+        <guid>116037</guid>
+    </ModOp>
+```
+
+We add this also into our `gamedata_patch.xml`.
+
+We can now patch our `gamedata` and `rd3d` file again into a new version of our `a7m` island file to include our changes to the island. You should at this point know how to do this.
+
+The list of all the commands:
+
+`xmltest gamedata_original.xml gamedata_patch.xml`
+`xmltest rd3d_original.xml rd3d_patch.xml`
+`FileDBReader\Filedbreader.exe compress -f gamedata_patched.xml -o .data -c 2 -i FileDBReader\FileFormats\Island_Gamedata_V2.xml`
+
+If we execute this command for this island, we see some problems in the console. And also the created file has a size of 0kb.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_49.png)
+
+Some of the values in this island file are not supported by the conversion process. 
+
+First we have a `default` node with a value of `0` that expexts a boolean but does not get parsed.
+
+If we search for `default` we find 16 references in the original gamedata file. The 3the result is the one we are looking for into the `IrrigationManager`.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_51.png)
+
+I'm not 100% sure what we should do about this and for me it is also a bit trial and error, but I think we can just replace the `0` with a `false`. As I think false here stand for the same as 0 and it expects a false as a boolean value.
+
+```XML
+<!-- Fix invalid conversions -->
+<ModOp Type="replace" Path="//IrrigationManager/m_StaticTileGrid/block/default">
+    <default>false</default>
+</ModOp>
+```
+
+The next invalid conversion is about `HasAirGrid`. It expects an Int32 for a True value.
+
+if we look for `HasAirGrid` we can find it at the top of the file.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_52.png)
+
+```XML
+<!-- Fix invalid conversions -->
+<ModOp Type="replace" Path="//GameSessionManager/SessionSettings/HasAirGrid">
+    <HasAirGrid>1</HasAirGrid>
+</ModOp>
+```
+
+The last invalid conversion values are for `AddedTime` nodes with values `9223372036854775807` and `9223372036854775807`. 
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_50.png)
+
+I'm not completely sure what to do here... but replacing those with 0 seens to be ok.
+
+```XML
+<!-- Fix invalid conversions -->
+<ModOp Type="replace" Path="//SeasonManager/CurrentSeason/AddedTime">
+    <AddedTime>0</AddedTime>
+</ModOp>
+<ModOp Type="replace" Path="//SeasonManager/NextSeason/AddedTime">
+    <AddedTime>0</AddedTime>
+</ModOp>
+```
+
+Now, delete the 0kb `gamedata_patched.data` file and the `gamedata_patched.xml` and execute the previous 2 commands again. The one to create the xml and the one to create the data file.
+
+`FileDBReader\Filedbreader.exe compress -f rd3d_patched.xml -o .data -c 2 -i FileDBReader\FileFormats\Island_RD3D.xml`
+`RdaConsole pack -f colony01_s_07_skinned/gamedata.data colony01_s_07_skinned/rd3d.data -o colony01_s_07_skinned.a7m -y -v 2`
+
+##### `a7minfo` file
+
+In the same folder as the `a7m` island file, we also have the `a7minfo` file. This is also a file that contains information about the mine slots and deposits. If we change the slots in our gamedata file, we also need to make similar changes into our `a7minfo` file. 
+
+As you can see, we can not open this file like we can open an xml file. Just like the `.data` file or `a7m` file we need to decompress the `a7minfo` file to an xml to open this file and make manipulations into it.
+
+To decompress the `colony01_s_07_skinned.a7minfo` we use the following command (make sure your console is open in the correct path):
+
+`FileDBReader decompress -f colony01_s_07_skinned.a7minfo -y -i ../a7minfo.xml`
+
+In case your environment variables are not correctly installed, you can also use the following command after placing the FileDBReader folder with all the files into this folder also.
+
+`FileDBReader\Filedbreader.exe decompress -f colony01_s_07_skinned.a7minfo -y -i ../a7minfo.xml`
+
+You should now see a `colony01_s_07_skinned.xml` in this folder.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_46.png)
+
+Open this file to see the structure.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_47.png)
+
+You will recognise similar `ObjectGuid` as we had for the Oil fields and mine slots.
+
+Just like in the gamedata file where we patched the slots with other slots, we will do the same here.
+
+```XML
+<ModOps> 
+ <!-- Oil to gas -->
+    <ModOp Type="merge" Path="//SlotObjects/None/None[ObjectGuid='100849']">
+        <ObjectGuid>113750</ObjectGuid>
+    </ModOp>
+
+    <!-- All Random slot mining -->
+    <ModOp Type="merge" Path="//SlotObjects/None/None[ObjectGuid='1000029']">
+        <ObjectGuid>116037</ObjectGuid>
+    </ModOp>
+</ModOps> 
+```
+
+We add those mod operations into the `colony01_s_07_skinned_patch.xml` that we can also find in the same folder. 
+
+We will use a command to patch the original file with our patch file to get a patched file that we then can compress again into an updated `a7minfo` file.
+
+Rename the `colony01_s_07_skinned.xml` to `colony01_s_07_skinned_original.xml`.
+
+First we use the `xmltest` command to patch the xml files:
+
+`xmltest colony01_s_07_skinned_original.xml colony01_s_07_skinned_patch.xml`
+
+We get a `patch.xml` file which we rename into `colony01_s_07_skinned_patched.xml`.
+
+We can open this file and see if our patches are actually applied. We will see the ObjectGuid `113750` for the gas deposits in the first nodes for example instead of the ones from the oil deposits.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_48.png)
+
+Now we compress this patched xml file back into our patched `a7minfo` file that we will use ingame.
+
+You can always rename `colony01_s_07_skinned.a7minfo` to `colony01_s_07_skinned_original.a7minfo` to have a backup of your file so it will not be overwritten.
+
+`FileDBReader compress -f colony01_s_07_skinned_patched.xml -o a7minfo -i ../a7minfo.xml -c 1 -y`
+
+Or in case the environment variables are not correctly set up:
+
+`FileDBReader\Filedbreader.exe compress -f colony01_s_07_skinned_patched.xml -o a7minfo -i ../a7minfo.xml -c 1 -y`
+
+Rename the file to `colony01_s_07_skinned.a7minfo` and update all the modfiles.
+
+Now restart the game and check out the mines and deposits on the island!
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_53.png)
+
+As you can see, there are only gold mine slots and no gas deposits. 
+
+#### Gas deposits
+
+Why do we not get our gas deposits? We clearly swapped the oil ones for the gas ones.
+
+The reason why is another layer of complexity that is added on islands and mines/deposits. 
+
+If we have a look at a `RandomIsland` from the Arctic, for example `116676`, we see the different properties like `IslandType`. Based on this property, a `MineSlotSet` is linked to the island. Just like fertilities and fertilitysets that are linked to the island, the mineslots and deposits that are available on that island are also linked.
+
+The Arctic is a special case... You would think that gas deposits are also linked to the island, no? Well, not exactly.
+
+If we go to a1800.net and search for `MineSlotSet`, we find 36 sets. Only 2 sets are for the Arctic.
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_55.png)
+
+We have a set for gas and a set for gold. 
+
+Set for Gas:
+```XML
+<Asset>
+	<Template>MineSlotSet</Template>
+	<Values>
+		<Standard>
+			<GUID>114286</GUID>
+			<Name>Arctic Set 01 (Gas)</Name>
+			<IconFilename>data/ui/2kimages/main/3dicons/icon_mineral_desposits.png</IconFilename>
+		</Standard>
+		<ResourceSetCondition>
+			<Priority>10</Priority>
+			<AllowedRegion>Arctic</AllowedRegion>
+			<AllowedIslandType>CliffIsland</AllowedIslandType>
+			<AllowedIslandDifficulty>Normal;Hard</AllowedIslandDifficulty>
+			<AllowedResourceAmounts>Low;Medium;High</AllowedResourceAmounts>
+		</ResourceSetCondition>
+		<MineSlotResourceSet>
+			<MineSlots>
+				<Item>
+					<MineSlot>112691</MineSlot>
+					<!--mining_arctic_01_slot (Gas Mine Slot)-->
+				</Item>
+			</MineSlots>
+		</MineSlotResourceSet>
+	</Values>
+</Asset>
+```
+If we check the `AllowedIslandType` we see this set is only allowed/used on cliff islands. So, this is never used on normal islands.
+In `MineSlotResourceSet` we find all the possible mineslots. In this case only the gas mine slot.
+
+Set for Gold:
+```XML
+<Asset>
+	<Template>MineSlotSet</Template>
+	<Values>
+		<Standard>
+			<GUID>116032</GUID>
+			<Name>Arctic Set 02 (Gold)</Name>
+			<IconFilename>data/ui/2kimages/main/3dicons/icon_mineral_desposits.png</IconFilename>
+		</Standard>
+		<ResourceSetCondition>
+			<Priority>10</Priority>
+			<AllowedRegion>Arctic</AllowedRegion>
+			<AllowedIslandType>Normal;Starter</AllowedIslandType>
+			<AllowedIslandDifficulty>Normal;Hard</AllowedIslandDifficulty>
+			<AllowedResourceAmounts>Low;Medium;High</AllowedResourceAmounts>
+		</ResourceSetCondition>
+		<MineSlotResourceSet>
+			<MineSlots>
+				<Item>
+					<MineSlot>116038</MineSlot>
+					<!--mining_arctic_02_slot (Gold Slot)-->
+				</Item>
+				<Item>
+					<MineSlot>116038</MineSlot>
+					<!--mining_arctic_02_slot (Gold Slot)-->
+				</Item>
+			</MineSlots>
+		</MineSlotResourceSet>
+	</Values>
+</Asset>
+```
+
+If we check the `AllowedIslandType` we see this set is possible for normal and starter islands. so not on cliffs.
+In `MineSlotResourceSet` we find all the possible mineslots. In this case only the gold mine slot. No idea why it is added 2x.
+
+So, if we want to make gas also possible on our normal islands, we have to add our gas deposit also on this MineSlotSet.
+
+```XML
+  <!-- NEW SLOTTYPES TO SET -->
+  <ModOp Type="add" GUID="116032" Path="/Values/MineSlotResourceSet/MineSlots">
+    <Item>
+      <MineSlot>112691</MineSlot>      <!-- Arctic Gas Deposit Slot -->
+    </Item>
+  </ModOp>
+```
+
+If we now update our `assets.xml` and add the ModOp there, update our modfiles and restart the game, we will see our island including the gas deposits!
+
+![Skinning island screenshot](./_sources/screenshots/skinning_island_54.png)
 
 
+## What's next? What can we do with this?
+
+You probably wonder what we now can create with all of this... Well, your imagination can be enless! Go be creative and experiment with the different regions, island types, mine slots, ect. 
+
+You maybe wonder why Manola or Crown Falls is not yet skinned into an Arctic or Enbesa island? Well, there are a lot of reasons why not to do it. Apart from 2 big reasons why you could do it which are because it is fun to do! And you learn a lot by doing it... There are more important reasons why not to do it. The biggest reason is performance. People already complain about heavy modded games, frames dropping drasticly because the game becomes to heavy, flickering of the ground at some point,... All those things are because the game can not handle all the load it needs to process anymore. Continental islands are a big reason why performance drops or why the flickering happens at some point. If you want to do it, go ahead! But do know you will get a lot of complaints from people because of the above mentioned reasons.

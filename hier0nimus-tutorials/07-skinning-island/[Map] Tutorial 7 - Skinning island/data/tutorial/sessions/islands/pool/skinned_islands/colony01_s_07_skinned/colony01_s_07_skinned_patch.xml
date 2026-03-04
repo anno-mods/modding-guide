@@ -1,3 +1,10 @@
 <ModOps> 
- 
+ <!-- Oil to gas -->
+    <ModOp Type="merge" Path="//SlotObjects/None/None[ObjectGuid='100849']">
+        <ObjectGuid>113750</ObjectGuid>
+    </ModOp>
+    <!-- All Random slot mining -->
+    <ModOp Type="merge" Path="//SlotObjects/None/None[ObjectGuid='1000029']">
+        <ObjectGuid>116037</ObjectGuid>
+    </ModOp>
 </ModOps> 

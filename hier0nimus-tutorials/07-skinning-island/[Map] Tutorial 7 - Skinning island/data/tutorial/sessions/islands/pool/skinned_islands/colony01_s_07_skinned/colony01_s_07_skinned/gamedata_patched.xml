@@ -4,7 +4,7 @@
 		<SessionSettings>
 			<GlobalAmbientName>DLC03_01</GlobalAmbientName>
 			<PlayableArea>0 0 192 192</PlayableArea>
-			<HasAirGrid>True</HasAirGrid>
+			<HasAirGrid>1</HasAirGrid>
 		</SessionSettings>
 		<SessionRandomManager />
 		<TerrainManager>
@@ -5991,7 +5991,7 @@
 					<mode>True</mode>
 					<x>32</x>
 					<y>32</y>
-					<default>0</default>
+					<default>false</default>
 				</block>
 				<block>
 					<mode>False</mode>
@@ -6004,10 +6004,10 @@
 			<SeasonStartTime>0</SeasonStartTime>
 			<SeasonEndTime>0</SeasonEndTime>
 			<CurrentSeason>
-				<AddedTime>9223372036854775807</AddedTime>
+				<AddedTime>0</AddedTime>
 			</CurrentSeason>
 			<NextSeason>
-				<AddedTime>9223372036854775807</AddedTime>
+				<AddedTime>0</AddedTime>
 			</NextSeason>
 			<UsedSeasons />
 			<OverwriteSeasons />
@@ -7067,7 +7067,7 @@
 							<GameObject>
 								<objects>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9222246132652965883</ID>
 										<Position>120.5 2.359375 37.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7101,7 +7101,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9222246132652965880</ID>
 										<Position>107.5 1.4765625 44.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7135,7 +7135,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9222246132652965882</ID>
 										<Position>114.5 2.1015625 42.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7169,7 +7169,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9222246132652965885</ID>
 										<Position>124.5 2.5859375 44.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7203,7 +7203,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9222246132652965881</ID>
 										<Position>110.5 1.9921875 49.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7237,7 +7237,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9222246132652965884</ID>
 										<Position>122.5 3.1640625 53.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7455,7 +7455,7 @@
 										</BezierPath>
 									</None>
 									<None>
-										<guid>1000029</guid>
+										<guid>116037</guid>
 										<ID>-9218868432932438012</ID>
 										<ObjectFolderID>8</ObjectFolderID>
 										<Position>116.5 1.546875 108.5</Position>
@@ -7487,7 +7487,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>1000029</guid>
+										<guid>116037</guid>
 										<ID>-9218868432932438015</ID>
 										<ObjectFolderID>7</ObjectFolderID>
 										<Position>86.5 1.8203125 114.5</Position>
@@ -7649,7 +7649,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9221120232746123262</ID>
 										<Position>132.5 2.7109375 44.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7683,7 +7683,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9221120232746123261</ID>
 										<Position>128.5 2.7734375 52.5</Position>
 										<Direction>1.5707964</Direction>
@@ -7717,7 +7717,7 @@
 										<RandomMapObject />
 									</None>
 									<None>
-										<guid>100849</guid>
+										<guid>113750</guid>
 										<ID>-9221120232746123263</ID>
 										<ObjectFolderID>28</ObjectFolderID>
 										<Position>136.5 2.359375 58.5</Position>
