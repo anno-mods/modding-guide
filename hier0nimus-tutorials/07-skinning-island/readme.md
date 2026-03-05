@@ -1,4 +1,4 @@
-# Skinning an island (WIP)
+# Skinning an island
 
 ## Introduction
 
