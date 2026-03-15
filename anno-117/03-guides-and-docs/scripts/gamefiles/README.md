@@ -1,0 +1,3 @@
+Uploaded here all lua files from the games scripts.rda file (game version 1.4.1.1629710).
+This is kind of our "documentation" of what functions exist in lua. 
+Not all of them are in the final game though, eg. the very interesting "Cheats" commands...
