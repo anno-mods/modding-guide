@@ -1,0 +1,305 @@
+---@meta rdgs.COptionsManager
+-- Generated File, do not edit (template Declaration.stg)
+
+---@class rdgs.COptionsManager
+---@field OptionsConfirmPopupTime integer		
+---@field IsAsianLanguageInUse boolean		Returns true if the text language which is currently set an Asian language
+---@field QualitySettings table<rdgs.QualitySettings, integer>		
+---@field Resolution integer		
+---@field DefaultResolution integer		
+---@field CanChangeResolution boolean		
+---@field WindowMode integer		
+---@field DefaultWindowMode integer		
+---@field GraphicAdapter integer		
+---@field DefaultGraphicAdapter integer		
+---@field GraphicsQuality rdgs.QualitySettingType		
+---@field DefaultGraphicsQuality rdgs.QualitySettingType		
+---@field Gamma number		
+---@field DefaultGamma number		
+---@field VSync boolean		
+---@field DefaultVSync boolean		
+---@field FPSLimit boolean		
+---@field IsFPSLimitEnabled boolean		
+---@field DefaultFPSLimit boolean		
+---@field FPSCap number		
+---@field DefaultFPSCap number		
+---@field FPSCapValue integer		
+---@field AntiAlias integer		
+---@field DefaultAntiAlias integer		
+---@field Texture integer		
+---@field DefaultTexture integer		
+---@field Lighting integer		
+---@field DefaultLighting integer		
+---@field Shadow integer		
+---@field DefaultShadow integer		
+---@field Water integer		
+---@field DefaultWater integer		
+---@field Object integer		
+---@field DefaultObject integer		
+---@field ViewDistance integer		
+---@field DefaultViewDistance integer		
+---@field Terrain integer		
+---@field DefaultTerrain integer		
+---@field Raytracing integer		
+---@field DefaultRaytracing integer		
+---@field CanModifyRaytracing boolean		
+---@field FixSunPosition boolean		
+---@field DefaultFixSunPosition boolean		
+---@field Feedback integer		
+---@field DefaultFeedback integer		
+---@field UpscalingIndex integer		
+---@field DefaultUpscalingIndex integer		
+---@field IsUpscalingDisabled boolean		
+---@field DLSS integer		
+---@field DefaultDLSS integer		
+---@field IsUsingDLSS boolean		
+---@field XeSS integer		
+---@field DefaultXeSS integer		
+---@field IsUsingXeSS boolean		
+---@field FSR integer		
+---@field DefaultFSR integer		
+---@field IsUsingFSR boolean		
+---@field TiltShiftEnabled boolean		
+---@field DefaultTiltShiftEnabled boolean		
+---@field TiltShiftBlurRadius number		
+---@field DefaultTiltShiftBlurRadius number		
+---@field TiltShiftFocusAreaSize number		
+---@field DefaultTiltShiftFocusAreaSize number		
+---@field DLSSModel integer		##
+---@field DefaultDLSSModel integer		
+---@field CanModifyDLSSModel boolean		
+---@field DLSSRayReconstruction integer		
+---@field DefaultDLSSRayReconstruction integer		
+---@field CanModifyDLSSRayReconstruction boolean		
+---@field EnableHDR boolean		
+---@field DefaultEnableHDR boolean		
+---@field CanModifyEnableHDR boolean		
+---@field HDRMaxLuminance number		
+---@field DefaultHDRMaxLuminance number		
+---@field CanModifyHDRMaxLuminance boolean		
+---@field HDRMaxLuminanceValue integer		
+---@field HDRExposure number		
+---@field DefaultHDRExposure number		
+---@field CanModifyHDRExposure boolean		
+---@field HDRExposureValue number		
+---@field MasterVolume number		
+---@field DefaultMasterVolume number		
+---@field UIVolume number		
+---@field DefaultUIVolume number		
+---@field MusicVolume number		
+---@field DefaultMusicVolume number		
+---@field VoiceVolume number		
+---@field DefaultVoiceVolume number		
+---@field SFXVolume number		
+---@field DefaultSFXVolume number		
+---@field TextLanguage integer		
+---@field DefaultTextLanguage integer		
+---@field CanModifyTextLanguage boolean		
+---@field TextLanguageName string		
+---@field AudioLanguage integer		
+---@field DefaultAudioLanguage integer		
+---@field CanModifyAudioLanguage boolean		
+---@field AudioLanguageName string		
+---@field SubtitlesEnabled boolean		
+---@field DefaultSubtitlesEnabled boolean		
+---@field SubtitleBackgroundOpacity number		
+---@field DefaultSubtitleBackgroundOpacity number		
+---@field SubtitleSize integer		
+---@field DefaultSubtitleSize integer		
+---@field SubtitleColorOption integer		
+---@field DefaultSubtitleColorOption integer		
+---@field SubtitlesInFullscreenMenusEnabled boolean		
+---@field DefaultSubtitlesInFullscreenMenusEnabled boolean		
+---@field HighContrastEnabled boolean		
+---@field DefaultHighContrastEnabled boolean		
+---@field ColorBlindMode integer		
+---@field DefaultColorBlindMode integer		
+---@field HudMode integer		
+---@field DefaultHudMode integer		
+---@field UiScaling integer		
+---@field DefaultUiScaling integer		
+---@field CanModifyUiScaling boolean		
+---@field RightclickMenuEnabled boolean		
+---@field DefaultRightclickMenuEnabled boolean		
+---@field FreeCameraEnabled boolean		
+---@field DefaultFreeCameraEnabled boolean		
+---@field ExtendedCameraDistanceEnabled boolean		
+---@field DefaultExtendedCameraDistanceEnabled boolean		
+---@field CameraDragSensitivityDisplayValue number		
+---@field CameraDragSensitivity number		
+---@field DefaultCameraDragSensitivity number		
+---@field CameraScrollSensitivityDisplayValue number		
+---@field CameraScrollSensitivity number		
+---@field DefaultCameraScrollSensitivity number		
+---@field CameraKeyboardSensitivityDisplayValue number		
+---@field CameraKeyboardSensitivity number		
+---@field DefaultCameraKeyboardSensitivity number		
+---@field BuildGridEnabled integer		
+---@field DefaultBuildGridEnabled integer		
+---@field InfolayerEnabled boolean		
+---@field DefaultInfolayerEnabled boolean		
+---@field AutoSaveInterval integer		
+---@field DefaultAutoSaveInterval integer		
+---@field AutoSaveLimit integer		
+---@field DefaultAutoSaveLimit integer		
+---@field UpgradeInfolayerEnabled boolean		
+---@field DefaultUpgradeInfolayerEnabled boolean		
+---@field ConstructionHighlightEnabled boolean		
+---@field DefaultConstructionHighlightEnabled boolean		
+---@field AutoBlueprintEnabled boolean		
+---@field DefaultAutoBlueprintEnabled boolean		
+---@field NeedsUnlockPopupEnabled boolean		
+---@field DefaultNeedsUnlockPopupEnabled boolean		
+---@field IncludeTradeEstimationInBalance boolean		
+---@field DefaultIncludeTradeEstimationInBalance boolean		
+---@field EdgeScrollingEnabled boolean		
+---@field DefaultEdgeScrollingEnabled boolean		
+---@field CoopPingBubbleEnabled boolean		
+---@field DefaultCoopPingBubbleEnabled boolean		
+---@field IrrigationPlacementModeEnabled boolean		
+---@field DefaultIrrigationPlacementModeEnabled boolean		
+---@field RomanLettersOnlyEnabled boolean		
+---@field DefaultRomanLettersOnlyEnabled boolean		
+---@field SansSerifOnlyEnabled boolean		
+---@field DefaultSansSerifOnlyEnabled boolean		
+---@field IncidentMusicEnabled boolean		
+---@field DefaultIncidentMusicEnabled boolean		
+---@field CombatMusicEnabled boolean		
+---@field DefaultCombatMusicEnabled boolean		
+---@field ProductionFlyoutsEnabled boolean		
+---@field DefaultProductionFlyoutsEnabled boolean		
+---@field SetSailButtonEnabled boolean		
+---@field DefaultSetSailButtonEnabled boolean		
+---@field IsMinimapRotationEnabled boolean		
+---@field DefaultIsMinimapRotationEnabled boolean		
+---@field NotificationDurationIndex integer		
+---@field DefaultNotificationDurationIndex integer		
+---@field IsDiagonalBuildEnabled boolean		
+---@field DefaultIsDiagonalBuildEnabled boolean		
+---@field IsDayNightCycleEnabled boolean		
+---@field DefaultIsDayNightCycleEnabled boolean		
+---@field EnableCameraShakes boolean		
+---@field DefaultEnableCameraShakes boolean		
+---@field SwapAnalogSticks boolean		
+---@field DefaultSwapAnalogSticks boolean		
+---@field CameraAutoFastMoveEnabled boolean		
+---@field DefaultCameraAutoFastMoveEnabled boolean		
+---@field CameraAutoFastMoveAccelerationDelay number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultCameraAutoFastMoveAccelerationDelay number		
+---@field CameraAutoFastMoveAccelerationDelayValue number		Returns the remapped value in the range configured in T9
+---@field CameraAutoFastMoveAccelerationDuration number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultCameraAutoFastMoveAccelerationDuration number		
+---@field CameraAutoFastMoveAccelerationDurationValue number		Returns the remapped value in the range configured in T9
+---@field HoldActionsEnabled integer		
+---@field DefaultHoldActionsEnabled integer		
+---@field CameraModifierToggleEnabled boolean		
+---@field DefaultCameraModifierToggleEnabled boolean		
+---@field ShipSelectionToggleEnabled boolean		
+---@field DefaultShipSelectionToggleEnabled boolean		
+---@field ConstructionMenuAccessToggleEnabled boolean		
+---@field DefaultConstructionMenuAccessToggleEnabled boolean		
+---@field SwapTriggerAndShoulderButtons boolean		
+---@field DefaultSwapTriggerAndShoulderButtons boolean		
+---@field ControllerTriggerSensitivity number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerTriggerSensitivity number		
+---@field ControllerTriggerSensitivityValue number		Returns the remapped value in the range configured in T9
+---@field EnableAdaptiveTriggerEffects boolean		
+---@field DefaultEnableAdaptiveTriggerEffects boolean		
+---@field ControllerLongPressDuration number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerLongPressDuration number		
+---@field ControllerLongPressDurationValue number		Returns the remapped value in the range configured in T9
+---@field ControllerLongPressDurationText string		Returns the remapped value in the range configured in T9 as text in seconds
+---@field ControllerShortPressDuration number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerShortPressDuration number		
+---@field ControllerShortPressDurationValue number		Returns the remapped value in the range configured in T9
+---@field ControllerShortPressDurationText string		Returns the remapped value in the range configured in T9 as text in seconds
+---@field ControllerInnerDeadzoneLeft number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerInnerDeadzoneLeft number		
+---@field ControllerInnerDeadzoneLeftValue number		Returns the remapped value in the range configured in T9
+---@field ControllerInnerDeadzoneRight number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerInnerDeadzoneRight number		
+---@field ControllerInnerDeadzoneRightValue number		Returns the remapped value in the range configured in T9
+---@field ControllerOuterDeadzoneLeft number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerOuterDeadzoneLeft number		
+---@field ControllerOuterDeadzoneLeftValue number		Returns the remapped value in the range configured in T9
+---@field ControllerOuterDeadzoneRight number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerOuterDeadzoneRight number		
+---@field ControllerOuterDeadzoneRightValue number		Returns the remapped value in the range configured in T9
+---@field ControllerInvertAxisMoveX boolean		
+---@field DefaultControllerInvertAxisMoveX boolean		
+---@field ControllerInvertAxisMoveY boolean		
+---@field DefaultControllerInvertAxisMoveY boolean		
+---@field ControllerInvertAxisPanX boolean		
+---@field DefaultControllerInvertAxisPanX boolean		
+---@field ControllerInvertAxisPanY boolean		
+---@field DefaultControllerInvertAxisPanY boolean		
+---@field ControllerInvertAxisRotate boolean		
+---@field DefaultControllerInvertAxisRotate boolean		
+---@field ControllerInvertAxisZoom boolean		
+---@field DefaultControllerInvertAxisZoom boolean		
+---@field ControllerInvertAxisTilt boolean		
+---@field DefaultControllerInvertAxisTilt boolean		
+---@field ControllerInvertAxisFpsX boolean		
+---@field DefaultControllerInvertAxisFpsX boolean		
+---@field ControllerInvertAxisFpsY boolean		
+---@field DefaultControllerInvertAxisFpsY boolean		
+---@field ControllerCameraPanSpeedMultiplier number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerCameraPanSpeedMultiplier number		
+---@field ControllerCameraPanSpeedMultiplierValue number		Returns the remapped value in the range configured in T9
+---@field CameraBuildModePanSpeedMultiplier number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultCameraBuildModePanSpeedMultiplier number		
+---@field CameraBuildModePanSpeedMultiplierValue number		Returns the remapped value in the range configured in T9
+---@field ControllerCameraFastMoveSpeedMultiplier number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerCameraFastMoveSpeedMultiplier number		
+---@field ControllerCameraFastMoveSpeedMultiplierValue number		Returns the remapped value in the range configured in T9
+---@field ControllerCameraRotateSpeedMultiplier number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerCameraRotateSpeedMultiplier number		
+---@field ControllerCameraRotateSpeedMultiplierValue number		Returns the remapped value in the range configured in T9
+---@field ControllerCameraZoomSpeedMultiplier number		gets / sets the slider configuration value between 0.0 and 1.0
+---@field DefaultControllerCameraZoomSpeedMultiplier number		
+---@field ControllerCameraZoomSpeedMultiplierValue number		Returns the remapped value in the range configured in T9
+---@field ControllerVibrationIntensity number		
+---@field DefaultControllerVibrationIntensity number		
+---@field EnableSelectionWheelStickySelection boolean		
+---@field DefaultEnableSelectionWheelStickySelection boolean		
+---@field RadialMenuMaxEntries integer		
+---@field DefaultRadialMenuMaxEntries integer		
+---@field BuildModeDragTypeDefault integer		
+---@field DefaultBuildModeDragTypeDefault integer		
+---@field BuildModeDragTypeStreet integer		
+---@field DefaultBuildModeDragTypeStreet integer		
+---@field BuildModeDragTypeFields integer		
+---@field DefaultBuildModeDragTypeFields integer		
+---@field EnableAdvancedButtonMapping boolean		
+---@field DefaultEnableAdvancedButtonMapping boolean		
+---@field EnableCrossPlay boolean		
+---@field DefaultEnableCrossPlay boolean		
+---@field CanModifyCrossPlaySetting boolean		
+---@field EyeAdaptionEnabled boolean		
+local COptionsManager = {}
+Options = COptionsManager
+---toggles between window mode and fullscreen mode
+---@param self rdgs.COptionsManager
+function COptionsManager.ToggleFullscreen(self) end
+---@param self rdgs.COptionsManager
+---@param width integer
+---@param height integer
+---@return integer
+function COptionsManager.LookupResolution(self, width , height ) end
+---@param self rdgs.COptionsManager
+---@param type integer
+---@return boolean
+function COptionsManager.IsUpscalingTypeEnabled(self, type ) end
+---Will be called from UI with the button index of the pressed gamepad remapping button. An index of -1 means that the button remapping type changed.
+---@param self rdgs.COptionsManager
+---@param remappingTypeIndex integer
+---@param buttonIndex integer
+function COptionsManager.OnButtonRemappingElementEvent(self, remappingTypeIndex , buttonIndex ) end
+---Will be called from UI with the bool if it is audio or text language
+---@param self rdgs.COptionsManager
+---@param isAudioLanguage boolean
+function COptionsManager.OnLanguageConsoleButtonEvent(self, isAudioLanguage ) end
+---@return boolean returns true if weak pointer holds a valid reference
+function COptionsManager.isValid() end
+
+return COptionsManager
