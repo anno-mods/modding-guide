@@ -1,0 +1,1 @@
+Static.Incident.ShortenIncidentSchedulerIntervalForMajorIncidents(0);

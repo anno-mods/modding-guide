@@ -1,0 +1,1 @@
+Participants.ActiveEmperorProperty:ShortenAllEmperorQuestTimerIntervals();

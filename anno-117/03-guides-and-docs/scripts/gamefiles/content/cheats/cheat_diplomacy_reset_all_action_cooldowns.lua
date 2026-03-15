@@ -1,0 +1,1 @@
+Participants:GetParticipant(Selection.Object.Owner).Diplomacy:ResetAllActionCooldownsNet()
