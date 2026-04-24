@@ -1,3 +1,5 @@
+modloader script documentation: https://jakobharder.github.io/anno-mod-loader/lua-scripts/  
+
 This Tutorial for scripting is partially based on the [script-testing](https://github.com/03szust/script-testing) mod and makes a few references to it. 
 
 I will try and update this once the game comes out but the version in my own repo will probably be more up to date.
