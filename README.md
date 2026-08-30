@@ -20,6 +20,7 @@ Detailed walkthrough the creation of mods:
 5. [Tutorial 6 - Basics Modelling](./hier0nimus-tutorials/06-basics-modelling/readme.md)
 5. [Tutorial 7 - Skinning Island (WIP)](./hier0nimus-tutorials/07-skinning-island/readme.md)
 - [Tutorial Making Quests](./hier0nimus-tutorials/Quests-Tutorial)
+- [Tutorial Adding Own Music](https://github.com/anno-mods/AddCustomMusic)
 
 ## Dedicated Guides and Documentations
 
