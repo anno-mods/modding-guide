@@ -1,5 +1,7 @@
 # Anno 1800 Trigger Guide
 
+(based on knowledge, notes, testing and mods from Serpens66, summarized by chatgpt 6.1 Sol)
+
 A trigger watches for something and performs actions when its requirements are met. You can use one to unlock a building, react to an event, start a script, change a ship, or coordinate a longer sequence. The difficult part is usually deciding **when each requirement becomes eligible, what the trigger remembers, and when it starts again**.
 
 This guide starts with a normal vanilla trigger and gradually introduces more features. Read the first chapters in order if you are new to triggers. Later, use the table of contents or search for an exact XML name such as `IsOptional`. All examples concern **Anno 1800**, not Anno 117.
