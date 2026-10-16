@@ -76,3 +76,4 @@ Detailed walkthrough the creation of mods:
 - [Asset and Text Browser: a1800.net](https://a1800.net/)
 - [Anno Building-menu Customizer (ABC)](https://github.com/AsciiBunny/AnnoBuildingmenuCustomizer)
 - Map Editor: [Stable](https://github.com/anno-mods/AnnoMapEditor/releases) / Experimental: [Code](https://github.com/Ixam97/AnnoMapEditor) [Download](https://github.com/Ixam97/AnnoMapEditor/actions/runs/15663865466/artifacts/3331029826)
+- [Experimental Island Editor](https://github.com/moidu21/Island-Editor)
